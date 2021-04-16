@@ -1,24 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import SidebarRow from "./components/SidebarRow/SidebarRow";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Search from "./components/Search/Search";
+import { Channel } from "./components/Channel/Channel";
+
+import Explore from "./components/Explore/Explore";
+import Subscription from "./components/Subscription/Subscription";
+import Library from "./components/Library/Library";
+import History from "./components/History/History";
+import MyVideos from "./components/MyVideos/MyVideos";
+import WatchLater from "./components/WatchLater/WatchLater";
+import LikedVideos from "./components/LikedVideos/LikedVideos";
+
+import styles from "./App.module.css";
+import MiniSidebarRow from "./components/MiniGuide/MiniSidebarRow";
+
+import GuideContext from "./context/guideContext";
+import Home from "./components/Home/Home";
+import Watch from "./components/Watch/Watch";
 
 function App() {
+  const [toggleSidebarRow] = useContext(GuideContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Router>
+      <div className={styles.container}>
+        <div className={styles.navbar}>
+          <Navbar />
+        </div>
+        <div className={styles.sidebarRow}>
+          <div className={styles.spacer}></div>
+          {toggleSidebarRow ? <MiniSidebarRow /> : <SidebarRow />}
+        </div>
+        <div
+          className={`${styles.bodyWrapper} ${
+            toggleSidebarRow ? styles.miniSidebarRow : ""
+          }`}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Switch>
+            <Route path="/" exact render={(routeProps) => <Home {...routeProps} />} />
+            <Route path="/channel/:channelId" component={Channel} />
+            <Route path="/search" component={Search} />
+            <Route path="/feed/explore" component={Explore} />
+            <Route path="/feed/subscription" component={Subscription} />
+            <Route path="/feed/library" component={Library} />
+            <Route path="/feed/history" component={History} />
+            <Route path="/feed/my-videos" component={MyVideos} />
+            <Route path="/feed/watch-later" component={WatchLater} />
+            <Route path="/feed/liked-videos" component={LikedVideos} />
+
+            <Route path="/watch/:videoId" component={Watch} />
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 

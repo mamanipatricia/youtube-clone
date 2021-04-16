@@ -1,0 +1,13 @@
+.homeContainer {
+}
+.feedFilterContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  border-top: 1px solid var(--border-secondary);
+  border-bottom: 1px solid var(--border-secondary);
+  background: white;
+  padding: 10px;
+  z-index: 2050;
+}

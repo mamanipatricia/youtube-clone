@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+}
+.sidebarRow {
+  width: 240px;
+  position: fixed;
+  z-index: 90;
+  top: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 56px;
+  z-index: 100;
+}
+.bodyWrapper {
+  margin-top: 56px;
+  margin-left: 240px;
+  /* background: red; */
+  background: var(--bg-body);
+}
+.miniSidebarRow {
+  margin-left: 72px;
+}
+.spacer {
+  margin-top: 56px;
+}

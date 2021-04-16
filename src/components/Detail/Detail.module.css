@@ -1,0 +1,17 @@
+.detailContainer {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  margin: 0 0 5px 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+.viewTimestampContainer {
+  display: flex;
+  gap: 5px;
+  font-size: var(--font-size);
+  color: gray;
+}

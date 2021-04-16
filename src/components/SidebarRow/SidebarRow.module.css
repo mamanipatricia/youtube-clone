@@ -1,0 +1,35 @@
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  font-size: var(--font-size);
+  height: 100vh;
+  overflow-y: auto;
+}
+.guideEntry {
+  text-decoration: none;
+  padding: 10px 24px;
+  color: black;
+  display: flex;
+  font-size: var(--font-size);
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+}
+.sidebarIcon {
+  margin-right: 24px;
+}
+
+.sidebarBackground {
+  background: #d9d9d9;
+}
+.sidebarBackground > a > span:last-child {
+  font-weight: 500;
+}
+.section {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 12px 0;
+}
+.section:last-child {
+  border-bottom: none;
+}

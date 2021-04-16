@@ -1,0 +1,91 @@
+.channelContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.channelBgHeader {
+  background: #f9f9f9;
+}
+.bannerChannel {
+  width: 100%;
+  height: calc((100vw - 240px) / 6.2 - 1px); /* yt measurements */
+  object-fit: cover;
+}
+.channelHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 15px 0 0 0;
+  width: 80%;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9f9f9;
+}
+.channelAvatar {
+  margin: 0 24px 0 0;
+}
+.channelOwnerText {
+  font-size: 24px;
+}
+.channelOwnerContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.channelOwnerSubscribers {
+  color: gray;
+  font-size: var(--font-size);
+}
+.channelInfo {
+  display: flex;
+  align-items: center;
+}
+.channelSubscribeButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.subscribeButton {
+  color: var(--text-secondary);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  background: var(--badge-background);
+}
+/* ------ */
+.ownerChannelName {
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.ownerChannelName:hover {
+  color: var(--text-primary);
+}
+.iconContainer {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+}
+/* tabbed header */
+.channelTabbedHeader {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  margin: 0 auto;
+  justify-content: center;
+}
+.channelTabbedItem {
+  color: gray;
+  font-size: var(--font-size);
+  font-weight: bold;
+  padding: 0 40px;
+  text-decoration: none;
+}

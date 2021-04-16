@@ -1,0 +1,17 @@
+.videoCardContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.videoCardInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-self: start;
+  margin: 10px 0 0;
+  gap: 12px;
+}
+.menu {
+  justify-self: end;
+}

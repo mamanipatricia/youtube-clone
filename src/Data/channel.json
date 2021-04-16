@@ -1,0 +1,139 @@
+{
+    "channels": [
+        {
+            "id": "id1",
+            "banner": "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            "channelName": "midudev",
+            "subscribers": "12334 subscribers",
+            "avatar": "https://yt3.ggpht.com/ytc/AAUvwngpbxUxIHiKOo6hDFDq0CVw2l2F2P6XF5BBgEeQoGs=s68-c-k-c0x00ffffff-no-rj",
+            "videos": [
+                {
+                    "id": 1,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12344 views",
+                    "timestamp": "1 weeks time ago"
+                },
+                {
+                    "id": 2,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12346 views",
+                    "timestamp": "2 weeks time ago"
+                },
+                {
+                    "id": 3,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12347 views",
+                    "timestamp": "3 weeks time ago"
+                }
+            ]
+        },
+        {
+            "id": "id2",
+            "banner": "https://yt3.ggpht.com/BSxZS1i3qXgNhqF95jFv1Zz2VQz7vnWqNfxb7RlNU3Rfy8VVDRsh5ZVDiEgNkcqLYxEDx1WP1fI=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+            "channelName": "midudev1",
+            "subscribers": "123344 subscribers",
+            "avatar": "https://yt3.ggpht.com/ytc/AAUvwnjRDntpiFfmzUPPNIwOiN0R4K5WSuAmKM0btEBIIQ=s88-c-k-c0x00ffffff-no-rj",
+            "videos": [
+                {
+                    "id": 1,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12344 views",
+                    "timestamp": "1 weeks time ago"
+                },
+                {
+                    "id": 2,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12346 views",
+                    "timestamp": "2 weeks time ago"
+                },
+                {
+                    "id": 3,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12347 views",
+                    "timestamp": "3 weeks time ago"
+                }
+            ]
+        },
+        {
+            "id": "id3",
+            "banner": "https://yt3.ggpht.com/ytc/AAUvwngpbxUxIHiKOo6hDFDq0CVw2l2F2P6XF5BBgEeQoGs=s68-c-k-c0x00ffffff-no-rj",
+            "channelName": "midudev2",
+            "subscribers": 1233444,
+            "avatar": "https://yt3.ggpht.com/ytc/AAUvwngHlxSnPQQ7rPz7CiY2k00pL0nVGwsF7jyRhGZ0YA=s88-c-k-c0x00ffffff-no-rj",
+            "videos": [
+                {
+                    "id": 1,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12344 views",
+                    "timestamp": "1 weeks time ago"
+                },
+                {
+                    "id": 2,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12346 views",
+                    "timestamp": "2 weeks time ago"
+                },
+                {
+                    "id": 3,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12347 views",
+                    "timestamp": "3 weeks time ago"
+                }
+            ]
+        },
+        {
+            "id": "id4",
+            "banner": "https://yt3.ggpht.com/qp7lcO6e3H1QqMpOlXcGnQ9NDQeNFFH_sf_Nj8tQDV3lw_lZzwkz2cv0mlkg2a8VUGNMtx7p=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj0",
+            "channelName": "midudev2",
+            "subscribers": 1233444,
+            "avatar": "https://yt3.ggpht.com/ytc/AAUvwnjtjTiBRDn__SXZo-_lUdaZFdFk3Bf5FOrVtBxkwRw=s88-c-k-c0x00ffffff-no-rj",
+            "videos": [
+                {
+                    "id": 1,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12344 views",
+                    "timestamp": "1 weeks time ago"
+                },
+                {
+                    "id": 2,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12346 views",
+                    "timestamp": "2 weeks time ago"
+                },
+                {
+                    "id": 3,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12347 views",
+                    "timestamp": "3 weeks time ago"
+                }
+            ]
+        },
+        {
+            "id": "id4",
+            "banner": "https://yt3.ggpht.com/qp7lcO6e3H1QqMpOlXcGnQ9NDQeNFFH_sf_Nj8tQDV3lw_lZzwkz2cv0mlkg2a8VUGNMtx7p=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj0",
+            "channelName": "midudev2",
+            "subscribers": 1233444,
+            "avatar": "https://yt3.ggpht.com/ytc/AAUvwnjtjTiBRDn__SXZo-_lUdaZFdFk3Bf5FOrVtBxkwRw=s88-c-k-c0x00ffffff-no-rj",
+            "videos": [
+                {
+                    "id": 1,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12344 views",
+                    "timestamp": "1 weeks time ago"
+                },
+                {
+                    "id": 2,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12346 views",
+                    "timestamp": "2 weeks time ago"
+                },
+                {
+                    "id": 3,
+                    "url": "https://www.youtube.com/watch?v=feSKVnDB8XE",
+                    "views": "12347 views",
+                    "timestamp": "3 weeks time ago"
+                }
+            ]
+        }
+    ]
+}

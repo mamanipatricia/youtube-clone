@@ -1,0 +1,43 @@
+.navbarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  height: 100%;
+  background: var(--bg-primary);
+}
+.startHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+.startHeader > span {
+  padding: 8px;
+}
+.centerHeader {
+  display: flex;
+  flex-direction: row;
+  flex: 0 1 728px;
+  align-items: center;
+}
+.endHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.endHeader > button {
+  margin-right: 10px;
+}
+.endHeader > button:last-child {
+  margin: 0 10px;
+}
+.endHeader > button {
+  background: none;
+  border: none;
+}
+.iconLogo {
+  width: 80px;
+  height: 24px;
+}

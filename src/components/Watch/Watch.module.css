@@ -1,0 +1,167 @@
+.watchContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 520px);
+  column-gap: 15px;
+}
+.primary {
+  display: flex;
+  flex-direction: column;
+}
+.secondary {
+  display: flex;
+  flex-direction: column;
+}
+/* --  -- */
+.playerContainer {
+  width: 100%;
+}
+
+/* -- */
+.youtubePlayer {
+  height: 600px;
+}
+/*----*/
+.watchInfoMenuContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.watchInfoMenuButton {
+  position: relative;
+  height: 24px;
+  width: 24px;
+}
+.watchInfoMenu {
+  transform: translate(-70%, -50%) rotate(270deg);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+/*----*/
+.watchInfoLikeContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.watchInfoLikeButton {
+  position: relative;
+  height: 24px;
+  width: 24px;
+}
+.watchInfoLike {
+  transform: translate(-70%, -50%) rotate(180deg);
+  position: absolute;
+}
+/*----*/
+.videoTitle{
+  font-size: 18px;
+}
+.watchInfoContainer {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-primary);
+
+  /* align-items: center; */
+}
+.watchInfoButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: var(--text-sentiment);
+}
+.watchInfoButtons {
+  display: flex;
+  align-items: center;
+}
+.watchInfoButtons > div {
+  display: flex;
+  align-items: center;
+  padding: 0 8px 0 0;
+  margin-left: 8px;
+}
+.watchInfoButtons > div:first-child {
+  margin-left: 0px;
+}
+.watchInfoButtons > div:last-child {
+  padding: 0px;
+}
+.watchInfoButtons > div > button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+/* --meta-- */
+.watchOwnerContainer {
+  display: flex;
+  flex-direction: column;
+}
+.watchOwnerText {
+  font-size: 14px;
+  font-weight: 500;
+}
+.watchOwnerSubscribers {
+  display: flex;
+  gap: 5px;
+  color: gray;
+  font-size: var(--font-size);
+  margin-right: 4px;
+  line-height: 18px;
+  flex: 1;
+}
+.metaContainer {
+  display: flex;
+  border-bottom: 1px solid var(--border-primary);
+  flex-direction: column;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+}
+.watchMetaContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  margin-bottom: 12px;
+}
+.watchChannel {
+  display: flex;
+
+  align-items: center;
+}
+.avatar {
+  margin-right: 16px;
+}
+.watchInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-left: 64px;
+}
+.watchContentInfo {
+  color: var(--text-secondary);
+}
+.watchShowMore {
+  margin-top: 8px;
+}
+.watchShowMore > button {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+}
+.watchSubscribeContainer {
+  display: flex;
+  align-items: center;
+}
+.watchSubscribe {
+  padding: 10px 16px;
+  margin: 4px;
+  border: none;
+  background: var(--bg-button-subs);
+}

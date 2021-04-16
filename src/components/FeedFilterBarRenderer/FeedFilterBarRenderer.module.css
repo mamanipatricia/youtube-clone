@@ -1,0 +1,15 @@
+.feedFilterContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.feedFilter {
+  border: 1px solid var(--border-primary);
+  padding: 7px 12px;
+  border-radius: 14px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+}
