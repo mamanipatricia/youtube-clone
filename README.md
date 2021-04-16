@@ -29,3 +29,4 @@ $ yarn
 ```shell
 $ yarn start
 ```
+*Enter to [pattty.com](http://pattty.com) to see the project
