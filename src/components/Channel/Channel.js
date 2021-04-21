@@ -55,7 +55,7 @@ export function Channel() {
       const channelData = {
         id: channelId,
         avatar: response.items[0].snippet.thumbnails.high.url,
-        banner: response.items[0].brandingSettings.image.bannerExternalUrl,
+        banner: response.items[0].brandingSettings.image?.bannerExternalUrl,
         channelName: response.items[0].brandingSettings.channel.title,
         subscribers: response.items[0].statistics.subscriberCount,
       };
@@ -70,16 +70,19 @@ export function Channel() {
     const div = <div>Channel not found</div>;
     return div;
   }
-
+  
   const { banner } = channel;
+
   return (
     <div className={styles.channelContainer}>
       <div>
-        <img
-          className={styles.bannerChannel}
-          src={banner}
-          alt="channel banner"
-        />
+        {banner && (
+          <img
+            className={styles.bannerChannel}
+            src={banner}
+            alt="channel banner"
+          />
+        )}
       </div>
       <div className={styles.channelBgHeader}>
         <div className={styles.channelHeaderContainer}>
