@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import styles from "./Channel.module.css";
 import VideoCards from "../VideoCards/VideoCards";
 import Icon from "../Icon/Icon";
+import { youTubeService } from "../../services/YouTubeService";
 
 export function Owner(props) {
   const { owner } = props;
@@ -28,7 +29,11 @@ export function Subscribers(props) {
   const { owner } = props;
   const { subscribers } = owner;
 
-  return <div>{subscribers}</div>;
+  return (
+    <div>
+      {subscribers} <span> subscribers</span>
+    </div>
+  );
 }
 
 export function Channel() {
@@ -44,14 +49,25 @@ export function Channel() {
     "MORE INFORMATION",
   ];
 
+  const getChannel = async () => {
+    const response = await youTubeService.getChannel(channelId);
+    if (response.pageInfo.totalResults > 0) {
+      console.log(`response>`, response);
+      const channelData = {
+        id: channelId,
+        avatar: response.items[0].snippet.thumbnails.high.url,
+        banner: response.items[0].brandingSettings.image.bannerExternalUrl,
+        channelName: response.items[0].brandingSettings.channel.title,
+        subscribers: response.items[0].statistics.subscriberCount,
+      };
+      setChannel(channelData);
+    }
+  };
   useEffect(() => {
-    const response = channelRaw.channels.find(
-      (channel) => channel.id === channelId
-    );
-    setChannel(response);
-  }, [channelId]);
+    getChannel(channelId);
+  }, []);
 
-  if (!channel) {
+  if (!channel.banner) {
     const div = <div>Channel not found</div>;
     return div;
   }

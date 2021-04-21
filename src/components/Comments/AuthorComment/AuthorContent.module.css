@@ -1,0 +1,99 @@
+.commentSimpleBoxContainer {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 32px;
+  margin-top: 24px;
+  text-size-adjust: 100%;
+  width: auto;
+}
+.authorThumbnail {
+  width: 55px;
+  height: 55px;
+  margin-right: 16px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.commentSimpleBox {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* min-height: 20px; */
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 1e-9px;
+  word-break: break-all;
+  /* background: blue; */
+}
+.commentBox {
+  padding-bottom: 8px;
+}
+
+.simpleBoxPlaceholder {
+  flex: 1;
+  font-weight: 400;
+  word-break: normal;
+  word-wrap: break-word;
+  border: 0px;
+  width: 100%;
+  margin-bottom: 4px;
+  line-height: 21px;
+  outline: none;
+  position: relative;
+}
+
+.placeholderText {
+  position: absolute;
+  /* bottom: 1rem; */
+  color: var(--color-placeholders);
+  pointer-events: none;
+  top: 0;
+}
+
+.formControl {
+  position: relative;
+  max-height: 420px;
+}
+.formControl .touched + .placeholderText,
+.formControl .simpleBoxPlaceholder:focus + .placeholderText {
+  display: none;
+}
+
+.underline {
+  position: relative;
+  width: 100%;
+}
+.focusedLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid var(--underline-color);
+  transform-origin: center center;
+  transform: scale3d(0, 1, 1);
+}
+.unfocusedLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid var(--underline-color);
+}
+.formControl .simpleBoxPlaceholder:focus ~ .underline .focusedLine {
+  transform: none;
+  transition: transform 0.5s;
+}
+.footerButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.footerButtons > button {
+  border: none;
+  background: none;
+  background: var(--bg-disable);
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 2px;
+}

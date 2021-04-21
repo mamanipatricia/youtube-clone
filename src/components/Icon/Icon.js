@@ -222,7 +222,7 @@ export default function Icon(props) {
       );
     case "MENU":
       return (
-        <svg width="32" height="32" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
           <g>
             <path
               fill={color}
@@ -274,7 +274,7 @@ export default function Icon(props) {
       );
     case "LOGO":
       return (
-        <svg viewBox="0 0 200 60" pointer-events="none" display="block">
+        <svg viewBox="0 0 200 60">
           <g>
             <g>
               <path
@@ -289,6 +289,18 @@ export default function Icon(props) {
                 <path d="M143.31 16.11h-6.16v32.72h-6.07V16.11h-6.16v-4.99h18.38v4.99zM178.8 25.69c-.38-1.74-.98-3-1.82-3.78-.84-.78-1.99-1.17-3.46-1.17-1.14 0-2.2.32-3.19.97-.99.64-1.75 1.49-2.29 2.54h-.05V9.73h-5.98v39.11h5.12l.63-2.61h.13c.48.93 1.2 1.66 2.16 2.2.96.54 2.02.81 3.19.81 2.1 0 3.64-.97 4.63-2.9.99-1.93 1.48-4.95 1.48-9.06v-4.36c.01-3.08-.18-5.49-.55-7.23zm-5.69 11.24c0 2.01-.08 3.58-.25 4.72-.16 1.14-.44 1.95-.83 2.43-.39.48-.91.72-1.57.72-.51 0-.98-.12-1.42-.36-.43-.24-.79-.6-1.06-1.08V27.71c.21-.75.57-1.36 1.08-1.84.51-.48 1.06-.72 1.66-.72.63 0 1.12.25 1.46.74.34.49.58 1.33.72 2.49.13 1.17.2 2.83.2 4.99v3.56z" />
               </g>
             </g>
+          </g>
+        </svg>
+      );
+    case "DROPDOWN_MENU":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+          <g>
+            <path
+              fill={color}
+              d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"
+            />
+            <path fill="none" d="M0 0h24v24H0z" />
           </g>
         </svg>
       );

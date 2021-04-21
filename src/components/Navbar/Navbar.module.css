@@ -16,6 +16,9 @@
 .startHeader > span {
   padding: 8px;
 }
+.menuGuide {
+  cursor: pointer;
+}
 .centerHeader {
   display: flex;
   flex-direction: row;

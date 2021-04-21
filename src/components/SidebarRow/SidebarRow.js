@@ -41,10 +41,15 @@ export default function SidebarRow() {
             {section.items.map((item) => {
               return (
                 <div
+                  title={item.text}
                   key={item.pathname}
-                  className={
+                  className={`${
                     pathname === item.pathname ? styles.sidebarBackground : ""
-                  }
+                  } ${
+                    pathname === item.pathname
+                      ? styles.sidebarBackground
+                      : styles.sidebarBackgroundHover
+                  }`}
                 >
                   <Link className={styles.guideEntry} to={item.pathname}>
                     <span className={styles.sidebarIcon}>

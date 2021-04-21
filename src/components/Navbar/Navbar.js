@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <div className={styles.navbarContainer}>
       <div className={styles.startHeader}>
-        <span onClick={toggleSidebarRowHandle}>
+        <span className={styles.menuGuide} onClick={toggleSidebarRowHandle}>
           <Icon name="MENU_GUIDE" />
         </span>
         <div className={styles.iconLogo}>

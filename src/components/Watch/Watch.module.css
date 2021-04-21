@@ -53,8 +53,7 @@
   transform: translate(-70%, -50%) rotate(180deg);
   position: absolute;
 }
-/*----*/
-.videoTitle{
+.videoTitle {
   font-size: 18px;
 }
 .watchInfoContainer {
@@ -140,9 +139,18 @@
   flex-direction: column;
   justify-content: start;
   margin-left: 64px;
+  line-height: 21px;
+}
+.watchContentInfoContainer {
+  max-height: 60px;
+  overflow: hidden;
+}
+.watchContentInfoExpanded {
+  max-height: none;
 }
 .watchContentInfo {
   color: var(--text-secondary);
+  margin: 0;
 }
 .watchShowMore {
   margin-top: 8px;
@@ -154,6 +162,7 @@
   color: var(--text-secondary);
   font-weight: 500;
   cursor: pointer;
+  outline: none;
 }
 .watchSubscribeContainer {
   display: flex;

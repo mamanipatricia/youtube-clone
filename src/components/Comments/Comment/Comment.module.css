@@ -1,0 +1,68 @@
+.bodyContainer {
+  display: flex;
+  width: 100%;
+}
+.header {
+  display: flex;
+}
+.header > h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.authorText {
+  margin-right: 4px;
+  margin-bottom: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+.publishedTime {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.comment {
+  flex: 1;
+}
+.commentActionButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.likeButton {
+  display: flex;
+  align-items: center;
+}
+.likeButton > span:first-child {
+  padding: 8px;
+}
+.likeButton > span:last-child {
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: inline-block;
+}
+.dislikeButton {
+  transform: rotate(180deg);
+}
+.footerButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.footerButtons > button {
+  border: none;
+  background: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.content {
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-primary);
+}

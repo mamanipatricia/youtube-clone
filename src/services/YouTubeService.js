@@ -12,6 +12,12 @@ export default class YouTubeService extends BaseService {
     );
     return response;
   }
+  async getVideos(videosId) {
+    const response = await this.get(
+      `/videos?id=${videosId}&part=snippet,contentDetails,statistics,status&key=${this.API_KEY}`
+    );
+    return response;
+  }
   async getChannel(channelId) {
     const response = await this.get(
       `/channels?id=${channelId}&part=snippet,statistics,brandingSettings,contentDetails,contentOwnerDetails,status,topicDetails&key=${this.API_KEY}`
@@ -26,13 +32,15 @@ export default class YouTubeService extends BaseService {
   }
   async getSearch(keyword) {
     const response = await this.get(
-      `/search?part=snippet&maxResults=25&q=${keyword}&key=${this.API_KEY}`
+      `/search?part=snippet&maxResults=35&q=${keyword}&key=${this.API_KEY}`
     );
 
     return response;
   }
-  async getComments(videoId) {
-    const response = await this.get("/comments");
+  async getThreadsComments(videoId) {
+    const response = await this.get(
+      `/commentThreads?part=snippet,id&videoId=${videoId}&key=${this.API_KEY}`
+    );
     return response;
   }
 }

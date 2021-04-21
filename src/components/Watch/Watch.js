@@ -8,11 +8,15 @@ import Avatar from "../Avatar/Avatar";
 import { useParams } from "react-router-dom";
 import { ViewsAndTimestamp } from "../Detail/Detail";
 import { youTubeService } from "../../services/YouTubeService";
+import Comments from "../Comments/Comments";
 
 export default function Watch() {
   let { videoId } = useParams();
   const [channel, setChannel] = useState("");
   const [video, setVideo] = useState({});
+  const [commentsThreads, setCommentsThreads] = useState();
+  const [totalResults, setTotalResults] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -37,16 +41,54 @@ export default function Watch() {
   };
 
   useEffect(() => {
-    if ("snippet" in video) {
+    if (video && video.snippet) {
       const {
         snippet: { channelId },
       } = video;
       getChannel(channelId);
+      getThreadsComments(videoId);
     }
   }, [video]);
 
-  if (!channel) {
-    const div = <div>Channel not found</div>;
+  const filterCommentData = (data) => {
+    const commentThreadsData = data.items.map((comment) => {
+      return {
+        owner: {
+          id: comment.snippet.topLevelComment.snippet.authorChannelId.value,
+          channelName:
+            comment.snippet.topLevelComment.snippet.authorDisplayName,
+          avatar: comment.snippet.topLevelComment.snippet.authorProfileImageUrl,
+        },
+        authorContent: {
+          authorProfileImageUrl:
+            comment.snippet.topLevelComment.snippet.authorProfileImageUrl,
+          authorName: comment.snippet.topLevelComment.snippet.authorDisplayName,
+          publishedAt: comment.snippet.topLevelComment.snippet.publishedAt,
+          textOriginal: comment.snippet.topLevelComment.snippet.textOriginal,
+          likeCount: comment.snippet.topLevelComment.snippet.likeCount,
+          dislikeCount: comment.snippet.topLevelComment.snippet.likeCount,
+          authorChannelId: "",
+          totalReplyCount:
+            comment.snippet.topLevelComment.snippet.totalReplyCount,
+          updatedAt: "",
+        },
+      };
+    });
+    return { commentThreadsData, totalResults: data.pageInfo.totalResults };
+  };
+  const getThreadsComments = async (videoId) => {
+    const data = await youTubeService.getThreadsComments(videoId);
+    const { commentThreadsData, totalResults } = filterCommentData(data);
+    setCommentsThreads(commentThreadsData);
+    setTotalResults(totalResults);
+  };
+
+  if (typeof video === "undefined") {
+    const div = <div>VIDEO NOT FOUND</div>;
+    return div;
+  }
+  if (!Object.prototype.hasOwnProperty.call(video, "snippet")) {
+    const div = <div>loading...</div>;
     return div;
   }
 
@@ -56,6 +98,9 @@ export default function Watch() {
     playerVars: {
       autoplay: 1,
     },
+  };
+  const expandedHandle = () => {
+    setIsExpanded(!isExpanded);
   };
 
   return (
@@ -111,7 +156,11 @@ export default function Watch() {
               </div>
               <div className={styles.watchInfoMenuContainer}>
                 <button className={styles.watchInfoMenuButton}>
-                  <Icon className={styles.watchInfoMenu} name="MENU" />
+                  <Icon
+                    className={styles.watchInfoMenu}
+                    name="MENU"
+                    color="var(--bg-sentiment)"
+                  />
                 </button>
               </div>
               <div>
@@ -134,7 +183,6 @@ export default function Watch() {
                 </span>
                 <span className={styles.watchOwnerSubscribers}>
                   <Subscribers owner={channel} />
-                  <span> subscribers</span>
                 </span>
               </div>
             </div>
@@ -144,18 +192,27 @@ export default function Watch() {
             </div>
           </div>
           <div className={styles.watchInfo}>
-            <p className={styles.watchContentInfo}>
-              {video.snippet.description}
-            </p>
-            <div className={styles.watchShowMore}>
-              <button>SHOW MORE</button>
+            <div
+              className={
+                isExpanded
+                  ? styles.watchContentInfoExpanded
+                  : styles.watchContentInfoContainer
+              }
+            >
+              <p className={styles.watchContentInfo}>
+                {video.snippet.description}
+              </p>
             </div>
-            {/* <div className={styles.watchShowMore}>
-              <button>SHOW LESS</button>
-            </div> */}
+            <div className={styles.watchShowMore}>
+              <button onClick={expandedHandle}>
+                {isExpanded ? "SHOW LESS" : "SHOW MORE"}
+              </button>
+            </div>
           </div>
         </div>
-        <div>COMMENTS</div>
+        <div>
+          <Comments comments={commentsThreads} totalResults={totalResults} />
+        </div>
       </div>
       <div className={styles.secondary}>LIST SIMILAR VIDEOS</div>
     </div>

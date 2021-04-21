@@ -8,6 +8,11 @@
   --bg-tertiary: rgb(103, 103, 103);
   --bg-button-subs: rgb(236, 236, 236);
   --bg-body: #f9f9f9;
+  --bg-disable: rgb(204, 204, 204);
+
+  --background-a: #f9f9f9;
+  --background-b: #f1f1f1;
+  --background-c: #e9e9e9;
 
   --icon-secondary: #606060;
   --font-size: 14px;
@@ -18,6 +23,10 @@
   --badge-background: rgba(0, 0, 0, 0.05);
 
   --bg-sentiment: rgb(144, 144, 144);
+
+  --underline-color: #909090;
+
+  --color-placeholders: #a2acb4;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");

@@ -11,7 +11,6 @@ const SIZES = {
 
 export default function Avatar({ owner, size = "medium" }) {
   const { id, channelName, avatar } = owner;
-
   return (
     <div className={styles.avatarContainer}>
       <Link to={`/channel/${id}`}>

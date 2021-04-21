@@ -13,7 +13,7 @@ export default function Detail(props) {
 }
 export function Title({ title }) {
   return (
-    <div>
+    <div className={styles.titleContainer}>
       <h3 className={styles.title}>{title}</h3>
     </div>
   );

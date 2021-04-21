@@ -8,13 +8,13 @@ import Icon from "../Icon/Icon";
 
 function VideoCard(props) {
   const { video } = props;
-  const { id, title, views, url, owner, timestamp } = video;
+  const { id, title, views, url, owner, timestamp, duration } = video;
 
   return (
     <div className={styles.videoCardContainer}>
       <Link to={`/watch/${id}`}>
         <div>
-          <Thumbnail url={url} />
+          <Thumbnail url={url} duration={duration} />
         </div>
       </Link>
       <div className={styles.videoCardInfo}>
