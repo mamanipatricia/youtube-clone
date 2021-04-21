@@ -5,7 +5,7 @@ export default function Thumbnail({ url, duration }) {
   return (
     <div className={styles.thumbnailContainer}>
       <img className={styles.thumbnail} src={url} alt="" width="200px" />
-  <span className={styles.time}>{duration}</span>
+      <span className={styles.time}>{duration}</span>
     </div>
   );
 }

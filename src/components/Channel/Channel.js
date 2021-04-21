@@ -52,7 +52,6 @@ export function Channel() {
   const getChannel = async () => {
     const response = await youTubeService.getChannel(channelId);
     if (response.pageInfo.totalResults > 0) {
-      console.log(`response>`, response);
       const channelData = {
         id: channelId,
         avatar: response.items[0].snippet.thumbnails.high.url,
@@ -67,7 +66,7 @@ export function Channel() {
     getChannel(channelId);
   }, []);
 
-  if (!channel.banner) {
+  if (!channel.id) {
     const div = <div>Channel not found</div>;
     return div;
   }
