@@ -4,7 +4,6 @@ import Icon from "../Icon/Icon";
 import HorizontalVideoCards from "../HorizontalVideoCards/HorizontalVideoCards";
 
 export default function ChannelSections({ videos = [] }) {
-  console.log(`<videos>`, videos);
   // const {
   //   items,
   //   section: { title },

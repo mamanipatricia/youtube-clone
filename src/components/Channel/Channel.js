@@ -71,7 +71,6 @@ export function Channel() {
 
   const getPlaylistData = async () => {
     const res = await getChannelSections();
-    console.log(`res//`, res);
     const playListObj = {};
     res.items?.forEach((item) => {
       //! TODO - type: "multiplechannels"
@@ -94,8 +93,6 @@ export function Channel() {
 
   const getPlaylistInfo = async (playlistsIDs) => {
     const playListItemsData = await youTubeService.getPlayLists(playlistsIDs);
-
-    console.log(`getPlayListItemsData>`, playListItemsData);
     const playlistInfo = {};
     playListItemsData.items.map((item) => {
       playlistInfo[item.id] = {
@@ -120,8 +117,6 @@ export function Channel() {
     const playlistsIDs = Object.keys(playlistData);
     const playListInfoData = await getPlaylistInfo(playlistsIDs);
 
-    console.log(`playListInfoData>`, playListInfoData);
-
     Object.entries(playlistData).forEach(([playlistId, playlist]) => {
       playlist.details = playListInfoData[playlistId];
       if (playlist.section.type === "singleplaylist") {
@@ -129,7 +124,6 @@ export function Channel() {
         playlist.section.title = playlist.details.title;
       }
     });
-    console.log(`playlistData>`, JSON.stringify(playlistData));
 
     await Promise.all(
       Object.entries(playlistData)
@@ -142,7 +136,6 @@ export function Channel() {
             (video) => video.snippet.resourceId.videoId
           );
           let videosData = await youTubeService.getVideos(videosId);
-          console.log(`videosData-`, videosData);
           videosData = videosData.items.map((video) => {
             return {
               id: video.id,
@@ -160,7 +153,6 @@ export function Channel() {
           return { [playlistId]: videosData };
         })
     ).then((values) => {
-      console.log(`values=`, values);
       values.forEach((playlist) => {
         const [[key, value]] = Object.entries(playlist); // [[id, {}]]
         playlistData[key].items = value;
@@ -183,7 +175,6 @@ export function Channel() {
       };
       return acc;
     }, []);
-    console.log(`objFormatted==>`, objFormatted);
     return objFormatted;
   };
 
@@ -191,7 +182,6 @@ export function Channel() {
     (async () => {
       const channelSections = await getChannelSections1(channelId);
       setChannelSections(channelSections);
-      console.log(`channelSections::`, channelSections);
     })();
   }, []);
 

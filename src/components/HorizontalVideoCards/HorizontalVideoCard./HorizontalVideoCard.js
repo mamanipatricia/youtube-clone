@@ -6,7 +6,6 @@ import Icon from "../../Icon/Icon";
 import styles from "./HorizontalVideoCard.module.css";
 
 export default function HorizontalVideoCard({ video }) {
-  console.log(`{video-}`, video);
   if (!video) return "video not found";
   const {
     id,

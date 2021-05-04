@@ -8,7 +8,6 @@ import Icon from "../Icon/Icon";
 
 function VideoCard({ video }) {
   const { id, title, views, url, owner, timestamp, duration } = video;
-  console.log(`[owner]`, owner);
 
   return (
     <div className={styles.videoCardContainer}>
