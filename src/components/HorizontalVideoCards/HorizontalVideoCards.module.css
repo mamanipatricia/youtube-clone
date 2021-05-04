@@ -1,0 +1,11 @@
+.horizontalVideoCardsContainer {
+  display: grid;
+  /* min-height: 100vh; */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 40px 16px;
+  gap: 40px 16px;
+  align-items: center;
+  margin: 0 auto;
+  justify-items: start;
+  /* padding: 75px; */
+}

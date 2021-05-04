@@ -1,0 +1,16 @@
+.horizontalVideoCardContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.horizontalVideoCardInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0 0;
+  gap: 12px;
+}
+.menu {
+  justify-self: end;
+}

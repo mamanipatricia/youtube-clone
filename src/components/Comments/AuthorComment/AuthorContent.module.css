@@ -89,11 +89,21 @@
   justify-content: flex-end;
   gap: 8px;
 }
-.footerButtons > button {
+.footerButtons > button:first-child {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+.footerButtons > button:last-child {
   border: none;
   background: none;
   background: var(--bg-disable);
   padding: 10px 16px;
   cursor: pointer;
   border-radius: 2px;
+}
+.background {
+  background: var(--bg-type) !important;
+  color: white;
 }

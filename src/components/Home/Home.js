@@ -46,7 +46,7 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       const { videoSearch: videos, channels, videosId } = await getSearch(
-        "javascript"
+        "reactjs"
       );
       const channelsData = await youTubeService.getChannels(channels);
       const videosData = await youTubeService.getVideos(videosId);

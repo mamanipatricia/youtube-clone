@@ -24,6 +24,12 @@ export default class YouTubeService extends BaseService {
     );
     return response;
   }
+  async getChannelSections(channelId) {
+    const response = await this.get(
+      `/channelSections?part=snippet%2CcontentDetails%2Clocalizations%2Ctargeting%2Cid&channelId=${channelId}&key=${this.API_KEY}`
+    );
+    return response;
+  }
   async getChannels(channelIds) {
     const response = await this.get(
       `/channels?id=${channelIds}&part=snippet,statistics,brandingSettings,contentDetails,contentOwnerDetails,status,topicDetails&key=${this.API_KEY}`
@@ -39,7 +45,19 @@ export default class YouTubeService extends BaseService {
   }
   async getThreadsComments(videoId) {
     const response = await this.get(
-      `/commentThreads?part=snippet,id&videoId=${videoId}&key=${this.API_KEY}`
+      `/commentThreads?part=snippet,id&maxResults=100&videoId=${videoId}&key=${this.API_KEY}`
+    );
+    return response;
+  }
+  async getPlayLists(playListIds) {
+    const response = await this.get(
+      `/playlists?part=snippet%2CcontentDetails%2Clocalizations%2Cstatus&maxResults=50&id=${playListIds}&maxResults=100&key=${this.API_KEY}`
+    );
+    return response;
+  }
+  async getPlayListItems(playListId) {
+    const response = await this.get(
+      `/playlistItems?part=snippet%2CcontentDetails%2Cid%2Cstatus&maxResults=50&playlistId=${playListId}&key=${this.API_KEY}`
     );
     return response;
   }

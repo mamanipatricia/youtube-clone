@@ -6,9 +6,9 @@ import styles from "./VideoCard.module.css";
 import { Link } from "react-router-dom";
 import Icon from "../Icon/Icon";
 
-function VideoCard(props) {
-  const { video } = props;
+function VideoCard({ video }) {
   const { id, title, views, url, owner, timestamp, duration } = video;
+  console.log(`[owner]`, owner);
 
   return (
     <div className={styles.videoCardContainer}>

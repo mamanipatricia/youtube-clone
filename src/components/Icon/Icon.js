@@ -304,6 +304,14 @@ export default function Icon(props) {
           </g>
         </svg>
       );
+    case "PLAY":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+          <g class="style-scope yt-icon">
+            <path fill={color} d="M8 5v14l11-7z" class="style-scope yt-icon" />
+          </g>
+        </svg>
+      );
     default:
       return <div />;
   }

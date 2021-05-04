@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./AuthorContent.module.css";
 import author from "../../../logo.svg";
 // import Avatar from "../../Avatar/Avatar";
@@ -8,6 +8,7 @@ export default function AuthorComment({ owner }) {
   const [html, setHtml] = useState("");
   const [isVisibleActionButtons, setIsVisibleActionButtons] = useState(false);
   const inputRef = useRef(null);
+  const [isTyping, setIsTyping] = useState(false);
 
   const handleChange = (event) => {
     const { innerHTML, textContent } = event.currentTarget;
@@ -24,6 +25,9 @@ export default function AuthorComment({ owner }) {
     inputRef.current.innerHTML = "";
     setHtml("");
   };
+  useEffect(() => {
+    html.length > 0 ? setIsTyping(true) : setIsTyping(false);
+  }, [html]);
 
   return (
     <div className={styles.commentSimpleBoxContainer}>
@@ -42,6 +46,7 @@ export default function AuthorComment({ owner }) {
               }`}
               onInput={handleChange}
               onClick={showActionButtons}
+              on
               ref={inputRef}
             />
             <span className={styles.placeholderText}>
@@ -61,7 +66,12 @@ export default function AuthorComment({ owner }) {
         {isVisibleActionButtons && (
           <div className={styles.footerButtons}>
             <button onClick={onCancelCreateComment}>CANCEL</button>
-            <button onClick={commentHandle}>COMMENT</button>
+            <button
+              className={isTyping ? styles.background : styles.footerButtons}
+              onClick={commentHandle}
+            >
+              COMMENT
+            </button>
           </div>
         )}
       </div>

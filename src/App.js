@@ -19,6 +19,7 @@ import MiniSidebarRow from "./components/MiniGuide/MiniSidebarRow";
 import GuideContext from "./context/guideContext";
 import Home from "./components/Home/Home";
 import Watch from "./components/Watch/Watch";
+import ChannelVideos from "./components/ChannelVideos/ChannelVideos";
 
 function App() {
   const [toggleSidebarRow] = useContext(GuideContext);
@@ -39,8 +40,17 @@ function App() {
           }`}
         >
           <Switch>
-            <Route path="/" exact render={(routeProps) => <Home {...routeProps} />} />
+            <Route
+              path="/"
+              exact
+              render={(routeProps) => <Home {...routeProps} />}
+            />
             <Route path="/channel/:channelId" component={Channel} />
+            <Route
+              path="/channel/:channelId/videos"
+              component={ChannelVideos}
+            />
+
             <Route path="/search" component={Search} />
             <Route path="/feed/explore" component={Explore} />
             <Route path="/feed/subscription" component={Subscription} />
