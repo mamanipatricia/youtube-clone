@@ -27,7 +27,7 @@ export default function ChannelSections({ videos = [] }) {
             </div>
             {/* playlist shelf */}
             <div className={styles.shelfContainer}>
-              <HorizontalVideoCards videos={item} />
+              <HorizontalVideoCards videos={item} direction="column" />
             </div>
           </div>
         );

@@ -312,6 +312,55 @@ export default function Icon(props) {
           </g>
         </svg>
       );
+    case "CHEVRON_UP":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+          <g class="style-scope yt-icon">
+            <path
+              fill={color}
+              d="m12 8-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"
+              class="style-scope yt-icon"
+            />
+          </g>
+        </svg>
+      );
+    case "LOOP":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+          <g class="style-scope yt-icon">
+            <path
+              fill={color}
+              d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"
+              class="style-scope yt-icon"
+            />
+          </g>
+        </svg>
+      );
+    case "SHUFFLE":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+          <g class="style-scope yt-icon">
+            <path
+              fill={color}
+              d="M10.59 9.17 5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"
+              class="style-scope yt-icon"
+            />
+          </g>
+        </svg>
+      );
+    case "SAVE_PLAYLIST":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+          <g class="style-scope yt-icon">
+            <path
+              fill={color}
+              d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"
+              class="style-scope yt-icon"
+            />
+          </g>
+        </svg>
+      );
+
     default:
       return <div />;
   }

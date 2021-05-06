@@ -65,8 +65,7 @@ export function Channel() {
   }, []);
 
   const getChannelSections = async () => {
-    const res = await youTubeService.getChannelSections(channelId);
-    return res;
+    return await youTubeService.getChannelSections(channelId);
   };
 
   const getPlaylistData = async () => {
@@ -120,8 +119,8 @@ export function Channel() {
     Object.entries(playlistData).forEach(([playlistId, playlist]) => {
       playlist.details = playListInfoData[playlistId];
       if (playlist.section.type === "singleplaylist") {
-        playlist.section.description = playlist.details.description;
-        playlist.section.title = playlist.details.title;
+        playlist.section.description = playlist.details?.description;
+        playlist.section.title = playlist.details?.title;
       }
     });
 
@@ -132,7 +131,8 @@ export function Channel() {
         )
         .map(async ([playlistId, playlist]) => {
           const resp = await youTubeService.getPlayListItems(playlistId);
-          const videosId = resp.items.map(
+          console.log(`res:`, resp)
+          const videosId = resp.items?.map(
             (video) => video.snippet.resourceId.videoId
           );
           let videosData = await youTubeService.getVideos(videosId);

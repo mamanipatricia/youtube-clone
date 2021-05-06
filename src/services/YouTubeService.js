@@ -61,6 +61,12 @@ export default class YouTubeService extends BaseService {
     );
     return response;
   }
+  async getRelatedVideos(relatedToVideoId) {
+    const response = await this.get(
+      `/search?part=snippet&maxResults=50&${relatedToVideoId}=f-Mpz_vKx28&type=video&key=${this.API_KEY}`
+    );
+    return response;
+  }
 }
 
 export const youTubeService = new YouTubeService();

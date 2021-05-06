@@ -1,0 +1,7 @@
+.relatedVideosContainer {
+  display: flex;
+  /* background: red;*/
+  flex-direction: column;
+  height: 100vh;
+  gap: 10px;
+}

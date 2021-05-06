@@ -9,6 +9,8 @@ import { useParams } from "react-router-dom";
 import { ViewsAndTimestamp } from "../Detail/Detail";
 import { youTubeService } from "../../services/YouTubeService";
 import Comments from "../Comments/Comments";
+import PlaylistPanel from "../PlaylistPanel/PlaylistPanel";
+import RelatedVideos from "../RelatedVideos/RelatedVideos";
 
 export default function Watch() {
   let { videoId } = useParams();
@@ -17,6 +19,7 @@ export default function Watch() {
   const [commentsThreads, setCommentsThreads] = useState();
   const [totalResults, setTotalResults] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [relatedVideosData, setRelatedVideosData] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -34,21 +37,10 @@ export default function Watch() {
     };
     setChannel(channelData);
   };
-
   const getChannel = async (channelId) => {
     const data = await youTubeService.getChannel(channelId);
     filterChannelData(data);
   };
-
-  useEffect(() => {
-    if (video && video.snippet) {
-      const {
-        snippet: { channelId },
-      } = video;
-      getChannel(channelId);
-      getThreadsComments(videoId);
-    }
-  }, [video]);
 
   const filterCommentData = (data) => {
     const commentThreadsData = data.items.map((comment) => {
@@ -82,6 +74,41 @@ export default function Watch() {
     setCommentsThreads(commentThreadsData);
     setTotalResults(totalResults);
   };
+
+  const filterRelatedVideos = (data) => {
+    const relatedData = data.items.map((relatedVideo) => {
+      return {
+        id: relatedVideo.id.videoId,
+        title: relatedVideo.snippet.title,
+        owner: {
+          id: relatedVideo.snippet.channelId,
+          channelName: relatedVideo.snippet.channelTitle,
+        },
+        thumbnail: relatedVideo.snippet.thumbnails.high.url,
+        views: 123455,
+        publishedAt: relatedVideo.snippet.publishedAt,
+        duration: "",
+      };
+    });
+    setRelatedVideosData(relatedData);
+    return relatedData;
+  };
+  const getRelatedVideos = async () => {
+    const data = await youTubeService.getRelatedVideos(videoId);
+    const res = filterRelatedVideos(data);
+    setRelatedVideosData(res);
+  };
+
+  useEffect(() => {
+    if (video && video.snippet) {
+      const {
+        snippet: { channelId },
+      } = video;
+      getChannel(channelId);
+      getRelatedVideos();
+      getThreadsComments(videoId);
+    }
+  }, [video]);
 
   if (typeof video === "undefined") {
     const div = <div>VIDEO NOT FOUND</div>;
@@ -214,7 +241,10 @@ export default function Watch() {
           <Comments comments={commentsThreads} totalResults={totalResults} />
         </div>
       </div>
-      <div className={styles.secondary}>LIST SIMILAR VIDEOS</div>
+      <div className={styles.secondary}>
+        <PlaylistPanel />
+        <RelatedVideos videos={relatedVideosData} />
+      </div>
     </div>
   );
 }

@@ -1,8 +1,9 @@
 .watchContainer {
-  width: 100%;
+  /* width: 100%; */
   display: grid;
   grid-template-columns: 1fr minmax(auto, 520px);
   column-gap: 15px;
+  padding: 25px;
 }
 .primary {
   display: flex;
