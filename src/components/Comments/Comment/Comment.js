@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Comment({ comment } = {}) {
   const {
-    owner,
+    channel,
     authorContent: {
       authorName,
       publishedAt,
@@ -20,12 +20,15 @@ export default function Comment({ comment } = {}) {
   return (
     <div className={styles.bodyContainer}>
       <div>
-        <Avatar size="small" owner={owner} />
+        <Avatar size="small" channel={channel} />
       </div>
       <div className={styles.comment}>
         <div className={styles.header}>
           <h3>
-            <Link className={styles.authorText} to={`/channel/${owner.id}`}>
+            <Link
+              className={styles.authorText}
+              to={`/channel/${channel.channelId}`}
+            >
               <span>{authorName}</span>
             </Link>
           </h3>

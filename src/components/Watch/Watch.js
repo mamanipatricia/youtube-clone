@@ -23,98 +23,48 @@ export default function Watch() {
 
   useEffect(() => {
     (async () => {
-      const res = await youTubeService.getVideo(videoId);
-      setVideo(res.items[0]);
+      try {
+        const { data } = await youTubeService.getVideo(videoId);
+        setVideo(data);
+      } catch (err) {}
     })();
-  }, []);
+  }, [videoId]);
 
-  const filterChannelData = (data) => {
-    const channelData = {
-      id: data.items[0].id,
-      channelName: data.items[0].snippet.title,
-      avatar: data.items[0].snippet.thumbnails.default.url,
-      subscribers: data.items[0].statistics.subscriberCount,
-    };
-    setChannel(channelData);
-  };
   const getChannel = async (channelId) => {
-    const data = await youTubeService.getChannel(channelId);
-    filterChannelData(data);
+    const { data } = await youTubeService.getChannel(channelId);
+    setChannel(data);
   };
 
-  const filterCommentData = (data) => {
-    const commentThreadsData = data.items.map((comment) => {
-      return {
-        owner: {
-          id: comment.snippet.topLevelComment.snippet.authorChannelId.value,
-          channelName:
-            comment.snippet.topLevelComment.snippet.authorDisplayName,
-          avatar: comment.snippet.topLevelComment.snippet.authorProfileImageUrl,
-        },
-        authorContent: {
-          authorProfileImageUrl:
-            comment.snippet.topLevelComment.snippet.authorProfileImageUrl,
-          authorName: comment.snippet.topLevelComment.snippet.authorDisplayName,
-          publishedAt: comment.snippet.topLevelComment.snippet.publishedAt,
-          textOriginal: comment.snippet.topLevelComment.snippet.textOriginal,
-          likeCount: comment.snippet.topLevelComment.snippet.likeCount,
-          dislikeCount: comment.snippet.topLevelComment.snippet.likeCount,
-          authorChannelId: "",
-          totalReplyCount:
-            comment.snippet.topLevelComment.snippet.totalReplyCount,
-          updatedAt: "",
-        },
-      };
-    });
-    return { commentThreadsData, totalResults: data.pageInfo.totalResults };
-  };
-  const getThreadsComments = async (videoId) => {
-    const data = await youTubeService.getThreadsComments(videoId);
-    const { commentThreadsData, totalResults } = filterCommentData(data);
+  const getThreadsComments = async () => {
+    const { data } = await youTubeService.getThreadsComments(videoId);
+    const { commentThreadsData, totalResults } = data;
     setCommentsThreads(commentThreadsData);
     setTotalResults(totalResults);
   };
 
-  const filterRelatedVideos = (data) => {
-    const relatedData = data.items.map((relatedVideo) => {
-      return {
-        id: relatedVideo.id.videoId,
-        title: relatedVideo.snippet.title,
-        owner: {
-          id: relatedVideo.snippet.channelId,
-          channelName: relatedVideo.snippet.channelTitle,
-        },
-        thumbnail: relatedVideo.snippet.thumbnails.high.url,
-        views: 123455,
-        publishedAt: relatedVideo.snippet.publishedAt,
-        duration: "",
-      };
-    });
-    setRelatedVideosData(relatedData);
-    return relatedData;
-  };
   const getRelatedVideos = async () => {
-    const data = await youTubeService.getRelatedVideos(videoId);
-    const res = filterRelatedVideos(data);
-    setRelatedVideosData(res);
+    const { data } = await youTubeService.getRelatedVideos(videoId);
+    setRelatedVideosData(data);
   };
 
   useEffect(() => {
-    if (video && video.snippet) {
-      const {
-        snippet: { channelId },
-      } = video;
-      getChannel(channelId);
-      getRelatedVideos();
-      getThreadsComments(videoId);
-    }
-  }, [video]);
+    (async () => {
+      if (video && video.videoId) {
+        const {
+          channel: { channelId },
+        } = video;
+        await getChannel(channelId);
+        await getThreadsComments();
+        await getRelatedVideos();
+      }
+    })();
+  }, [video, videoId]);
 
   if (typeof video === "undefined") {
     const div = <div>VIDEO NOT FOUND</div>;
     return div;
   }
-  if (!Object.prototype.hasOwnProperty.call(video, "snippet")) {
+  if (!Object.prototype.hasOwnProperty.call(video, "videoId")) {
     const div = <div>loading...</div>;
     return div;
   }
@@ -137,19 +87,19 @@ export default function Watch() {
           <YouTube
             containerClassName={styles.youtubePlayer}
             onStateChange=""
-            videoId={video.id}
+            videoId={video.videoId}
             opts={opts}
           />
         </div>
         <div className={styles.watchInfoContainer}>
           <div className={styles.videoTitle}>
-            <p>{video.snippet.title}</p>
+            <p>{video.title}</p>
           </div>
           <div className={styles.watchInfoButtonsContainer}>
             <span>
               <ViewsAndTimestamp
-                views={video.statistics.viewCount}
-                timestamp={video.snippet.publishedAt}
+                views={video.viewCount}
+                timestamp={video.publishedAt}
               />
             </span>
             <div className={styles.watchInfoButtons}>
@@ -157,7 +107,7 @@ export default function Watch() {
                 <button>
                   <Icon name="LIKE_VIDEO" color="var(--bg-sentiment)" />
                 </button>
-                <span>{video.statistics.likeCount}</span>
+                <span>{video.likeCount}</span>
               </div>
               <div className={styles.watchInfoLikeContainer}>
                 <button className={styles.watchInfoLikeButton}>
@@ -167,7 +117,7 @@ export default function Watch() {
                     color="var(--bg-sentiment)"
                   />
                 </button>
-                <span>{video.statistics.dislikeCount}</span>
+                <span>{video.dislikeCount}</span>
               </div>
               <div>
                 <button>
@@ -202,14 +152,14 @@ export default function Watch() {
           <div className={styles.watchMetaContainer}>
             <div className={styles.watchChannel}>
               <div className={styles.avatar}>
-                <Avatar size="medium" owner={channel} />
+                <Avatar size="medium" channel={channel} />
               </div>
               <div className={styles.watchOwnerContainer}>
                 <span className={styles.watchOwnerText}>
-                  <Owner owner={channel} />
+                  <Owner channel={channel} />
                 </span>
                 <span className={styles.watchOwnerSubscribers}>
-                  <Subscribers owner={channel} />
+                  <Subscribers channel={channel} />
                 </span>
               </div>
             </div>
@@ -226,9 +176,7 @@ export default function Watch() {
                   : styles.watchContentInfoContainer
               }
             >
-              <p className={styles.watchContentInfo}>
-                {video.snippet.description}
-              </p>
+              <p className={styles.watchContentInfo}>{video.description}</p>
             </div>
             <div className={styles.watchShowMore}>
               <button onClick={expandedHandle}>

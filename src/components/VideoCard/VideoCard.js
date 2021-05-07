@@ -7,22 +7,30 @@ import { Link } from "react-router-dom";
 import Icon from "../Icon/Icon";
 
 function VideoCard({ video }) {
-  const { id, title, views, url, owner, timestamp, duration } = video;
+  const {
+    videoId,
+    title,
+    viewCount,
+    thumbnail,
+    channel,
+    publishedAt,
+    duration,
+  } = video;
 
   return (
     <div className={styles.videoCardContainer}>
-      <Link to={`/watch/${id}`}>
+      <Link to={`/watch/${videoId}`}>
         <div>
-          <Thumbnail url={url} duration={duration} />
+          <Thumbnail url={thumbnail} duration={duration} />
         </div>
       </Link>
       <div className={styles.videoCardInfo}>
-        <Avatar owner={owner} />
+        <Avatar channel={channel} />
         <Detail
           title={title}
-          views={views}
-          owner={owner}
-          timestamp={timestamp}
+          views={viewCount}
+          channel={channel}
+          timestamp={publishedAt}
         />
         <div className={styles.menu}>
           <Icon name="MENU" />

@@ -6,13 +6,13 @@ import Icon from "../Icon/Icon";
 import { youTubeService } from "../../services/YouTubeService";
 import ChannelSections from "../ChannelSections/ChannelSections";
 
-export function Owner({ owner }) {
-  const { id, channelName } = owner;
+export function Owner({ channel }) {
+  const { channelId, channelName } = channel;
 
   return (
     <Link
       className={styles.ownerChannelName}
-      to={`/channel/${id}`}
+      to={`/channel/${channelId}`}
       title={channelName}
     >
       {channelName}
@@ -23,9 +23,8 @@ export function Owner({ owner }) {
   );
 }
 
-export function Subscribers(props) {
-  const { owner } = props;
-  const { subscribers } = owner;
+export function Subscribers({ channel }) {
+  const { subscribers } = channel;
 
   return (
     <div>
@@ -48,18 +47,10 @@ export function Channel() {
   ];
 
   const getChannel = async () => {
-    const response = await youTubeService.getChannel(channelId);
-    if (response.pageInfo.totalResults > 0) {
-      const channelData = {
-        id: channelId,
-        avatar: response.items[0].snippet.thumbnails.high.url,
-        banner: response.items[0].brandingSettings.image?.bannerExternalUrl,
-        channelName: response.items[0].brandingSettings.channel.title,
-        subscribers: response.items[0].statistics.subscriberCount,
-      };
-      setChannel(channelData);
-    }
+    const { data } = await youTubeService.getChannel(channelId);
+    setChannel(data);
   };
+
   useEffect(() => {
     getChannel(channelId);
   }, []);
@@ -69,48 +60,20 @@ export function Channel() {
   };
 
   const getPlaylistData = async () => {
-    const res = await getChannelSections();
-    const playListObj = {};
-    res.items?.forEach((item) => {
-      //! TODO - type: "multiplechannels"
-      if (["singleplaylist", "multipleplaylists"].includes(item.snippet.type)) {
-        item.contentDetails.playlists.forEach((itemPlayListID) => {
-          playListObj[itemPlayListID] = {
-            section: {
-              position: item.snippet.position,
-              //! todo fix when title undefined
-              title: item.snippet.title || "",
-              description: "",
-              type: item.snippet.type,
-            },
-          };
-        });
-      }
-    });
-    return playListObj;
+    const { data } = await getChannelSections();
+    return data;
   };
 
   const getPlaylistInfo = async (playlistsIDs) => {
-    const playListItemsData = await youTubeService.getPlayLists(playlistsIDs);
+    const { data } = await youTubeService.getPlaylists(playlistsIDs);
     const playlistInfo = {};
-    playListItemsData.items.map((item) => {
-      playlistInfo[item.id] = {
-        thumbnail: item.snippet.thumbnails.medium.url,
-        count: item.contentDetails.itemCount,
-        title: item.snippet.title,
-        localized: item.snippet.localized,
-        owner: {
-          id: item.id,
-          channelName: item.snippet.channelTitle,
-        },
-        description: item.snippet.description,
-        id: item.id,
-      };
+    data.forEach((item) => {
+      playlistInfo[item.id] = item;
     });
     return playlistInfo;
   };
 
-  const getChannelSections1 = async (channelId) => {
+  const getChannelSections1 = async () => {
     const playlistData = await getPlaylistData();
     // from prev object get the keys [id, id, id,...]
     const playlistsIDs = Object.keys(playlistData);
@@ -131,26 +94,11 @@ export function Channel() {
         )
         .map(async ([playlistId, playlist]) => {
           const resp = await youTubeService.getPlayListItems(playlistId);
-          console.log(`res:`, resp)
           const videosId = resp.items?.map(
             (video) => video.snippet.resourceId.videoId
           );
-          let videosData = await youTubeService.getVideos(videosId);
-          videosData = videosData.items.map((video) => {
-            return {
-              id: video.id,
-              title: video.snippet.title,
-              owner: {
-                id: video.snippet.channelId,
-                channelName: video.snippet.channelTitle,
-              },
-              thumbnail: video.snippet.thumbnails.high.url,
-              views: video.statistics.viewCount,
-              publishedAt: video.snippet.publishedAt,
-              duration: video.contentDetails.duration,
-            };
-          });
-          return { [playlistId]: videosData };
+          let { data } = await youTubeService.getVideos(videosId);
+          return { [playlistId]: data };
         })
     ).then((values) => {
       values.forEach((playlist) => {
@@ -180,12 +128,12 @@ export function Channel() {
 
   useEffect(() => {
     (async () => {
-      const channelSections = await getChannelSections1(channelId);
+      const channelSections = await getChannelSections1();
       setChannelSections(channelSections);
     })();
   }, []);
 
-  if (!channel.id) {
+  if (!channel.channelId) {
     const div = <div>Channel not found</div>;
     return div;
   }
@@ -208,14 +156,14 @@ export function Channel() {
           <div className={styles.channelHeaderContainer}>
             <div className={styles.channelInfo}>
               <div className={styles.channelAvatar}>
-                <Avatar size="large" owner={channel} />
+                <Avatar size="large" channel={channel} />
               </div>
               <div className={styles.channelOwnerContainer}>
                 <span className={styles.channelOwnerText}>
-                  <Owner owner={channel} />
+                  <Owner channel={channel} />
                 </span>
                 <span className={styles.channelOwnerSubscribers}>
-                  <Subscribers owner={channel} />
+                  <Subscribers channel={channel} />
                 </span>
               </div>
             </div>

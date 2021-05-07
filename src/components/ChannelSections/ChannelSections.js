@@ -4,14 +4,8 @@ import Icon from "../Icon/Icon";
 import HorizontalVideoCards from "../HorizontalVideoCards/HorizontalVideoCards";
 
 export default function ChannelSections({ videos = [] }) {
-  // const {
-  //   items,
-  //   section: { title },
-  // } = videos;
-
   return (
     <div className={styles.channelSectionContainer}>
-      {/* mejores videos del canal */}
       {videos.map((item, idx) => {
         return (
           <div key={`item-${idx}`} className={styles.subheaderContainer}>
@@ -25,7 +19,6 @@ export default function ChannelSections({ videos = [] }) {
               </div>
               <div className={styles.subtitle}>{item.section.description}</div>
             </div>
-            {/* playlist shelf */}
             <div className={styles.shelfContainer}>
               <HorizontalVideoCards videos={item} direction="column" />
             </div>

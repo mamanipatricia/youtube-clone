@@ -38,7 +38,7 @@ function App() {
           className={`${styles.bodyWrapper} ${
             toggleSidebarRow ? styles.miniSidebarRow : ""
           }`}
-        >
+        > 
           <Switch>
             <Route
               path="/"

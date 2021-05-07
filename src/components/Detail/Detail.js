@@ -2,11 +2,11 @@ import { Owner } from "../Channel/Channel";
 import styles from "./Detail.module.css";
 
 export default function Detail(props) {
-  const { title, views, timestamp, owner } = props;
+  const { title, views, timestamp, channel } = props;
   return (
     <div className={styles.detailContainer}>
       <Title title={title} />
-      <Owner owner={owner} />
+      <Owner channel={channel} />
       <ViewsAndTimestamp views={views} timestamp={timestamp} />
     </div>
   );

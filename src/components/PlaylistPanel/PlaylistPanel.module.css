@@ -31,7 +31,6 @@
 }
 .expandIcon {
   margin-right: 4px;
-  /* box-sizing: border-box; */
 }
 .headerTopRow {
   display: flex;
@@ -55,8 +54,10 @@
   display: grid;
   grid-template-columns: 23px 100px 1fr;
   height: 55px;
-  /* background: red; */
   margin-bottom: 10px;
+}
+.playlistItemActive {
+  background: var(--badge-background);
 }
 .playlistItemDetail {
   padding: 0 8px;

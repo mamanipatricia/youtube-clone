@@ -1,22 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { youTubeService } from "../../services/YouTubeService";
+import { useHistory, useLocation } from "react-router-dom";
 import Icon from "../Icon/Icon";
 import Thumbnail from "../Thumbnail/Thumbnail";
 import styles from "./PlaylistPanel.module.css";
 
 export default function PlaylistPanel() {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const listId = query.get("list");
+  const index = query.get("index") || 1;
+  const history = useHistory();
+
+  const [videos, setVideos] = useState([]);
+  const [playlist, setPlaylist] = useState({});
+  const getPlaylistItems = async () => {
+    const playlistItems = await youTubeService.getPlayListItems(listId);
+    let videosId = [];
+    const playlistData = playlistItems.items.map((video) => {
+      videosId.push(video.contentDetails.videoId);
+      return {
+        playlistId: video.snippet.playlistId,
+        videoId: video.contentDetails.videoId,
+        position: video.snippet.position,
+      };
+    });
+    const { data } = await youTubeService.getVideos(videosId);
+    const videosInfo = playlistData.map((playlist) => {
+      return data.find((video) => video.videoId === playlist.videoId);
+    });
+    const { data: playlistInfo } = await youTubeService.getPlaylists(listId);
+    setPlaylist(playlistInfo[0]);
+    setVideos(videosInfo);
+  };
+
+  useEffect(() => {
+    if (listId) {
+      getPlaylistItems();
+    }
+  }, [index]);
+
+  const videoPositionHandle = (videoId, newIndex) => {
+    history.push({
+      pathname: `/watch/${videoId}`,
+      search: `?list=${listId}&index=${newIndex}`,
+    });
+  };
+
+  if (!listId) return null;
+
   return (
     <div className={styles.playlistContainer}>
       <div className={styles.header}>
         <div className={styles.headerContent}>
           <div className={styles.headerTopRow}>
             <div className={styles.headerDescription}>
-              <h3>
-                🧑‍💻Bootcamp FullStack Gratuito | Javascript, React.js,
-                GraphQL, Node.js, TypeScript y +
-              </h3>
+              <h3>{playlist.title}</h3>
               <div>
-                <span>midudev</span>
-                <span>-1/23</span>
+                <span>{playlist.channel?.channelName}</span>
+                <span>
+                  -{index}/{playlist.count}
+                </span>
               </div>
             </div>
             <div className={styles.expandIcon}>
@@ -35,25 +79,23 @@ export default function PlaylistPanel() {
         </div>
       </div>
       <div className={`${styles.playlistItemsContainer} custom-scroll`}>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map(
-          (item, index) => {
-            return (
-              <div className={styles.playlistItem}>
-                <div className={styles.indexPlaylistItem}>{index + 1}</div>
-                <Thumbnail url="https://i.ytimg.com/vi/yPYzj9Gv9y4/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB4IzcaTg-GVQfcAvVAK4JwY--59w" />
-                <div className={styles.playlistItemDetail}>
-                  <h3>
-                    🧑‍💻 Presentación del curso y Fundamentos del Desarrollo
-                    Web - Bootcamp FullStack Gratuito 🧑‍💻 Presentación del
-                    curso y Fundamentos del Desarrollo Web - Bootcamp FullStack
-                    Gratuito
-                  </h3>
-                  <span>midudev</span>
-                </div>
+        {videos.map((video, idx) => {
+          return (
+            <div
+              onClick={() => videoPositionHandle(video.videoId, idx + 1)}
+              className={`${styles.playlistItem} ${
+                idx + 1 === +index ? styles.playlistItemActive : ""
+              }`}
+            >
+              <div className={styles.indexPlaylistItem}>{idx + 1}</div>
+              <Thumbnail url={video.thumbnail} />
+              <div className={styles.playlistItemDetail}>
+                <h3>{video.title}</h3>
+                <span>{video.channel.channelName}</span>
               </div>
-            );
-          }
-        )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

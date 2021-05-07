@@ -6,32 +6,31 @@ import Icon from "../../Icon/Icon";
 import styles from "./HorizontalVideoCard.module.css";
 
 export default function HorizontalVideoCard({ video, direction }) {
-  console.log(`video-direction}`, video, direction);
   if (!video) return "video not found";
   const {
-    id,
+    videoId,
     title,
-    views,
-    thumbnail: url,
-    owner,
-    timestamp = 100,
+    viewCount,
+    thumbnail,
+    channel,
+    publishedAt,
     duration,
   } = video;
 
   return (
     <div className={styles.horizontalVideoCardContainer}>
       <div className={`${direction === "row" ? styles.relatedVideos : ""}`}>
-        <Link to={`/watch/${id}`}>
-          <div>
-            <Thumbnail url={url} duration={duration} />
+        <Link to={`/watch/${videoId}?list=abcd`}>
+        <div>
+            <Thumbnail url={thumbnail} duration={duration} />
           </div>
         </Link>
         <div className={styles.horizontalVideoCardInfo}>
           <Detail
             title={title}
-            views={views}
-            owner={owner}
-            timestamp={timestamp}
+            views={viewCount}
+            channel={channel}
+            timestamp={publishedAt}
           />
           <div className={styles.menu}>
             <Icon name="MENU" />

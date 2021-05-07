@@ -3,13 +3,12 @@ import HorizontalVideoCard from "../HorizontalVideoCards/HorizontalVideoCard./Ho
 import styles from "./RelatedVideosContainer.module.css";
 
 export default function RelatedVideos({ videos }) {
-  console.log(`videos))-`, videos, typeof videos);
   return (
     <div className={styles.relatedVideosContainer}>
       {videos.map((video) => {
         return (
           <HorizontalVideoCard
-            key={`index-${video.id}`}
+            key={`index-${video.videoId}`}
             video={video}
             direction="row"
           />

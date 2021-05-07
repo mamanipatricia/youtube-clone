@@ -9,11 +9,11 @@ const SIZES = {
   large: "80px",
 };
 
-export default function Avatar({ owner, size = "medium" }) {
-  const { id, channelName, avatar } = owner;
+export default function Avatar({ channel, size = "medium" }) {
+  const { channelId, channelName, avatar } = channel;
   return (
     <div className={styles.avatarContainer}>
-      <Link to={`/channel/${id}`}>
+      <Link to={`/channel/${channelId}`}>
         <img
           className={styles.avatar}
           style={{ width: SIZES[size] }}

@@ -16,7 +16,7 @@ export default function Comments({ comments = [], totalResults }) {
           <span>SORT BY</span>
         </div>
       </div>
-      <AuthorComment owner={{}} />
+      <AuthorComment channel={{}} />
       {comments.map((commentItem, index) => {
         return <Comment key={`comment-${index}`} comment={commentItem} />;
       })}

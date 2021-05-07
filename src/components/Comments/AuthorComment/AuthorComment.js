@@ -4,7 +4,7 @@ import author from "../../../logo.svg";
 // import Avatar from "../../Avatar/Avatar";
 const SAFARI_BR = "<br>";
 
-export default function AuthorComment({ owner }) {
+export default function AuthorComment({ channel }) {
   const [html, setHtml] = useState("");
   const [isVisibleActionButtons, setIsVisibleActionButtons] = useState(false);
   const inputRef = useRef(null);
@@ -32,7 +32,7 @@ export default function AuthorComment({ owner }) {
   return (
     <div className={styles.commentSimpleBoxContainer}>
       <div className={styles.authorThumbnail}>
-        {/* <Avatar size="large" owner={owner} /> */}
+        {/* <Avatar size="large" channel={channel} /> */}
         <img src={author} alt="author avatar" />
       </div>
       <div className={styles.commentSimpleBox}>
@@ -46,7 +46,6 @@ export default function AuthorComment({ owner }) {
               }`}
               onInput={handleChange}
               onClick={showActionButtons}
-              on
               ref={inputRef}
             />
             <span className={styles.placeholderText}>
