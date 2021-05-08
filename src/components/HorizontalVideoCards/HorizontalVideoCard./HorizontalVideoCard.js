@@ -20,8 +20,8 @@ export default function HorizontalVideoCard({ video, direction }) {
   return (
     <div className={styles.horizontalVideoCardContainer}>
       <div className={`${direction === "row" ? styles.relatedVideos : ""}`}>
-        <Link to={`/watch/${videoId}?list=abcd`}>
-        <div>
+        <Link to={`/watch/${videoId}`}>
+          <div>
             <Thumbnail url={thumbnail} duration={duration} />
           </div>
         </Link>
@@ -30,7 +30,7 @@ export default function HorizontalVideoCard({ video, direction }) {
             title={title}
             views={viewCount}
             channel={channel}
-            timestamp={publishedAt}
+            publishedAt={publishedAt}
           />
           <div className={styles.menu}>
             <Icon name="MENU" />

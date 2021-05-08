@@ -30,7 +30,7 @@ function VideoCard({ video }) {
           title={title}
           views={viewCount}
           channel={channel}
-          timestamp={publishedAt}
+          publishedAt={publishedAt}
         />
         <div className={styles.menu}>
           <Icon name="MENU" />

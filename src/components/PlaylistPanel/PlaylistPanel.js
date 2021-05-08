@@ -17,7 +17,7 @@ export default function PlaylistPanel() {
   const getPlaylistItems = async () => {
     const playlistItems = await youTubeService.getPlayListItems(listId);
     let videosId = [];
-    const playlistData = playlistItems.items.map((video) => {
+    const playlistData = playlistItems.items?.map((video) => {
       videosId.push(video.contentDetails.videoId);
       return {
         playlistId: video.snippet.playlistId,

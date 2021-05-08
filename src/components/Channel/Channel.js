@@ -89,31 +89,27 @@ export function Channel() {
 
     await Promise.all(
       Object.entries(playlistData)
-        .filter(
-          ([playlistId, playlist]) => playlist.section.type === "singleplaylist"
-        )
-        .map(async ([playlistId, playlist]) => {
-          const resp = await youTubeService.getPlayListItems(playlistId);
-          const videosId = resp.items?.map(
-            (video) => video.snippet.resourceId.videoId
-          );
-          let { data } = await youTubeService.getVideos(videosId);
-          return { [playlistId]: data };
-        })
+      .map(async ([playlistId, playlist]) => {
+        const resp = await youTubeService.getPlayListItems(playlistId);
+        const videosId = resp.items?.map(
+          (video) => video.snippet.resourceId.videoId
+        );
+        let { data } = await youTubeService.getVideos(videosId);
+        return { [playlistId]: data };
+      })
     ).then((values) => {
       values.forEach((playlist) => {
         const [[key, value]] = Object.entries(playlist); // [[id, {}]]
         playlistData[key].items = value;
       });
     });
-
     // GROUP BY POSITION
     const objFormatted = Object.values(playlistData).reduce((acc, cur) => {
       const { details, section } = cur;
       let items = [];
       if (section.type !== "singleplaylist") {
         items = acc[section.position]?.items || [];
-        items.push(details);
+        items.push({ ...details, items: cur.items });
       } else {
         items = cur.items;
       }

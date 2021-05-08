@@ -169,6 +169,7 @@ export default class Formatter {
       });
     return { data: relatedData };
   }
+
   formatPlaylists(data) {
     this.handleError(data);
     this.checkIfExistData(data);
@@ -188,5 +189,9 @@ export default class Formatter {
       };
     });
     return { data: playlistInfo };
+  }
+  formatPlaylistItems(data) {
+    this.handleError(data);
+    this.checkIfExistData(data);
   }
 }

@@ -99,7 +99,7 @@ export default function Watch() {
             <span>
               <ViewsAndTimestamp
                 views={video.viewCount}
-                timestamp={video.publishedAt}
+                publishedAt={video.publishedAt}
               />
             </span>
             <div className={styles.watchInfoButtons}>
