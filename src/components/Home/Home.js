@@ -34,7 +34,6 @@ export default function Home() {
       <div className={styles.feedFilterContainer}>
         <FeedFilterBarRenderer />
       </div>
-      {JSON.stringify(search, null, 2)}
       <VideoCards videos={search} />
     </div>
   );
