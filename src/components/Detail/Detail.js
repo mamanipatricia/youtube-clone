@@ -1,13 +1,27 @@
+import Avatar from "../Avatar/Avatar";
 import { Owner } from "../Channel/Channel";
 import styles from "./Detail.module.css";
 
 export default function Detail(props) {
-  const { title, viewCount, publishedAt, channel } = props;
+  const {
+    title,
+    viewCount,
+    publishedAt,
+    channel,
+    direction,
+    description,
+  } = props;
   return (
     <div className={styles.detailContainer}>
       <Title title={title} />
-      <Owner channel={channel} />
+      <div className={styles.channelInfo}>
+        {direction === "horizontal" && (
+          <Avatar size="extraSmall" channel={channel} />
+        )}
+        <Owner channel={channel} />
+      </div>
       <ViewsAndTimestamp viewCount={viewCount} publishedAt={publishedAt} />
+      {direction === "horizontal" && <p className={styles.description}> {description} </p>}
     </div>
   );
 }

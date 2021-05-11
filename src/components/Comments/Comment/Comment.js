@@ -19,7 +19,7 @@ export default function Comment({ comment } = {}) {
 
   return (
     <div className={styles.bodyContainer}>
-      <div>
+      <div className={styles.avatar}>
         <Avatar size="small" channel={channel} />
       </div>
       <div className={styles.comment}>

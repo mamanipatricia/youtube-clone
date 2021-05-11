@@ -20,6 +20,7 @@ import GuideContext from "./context/guideContext";
 import Home from "./components/Home/Home";
 import Watch from "./components/Watch/Watch";
 import ChannelVideos from "./components/ChannelVideos/ChannelVideos";
+import SearchResults from "./components/SearchResults/SearchResults";
 
 function App() {
   const [toggleSidebarRow] = useContext(GuideContext);
@@ -51,7 +52,7 @@ function App() {
               component={ChannelVideos}
             />
 
-            <Route path="/search" component={Search} />
+            <Route path="/results" component={SearchResults} />
             <Route path="/feed/explore" component={Explore} />
             <Route path="/feed/subscription" component={Subscription} />
             <Route path="/feed/library" component={Library} />

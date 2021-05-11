@@ -6,7 +6,7 @@ import styles from "./VideoCard.module.css";
 import { Link } from "react-router-dom";
 import Icon from "../Icon/Icon";
 
-function VideoCard({ video }) {
+function VideoCard({ video, direction }) {
   const {
     videoId,
     title,
@@ -15,22 +15,30 @@ function VideoCard({ video }) {
     channel,
     publishedAt,
     duration,
+    description,
   } = video;
 
   return (
-    <div className={styles.videoCardContainer}>
+    <div
+      className={`${styles.videoCardContainer} ${
+        direction === "horizontal" ? styles.videoCardContainerHorizontal : ""
+      }`}
+    >
       <Link to={`/watch/${videoId}`}>
         <div>
           <Thumbnail url={thumbnail} duration={duration} />
         </div>
       </Link>
+
       <div className={styles.videoCardInfo}>
-        <Avatar channel={channel} />
+        {direction !== "horizontal" && <Avatar channel={channel} />}
         <Detail
           title={title}
           views={viewCount}
           channel={channel}
           publishedAt={publishedAt}
+          description={description}
+          direction={direction}
         />
         <div className={styles.menu}>
           <Icon name="MENU" />

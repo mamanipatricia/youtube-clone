@@ -20,6 +20,7 @@ export default function Watch() {
   const [totalResults, setTotalResults] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
   const [relatedVideosData, setRelatedVideosData] = useState([]);
+  const [errorComment, setErrorComment] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -36,10 +37,17 @@ export default function Watch() {
   };
 
   const getThreadsComments = async () => {
-    const { data } = await youTubeService.getThreadsComments(videoId);
-    const { commentThreadsData, totalResults } = data;
-    setCommentsThreads(commentThreadsData);
-    setTotalResults(totalResults);
+    try {
+      const { data } = await youTubeService.getThreadsComments(videoId);
+      const { commentThreadsData, totalResults } = data;
+      setCommentsThreads(commentThreadsData);
+      setTotalResults(totalResults);
+    } catch (err) {
+      if (err.message.includes("parameter has disabled comments")) {
+        setErrorComment(true);
+      }
+      console.log(`err`, err.message);
+    }
   };
 
   const getRelatedVideos = async () => {
@@ -186,7 +194,11 @@ export default function Watch() {
           </div>
         </div>
         <div>
-          <Comments comments={commentsThreads} totalResults={totalResults} />
+          {!errorComment ? (
+            <Comments comments={commentsThreads} totalResults={totalResults} />
+          ) : (
+            "Comments are turned off"
+          )}
         </div>
       </div>
       <div className={styles.secondary}>

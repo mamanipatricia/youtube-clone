@@ -19,7 +19,7 @@ export default function HorizontalPlaylistCard({ video, direction }) {
 
   return (
     <div className={styles.horizontalVideoCardContainer}>
-      <div className={`${direction === "row" ? styles.relatedVideos : ""}`}>
+      <div className={`${direction === "row" ? styles.horizontalCard : ""}`}>
         <Link to={`/watch/${items[0].videoId}?list=${playlistId}`}>
           <div>
             <Thumbnail url={thumbnail} duration={duration} />

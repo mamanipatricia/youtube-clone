@@ -38,6 +38,7 @@ export default class Formatter {
       return {
         videoId: video.id,
         title: video.snippet.title,
+        description: video.snippet.description,
         channel: {
           channelId: video.snippet.channelId,
           channelName: video.snippet.channelTitle,

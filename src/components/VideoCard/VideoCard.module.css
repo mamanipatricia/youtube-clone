@@ -3,6 +3,9 @@
   display: flex;
   flex-direction: column;
 }
+.videoCardContainerHorizontal {
+  flex-direction: row;
+}
 .videoCardInfo {
   width: 100%;
   display: flex;

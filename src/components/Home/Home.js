@@ -6,6 +6,7 @@ import { youTubeService } from "../../services/YouTubeService";
 
 export default function Home() {
   const [search, setSearch] = useState([]);
+
   const getSearch = async (keyword) => {
     const { data } = await youTubeService.getSearch(keyword);
     return data;
