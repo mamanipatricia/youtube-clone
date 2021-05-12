@@ -34,6 +34,7 @@ export default class Formatter {
   formatVideos(data) {
     this.handleError(data);
     this.checkIfExistData(data);
+
     const videos = data.items.map((video) => {
       return {
         videoId: video.id,

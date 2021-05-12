@@ -15,7 +15,7 @@ export default class YouTubeService extends BaseService {
   }
   async getVideos(videosId) {
     const response = await this.get(
-      `/videos?id=${videosId}&part=snippet,contentDetails,statistics,status&key=${this.API_KEY}`
+      `/videos?id=${videosId}&part=snippet,contentDetails,statistics,status&maxResults=50&key=${this.API_KEY}`
     );
     return this.formatter.formatVideos(response);
   }
@@ -55,9 +55,9 @@ export default class YouTubeService extends BaseService {
     );
     return this.formatter.formatPlaylists(response);
   }
-  async getPlayListItems(playListId) {
+  async getPlayListItems(playListId, params = "") {
     const response = await this.get(
-      `/playlistItems?part=snippet,contentDetails,id,status&maxResults=50&playlistId=${playListId}&key=${this.API_KEY}`
+      `/playlistItems?${params}part=snippet,contentDetails,id,status&maxResults=50&playlistId=${playListId}&key=${this.API_KEY}`
     );
     return response;
   }

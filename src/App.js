@@ -19,12 +19,10 @@ import MiniSidebarRow from "./components/MiniGuide/MiniSidebarRow";
 import GuideContext from "./context/guideContext";
 import Home from "./components/Home/Home";
 import Watch from "./components/Watch/Watch";
-import ChannelVideos from "./components/ChannelVideos/ChannelVideos";
 import SearchResults from "./components/SearchResults/SearchResults";
 
 function App() {
   const [toggleSidebarRow] = useContext(GuideContext);
-
   return (
     <Router>
       <div className={styles.container}>
@@ -39,19 +37,14 @@ function App() {
           className={`${styles.bodyWrapper} ${
             toggleSidebarRow ? styles.miniSidebarRow : ""
           }`}
-        > 
+        >
           <Switch>
             <Route
               path="/"
               exact
               render={(routeProps) => <Home {...routeProps} />}
             />
-            <Route path="/channel/:channelId" component={Channel} />
-            <Route
-              path="/channel/:channelId/videos"
-              component={ChannelVideos}
-            />
-
+            <Route exact path="/channel/:channelId*" component={Channel} />
             <Route path="/results" component={SearchResults} />
             <Route path="/feed/explore" component={Explore} />
             <Route path="/feed/subscription" component={Subscription} />
