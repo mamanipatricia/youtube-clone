@@ -20,6 +20,7 @@
   margin-left: 240px;
   /* background: red; */
   background: var(--bg-body);
+  height: 100vh;
 }
 .miniSidebarRow {
   margin-left: 72px;

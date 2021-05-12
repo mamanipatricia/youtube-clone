@@ -1,7 +1,8 @@
 .detailContainer {
-  width: 70%;
+  /* width: 70%; */
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 .titleContainer {
   line-height: 1.5rem;

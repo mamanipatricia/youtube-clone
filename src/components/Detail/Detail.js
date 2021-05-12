@@ -3,14 +3,8 @@ import { Owner } from "../Channel/Channel";
 import styles from "./Detail.module.css";
 
 export default function Detail(props) {
-  const {
-    title,
-    viewCount,
-    publishedAt,
-    channel,
-    direction,
-    description,
-  } = props;
+  const { title, viewCount, publishedAt, channel, direction, description } =
+    props;
   return (
     <div className={styles.detailContainer}>
       <Title title={title} />
@@ -21,7 +15,9 @@ export default function Detail(props) {
         <Owner channel={channel} />
       </div>
       <ViewsAndTimestamp viewCount={viewCount} publishedAt={publishedAt} />
-      {direction === "horizontal" && <p className={styles.description}> {description} </p>}
+      {direction === "horizontal" && (
+        <p className={styles.description}> {description} </p>
+      )}
     </div>
   );
 }

@@ -2,11 +2,20 @@ import { useEffect, useState } from "react";
 import { youTubeService } from "../../../services/YouTubeService";
 import ChannelSections from "../../ChannelSections/ChannelSections";
 
+import { useLoading } from "../../../hooks/useLoading";
+import Spinner from "../../Spinner/Spinner";
+
 export default function ChannelHome({ channelId }) {
   const [channelSections, setChannelSections] = useState([]);
 
+  const loading = useLoading();
+
   const getChannelSections = async () => {
-    return await youTubeService.getChannelSections(channelId);
+    try {
+      return await youTubeService.getChannelSections(channelId);
+    } catch (err) {
+      console.log(`err`, err);
+    }
   };
 
   const getPlaylistData = async () => {
@@ -15,11 +24,15 @@ export default function ChannelHome({ channelId }) {
   };
 
   const getPlaylistInfo = async (playlistsIDs) => {
-    const { data } = await youTubeService.getPlaylists(playlistsIDs);
     const playlistInfo = {};
-    data.forEach((item) => {
-      playlistInfo[item.id] = item;
-    });
+    try {
+      const { data } = await youTubeService.getPlaylists(playlistsIDs);
+      data.forEach((item) => {
+        playlistInfo[item.id] = item;
+      });
+    } catch (err) {
+      console.log(`err`, err);
+    }
     return playlistInfo;
   };
 
@@ -73,10 +86,17 @@ export default function ChannelHome({ channelId }) {
 
   useEffect(() => {
     (async () => {
+      loading.pending();
       const channelSections = await getChannelSections1();
       setChannelSections(channelSections);
+      loading.success();
     })();
   }, []);
 
-  return <ChannelSections videos={channelSections} />;
+  return (
+    <>
+      {loading.isPending && <Spinner />}
+      {loading.isSuccess && <ChannelSections videos={channelSections} />}
+    </>
+  );
 }

@@ -39,6 +39,8 @@ export function Subscribers({ channel }) {
 
 export function Channel() {
   let { channelId } = useParams();
+  channelId = channelId.split("/")[0];
+  // [channelId] = channelId.split("/"); // the same as above
   const [channel, setChannel] = useState({});
   const channelHeaderOptions = [
     { url: "", label: "START" },
@@ -50,8 +52,12 @@ export function Channel() {
   ];
 
   const getChannel = async () => {
-    const { data } = await youTubeService.getChannel(channelId);
-    setChannel(data);
+    try {
+      const { data } = await youTubeService.getChannel(channelId);
+      setChannel(data);
+    } catch (err) {
+      console.log(`err`, err);
+    }
   };
 
   useEffect(() => {
@@ -116,16 +122,16 @@ export function Channel() {
         <Route exact path="/channel/:channelId">
           <ChannelHome channelId={channelId} />
         </Route>
-        <Route exact path="/channel/:channelId/videos">
+        <Route path="/channel/:channelId/videos">
           <ChannelVideos channelId={channelId} />
         </Route>
-        <Route exact path="/channel/:channelId/playlist">
+        <Route path="/channel/:channelId/playlist">
           <ChannelPlaylists channelId={channelId} />
         </Route>
-        <Route exact path="/channel/:channelId/channels">
+        <Route path="/channel/:channelId/channels">
           <ChannelChannels channelId={channelId} />
         </Route>
-        <Route exact path="/channel/:channelId/about">
+        <Route path="/channel/:channelId/about">
           <ChannelAbout channelId={channelId} />
         </Route>
       </Switch>
