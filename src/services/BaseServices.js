@@ -1,4 +1,3 @@
-// import { API_KEY, API_URL } from "./settings";
 //! each service has to have a baseURL
 
 export default class BaseService {

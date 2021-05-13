@@ -1,5 +1,7 @@
 .channelSectionContainer {
   background: none !important;
+  background: red;
+  padding: 30px;
 }
 .subheaderContainer {
   display: flex;
@@ -46,5 +48,4 @@
 
 .shelfContainer {
   margin-top: 24px;
-  
 }

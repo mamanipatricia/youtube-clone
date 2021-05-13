@@ -1,0 +1,42 @@
+.hoveredCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.hoveredCard .thumbnailHovered {
+  width: 100%;
+  vertical-align: top;
+}
+.hoveredCard:after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: "\25BA PLAY ALL";
+  color: #fff;
+  font-weight: 500;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.hoveredCard:hover:after {
+  opacity: 1;
+}
+.playlistCovered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  align-content: stretch;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 45%;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  transition: all 0.3s;
+}

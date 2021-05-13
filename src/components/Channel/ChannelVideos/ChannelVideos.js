@@ -56,10 +56,9 @@ export default function ChannelVideos({ channelId }) {
         videosID.slice(startIndex, startIndex + 50)
       );
       setVideos(data);
-      loading.success();
-
       setStartIndex(startIndex + 50);
     }
+    loading.success();
   };
 
   useEffect(() => {

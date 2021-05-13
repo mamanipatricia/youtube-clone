@@ -5,7 +5,7 @@ import Detail from "../../Detail/Detail";
 import Icon from "../../Icon/Icon";
 import styles from "./HorizontalVideoCard.module.css";
 
-export default function HorizontalVideoCard({ video, direction }) {
+export default function HorizontalVideoCard({ video, direction, dataRef }) {
   if (!video) return "video not found";
   const {
     videoId,
@@ -18,7 +18,7 @@ export default function HorizontalVideoCard({ video, direction }) {
   } = video;
 
   return (
-    <div className={styles.horizontalVideoCardContainer}>
+    <div ref={dataRef} className={styles.horizontalVideoCardContainer}>
       <div className={`${direction === "row" ? styles.horizontalCard : ""}`}>
         <Link to={`/watch/${videoId}`}>
           <div>
