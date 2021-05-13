@@ -40,6 +40,7 @@ export default function ChannelHome({ channelId }) {
     const playlistData = await getPlaylistData();
     // from prev object get the keys [id, id, id,...]
     const playlistsIDs = Object.keys(playlistData);
+    // ! todo UChE3TstRbRcFu6mWYKRid8g = channel/
     const playListInfoData = await getPlaylistInfo(playlistsIDs);
 
     Object.entries(playlistData).forEach(([playlistId, playlist]) => {

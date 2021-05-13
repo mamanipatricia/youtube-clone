@@ -39,7 +39,7 @@ export default class YouTubeService extends BaseService {
   }
   async getSearch(keyword) {
     const response = await this.get(
-      `/search?part=snippet&maxResults=10&q=${keyword}&key=${this.API_KEY}`
+      `/search?part=snippet&maxResults=30&q=${keyword}&key=${this.API_KEY}`
     );
     return this.formatter.formatSearch(response);
   }
