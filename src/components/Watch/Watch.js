@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Watch.module.css";
 import YouTube from "react-youtube";
 import { Subscribers, Owner } from "../Channel/Channel";
@@ -13,6 +13,7 @@ import PlaylistPanel from "../PlaylistPanel/PlaylistPanel";
 import RelatedVideos from "../RelatedVideos/RelatedVideos";
 import Spinner from "../Spinner/Spinner";
 import { useLoading } from "../../hooks/useLoading";
+import { ChannelInfo } from "../ChannelInfo/ChannelInfo";
 
 export default function Watch() {
   let { videoId } = useParams();
@@ -165,24 +166,8 @@ export default function Watch() {
               </div>
             </div>
             <div className={styles.metaContainer}>
-              <div className={styles.watchMetaContainer}>
-                <div className={styles.watchChannel}>
-                  <div className={styles.avatar}>
-                    <Avatar size="medium" channel={channel} />
-                  </div>
-                  <div className={styles.watchOwnerContainer}>
-                    <span className={styles.watchOwnerText}>
-                      <Owner channel={channel} />
-                    </span>
-                    <span className={styles.watchOwnerSubscribers}>
-                      <Subscribers channel={channel} />
-                    </span>
-                  </div>
-                </div>
-                <div className={styles.watchSubscribeContainer}>
-                  <button className={styles.watchSubscribe}>SUBSCRIBED</button>
-                  <Icon name="NOTIFICATION_1" color="var(--bg-sentiment)" />
-                </div>
+              <div className={styles.channelInfo}>
+                <ChannelInfo channel={channel} displaySubs={true} />
               </div>
               <div className={styles.watchInfo}>
                 <div

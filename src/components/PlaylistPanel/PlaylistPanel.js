@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import Icon from "../Icon/Icon";
 import Thumbnail from "../Thumbnail/Thumbnail";
 import styles from "./PlaylistPanel.module.css";
+import { HorizontalVideoItem } from "../HorizontalVideoItem/HorizontalVideoItem";
 
 export default function PlaylistPanel() {
   const location = useLocation();
@@ -88,11 +89,8 @@ export default function PlaylistPanel() {
               }`}
             >
               <div className={styles.indexPlaylistItem}>{idx + 1}</div>
-              <Thumbnail url={video.thumbnail} />
-              <div className={styles.playlistItemDetail}>
-                <h3>{video.title}</h3>
-                <span>{video.channel.channelName}</span>
-              </div>
+
+              <HorizontalVideoItem videos={video} />
             </div>
           );
         })}

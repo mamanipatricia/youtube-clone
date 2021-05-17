@@ -1,6 +1,43 @@
+.playlistContainer {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  height: 100%;
+}
 .playlistSidebarContainer {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  height: 100vh;
+  overflow: auto;
 }
 .playlistBrowserResult {
   display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+}
+.playlistBrowserResult > div {
+  padding: 16px 0;
+  border-bottom: 1px solid #ccc;
+}
+.playlistItem {
+  display: flex;
+  align-items: center;
+}
+.ownerContainer {
+  display: flex;
+}
+.playlistOwnerInfo {
+  display: flex;
+}
+.playlistSubscribeContainer {
+  display: flex;
+  align-items: center;
+}
+.playlistSubscribe {
+  padding: 10px 16px;
+  margin: 4px;
+  border: none;
+  background: var(--bg-button-subs);
 }

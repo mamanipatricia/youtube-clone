@@ -182,7 +182,7 @@ export default class Formatter {
         title: item.snippet.title,
         localized: item.snippet.localized,
         channel: {
-          channelId: item.id,
+          channelId: item.snippet.channelId,
           channelName: item.snippet.channelTitle,
         },
         description: item.snippet.description,

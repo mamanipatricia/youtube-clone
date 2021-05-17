@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  overflow: auto;
 }
 .feedFilter {
   border: 1px solid var(--border-primary);
@@ -12,4 +13,5 @@
   background: var(--bg-secondary);
   color: var(--text-primary);
   cursor: pointer;
+  white-space: nowrap;
 }

@@ -1,0 +1,29 @@
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
+.iconContainerHorizontal {
+  transform: rotate(90deg);
+  transform-origin: center center;
+}
+.moreActionMenu {
+  position: relative;
+}
+.itemsContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 200px;
+  padding: 5px;
+  background: green;
+  right: 0;
+  z-index: 101;
+}
+.items {
+  padding: 10px;
+  background: yellow;
+  border: 1px solid indianred;
+}

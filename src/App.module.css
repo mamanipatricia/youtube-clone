@@ -18,9 +18,8 @@
 .bodyWrapper {
   margin-top: 56px;
   margin-left: 240px;
-  /* background: red; */
   background: var(--bg-body);
-  height: 100vh;
+  height: calc(100vh - 56px);
 }
 .miniSidebarRow {
   margin-left: 72px;
