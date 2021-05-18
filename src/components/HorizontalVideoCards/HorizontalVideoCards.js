@@ -4,7 +4,7 @@ import Icon from "../Icon/Icon";
 import HorizontalVideoCard from "./HorizontalVideoCard./HorizontalVideoCard";
 import styles from "./HorizontalVideoCards.module.css";
 
-export default function HorizontalVideoCards({ videos }) {
+export default function HorizontalVideoCards({ videos, menuContent }) {
   const refCarrousel = useRef(null);
   const refFirstItem = useRef(null);
   const refLastItem = useRef(null);
@@ -96,6 +96,7 @@ export default function HorizontalVideoCards({ videos }) {
                 }
                 key={`index-${index}`}
                 video={video}
+                menuContent={menuContent}
               />
             );
           }

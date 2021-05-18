@@ -8,7 +8,25 @@ import ChannelHome from "./ChannelHome/ChannelHome";
 import ChannelVideos from "./ChannelVideos/ChannelVideos";
 import { ChannelPlaylists } from "./ChannelPlaylists/ChannelPlaylists";
 import { ChannelAbout } from "./ChannelAbout/ChannelAbout";
-import { ChannelChannels } from "./channelChannels/ChannelChannels";
+import { ChannelChannels } from "./ChannelChannels/ChannelChannels";
+
+const menuVideoCard = [
+  {
+    id: 1,
+    label: "Add to queue",
+    icon: "QUEUE",
+  },
+  {
+    id: 2,
+    label: "Save to watch later",
+    icon: "CLOCK",
+  },
+  {
+    id: 3,
+    label: "Save to playlist",
+    icon: "SAVE_PLAYLIST",
+  },
+];
 
 export function Owner({ channel }) {
   const { channelId, channelName } = channel;
@@ -120,10 +138,10 @@ export function Channel() {
 
       <Switch>
         <Route exact path="/channel/:channelId">
-          <ChannelHome channelId={channelId} />
+          <ChannelHome channelId={channelId} menuContent={menuVideoCard} />
         </Route>
         <Route path="/channel/:channelId/videos">
-          <ChannelVideos channelId={channelId} />
+          <ChannelVideos channelId={channelId} menuContent={menuVideoCard} />
         </Route>
         <Route path="/channel/:channelId/playlist">
           <ChannelPlaylists channelId={channelId} />

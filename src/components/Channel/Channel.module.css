@@ -58,13 +58,13 @@
   cursor: pointer;
   background: var(--badge-background);
 }
-/* ------ */
 .ownerChannelName {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
   display: flex;
   gap: 4px;
   align-items: center;
+  font-weight: 500;
 }
 .ownerChannelName:hover {
   color: var(--text-primary);

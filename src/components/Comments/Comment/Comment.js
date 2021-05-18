@@ -32,8 +32,7 @@ export default function Comment({ comment } = {}) {
               <span>{authorName}</span>
             </Link>
           </h3>
-          {/* <span>_/</span> */}
-          <span>{publishedAt}</span>
+          <span className={styles.publishedTime} >{publishedAt}</span>
         </div>
         <div className={styles.expander}>
           <div className={styles.content}>{textOriginal}</div>
@@ -41,18 +40,18 @@ export default function Comment({ comment } = {}) {
         <div className={styles.commentActionButton}>
           <div className={styles.likeButton}>
             <span>
-              <Icon name="LIKE" />
+              <Icon name="LIKE" color="var(--text-sentiment)" />
             </span>
             <span> {likeCount}</span>
           </div>
           <div className={styles.likeButton}>
             <span className={styles.dislikeButton}>
-              <Icon name="LIKE" />
+              <Icon name="LIKE" color="var(--text-sentiment)" />
             </span>
             <span> {dislikeCount}</span>
           </div>
           <div className={styles.footerButtons}>
-            <button>REPLY {totalReplyCount}</button>
+            <button className={styles.reply}>REPLY {totalReplyCount}</button>
           </div>
         </div>
       </div>

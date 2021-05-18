@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./Watch.module.css";
 import YouTube from "react-youtube";
-import { Subscribers, Owner } from "../Channel/Channel";
 import Icon from "../Icon/Icon";
-import Avatar from "../Avatar/Avatar";
 
 import { useParams } from "react-router-dom";
 import { ViewsAndTimestamp } from "../Detail/Detail";
@@ -14,6 +12,15 @@ import RelatedVideos from "../RelatedVideos/RelatedVideos";
 import Spinner from "../Spinner/Spinner";
 import { useLoading } from "../../hooks/useLoading";
 import { ChannelInfo } from "../ChannelInfo/ChannelInfo";
+import MoreActions from "../MoreActions/MoreActions";
+
+const menuWatch = [
+  {
+    id: 1,
+    label: "Report",
+    icon: "REPORT",
+  },
+];
 
 export default function Watch() {
   let { videoId } = useParams();
@@ -115,7 +122,7 @@ export default function Watch() {
               <div className={styles.watchInfoButtonsContainer}>
                 <span>
                   <ViewsAndTimestamp
-                    views={video.viewCount}
+                    viewCount={video.viewCount}
                     publishedAt={video.publishedAt}
                   />
                 </span>
@@ -157,11 +164,7 @@ export default function Watch() {
                       />
                     </button>
                   </div>
-                  <div>
-                    <button>
-                      <Icon name="REPORT" color="var(--bg-sentiment)" />
-                    </button>
-                  </div>
+                  <MoreActions menuContent={menuWatch} />
                 </div>
               </div>
             </div>

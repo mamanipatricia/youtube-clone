@@ -7,6 +7,7 @@
 }
 .header {
   display: flex;
+  text-align: center;
 }
 .header > h3 {
   margin: 0;
@@ -55,6 +56,10 @@
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+}
+.reply {
+  color: var(--text-sentiment);
+  font-weight: 500;
 }
 .footerButtons > button {
   border: none;

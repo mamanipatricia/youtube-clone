@@ -4,7 +4,7 @@ import { youTubeService } from "../../../services/YouTubeService";
 import Spinner from "../../Spinner/Spinner";
 import VideoCards from "../../VideoCards/VideoCards";
 
-export default function ChannelVideos({ channelId }) {
+export default function ChannelVideos({ channelId, menuContent }) {
   const [videos, setVideos] = useState([]);
   const [videosID, setVideosID] = useState([]);
   let [startIndex, setStartIndex] = useState(0);
@@ -73,7 +73,11 @@ export default function ChannelVideos({ channelId }) {
     <div>
       {loading.isPending && <Spinner />}
       {loading.isSuccess && (
-        <VideoCards hiddenContent={["avatar"]} videos={videos} />
+        <VideoCards
+          hiddenContent={["avatar"]}
+          videos={videos}
+          menuContent={menuContent}
+        />
       )}
     </div>
   );

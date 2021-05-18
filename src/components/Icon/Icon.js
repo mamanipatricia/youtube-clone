@@ -389,6 +389,17 @@ export default function Icon(props) {
           </g>
         </svg>
       );
+    case "QUEUE":
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" class={className}>
+          <g>
+            <path
+              fill={color}
+              d="M9 10h9v2H9v-2zM6 6h12v2H6V6zm6 8h6v2h-6v-2zm-6-2v6l4-3-4-3z"
+            />
+          </g>
+        </svg>
+      );
 
     default:
       return <div />;

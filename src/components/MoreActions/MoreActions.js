@@ -1,30 +1,50 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Icon from "../Icon/Icon";
 import styles from "./MoreActions.module.css";
-export const MoreActions = ({ direction }) => {
+import { useClickAway } from "react-use";
+
+export default function MoreActions({
+  menuContent = [],
+  direction,
+  position = "right",
+}) {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
+  const menuRef = useRef(null);
+
+  useClickAway(menuRef, () => {
+    setIsVisibleMenu(!isVisibleMenu);
+  });
 
   const toggleMenu = () => {
     setIsVisibleMenu(!isVisibleMenu);
   };
+
   return (
     <div className={styles.moreActionMenu}>
-      <button onClick={toggleMenu}>
+      <button onClick={toggleMenu} className={styles.menuButton}>
         <span
           className={`${styles.iconContainer} ${
             direction === "horizontal" ? styles.iconContainerHorizontal : ""
           }`}
         >
-          <Icon name="MENU" />
+          <Icon name="MENU" color="var(--bg-sentiment)" />
         </span>
       </button>
       {isVisibleMenu && (
-        <div className={styles.itemsContainer}>
-          {["A", "B", "C", "D"].map((item) => {
-            return <div className={styles.items}>{item}</div>;
+        <div
+          ref={menuRef}
+          className={`${styles.itemsContainer} ${styles[position]}`}
+        >
+          {menuContent.map((item) => {
+            return (
+              <div key={item.id} className={styles.items}>
+                <Icon name={item.icon} />
+                {item.label}
+              </div>
+            );
           })}
         </div>
       )}
     </div>
   );
-};
+}

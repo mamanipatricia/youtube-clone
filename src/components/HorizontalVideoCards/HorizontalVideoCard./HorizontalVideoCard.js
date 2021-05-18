@@ -2,12 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Thumbnail from "../../Thumbnail/Thumbnail";
 import Detail from "../../Detail/Detail";
-import Icon from "../../Icon/Icon";
 import styles from "./HorizontalVideoCard.module.css";
+import MoreActions from "../../MoreActions/MoreActions";
 
-export default function HorizontalVideoCard({ video, direction, dataRef }) {
+export default function HorizontalVideoCard({
+  video,
+  direction,
+  dataRef,
+  menuContent = [],
+}) {
   if (!video) return "video not found";
-  const {
+const {
     videoId,
     title,
     viewCount,
@@ -28,12 +33,12 @@ export default function HorizontalVideoCard({ video, direction, dataRef }) {
         <div className={styles.horizontalVideoCardInfo}>
           <Detail
             title={title}
-            views={viewCount}
+            viewCount={viewCount}
             channel={channel}
             publishedAt={publishedAt}
           />
           <div className={styles.menu}>
-            <Icon name="MENU" />
+            <MoreActions menuContent={menuContent} />
           </div>
         </div>
       </div>

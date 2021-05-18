@@ -40,3 +40,13 @@
   background: rgba(0, 0, 0, 0.7);
   transition: all 0.3s;
 }
+.viewFullPlaylist {
+  font-size: var(--font-size);
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 6px 0;
+  font-weight: 500;
+}
+.viewFullPlaylist:hover {
+  color: var(--text-primary);
+}

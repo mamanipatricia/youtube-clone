@@ -4,9 +4,9 @@ import Avatar from "../Avatar/Avatar";
 import Detail from "../Detail/Detail";
 import styles from "./VideoCard.module.css";
 import { Link } from "react-router-dom";
-import Icon from "../Icon/Icon";
+import MoreActions from "../MoreActions/MoreActions";
 
-function VideoCard({ video, direction, hiddenContent = [] }) {
+function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
   const {
     videoId,
     title,
@@ -36,7 +36,7 @@ function VideoCard({ video, direction, hiddenContent = [] }) {
         )}
         <Detail
           title={title}
-          views={viewCount}
+          viewCount={viewCount}
           channel={channel}
           publishedAt={publishedAt}
           description={description}
@@ -44,7 +44,7 @@ function VideoCard({ video, direction, hiddenContent = [] }) {
           hiddenContent={hiddenContent}
         />
         <div className={styles.menu}>
-          <Icon name="MENU" />
+          <MoreActions menuContent={menuContent} />
         </div>
       </div>
     </div>

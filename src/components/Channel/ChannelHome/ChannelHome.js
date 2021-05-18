@@ -5,17 +5,19 @@ import ChannelSections from "../../ChannelSections/ChannelSections";
 import { useLoading } from "../../../hooks/useLoading";
 import Spinner from "../../Spinner/Spinner";
 
-export default function ChannelHome({ channelId }) {
+export default function ChannelHome({ channelId, menuContent }) {
   const [channelSections, setChannelSections] = useState([]);
 
   const loading = useLoading();
 
   const getChannelSections = async () => {
+    let resp = { data: {} };
     try {
-      return await youTubeService.getChannelSections(channelId);
+      resp = await youTubeService.getChannelSections(channelId);
     } catch (err) {
       console.log(`err`, err);
     }
+    return resp;
   };
 
   const getPlaylistData = async () => {
@@ -38,9 +40,7 @@ export default function ChannelHome({ channelId }) {
 
   const getChannelSections1 = async () => {
     const playlistData = await getPlaylistData();
-    // from prev object get the keys [id, id, id,...]
     const playlistsIDs = Object.keys(playlistData);
-    // ! todo UChE3TstRbRcFu6mWYKRid8g = channel/
     const playListInfoData = await getPlaylistInfo(playlistsIDs);
 
     Object.entries(playlistData).forEach(([playlistId, playlist]) => {
@@ -97,7 +97,9 @@ export default function ChannelHome({ channelId }) {
   return (
     <>
       {loading.isPending && <Spinner />}
-      {loading.isSuccess && <ChannelSections videos={channelSections} />}
+      {loading.isSuccess && (
+        <ChannelSections videos={channelSections} menuContent={menuContent} />
+      )}
     </>
   );
 }

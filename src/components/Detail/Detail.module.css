@@ -21,7 +21,8 @@
   display: flex;
   gap: 5px;
   font-size: var(--font-size);
-  color: gray;
+  color: var(--text-secondary);
+  padding-top: 4px;
 }
 .channelInfo {
   display: flex;

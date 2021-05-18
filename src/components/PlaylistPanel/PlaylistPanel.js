@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { youTubeService } from "../../services/YouTubeService";
 import { useHistory, useLocation } from "react-router-dom";
 import Icon from "../Icon/Icon";
-import Thumbnail from "../Thumbnail/Thumbnail";
 import styles from "./PlaylistPanel.module.css";
 import { HorizontalVideoItem } from "../HorizontalVideoItem/HorizontalVideoItem";
 
@@ -15,6 +14,7 @@ export default function PlaylistPanel() {
 
   const [videos, setVideos] = useState([]);
   const [playlist, setPlaylist] = useState({});
+
   const getPlaylistItems = async () => {
     const playlistItems = await youTubeService.getPlayListItems(listId);
     let videosId = [];
@@ -83,14 +83,18 @@ export default function PlaylistPanel() {
         {videos.map((video, idx) => {
           return (
             <div
-              onClick={() => videoPositionHandle(video.videoId, idx + 1)}
+              key={video.videoId}
+              // onClick={() => videoPositionHandle(video.videoId, idx + 1)}
               className={`${styles.playlistItem} ${
                 idx + 1 === +index ? styles.playlistItemActive : ""
               }`}
             >
               <div className={styles.indexPlaylistItem}>{idx + 1}</div>
-
-              <HorizontalVideoItem videos={video} />
+              <HorizontalVideoItem
+                playlistId={listId}
+                video={video}
+                index={index}
+              />
             </div>
           );
         })}

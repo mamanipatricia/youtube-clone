@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Owner } from "../Channel/Channel";
 import { Title } from "../Detail/Detail";
 import Thumbnail from "../Thumbnail/Thumbnail";
@@ -36,7 +36,7 @@ export default function HorizontalPlaylistCard({ video, direction, dataRef }) {
           <Title title={title} />
           <Owner channel={channel} />
         </div>
-        <div onClick={fullPlayListHandle}>VIEW FULL PLAYLIST</div>
+        <div className={styles.viewFullPlaylist} onClick={fullPlayListHandle}>VIEW FULL PLAYLIST</div>
       </div>
     </div>
   );

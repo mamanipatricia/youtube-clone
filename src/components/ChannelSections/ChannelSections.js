@@ -3,7 +3,7 @@ import styles from "./ChannelSection.module.css";
 import Icon from "../Icon/Icon";
 import HorizontalVideoCards from "../HorizontalVideoCards/HorizontalVideoCards";
 
-export default function ChannelSections({ videos = [] }) {
+export default function ChannelSections({ videos = [], menuContent }) {
   return (
     <div className={styles.channelSectionContainer}>
       {videos.map((item, idx) => {
@@ -14,13 +14,17 @@ export default function ChannelSections({ videos = [] }) {
                 <div className={styles.titleText}>{item.section.title}</div>
                 <div className={styles.playButton}>
                   <Icon name="PLAY" color="var(--text-secondary)" />
-                  <span> REPRODUCIR TODO</span>
+                  <span> PLAY ALL</span>
                 </div>
               </div>
               <div className={styles.subtitle}>{item.section.description}</div>
             </div>
             <div className={styles.shelfContainer}>
-              <HorizontalVideoCards videos={item} direction="column" />
+              <HorizontalVideoCards
+                videos={item}
+                direction="column"
+                menuContent={menuContent}
+              />
             </div>
           </div>
         );
