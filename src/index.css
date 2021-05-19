@@ -38,7 +38,9 @@ body {
   font-size: var(--font-size);
   background: var(--background-a);
 }
-
+a {
+  text-decoration: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

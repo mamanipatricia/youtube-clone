@@ -1,17 +1,29 @@
+import { Link } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
 import { Owner } from "../Channel/Channel";
 import styles from "./Detail.module.css";
 
 export default function Detail(props) {
-  const { title, viewCount, publishedAt, channel, direction, description } =
-    props;
+  const {
+    title,
+    viewCount,
+    publishedAt,
+    channel,
+    direction,
+    description,
+    videoId,
+  } = props;
   return (
     <div
       className={`${styles.detailContainer} ${
         direction === "horizontal" ? styles.detailContainerHz : ""
       }`}
     >
-      <Title title={title} />
+      <div className={styles.titleContainer}>
+        <Link to={`/watch/${videoId}`}>
+          <h3 className={styles.title}>{title}</h3>
+        </Link>
+      </div>
       <div className={styles.channelInfo}>
         {direction === "horizontal" && (
           <Avatar size="extraSmall" channel={channel} />

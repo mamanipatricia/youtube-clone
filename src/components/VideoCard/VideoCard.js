@@ -5,22 +5,6 @@ import styles from "./VideoCard.module.css";
 import { Link } from "react-router-dom";
 import MoreActions from "../MoreActions/MoreActions";
 
-/*
-
-FORMATEAR LOS VIEWS/SUBSCRIBERS
-LIKES = 0   COMMENTS
-
-STYLES IN SEARCH
-HOME/RESULTS -> MENU CONTENT
-SEARCH -> BG 100%
-CARROUSEL -> HEADER YA TU SABE
-
-FIX SEARCH EMPTY VALUE
-
-Ingles we
-
-SERVICIOS -> FORMATTERS -> CUSTOM HOOKS -> UTILS -> 
-*/
 function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
   const {
     videoId,
@@ -63,6 +47,7 @@ function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
           description={description}
           direction={direction}
           hiddenContent={hiddenContent}
+          videoId={videoId}
         />
         <div className={styles.menu}>
           <MoreActions menuContent={menuContent} />

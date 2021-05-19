@@ -35,6 +35,7 @@ export default function HorizontalVideoCard({
             viewCount={viewCount}
             channel={channel}
             publishedAt={publishedAt}
+            videoId={videoId}
           />
           <div className={styles.menu}>
             <MoreActions menuContent={menuContent} />
