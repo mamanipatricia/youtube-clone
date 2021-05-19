@@ -1,4 +1,3 @@
-import React from "react";
 import Thumbnail from "../Thumbnail/Thumbnail";
 import Avatar from "../Avatar/Avatar";
 import Detail from "../Detail/Detail";
@@ -6,6 +5,22 @@ import styles from "./VideoCard.module.css";
 import { Link } from "react-router-dom";
 import MoreActions from "../MoreActions/MoreActions";
 
+/*
+
+FORMATEAR LOS VIEWS/SUBSCRIBERS
+LIKES = 0   COMMENTS
+
+STYLES IN SEARCH
+HOME/RESULTS -> MENU CONTENT
+SEARCH -> BG 100%
+CARROUSEL -> HEADER YA TU SABE
+
+FIX SEARCH EMPTY VALUE
+
+Ingles we
+
+SERVICIOS -> FORMATTERS -> CUSTOM HOOKS -> UTILS -> 
+*/
 function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
   const {
     videoId,
@@ -30,7 +45,13 @@ function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
         </div>
       </Link>
 
-      <div className={styles.videoCardInfo}>
+      <div
+        className={`${
+          direction !== "horizontal"
+            ? styles.videoCardInfo
+            : styles.videoCardInfoHz
+        }`}
+      >
         {direction !== "horizontal" && !hiddenContent.includes("avatar") && (
           <Avatar channel={channel} />
         )}

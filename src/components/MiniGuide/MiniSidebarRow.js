@@ -1,4 +1,3 @@
-import React from "react";
 import Icon from "../Icon/Icon";
 import styles from "./MiniSidebarRow.module.css";
 import { Link, useLocation } from "react-router-dom";

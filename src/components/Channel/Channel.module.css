@@ -3,6 +3,9 @@
   flex-direction: column;
   width: 100%;
 }
+.bannerContainer {
+  display: flex;
+}
 .channelBgHeader {
   background: #f9f9f9;
 }
@@ -78,15 +81,29 @@
 .channelTabbedHeader {
   display: flex;
   flex-direction: row;
-  padding: 15px;
-  margin: 0 auto;
   justify-content: center;
+  padding: 15px 15px 0;
+  margin: 0 auto;
 }
 .channelTabbedItem {
+  position: relative;
   color: gray;
   font-size: var(--font-size);
   font-weight: bold;
-  padding: 0 40px;
+  padding: 8px 40px;
   text-decoration: none;
 }
-
+.channelTabbedItemActive:after {
+  background-color: var(--icon-secondary);
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+.channelSectionsContainer {
+  background: var(--background-b);
+  padding: 5px 50px;
+  height: 100%;
+}

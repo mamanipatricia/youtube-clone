@@ -11,6 +11,7 @@ export default function ChannelHome({ channelId, menuContent }) {
   const loading = useLoading();
 
   const getChannelSections = async () => {
+    // Initial value for channel Sections
     let resp = { data: {} };
     try {
       resp = await youTubeService.getChannelSections(channelId);
@@ -39,7 +40,7 @@ export default function ChannelHome({ channelId, menuContent }) {
   };
 
   const getChannelSections1 = async () => {
-    const playlistData = await getPlaylistData();
+    let playlistData = await getPlaylistData();
     const playlistsIDs = Object.keys(playlistData);
     const playListInfoData = await getPlaylistInfo(playlistsIDs);
 
@@ -50,6 +51,10 @@ export default function ChannelHome({ channelId, menuContent }) {
         playlist.section.title = playlist.details?.title;
       }
     });
+    // filtering "undefined details property" from playlistData
+    Object.entries(playlistData)
+      .filter(([, playlist]) => !playlist.details)
+      .forEach((item) => delete playlistData[item[0]]);
 
     await Promise.all(
       Object.entries(playlistData).map(async ([playlistId, playlist]) => {
@@ -57,13 +62,18 @@ export default function ChannelHome({ channelId, menuContent }) {
         const videosId = resp.items?.map(
           (video) => video.snippet.resourceId.videoId
         );
-        let { data } = await youTubeService.getVideos(videosId);
-        return { [playlistId]: data };
+        try {
+          let { data } = await youTubeService.getVideos(videosId);
+          return { [playlistId]: data || [] };
+        } catch (err) {}
+        return { [playlistId]: [] };
       })
     ).then((values) => {
       values.forEach((playlist) => {
         const [[key, value]] = Object.entries(playlist); // [[id, {}]]
-        playlistData[key].items = value;
+        if (value.length) {
+          playlistData[key].items = value;
+        }
       });
     });
     // GROUP BY POSITION
@@ -82,6 +92,7 @@ export default function ChannelHome({ channelId, menuContent }) {
       };
       return acc;
     }, []);
+
     return objFormatted;
   };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HorizontalPlaylistCard from "../HorizontalPlaylistCard/HorizontalPlaylistCard";
 import Icon from "../Icon/Icon";
 import HorizontalVideoCard from "./HorizontalVideoCard./HorizontalVideoCard";

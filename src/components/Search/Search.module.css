@@ -31,12 +31,14 @@
   border-radius: 0 2px 2px 0;
   cursor: pointer;
   border: 1px solid #ccc;
+  outline: none;
 }
 .buttonMicrophone {
   padding: 0px 8px;
   border: none;
   background: none;
   cursor: pointer;
+  outline: none;
 }
 .formWrapper {
   flex: 1;

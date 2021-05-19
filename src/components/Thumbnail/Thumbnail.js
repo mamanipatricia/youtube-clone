@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Thumbnail.module.css";
 
 export default function Thumbnail({ url, duration = "" }) {

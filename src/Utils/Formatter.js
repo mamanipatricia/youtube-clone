@@ -92,7 +92,6 @@ export default class Formatter {
           playListObj[itemPlayListID] = {
             section: {
               position: item.snippet.position,
-              //! todo fix when title undefined
               title: item.snippet.title || "",
               description: "",
               type: item.snippet.type,

@@ -9,6 +9,7 @@ import ChannelVideos from "./ChannelVideos/ChannelVideos";
 import { ChannelPlaylists } from "./ChannelPlaylists/ChannelPlaylists";
 import { ChannelAbout } from "./ChannelAbout/ChannelAbout";
 import { ChannelChannels } from "./ChannelChannels/ChannelChannels";
+import { useLocation } from "react-use";
 
 const menuVideoCard = [
   {
@@ -57,6 +58,9 @@ export function Subscribers({ channel }) {
 
 export function Channel() {
   let { channelId } = useParams();
+  const location = useLocation();
+  const section = location.pathname.split("/")[3] || "";
+
   channelId = channelId.split("/")[0];
   // [channelId] = channelId.split("/"); // the same as above
   const [channel, setChannel] = useState({});
@@ -92,7 +96,7 @@ export function Channel() {
   return (
     <>
       <div className={styles.channelContainer}>
-        <div>
+        <div className={styles.bannerContainer}>
           {banner && (
             <img
               className={styles.bannerChannel}
@@ -122,37 +126,41 @@ export function Channel() {
             </div>
           </div>
           <div className={styles.channelTabbedHeader}>
-            {channelHeaderOptions.map((options) => {
+            {channelHeaderOptions.map((option, index) => {
               return (
                 <Link
-                  className={styles.channelTabbedItem}
-                  to={`/channel/${channelId}/${options.url}`}
+                  key={index}
+                  className={`${styles.channelTabbedItem} ${
+                    option.url === section ? styles.channelTabbedItemActive : ""
+                  }`}
+                  to={`/channel/${channelId}/${option.url}`}
                 >
-                  {options.label}
+                  {option.label}
                 </Link>
               );
             })}
           </div>
         </div>
       </div>
-
-      <Switch>
-        <Route exact path="/channel/:channelId">
-          <ChannelHome channelId={channelId} menuContent={menuVideoCard} />
-        </Route>
-        <Route path="/channel/:channelId/videos">
-          <ChannelVideos channelId={channelId} menuContent={menuVideoCard} />
-        </Route>
-        <Route path="/channel/:channelId/playlist">
-          <ChannelPlaylists channelId={channelId} />
-        </Route>
-        <Route path="/channel/:channelId/channels">
-          <ChannelChannels channelId={channelId} />
-        </Route>
-        <Route path="/channel/:channelId/about">
-          <ChannelAbout channelId={channelId} />
-        </Route>
-      </Switch>
+      <div className={styles.channelSectionsContainer}>
+        <Switch>
+          <Route exact path="/channel/:channelId">
+            <ChannelHome channelId={channelId} menuContent={menuVideoCard} />
+          </Route>
+          <Route path="/channel/:channelId/videos">
+            <ChannelVideos channelId={channelId} menuContent={menuVideoCard} />
+          </Route>
+          <Route path="/channel/:channelId/playlist">
+            <ChannelPlaylists channelId={channelId} />
+          </Route>
+          <Route path="/channel/:channelId/channels">
+            <ChannelChannels channelId={channelId} />
+          </Route>
+          <Route path="/channel/:channelId/about">
+            <ChannelAbout channelId={channelId} />
+          </Route>
+        </Switch>
+      </div>
     </>
   );
 }

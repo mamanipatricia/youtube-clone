@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Thumbnail from "../../Thumbnail/Thumbnail";
 import Detail from "../../Detail/Detail";
@@ -12,7 +11,7 @@ export default function HorizontalVideoCard({
   menuContent = [],
 }) {
   if (!video) return "video not found";
-const {
+  const {
     videoId,
     title,
     viewCount,

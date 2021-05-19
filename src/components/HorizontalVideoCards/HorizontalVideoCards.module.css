@@ -3,9 +3,9 @@
 }
 .horizontalVideoCardsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(fit, minmax(215px, 1fr)); */
   grid-auto-flow: column;
-  grid-auto-columns: minmax(300px, 360px);
+  grid-auto-columns: 215px;
   position: relative;
   grid-gap: 40px 16px;
   gap: 40px 16px;

@@ -1,11 +1,10 @@
-import React from "react";
 import styles from "./ChannelSection.module.css";
 import Icon from "../Icon/Icon";
 import HorizontalVideoCards from "../HorizontalVideoCards/HorizontalVideoCards";
 
 export default function ChannelSections({ videos = [], menuContent }) {
   return (
-    <div className={styles.channelSectionContainer}>
+    <div>
       {videos.map((item, idx) => {
         return (
           <div key={`item-${idx}`} className={styles.subheaderContainer}>

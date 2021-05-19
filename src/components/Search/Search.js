@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Search.module.css";
 import Icon from "../Icon/Icon";
 import { useHistory, useLocation } from "react-router-dom";
@@ -16,7 +16,12 @@ function Search() {
   };
   const onSubmit = (event) => {
     event.preventDefault();
-    history.push({ pathname: `/results`, search: `?search_query=${keyword}` });
+    if (keyword.length > 0) {
+      history.push({
+        pathname: `/results`,
+        search: `?search_query=${keyword}`,
+      });
+    }
   };
 
   return (
@@ -33,7 +38,7 @@ function Search() {
         <button className={styles.searchButton}>
           <Icon name="SEARCH" width="20px" height="20px" />
         </button>
-        <button className={styles.buttonMicrophone}>
+        <button type="button" className={styles.buttonMicrophone}>
           <Icon name="MICROPHONE" />
         </button>
       </form>

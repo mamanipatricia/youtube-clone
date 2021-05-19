@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { youTubeService } from "../../services/YouTubeService";
 import { useHistory, useLocation } from "react-router-dom";
 import Icon from "../Icon/Icon";

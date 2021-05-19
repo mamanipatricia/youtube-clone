@@ -6,6 +6,7 @@
   position: fixed;
   z-index: 90;
   top: 0;
+  background: white;
 }
 
 .navbar {

@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import SidebarRow from "./components/SidebarRow/SidebarRow";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Search from "./components/Search/Search";
 import { Channel } from "./components/Channel/Channel";
 
 import Explore from "./components/Explore/Explore";

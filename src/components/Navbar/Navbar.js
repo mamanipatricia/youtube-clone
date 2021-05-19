@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Search from "../Search/Search";
 import styles from "./Navbar.module.css";
 import Icon from "../Icon/Icon";

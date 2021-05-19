@@ -1,4 +1,3 @@
-import React from "react";
 import Avatar from "../../Avatar/Avatar";
 import styles from "./Comment.module.css";
 import Icon from "../../Icon/Icon";

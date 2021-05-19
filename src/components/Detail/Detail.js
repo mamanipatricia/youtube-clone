@@ -6,7 +6,11 @@ export default function Detail(props) {
   const { title, viewCount, publishedAt, channel, direction, description } =
     props;
   return (
-    <div className={styles.detailContainer}>
+    <div
+      className={`${styles.detailContainer} ${
+        direction === "horizontal" ? styles.detailContainerHz : ""
+      }`}
+    >
       <Title title={title} />
       <div className={styles.channelInfo}>
         {direction === "horizontal" && (

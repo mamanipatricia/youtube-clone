@@ -1,4 +1,3 @@
-import React from "react";
 import HorizontalVideoCard from "../HorizontalVideoCards/HorizontalVideoCard./HorizontalVideoCard";
 import styles from "./RelatedVideosContainer.module.css";
 

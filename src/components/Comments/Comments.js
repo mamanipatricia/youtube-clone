@@ -1,4 +1,3 @@
-import React from "react";
 import Icon from "../Icon/Icon";
 import styles from "./Comments.module.css";
 import AuthorComment from "./AuthorComment/AuthorComment";

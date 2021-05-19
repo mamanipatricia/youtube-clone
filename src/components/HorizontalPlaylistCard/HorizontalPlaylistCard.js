@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Owner } from "../Channel/Channel";
 import { Title } from "../Detail/Detail";
@@ -20,7 +19,7 @@ export default function HorizontalPlaylistCard({ video, direction, dataRef }) {
   };
 
   return (
-    <div ref={dataRef} className={styles.horizontalVideoCardContainer}>
+    <div ref={dataRef}>
       <div className={`${direction === "row" ? styles.horizontalCard : ""}`}>
         <Link to={`/watch/${items[0].videoId}?list=${playlistId}`}>
           <div className={styles.hoveredCard}>
@@ -36,7 +35,9 @@ export default function HorizontalPlaylistCard({ video, direction, dataRef }) {
           <Title title={title} />
           <Owner channel={channel} />
         </div>
-        <div className={styles.viewFullPlaylist} onClick={fullPlayListHandle}>VIEW FULL PLAYLIST</div>
+        <div className={styles.viewFullPlaylist} onClick={fullPlayListHandle}>
+          VIEW FULL PLAYLIST
+        </div>
       </div>
     </div>
   );

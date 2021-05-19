@@ -1,4 +1,3 @@
-import React from "react";
 import menuDetail from "../../assets/images/menu.svg";
 import styles from "./Menu.module.css";
 

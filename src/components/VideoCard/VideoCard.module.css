@@ -5,6 +5,7 @@
 }
 .videoCardContainerHorizontal {
   flex-direction: row;
+  gap: 8px;
 }
 .videoCardInfo {
   width: 100%;
@@ -13,6 +14,13 @@
   justify-self: start;
   margin: 10px 0 0;
   gap: 12px;
+}
+.videoCardInfoHz {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-self: start;
+    gap: 12px;
 }
 .menu {
   justify-self: end;

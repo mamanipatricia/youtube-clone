@@ -155,15 +155,6 @@ export default function Watch() {
                     </button>
                     <span> SAVE</span>
                   </div>
-                  <div className={styles.watchInfoMenuContainer}>
-                    <button className={styles.watchInfoMenuButton}>
-                      <Icon
-                        className={styles.watchInfoMenu}
-                        name="MENU"
-                        color="var(--bg-sentiment)"
-                      />
-                    </button>
-                  </div>
                   <MoreActions menuContent={menuWatch} />
                 </div>
               </div>

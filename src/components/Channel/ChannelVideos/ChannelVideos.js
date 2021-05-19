@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoading } from "../../../hooks/useLoading";
 import { youTubeService } from "../../../services/YouTubeService";
 import Spinner from "../../Spinner/Spinner";
-import VideoCards from "../../VideoCards/VideoCards";
+import VideoCard from "../../VideoCard/VideoCard";
+import styles from "./ChannelVideos.module.css";
 
 export default function ChannelVideos({ channelId, menuContent }) {
   const [videos, setVideos] = useState([]);
@@ -72,13 +73,19 @@ export default function ChannelVideos({ channelId, menuContent }) {
   return (
     <div>
       {loading.isPending && <Spinner />}
-      {loading.isSuccess && (
-        <VideoCards
-          hiddenContent={["avatar"]}
-          videos={videos}
-          menuContent={menuContent}
-        />
-      )}
+      <div className={styles.videosContainer}>
+        {loading.isSuccess &&
+          videos.map((video) => {
+            return (
+              <VideoCard
+                key={video.videoId}
+                hiddenContent={["avatar"]}
+                video={video}
+                menuContent={menuContent}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 }

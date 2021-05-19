@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./AuthorContent.module.css";
 import author from "../../../logo.svg";
 // import Avatar from "../../Avatar/Avatar";

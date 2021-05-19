@@ -1,8 +1,3 @@
-.channelSectionContainer {
-  background: none !important;
-  background: red;
-  padding: 30px;
-}
 .subheaderContainer {
   display: flex;
   flex-direction: column;
