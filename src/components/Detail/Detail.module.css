@@ -36,6 +36,8 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   color: var(--text-primary);
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 .viewTimestampContainer {
   display: flex;
@@ -54,4 +56,6 @@
   -webkit-line-clamp: 1;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }

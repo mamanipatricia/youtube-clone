@@ -17,12 +17,11 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  /* min-height: 20px; */
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 1e-9px;
-  word-break: break-all;
-  /* background: blue; */
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 .commentBox {
   padding-bottom: 8px;
@@ -31,8 +30,7 @@
 .simpleBoxPlaceholder {
   flex: 1;
   font-weight: 400;
-  word-break: normal;
-  word-wrap: break-word;
+  overflow-wrap: anywhere;
   border: 0px;
   width: 100%;
   margin-bottom: 4px;

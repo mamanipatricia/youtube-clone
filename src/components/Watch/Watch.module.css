@@ -51,6 +51,8 @@
 }
 .videoTitle {
   font-size: 18px;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 .watchInfoContainer {
   display: flex;
@@ -116,6 +118,8 @@
 .watchContentInfo {
   color: var(--text-secondary);
   margin: 0;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 .watchShowMore {
   margin-top: 8px;
