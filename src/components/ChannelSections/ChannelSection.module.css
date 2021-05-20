@@ -32,6 +32,9 @@
   text-transform: uppercase;
   white-space: nowrap;
 }
+.playAll {
+  color: var(--text-primary);
+}
 .subtitle {
   max-height: 42px;
   min-width: 615px;

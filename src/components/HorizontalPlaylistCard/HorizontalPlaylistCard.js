@@ -7,7 +7,6 @@ import styles from "./HorizontalPlaylistCard.module.css";
 export default function HorizontalPlaylistCard({ video, direction, dataRef }) {
   const history = useHistory();
 
-  // https://www.youtube.com/playlist?list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC
   if (!video) return "video not found";
   const { playlistId, title, thumbnail, count, channel, duration, items } =
     video;

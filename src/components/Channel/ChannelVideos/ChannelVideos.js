@@ -32,7 +32,6 @@ export default function ChannelVideos({ channelId, menuContent }) {
               params
             );
             nextPageToken = resp.nextPageToken;
-
             resp.items?.forEach((video) => {
               videosIDResponse.push(video.snippet.resourceId.videoId);
             });

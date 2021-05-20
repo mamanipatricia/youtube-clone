@@ -1,8 +1,6 @@
 import { createContext, useState } from "react";
 
-const GuideContext = createContext({
-  toggleSidebarRow: false,
-});
+const GuideContext = createContext();
 
 export default GuideContext;
 
