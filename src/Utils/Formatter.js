@@ -31,6 +31,7 @@ export default class Formatter {
     };
     return { data: video };
   }
+
   formatVideos(data) {
     this.handleError(data);
     this.checkIfExistData(data);
@@ -190,9 +191,5 @@ export default class Formatter {
       };
     });
     return { data: playlistInfo };
-  }
-  formatPlaylistItems(data) {
-    this.handleError(data);
-    this.checkIfExistData(data);
   }
 }

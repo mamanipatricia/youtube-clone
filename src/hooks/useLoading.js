@@ -10,12 +10,12 @@ export const useLoading = () => {
   return {
     status: status,
 
-    pending: () => updateStatus("pending"),
-    success: () => updateStatus("success"),
-    error: () => updateStatus("error"),
-
     isPending: status === "pending",
     isSuccess: status === "success",
     isError: status === "error",
+
+    pending: () => updateStatus("pending"),
+    success: () => updateStatus("success"),
+    error: () => updateStatus("error"),
   };
 };
