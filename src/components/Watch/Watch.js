@@ -154,7 +154,7 @@ export default function Watch() {
                     </button>
                     <span> SAVE</span>
                   </div>
-                  <DropdownMenu menuContent={menuWatch} />
+                  <DropdownMenu name="MENU" menuContent={menuWatch} />
                 </div>
               </div>
             </div>

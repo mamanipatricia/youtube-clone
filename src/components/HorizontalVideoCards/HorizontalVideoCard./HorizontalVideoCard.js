@@ -38,7 +38,7 @@ export default function HorizontalVideoCard({
             videoId={videoId}
           />
           <div className={styles.menu}>
-            <DropdownMenu menuContent={menuContent} />
+            <DropdownMenu name="MENU" menuContent={menuContent} />
           </div>
         </div>
       </div>

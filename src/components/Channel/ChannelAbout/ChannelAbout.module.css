@@ -1,0 +1,39 @@
+.channelAboutContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 5px 50px;
+}
+.leftContent {
+  width: 85%;
+}
+.rightContentContainer {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  row-gap: 16px;
+  padding: 32px;
+}
+.rightContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.rightContent > div {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--underline-color);
+}
+.detailsContainer {
+  width: 85%;
+}
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  color: var(--text-sentiment);
+}
+.linksListContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: var(--bg-type);
+  gap: 32px;
+}

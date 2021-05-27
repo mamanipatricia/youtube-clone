@@ -1,0 +1,13 @@
+.button {
+  color: var(--text-secondary);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  background: var(--badge-background);
+  outline: none;
+}

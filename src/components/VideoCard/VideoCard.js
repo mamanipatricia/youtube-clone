@@ -50,7 +50,7 @@ function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
           videoId={videoId}
         />
         <div className={styles.menu}>
-          <DropdownMenu menuContent={menuContent} />
+          <DropdownMenu name="MENU" menuContent={menuContent} />
         </div>
       </div>
     </div>

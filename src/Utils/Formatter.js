@@ -17,7 +17,7 @@ export default class Formatter {
     const video = {
       videoId: data.id,
       title: data.snippet.title,
-    description: data.snippet.description,
+      description: data.snippet.description,
       thumbnail: data.snippet.thumbnails.medium.url,
       viewCount: data.statistics.viewCount,
       publishedAt: data.snippet.publishedAt,
@@ -63,6 +63,10 @@ export default class Formatter {
       avatar: data.items[0].snippet.thumbnails.high.url,
       banner: data.items[0].brandingSettings.image?.bannerExternalUrl,
       channelName: data.items[0].brandingSettings.channel.title,
+      channelOwnerCountry: data.items[0].brandingSettings.channel.country,
+      channelDescription: data.items[0].brandingSettings.channel.description,
+      channelPublishedAt: data.items[0].snippet.publishedAt,
+      channelViewCount: data.items[0].statistics.viewCount,
       subscribers: data.items[0].statistics.subscriberCount,
     };
     return { data: channelData };

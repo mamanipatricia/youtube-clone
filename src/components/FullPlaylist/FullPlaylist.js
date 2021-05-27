@@ -100,6 +100,7 @@ export const FullPlaylist = () => {
               <Icon name="SHUFFLE" color="var(--text-sentiment)" />
               <Icon name="SHARE" color="var(--text-sentiment)" />
               <DropdownMenu
+                name="MENU"
                 menuContent={menuPlaylist}
                 direction="horizontal"
                 position="left"
@@ -127,7 +128,10 @@ export const FullPlaylist = () => {
                       />
                     </div>
                     <div className={styles.moreActions}>
-                      <DropdownMenu menuContent={menuPlaylistItem} />
+                      <DropdownMenu
+                        name="MENU"
+                        menuContent={menuPlaylistItem}
+                      />
                     </div>
                   </div>
                 );

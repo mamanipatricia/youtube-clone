@@ -7,6 +7,7 @@ export default function DropdownMenu({
   menuContent = [],
   direction,
   position = "right",
+  name,
 }) {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
   const menuRef = useRef(null);
@@ -27,7 +28,7 @@ export default function DropdownMenu({
             direction === "horizontal" ? styles.iconContainerHorizontal : ""
           }`}
         >
-          <Icon name="MENU" color="var(--bg-sentiment)" />
+          <Icon name={name} color="var(--bg-sentiment)" />
         </span>
       </button>
       {isVisibleMenu && (
