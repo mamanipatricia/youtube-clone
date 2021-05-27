@@ -3,7 +3,7 @@ import Avatar from "../Avatar/Avatar";
 import Detail from "../Detail/Detail";
 import styles from "./VideoCard.module.css";
 import { Link } from "react-router-dom";
-import MoreActions from "../MoreActions/MoreActions";
+import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
 
 function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
   const {
@@ -50,7 +50,7 @@ function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
           videoId={videoId}
         />
         <div className={styles.menu}>
-          <MoreActions menuContent={menuContent} />
+          <DropdownMenu menuContent={menuContent} />
         </div>
       </div>
     </div>

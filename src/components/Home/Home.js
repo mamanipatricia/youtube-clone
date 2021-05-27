@@ -41,43 +41,58 @@ const menuHome = [
 
 export default function Home() {
   const [search, setSearch] = useState([]);
-
   const loading = useLoading();
+  const [searchClone, setSearchClone] = useState([]);
 
   const getSearch = async (keyword) => {
     const { data } = await youTubeService.getSearch(keyword);
     return data;
   };
+  const getVideosSearch = async (keyword) => {
+    try {
+      loading.pending();
+      const { channelsId, videosId } = await getSearch(keyword);
+      const { data: channelsData } = await youTubeService.getChannels(
+        channelsId
+      );
+      const { data: videosData } = await youTubeService.getVideos(videosId);
+      const data = videosData.map((video) => {
+        const channelId = video.channel.channelId;
+        const channelInfo = channelsData.find(
+          (channel) => channel.channelId === channelId
+        );
+        return { ...video, channel: channelInfo };
+      });
+      setSearch(data);
+      loading.success();
+    } catch (err) {
+      console.log(`err`, err);
+      loading.error();
+    }
+  };
 
   useEffect(() => {
-    (async () => {
-      try {
-        const { channelsId, videosId } = await getSearch("reactjs");
-        const { data: channelsData } = await youTubeService.getChannels(
-          channelsId
-        );
-        loading.pending();
-        const { data: videosData } = await youTubeService.getVideos(videosId);
-        const data = videosData.map((video) => {
-          const channelId = video.channel.channelId;
-          const channelInfo = channelsData.find(
-            (channel) => channel.channelId === channelId
-          );
-          return { ...video, channel: channelInfo };
-        });
-        setSearch(data);
-        loading.success();
-      } catch (err) {
-        console.log(`err`, err);
-        loading.error();
-      }
-    })();
+    getVideosSearch("reactjs");
   }, []);
+
+  useEffect(() => {
+    if (searchClone.length === 0) {
+      setSearchClone(search);
+    }
+  }, [search]);
+
+  const onChangeFeed = (feed) => {
+    if (feed === "All") {
+      setSearch(searchClone);
+      return;
+    }
+    getVideosSearch(feed);
+  };
 
   return (
     <div className={styles.homeContainer}>
       <div className={styles.feedFilterContainer}>
-        <FeedFilterBarRenderer />
+        <FeedFilterBarRenderer onChangeFeed={onChangeFeed} />
       </div>
       {loading.isPending && (
         <div className={styles.spinner}>
@@ -86,8 +101,14 @@ export default function Home() {
       )}
       <div className={styles.videosContainer}>
         {loading.isSuccess &&
-          search.map((video) => {
-            return <VideoCard video={video} menuContent={menuHome} />;
+          search.map((video, index) => {
+            return (
+              <VideoCard
+                key={`video-${index}`}
+                video={video}
+                menuContent={menuHome}
+              />
+            );
           })}
       </div>
     </div>

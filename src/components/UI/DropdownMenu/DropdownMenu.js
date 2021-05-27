@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
-import Icon from "../Icon/Icon";
-import styles from "./MoreActions.module.css";
+import Icon from "../../Icon/Icon";
+import styles from "./DropdownMenu.module.css";
 import { useClickAway } from "react-use";
 
-export default function MoreActions({
+export default function DropdownMenu({
   menuContent = [],
   direction,
   position = "right",

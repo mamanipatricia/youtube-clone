@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Thumbnail from "../../Thumbnail/Thumbnail";
 import Detail from "../../Detail/Detail";
 import styles from "./HorizontalVideoCard.module.css";
-import MoreActions from "../../MoreActions/MoreActions";
+import DropdownMenu from "../../UI/DropdownMenu/DropdownMenu";
 
 export default function HorizontalVideoCard({
   video,
@@ -38,7 +38,7 @@ export default function HorizontalVideoCard({
             videoId={videoId}
           />
           <div className={styles.menu}>
-            <MoreActions menuContent={menuContent} />
+            <DropdownMenu menuContent={menuContent} />
           </div>
         </div>
       </div>

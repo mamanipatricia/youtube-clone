@@ -1,25 +1,41 @@
+import { useState } from "react";
+
 import styles from "./FeedFilterBarRenderer.module.css";
 
-export default function FeedFilterBarRenderer() {
-  const feedFilterItems = new Map([
-    ["feed1", "All"],
-    ["feed2", "Live"],
-    ["feed3", "JavaScript"],
-    ["feed4", "Angular"],
-    ["feed5", "Training"],
-    ["feed6", "Music"],
-    ["feed7", "Chill out music"],
-    ["feed8", "Comedy"],
-    ["feed9", "cryptocurrencies"],
-    ["feed10", "Electronic Music"],
-    ["feed11", "Recently uploaded"],
-  ]);
+const feedFilterItems = [
+  { id: 1, label: "All" },
+  { id: 2, label: "Live" },
+  { id: 3, label: "JavaScript" },
+  { id: 4, label: "Angular" },
+  { id: 5, label: "Training" },
+  { id: 6, label: "Music" },
+  { id: 7, label: "Chill out music" },
+  { id: 8, label: "Comedy" },
+  { id: 9, label: "cryptocurrencies" },
+  { id: 10, label: "Electronic Music" },
+  { id: 11, label: "Recently uploaded" },
+];
+
+export default function FeedFilterBarRenderer({ onChangeFeed }) {
+  const [feed, setFeed] = useState(null);
+
+  const feedDisplayHandle = (newFeed) => {
+    setFeed(newFeed);
+    onChangeFeed(newFeed);
+  };
+
   return (
     <div className={styles.feedFilterContainer}>
-      {[...feedFilterItems].map((item, index) => {
+      {feedFilterItems.map((feedItem) => {
         return (
-          <div key={`key${index}`} className={styles.feedFilter}>
-            {item[1]}
+          <div
+            key={`key-${feedItem.id}`}
+            className={`${styles.feedFilter} ${
+              feedItem.label === feed ? styles.active : ""
+            }`}
+            onClick={() => feedDisplayHandle(feedItem.label)}
+          >
+            {feedItem.label}
           </div>
         );
       })}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { youTubeService } from "../../services/YouTubeService";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Icon from "../Icon/Icon";
 import styles from "./PlaylistPanel.module.css";
 import { HorizontalVideoItem } from "../HorizontalVideoItem/HorizontalVideoItem";
@@ -10,7 +10,6 @@ export default function PlaylistPanel() {
   const query = new URLSearchParams(location.search);
   const listId = query.get("list");
   const index = query.get("index") || 1;
-  const history = useHistory();
 
   const [videos, setVideos] = useState([]);
   const [playlist, setPlaylist] = useState({});
@@ -40,13 +39,6 @@ export default function PlaylistPanel() {
       getPlaylistItems();
     }
   }, [index]);
-
-  const videoPositionHandle = (videoId, newIndex) => {
-    history.push({
-      pathname: `/watch/${videoId}`,
-      search: `?list=${listId}&index=${newIndex}`,
-    });
-  };
 
   if (!listId) return null;
 
@@ -84,7 +76,6 @@ export default function PlaylistPanel() {
           return (
             <div
               key={video.videoId}
-              // onClick={() => videoPositionHandle(video.videoId, idx + 1)}
               className={`${styles.playlistItem} ${
                 idx + 1 === +index ? styles.playlistItemActive : ""
               }`}

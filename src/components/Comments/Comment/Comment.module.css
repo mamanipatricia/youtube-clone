@@ -60,6 +60,7 @@
 .reply {
   color: var(--text-sentiment);
   font-weight: 500;
+  outline: none;
 }
 .footerButtons > button {
   border: none;

@@ -1,5 +1,4 @@
 .feedFilterContainer {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,4 +13,8 @@
   color: var(--text-primary);
   cursor: pointer;
   white-space: nowrap;
+}
+.active {
+  background: var(--bg-sentiment);
+  color: white;
 }

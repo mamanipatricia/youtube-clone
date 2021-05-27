@@ -3,7 +3,6 @@ import SidebarRow from "./components/SidebarRow/SidebarRow";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import { Channel } from "./components/Channel/Channel";
-
 import Explore from "./components/Explore/Explore";
 import Subscription from "./components/Subscription/Subscription";
 import Library from "./components/Library/Library";
@@ -11,15 +10,13 @@ import History from "./components/History/History";
 import MyVideos from "./components/MyVideos/MyVideos";
 import WatchLater from "./components/WatchLater/WatchLater";
 import LikedVideos from "./components/LikedVideos/LikedVideos";
-
-import styles from "./App.module.css";
 import MiniSidebarRow from "./components/MiniGuide/MiniSidebarRow";
-
 import GuideContext from "./context/guideContext";
 import Home from "./components/Home/Home";
 import Watch from "./components/Watch/Watch";
 import SearchResults from "./components/SearchResults/SearchResults";
 import { FullPlaylist } from "./components/FullPlaylist/FullPlaylist";
+import styles from "./App.module.css";
 
 function App() {
   const [toggleSidebarRow] = useContext(GuideContext);
@@ -53,9 +50,7 @@ function App() {
             <Route path="/feed/my-videos" component={MyVideos} />
             <Route path="/feed/watch-later" component={WatchLater} />
             <Route path="/feed/liked-videos" component={LikedVideos} />
-
             <Route path="/playlist" component={FullPlaylist} />
-
             <Route path="/watch/:videoId" component={Watch} />
           </Switch>
         </div>

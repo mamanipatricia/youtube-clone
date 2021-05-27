@@ -1,5 +1,4 @@
 //! each service has to have a baseURL
-
 export default class BaseService {
   constructor(url) {
     this.baseURL = url;

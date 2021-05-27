@@ -3,8 +3,9 @@
   width: 72px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   background: white;
+  height: calc(100% - 56px);
+  justify-content: start;
 }
 .miniSidebarRow {
   display: flex;

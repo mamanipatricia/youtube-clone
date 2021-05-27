@@ -31,7 +31,7 @@ export default function Comment({ comment } = {}) {
               <span>{authorName}</span>
             </Link>
           </h3>
-          <span className={styles.publishedTime} >{publishedAt}</span>
+          <span className={styles.publishedTime}>{publishedAt}</span>
         </div>
         <div className={styles.expander}>
           <div className={styles.content}>{textOriginal}</div>
@@ -41,13 +41,13 @@ export default function Comment({ comment } = {}) {
             <span>
               <Icon name="LIKE" color="var(--text-sentiment)" />
             </span>
-            <span> {likeCount}</span>
+            <span> {likeCount || ""}</span>
           </div>
           <div className={styles.likeButton}>
             <span className={styles.dislikeButton}>
               <Icon name="LIKE" color="var(--text-sentiment)" />
             </span>
-            <span> {dislikeCount}</span>
+            <span> {dislikeCount || ""}</span>
           </div>
           <div className={styles.footerButtons}>
             <button className={styles.reply}>REPLY {totalReplyCount}</button>

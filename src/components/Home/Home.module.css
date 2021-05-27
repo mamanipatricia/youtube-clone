@@ -15,7 +15,8 @@
   padding-top: 20px;
 }
 .feedFilterContainer {
-  width: 100%;
+  /* width: 100%; */
+  width: calc(100% - 240px);
   display: flex;
   justify-content: center;
   position: fixed;
@@ -24,4 +25,5 @@
   background: white;
   padding: 10px;
   z-index: 2050;
+  box-sizing: border-box;
 }

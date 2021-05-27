@@ -12,7 +12,7 @@ import RelatedVideos from "../RelatedVideos/RelatedVideos";
 import Spinner from "../Spinner/Spinner";
 import { useLoading } from "../../hooks/useLoading";
 import { ChannelInfo } from "../ChannelInfo/ChannelInfo";
-import MoreActions from "../MoreActions/MoreActions";
+import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
 
 const menuWatch = [
   {
@@ -110,7 +110,6 @@ export default function Watch() {
             <div className={styles.playerContainer}>
               <YouTube
                 containerClassName={styles.youtubePlayer}
-                onStateChange=""
                 videoId={video.videoId}
                 opts={opts}
               />
@@ -155,7 +154,7 @@ export default function Watch() {
                     </button>
                     <span> SAVE</span>
                   </div>
-                  <MoreActions menuContent={menuWatch} />
+                  <DropdownMenu menuContent={menuWatch} />
                 </div>
               </div>
             </div>

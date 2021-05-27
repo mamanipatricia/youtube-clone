@@ -17,7 +17,7 @@ export default class Formatter {
     const video = {
       videoId: data.id,
       title: data.snippet.title,
-      description: data.snippet.description,
+    description: data.snippet.description,
       thumbnail: data.snippet.thumbnails.medium.url,
       viewCount: data.statistics.viewCount,
       publishedAt: data.snippet.publishedAt,

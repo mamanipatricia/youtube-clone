@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import { youTubeService } from "../../services/YouTubeService";
 import { ChannelInfo } from "../ChannelInfo/ChannelInfo";
 import { HorizontalVideoItem } from "../HorizontalVideoItem/HorizontalVideoItem";
-import MoreActions from "../MoreActions/MoreActions";
+import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
 import Icon from "../Icon/Icon";
 import Thumbnail from "../Thumbnail/Thumbnail";
 import styles from "./FullPlaylist.module.css";
@@ -99,7 +99,7 @@ export const FullPlaylist = () => {
               <Icon name="SAVE_PLAYLIST" color="var(--text-sentiment)" />
               <Icon name="SHUFFLE" color="var(--text-sentiment)" />
               <Icon name="SHARE" color="var(--text-sentiment)" />
-              <MoreActions
+              <DropdownMenu
                 menuContent={menuPlaylist}
                 direction="horizontal"
                 position="left"
@@ -127,7 +127,7 @@ export const FullPlaylist = () => {
                       />
                     </div>
                     <div className={styles.moreActions}>
-                      <MoreActions menuContent={menuPlaylistItem} />
+                      <DropdownMenu menuContent={menuPlaylistItem} />
                     </div>
                   </div>
                 );
