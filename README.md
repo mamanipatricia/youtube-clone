@@ -2,7 +2,16 @@
 
 A YouTube clone developed using React [DEMO](http://pattty.com)
 
-## STEPS
+The project follows a Nodejs folder structure.
+
+## Requirements
+Have installed
+
+* [nodejs >12](https://nodejs.org/en/download/) - Latest LTS Version: 14.17.0 (includes npm 6.14.13)
+* [yarn](https://classic.yarnpkg.com/en/docs/getting-started) - Install via npm
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) - Depends on the Operating System
+
+## Steps
 
 1. Clone the repository
 2. In the project directory, run:
