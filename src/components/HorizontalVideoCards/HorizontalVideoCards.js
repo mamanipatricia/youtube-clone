@@ -30,7 +30,6 @@ export default function HorizontalVideoCards({ videos, menuContent }) {
       }
     };
   }, [refFirstItem]);
-
   useEffect(() => {
     const refLast = refLastItem.current;
     let options = {
@@ -56,7 +55,6 @@ export default function HorizontalVideoCards({ videos, menuContent }) {
       refCarrousel.current.scrollLeft = 0;
     }
   };
-
   const next = () => {
     refCarrousel.current.scrollLeft += 300;
   };

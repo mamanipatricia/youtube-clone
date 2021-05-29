@@ -20,7 +20,8 @@ export default function HorizontalPlaylistCard({ video, direction, dataRef }) {
   return (
     <div ref={dataRef}>
       <div className={`${direction === "row" ? styles.horizontalCard : ""}`}>
-        <Link to={`/watch/${items[0].videoId}?list=${playlistId}`}>
+        {/* <Link to={`/`}> */}
+        <Link to={`/watch/${items[0]?.videoId}?list=${playlistId}`}>
           <div className={styles.hoveredCard}>
             <Thumbnail
               className={`${(styles.thumbnailHovered, styles.playlistCovered)}`}

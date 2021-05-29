@@ -1,5 +1,15 @@
+.channelPlaylistsContainer {
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  margin: 12px;
+  
+}
 .carrouselContainer {
+  display: flex;
   position: relative;
+  width: 100%;
 }
 .horizontalVideoCardsContainer {
   display: grid;

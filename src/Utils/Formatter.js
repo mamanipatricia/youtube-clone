@@ -192,6 +192,30 @@ export default class Formatter {
         description: item.snippet.description,
         id: item.id,
         playlistId: item.id,
+        kind: item.kind,
+      };
+    });
+    return { data: playlistInfo };
+  }
+
+  formatChannelPlaylists(data) {
+    this.handleError(data);
+    this.checkIfExistData(data);
+
+    const playlistInfo = data.items.map((item) => {
+      return {
+        thumbnail: item.snippet.thumbnails.medium.url,
+        count: item.contentDetails.itemCount,
+        title: item.snippet.title,
+        localized: item.snippet.localized,
+        channel: {
+          channelId: item.snippet.channelId,
+          channelName: item.snippet.channelTitle,
+        },
+        description: item.snippet.description,
+        id: item.id,
+        playlistId: item.id,
+        kind: item.kind,
       };
     });
     return { data: playlistInfo };

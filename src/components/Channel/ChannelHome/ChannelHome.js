@@ -43,7 +43,6 @@ export default function ChannelHome({ channelId, menuContent }) {
     let playlistData = await getPlaylistData();
     const playlistsIDs = Object.keys(playlistData);
     const playListInfoData = await getPlaylistInfo(playlistsIDs);
-
     Object.entries(playlistData).forEach(([playlistId, playlist]) => {
       playlist.details = playListInfoData[playlistId];
       if (playlist.section.type === "singleplaylist") {

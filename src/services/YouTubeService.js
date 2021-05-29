@@ -56,6 +56,13 @@ export default class YouTubeService extends BaseService {
     );
     return this.formatter.formatPlaylists(response);
   }
+  async getChannelPlaylists(channelId) {
+    const response = await this.get(
+      `/playlists?part=snippet,contentDetails&channelId=${channelId}&maxResults=25&key=${this.API_KEY}`
+    );
+    // return response;
+    return this.formatter.formatChannelPlaylists(response);
+  }
   async getPlayListItems(playListId, params = "") {
     const response = await this.get(
       `/playlistItems?${params}part=snippet,contentDetails,id,status&maxResults=50&playlistId=${playListId}&key=${this.API_KEY}`
