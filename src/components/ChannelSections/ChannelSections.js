@@ -1,7 +1,7 @@
-import styles from "./ChannelSection.module.css";
-import Icon from "../Icon/Icon";
-import HorizontalVideoCards from "../HorizontalVideoCards/HorizontalVideoCards";
 import { Link } from "react-router-dom";
+import HorizontalVideoCards from "../HorizontalVideoCards/HorizontalVideoCards";
+import Icon from "../Icon/Icon";
+import styles from "./ChannelSection.module.css";
 
 export default function ChannelSections({ videos = [], menuContent }) {
   return (

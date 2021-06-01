@@ -1,15 +1,15 @@
-import { Link, Route, Switch, useParams } from "react-router-dom";
-import Avatar from "../Avatar/Avatar";
 import { useEffect, useState } from "react";
-import styles from "./Channel.module.css";
-import Icon from "../Icon/Icon";
+import { Link, Route, Switch, useParams } from "react-router-dom";
+import { useLocation } from "react-use";
 import { youTubeService } from "../../services/YouTubeService";
 import ChannelHome from "./ChannelHome/ChannelHome";
 import ChannelVideos from "./ChannelVideos/ChannelVideos";
 import { ChannelPlaylists } from "./ChannelPlaylists/ChannelPlaylists";
 import { ChannelAbout } from "./ChannelAbout/ChannelAbout";
 import { ChannelChannels } from "./ChannelChannels/ChannelChannels";
-import { useLocation } from "react-use";
+import Avatar from "../Avatar/Avatar";
+import Icon from "../Icon/Icon";
+import styles from "./Channel.module.css";
 
 const menuVideoCard = [
   {
@@ -61,8 +61,7 @@ export function Channel() {
   const location = useLocation();
   const section = location.pathname.split("/")[3] || "";
 
-  channelId = channelId.split("/")[0];
-  // [channelId] = channelId.split("/"); // the same as above
+  [channelId] = channelId.split("/");
   const [channel, setChannel] = useState({});
   const channelHeaderOptions = [
     { url: "", label: "START" },
@@ -91,16 +90,14 @@ export function Channel() {
     return div;
   }
 
-  const { banner } = channel;
-
   return (
     <>
       <div className={styles.channelContainer}>
         <div className={styles.bannerContainer}>
-          {banner && (
+          {channel.banner && (
             <img
               className={styles.bannerChannel}
-              src={banner}
+              src={channel.banner}
               alt="channel banner"
             />
           )}

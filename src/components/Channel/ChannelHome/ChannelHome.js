@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { youTubeService } from "../../../services/YouTubeService";
-import ChannelSections from "../../ChannelSections/ChannelSections";
-
 import { useLoading } from "../../../hooks/useLoading";
+import ChannelSections from "../../ChannelSections/ChannelSections";
 import Spinner from "../../Spinner/Spinner";
 
 export default function ChannelHome({ channelId, menuContent }) {
@@ -10,7 +9,7 @@ export default function ChannelHome({ channelId, menuContent }) {
 
   const loading = useLoading();
 
-  const getChannelSections = async () => {
+  const getPlaylistData = async () => {
     // Initial value for channel Sections
     let resp = { data: {} };
     try {
@@ -19,11 +18,6 @@ export default function ChannelHome({ channelId, menuContent }) {
       console.log(`err`, err);
     }
     return resp;
-  };
-
-  const getPlaylistData = async () => {
-    const { data } = await getChannelSections();
-    return data;
   };
 
   const getPlaylistInfo = async (playlistsIDs) => {
@@ -39,10 +33,11 @@ export default function ChannelHome({ channelId, menuContent }) {
     return playlistInfo;
   };
 
-  const getChannelSections1 = async () => {
-    let playlistData = await getPlaylistData();
+  const getChannelSections = async () => {
+    let { data: playlistData } = await getPlaylistData();
     const playlistsIDs = Object.keys(playlistData);
     const playListInfoData = await getPlaylistInfo(playlistsIDs);
+
     Object.entries(playlistData).forEach(([playlistId, playlist]) => {
       playlist.details = playListInfoData[playlistId];
       if (playlist.section.type === "singleplaylist") {
@@ -58,6 +53,7 @@ export default function ChannelHome({ channelId, menuContent }) {
     await Promise.all(
       Object.entries(playlistData).map(async ([playlistId, playlist]) => {
         const resp = await youTubeService.getPlayListItems(playlistId);
+        console.log(`{{resp}}`, resp);
         const videosId = resp.items?.map(
           (video) => video.snippet.resourceId.videoId
         );
@@ -98,7 +94,7 @@ export default function ChannelHome({ channelId, menuContent }) {
   useEffect(() => {
     (async () => {
       loading.pending();
-      const channelSections = await getChannelSections1();
+      const channelSections = await getChannelSections();
       setChannelSections(channelSections);
       loading.success();
     })();

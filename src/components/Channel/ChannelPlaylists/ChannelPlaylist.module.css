@@ -4,7 +4,8 @@
 }
 .title {
   margin: 12px;
-  
+  font-size: 16px;
+  color: var(--text-primary);
 }
 .carrouselContainer {
   display: flex;
@@ -18,9 +19,9 @@
   position: relative;
   grid-gap: 40px 16px;
   gap: 40px 16px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   justify-items: start;
-  overflow: hidden;
+  overflow: scroll;
   scroll-behavior: smooth;
 }
 .back,

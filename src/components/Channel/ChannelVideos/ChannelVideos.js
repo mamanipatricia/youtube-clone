@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useLoading } from "../../../hooks/useLoading";
 import { youTubeService } from "../../../services/YouTubeService";
-import Spinner from "../../Spinner/Spinner";
+import { useLoading } from "../../../hooks/useLoading";
 import VideoCard from "../../VideoCard/VideoCard";
+import Spinner from "../../Spinner/Spinner";
 import styles from "./ChannelVideos.module.css";
 
 export default function ChannelVideos({ channelId, menuContent }) {
@@ -23,9 +23,9 @@ export default function ChannelVideos({ channelId, menuContent }) {
         playlistsIDs.map(async (playlistID) => {
           let nextPageToken = "";
           while (typeof nextPageToken === "string") {
-            let params = "";
+            let params = {};
             if (nextPageToken) {
-              params = `pageToken=${nextPageToken}&`;
+              params = { pageToken: nextPageToken };
             }
             const resp = await youTubeService.getPlayListItems(
               playlistID,

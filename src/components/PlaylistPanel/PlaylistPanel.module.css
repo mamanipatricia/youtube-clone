@@ -10,6 +10,7 @@
 .headerContent {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .headerTopRow {
   display: flex;
@@ -55,7 +56,6 @@
   grid-template-columns: 23px 100px 1fr;
   height: 55px;
   margin-bottom: 10px;
-  
 }
 .playlistItemActive {
   background: var(--badge-background);

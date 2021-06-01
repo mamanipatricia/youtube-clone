@@ -1,5 +1,5 @@
 import BaseService from "./BaseServices";
-//! this service has to prepare data to send to BaseServices
+//* this service has to prepare data to send to BaseServices
 import Formatter from "../Utils/Formatter";
 
 export default class YouTubeService extends BaseService {
@@ -8,71 +8,134 @@ export default class YouTubeService extends BaseService {
     this.API_KEY = process.env.REACT_APP_API_KEY;
     this.formatter = new Formatter();
   }
-  async getVideo(videoId) {
-    const response = await this.get(
-      `/videos?id=${videoId}&part=snippet,contentDetails,statistics,status&key=${this.API_KEY}`
-    );
+  createURLParams(newParams = {}) {
+    const params = {
+      part: "snippet,contentDetails",
+      maxResults: 50,
+      key: this.API_KEY,
+      ...newParams,
+    };
+    const searchParams = new URLSearchParams(params);
+    return searchParams.toString();
+  }
+
+  async getVideo(videoId, newParams = {}) {
+    const params = this.createURLParams({
+      id: videoId,
+      part: "snippet,contentDetails,statistics,status",
+      maxResults: 1,
+      ...newParams,
+    });
+    const response = await this.get(`/videos?${params}`);
     return this.formatter.formatVideo(response);
   }
-  async getVideos(videosId) {
-    const response = await this.get(
-      `/videos?id=${videosId}&part=snippet,contentDetails,statistics,status&maxResults=50&key=${this.API_KEY}`
-    );
+
+  async getVideos(videosId, newParams = {}) {
+    const params = this.createURLParams({
+      id: videosId,
+      part: "snippet,contentDetails,statistics,status",
+      ...newParams,
+    });
+    const response = await this.get(`/videos?${params}`);
     return this.formatter.formatVideos(response);
   }
-  async getChannel(channelId) {
-    const response = await this.get(
-      `/channels?id=${channelId}&part=snippet,statistics,brandingSettings,contentDetails,contentOwnerDetails,status,topicDetails&key=${this.API_KEY}`
-    );
+
+  async getChannel(channelId, newParams = {}) {
+    const params = this.createURLParams({
+      id: channelId,
+      part: "snippet,statistics,brandingSettings,contentDetails,contentOwnerDetails,status,topicDetails",
+      ...newParams,
+    });
+    const response = await this.get(`/channels?${params}`);
     return this.formatter.formatChannel(response);
   }
-  async getChannelSections(channelId) {
-    const response = await this.get(
-      `/channelSections?part=snippet%2CcontentDetails%2Clocalizations%2Ctargeting%2Cid&channelId=${channelId}&key=${this.API_KEY}`
-    );
+
+  async getChannelSections(channelId, newParams = {}) {
+    const params = this.createURLParams({
+      channelId: channelId,
+      ...newParams,
+    });
+    const response = await this.get(`/channelSections?${params}`);
     return this.formatter.formatChannelSections(response);
   }
-  async getChannels(channelIds) {
-    const response = await this.get(
-      `/channels?id=${channelIds}&part=snippet,statistics,brandingSettings,contentDetails,contentOwnerDetails,status,topicDetails&key=${this.API_KEY}`
-    );
+
+  async getChannels(channelIds, newParams = {}) {
+    const params = this.createURLParams({
+      id: channelIds,
+      part: "snippet,brandingSettings,contentDetails,statistics",
+      ...newParams,
+    });
+    const response = await this.get(`/channels?${params}`);
     return this.formatter.formatChannels(response);
   }
-  async getSearch(keyword) {
-    const response = await this.get(
-      `/search?part=snippet&maxResults=30&q=${keyword}&key=${this.API_KEY}`
-    );
+
+  async getSearch(keyword, newParams = {}) {
+    const params = this.createURLParams({
+      part: "snippet",
+      q: keyword,
+      ...newParams,
+    });
+    const response = await this.get(`/search?${params}`);
     return this.formatter.formatSearch(response);
   }
-  async getThreadsComments(videoId) {
-    const response = await this.get(
-      `/commentThreads?part=snippet,id&maxResults=99&videoId=${videoId}&key=${this.API_KEY}`
-    );
+
+  async getThreadsComments(videoId, newParams = {}) {
+    const params = this.createURLParams({
+      videoId: videoId,
+      part: "snippet",
+      maxResults: 99,
+      ...newParams,
+    });
+    const response = await this.get(`/commentThreads?${params}`);
     return this.formatter.formatThreatsComments(response);
   }
-  async getPlaylists(playListIds) {
-    const response = await this.get(
-      `/playlists?part=snippet,contentDetails,localizations,status&maxResults=50&id=${playListIds}&maxResults=100&key=${this.API_KEY}`
-    );
+
+  async getPlaylists(playListIds, newParams = {}) {
+    const params = this.createURLParams({
+      id: playListIds,
+      ...newParams,
+    });
+    const response = await this.get(`/playlists?${params}`);
     return this.formatter.formatPlaylists(response);
   }
-  async getChannelPlaylists(channelId) {
-    const response = await this.get(
-      `/playlists?part=snippet,contentDetails&channelId=${channelId}&maxResults=25&key=${this.API_KEY}`
-    );
-    // return response;
+
+  async getChannelPlaylists(channelId, newParams) {
+    const params = this.createURLParams({
+      channelId: channelId,
+      ...newParams,
+    });
+    const response = await this.get(`/playlists?${params}`);
     return this.formatter.formatChannelPlaylists(response);
   }
-  async getPlayListItems(playListId, params = "") {
-    const response = await this.get(
-      `/playlistItems?${params}part=snippet,contentDetails,id,status&maxResults=50&playlistId=${playListId}&key=${this.API_KEY}`
-    );
+
+  //todo remove this method when replacing getPlaylistItems in all places used with getPlayListItemsF
+  async getPlayListItems(playListId, newParams = {}) {
+    const params = this.createURLParams({
+      playlistId: playListId,
+      ...newParams,
+    });
+    const response = await this.get(`/playlistItems?${params}`);
     return response;
   }
-  async getRelatedVideos(relatedToVideoId) {
-    const response = await this.get(
-      `/search?part=snippet&maxResults=50&relatedToVideoId=${relatedToVideoId}&type=video&key=${this.API_KEY}`
-    );
+
+  // new formatter for PlaylistItems
+  async getPlayListItemsFormatted(playListId, newParams) {
+    const params = this.createURLParams({
+      playlistId: playListId,
+      ...newParams,
+    });
+    const response = await this.get(`/playlistItems?${params}`);
+    return this.formatter.formatPlaylistItems(response);
+  }
+
+  async getRelatedVideos(relatedToVideoId, newParams) {
+    const params = this.createURLParams({
+      relatedToVideoId: relatedToVideoId,
+      type: "video",
+      part: "snippet",
+      ...newParams,
+    });
+    const response = await this.get(`/search?${params}`);
     return this.formatter.formatRelatedVideos(response);
   }
 }

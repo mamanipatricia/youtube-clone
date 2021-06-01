@@ -4,11 +4,17 @@ export default class Formatter {
       throw new Error(data.error.message);
     }
   }
+
   checkIfExistData(data) {
     if (data.pageInfo?.totalResults === 0 || data.items?.length === 0) {
       throw new Error("Data not found");
     }
   }
+
+  /* ------------------------------------------
+      * formatter functions for every service
+   --------------------------------------------
+  */
 
   formatVideo(data) {
     this.handleError(data);
@@ -90,6 +96,7 @@ export default class Formatter {
     this.handleError(data);
     this.checkIfExistData(data);
     const playListObj = {};
+
     data.items?.forEach((item) => {
       //! TODO filter-> type: "multiplechannels"
       if (["singleplaylist", "multipleplaylists"].includes(item.snippet.type)) {
@@ -202,22 +209,51 @@ export default class Formatter {
     this.handleError(data);
     this.checkIfExistData(data);
 
-    const playlistInfo = data.items.map((item) => {
-      return {
-        thumbnail: item.snippet.thumbnails.medium.url,
-        count: item.contentDetails.itemCount,
-        title: item.snippet.title,
-        localized: item.snippet.localized,
-        channel: {
-          channelId: item.snippet.channelId,
-          channelName: item.snippet.channelTitle,
-        },
-        description: item.snippet.description,
-        id: item.id,
-        playlistId: item.id,
-        kind: item.kind,
-      };
-    });
+    const playlistInfo = data.items
+      .filter(
+        (playlist) =>
+          !playlist.snippet.thumbnails.medium.url.includes("no_thumbnail")
+      )
+      .map((item) => {
+        return {
+          thumbnail: item.snippet.thumbnails.medium.url,
+          count: item.contentDetails.itemCount,
+          title: item.snippet.title,
+          localized: item.snippet.localized,
+          channel: {
+            channelId: item.snippet.channelId,
+            channelName: item.snippet.channelTitle,
+          },
+          description: item.snippet.description,
+          id: item.id,
+          playlistId: item.id,
+          kind: item.kind,
+        };
+      });
     return { data: playlistInfo };
+  }
+  formatPlaylistItems(data) {
+    this.handleError(data);
+    this.checkIfExistData(data);
+    const videos = data.items
+      .filter((video) => "medium" in video.snippet.thumbnails)
+      .map((video) => {
+        return {
+          videoId: video.contentDetails.videoId,
+          title: video.snippet.title,
+          description: video.snippet.description,
+          channel: {
+            channelId: video.snippet.channelId,
+            channelName: video.snippet.channelTitle,
+          },
+          thumbnail: video.snippet.thumbnails.medium.url,
+          // viewCount: video.statistics.viewCount, // go to getVideos for this property
+          publishedAt: video.snippet.publishedAt,
+          // duration: video.contentDetails.duration, // go to getVideos for this property
+        };
+      });
+    const field = data.items[0].snippet.playlistId;
+    const playlist = [[field], videos];
+    return { data: playlist };
   }
 }

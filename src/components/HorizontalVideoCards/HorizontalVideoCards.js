@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import HorizontalPlaylistCard from "../HorizontalPlaylistCard/HorizontalPlaylistCard";
-import Icon from "../Icon/Icon";
 import HorizontalVideoCard from "./HorizontalVideoCard./HorizontalVideoCard";
+import Icon from "../Icon/Icon";
 import styles from "./HorizontalVideoCards.module.css";
 
 export default function HorizontalVideoCards({ videos, menuContent }) {
@@ -18,6 +18,7 @@ export default function HorizontalVideoCards({ videos, menuContent }) {
       threshold: 0.9,
     };
     let observer = new IntersectionObserver((entries) => {
+      console.log(`[entries]`, entries);
       const [entry] = entries;
       setShowPrev(!entry.isIntersecting);
     }, options);
@@ -30,6 +31,7 @@ export default function HorizontalVideoCards({ videos, menuContent }) {
       }
     };
   }, [refFirstItem]);
+
   useEffect(() => {
     const refLast = refLastItem.current;
     let options = {

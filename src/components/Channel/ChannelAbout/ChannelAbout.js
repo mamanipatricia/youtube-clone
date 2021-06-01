@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { youTubeService } from "../../../services/YouTubeService";
 import Timestamp from "../../../Utils/Timestamp";
-import Icon from "../../Icon/Icon";
 import Button from "../../UI/Button/Button";
 import DropdownMenu from "../../UI/DropdownMenu/DropdownMenu";
 import styles from "./ChannelAbout.module.css";

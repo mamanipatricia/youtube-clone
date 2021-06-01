@@ -1,30 +1,32 @@
 import { useState, useRef, useEffect } from "react";
-import styles from "./AuthorContent.module.css";
 import author from "../../../logo.svg";
-// import Avatar from "../../Avatar/Avatar";
+import styles from "./AuthorContent.module.css";
+
+// For some reason Safari inserts `<br>` after user removes text from input
 const SAFARI_BR = "<br>";
 
-export default function AuthorComment({ channel }) {
+export default function AuthorComment() {
   const [html, setHtml] = useState("");
   const [isVisibleActionButtons, setIsVisibleActionButtons] = useState(false);
-  const inputRef = useRef(null);
   const [isTyping, setIsTyping] = useState(false);
+  const inputRef = useRef(null);
 
   const handleChange = (event) => {
-    const { innerHTML, textContent } = event.currentTarget;
+    const { innerHTML } = event.currentTarget;
     const htmlValue = innerHTML === SAFARI_BR ? "" : innerHTML;
     setHtml(htmlValue);
   };
-  const commentHandle = () => {};
 
   const showActionButtons = () => {
     setIsVisibleActionButtons(true);
   };
+
   const onCancelCreateComment = () => {
     setIsVisibleActionButtons(false);
     inputRef.current.innerHTML = "";
     setHtml("");
   };
+
   useEffect(() => {
     html.length > 0 ? setIsTyping(true) : setIsTyping(false);
   }, [html]);
@@ -67,7 +69,6 @@ export default function AuthorComment({ channel }) {
             <button onClick={onCancelCreateComment}>CANCEL</button>
             <button
               className={isTyping ? styles.background : styles.footerButtons}
-              onClick={commentHandle}
             >
               COMMENT
             </button>

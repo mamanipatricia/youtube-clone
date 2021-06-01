@@ -6,7 +6,7 @@ import styles from "./HorizontalPlaylistCard.module.css";
 
 export default function HorizontalPlaylistCard({ video, direction, dataRef }) {
   const history = useHistory();
-
+  console.log(`[dataRef]`, dataRef);
   if (!video) return "video not found";
   const { playlistId, title, thumbnail, count, channel, duration, items } =
     video;
@@ -20,7 +20,6 @@ export default function HorizontalPlaylistCard({ video, direction, dataRef }) {
   return (
     <div ref={dataRef}>
       <div className={`${direction === "row" ? styles.horizontalCard : ""}`}>
-        {/* <Link to={`/`}> */}
         <Link to={`/watch/${items[0]?.videoId}?list=${playlistId}`}>
           <div className={styles.hoveredCard}>
             <Thumbnail
@@ -32,6 +31,7 @@ export default function HorizontalPlaylistCard({ video, direction, dataRef }) {
           </div>
         </Link>
         <div className={styles.horizontalVideoCardInfo}>
+          {/* <span>{title}</span> */}
           <Title title={title} />
           <Owner channel={channel} />
         </div>

@@ -1,11 +1,11 @@
 import { useEffect, useState, useContext } from "react";
-import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
-import styles from "./Home.module.css";
 import { youTubeService } from "../../services/YouTubeService";
-import Spinner from "../Spinner/Spinner";
 import { useLoading } from "../../hooks/useLoading";
-import VideoCard from "../VideoCard/VideoCard";
 import GuideContext from "../../context/guideContext";
+import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
+import VideoCard from "../VideoCard/VideoCard";
+import Spinner from "../Spinner/Spinner";
+import styles from "./Home.module.css";
 
 const menuHome = [
   {
@@ -44,12 +44,13 @@ export default function Home() {
   const [search, setSearch] = useState([]);
   const loading = useLoading();
   const [searchClone, setSearchClone] = useState([]);
-  const [toggleSidebarRow, setToggleSidebarRow] = useContext(GuideContext);
+  const [toggleSidebarRow] = useContext(GuideContext);
 
   const getSearch = async (keyword) => {
     const { data } = await youTubeService.getSearch(keyword);
     return data;
   };
+
   const getVideosSearch = async (keyword) => {
     try {
       loading.pending();
@@ -95,7 +96,9 @@ export default function Home() {
     <div className={styles.homeContainer}>
       <div
         className={`${
-          toggleSidebarRow ? styles.toggleToMiniGuide : styles.feedFilterContainer
+          toggleSidebarRow
+            ? styles.toggleToMiniGuide
+            : styles.feedFilterContainer
         }`}
       >
         <FeedFilterBarRenderer onChangeFeed={onChangeFeed} />

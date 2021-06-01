@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import styles from "./FeedFilterBarRenderer.module.css";
 
 const feedFilterItems = [
