@@ -1,6 +1,7 @@
 import Avatar from "../Avatar/Avatar";
 import { Owner, Subscribers } from "../Channel/Channel";
 import Icon from "../Icon/Icon";
+import Button from "../UI/Button/Button";
 import styles from "./ChannelInfo.module.css";
 
 export const ChannelInfo = ({ channel, displaySubs = false }) => {
@@ -18,7 +19,7 @@ export const ChannelInfo = ({ channel, displaySubs = false }) => {
         )}
       </div>
       <div className={styles.watchSubscribeContainer}>
-        <button className={styles.watchSubscribe}>SUBSCRIBED</button>
+        <Button text="SUBSCRIBED" />
         <Icon name="NOTIFICATION_1" color="var(--bg-sentiment)" />
       </div>
     </div>

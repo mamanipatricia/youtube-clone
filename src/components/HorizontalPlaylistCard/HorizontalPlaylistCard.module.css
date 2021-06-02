@@ -7,11 +7,9 @@
   width: 100%;
   vertical-align: top;
 }
-.hoveredCard:after {
-  display: flex;
+.viewPlay {
   justify-content: center;
   align-items: center;
-  content: "\25BA PLAY ALL";
   color: #fff;
   font-weight: 500;
   position: absolute;
@@ -22,12 +20,15 @@
   background: rgba(0, 0, 0, 0.6);
   opacity: 0;
   transition: opacity 0.2s;
+  z-index: 5;
 }
-.hoveredCard:hover:after {
+.hoveredCard:hover .viewPlay {
+  display: flex;
   opacity: 1;
 }
 .playlistCovered {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;

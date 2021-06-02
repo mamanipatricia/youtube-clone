@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import Search from "../Search/Search";
-import styles from "./Navbar.module.css";
-import Icon from "../Icon/Icon";
-import GuideContext from "../../context/guideContext";
-import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { Link } from "react-router-dom";
+import GuideContext from "../../context/guideContext";
+import Search from "../Search/Search";
+import Icon from "../Icon/Icon";
+import { ReactComponent as Logo } from "../../assets/images/logo.svg";
+import styles from "./Navbar.module.css";
+import Button from "../UI/Button/Button";
 
 export default function Navbar() {
   const [toggleSidebarRow, setToggleSidebarRow] = useContext(GuideContext);

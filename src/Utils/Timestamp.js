@@ -1,4 +1,4 @@
-export default function Timestamp({ publishedAt }) {
+export function getTimestamp(publishedAt) {
   let dateFormat = "";
   if (publishedAt) {
     const options = { month: "short", day: "numeric", year: "numeric" };

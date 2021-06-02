@@ -74,10 +74,10 @@ export default function ChannelVideos({ channelId, menuContent }) {
       {loading.isPending && <Spinner />}
       <div className={styles.videosContainer}>
         {loading.isSuccess &&
-          videos.map((video) => {
+          videos.map((video, index) => {
             return (
               <VideoCard
-                key={video.videoId}
+                key={`${video.videoId}-${index}`}
                 hiddenContent={["avatar"]}
                 video={video}
                 menuContent={menuContent}

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import DropdownMenu from "../../UI/DropdownMenu/DropdownMenu";
 import Detail from "../../Detail/Detail";
 import Thumbnail from "../../Thumbnail/Thumbnail";
+import DropdownMenu from "../../UI/DropdownMenu/DropdownMenu";
 import styles from "./HorizontalVideoCard.module.css";
 
 export default function HorizontalVideoCard({

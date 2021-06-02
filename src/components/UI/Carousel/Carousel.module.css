@@ -1,24 +1,14 @@
-.channelPlaylistsContainer {
-  display: flex;
-  flex-direction: column;
-}
-.title {
-  margin: 0;
-  font-size: 16px;
-  color: var(--text-primary);
-  margin-bottom: 24px;
-}
 .carrouselContainer {
-  display: flex;
   position: relative;
-  width: 100%;
 }
 .horizontalVideoCardsContainer {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 210px;
+  grid-auto-columns: 215px;
   position: relative;
-  gap: 40px 4px;
+  grid-gap: 40px 16px;
+  gap: 40px 16px;
+  margin: 0 auto;
   justify-items: start;
   overflow: hidden;
   scroll-behavior: smooth;
@@ -46,5 +36,5 @@
 }
 .next {
   right: 0;
-  transform: translate(-50%, -50%);
+  transform: translate(50%, -50%);
 }

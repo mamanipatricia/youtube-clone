@@ -1,7 +1,7 @@
 import { useState } from "react";
-import styles from "./Search.module.css";
-import Icon from "../Icon/Icon";
 import { useHistory, useLocation } from "react-router-dom";
+import Icon from "../Icon/Icon";
+import styles from "./Search.module.css";
 
 function Search() {
   const history = useHistory();
@@ -36,7 +36,7 @@ function Search() {
           />
         </div>
         <button className={styles.searchButton}>
-          <Icon name="SEARCH" width="20px" height="20px" />
+          <Icon name="SEARCH" />
         </button>
         <button type="button" className={styles.buttonMicrophone}>
           <Icon name="MICROPHONE" />

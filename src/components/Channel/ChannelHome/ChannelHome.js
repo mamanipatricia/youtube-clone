@@ -53,7 +53,6 @@ export default function ChannelHome({ channelId, menuContent }) {
     await Promise.all(
       Object.entries(playlistData).map(async ([playlistId, playlist]) => {
         const resp = await youTubeService.getPlayListItems(playlistId);
-        console.log(`{{resp}}`, resp);
         const videosId = resp.items?.map(
           (video) => video.snippet.resourceId.videoId
         );

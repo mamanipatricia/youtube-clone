@@ -1,40 +1,11 @@
-.carrouselContainer {
-  position: relative;
-}
 .horizontalVideoCardsContainer {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 215px;
+  grid-auto-columns: 210px;
   position: relative;
-  grid-gap: 40px 16px;
-  gap: 40px 16px;
+  gap: 40px 4px;
   margin: 0 auto;
   justify-items: start;
   overflow: hidden;
   scroll-behavior: smooth;
-}
-.back,
-.next {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background: white;
-  box-shadow: 0 4px 4px rgb(0 0 0 / 30%), 0 0 4px rgb(0 0 0 / 20%);
-  top: 30%;
-  z-index: 10;
-  border-radius: 50%;
-  cursor: pointer;
-  outline: none;
-  border: none;
-}
-.back {
-  left: 0;
-  transform: translate(-50%, -50%);
-}
-.next {
-  right: 0;
-  transform: translate(-50%, -50%);
 }

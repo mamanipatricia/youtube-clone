@@ -49,18 +49,6 @@
   justify-content: space-between;
   align-items: center;
 }
-.subscribeButton {
-  color: var(--text-secondary);
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  margin: 5px;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-  background: var(--badge-background);
-}
 .ownerChannelName {
   color: var(--text-primary);
   text-decoration: none;
@@ -101,8 +89,12 @@
   position: absolute;
   width: 100%;
 }
-.channelSectionsContainer {
+.channelWrapper {
   background: var(--background-b);
-  padding: 5px 50px;
+}
+.channelSectionsContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 24px;
   height: 100%;
 }

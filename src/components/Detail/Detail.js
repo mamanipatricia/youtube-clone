@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getTimestamp } from "../../Utils/Timestamp";
 import Avatar from "../Avatar/Avatar";
 import { Owner } from "../Channel/Channel";
 import styles from "./Detail.module.css";
@@ -45,15 +46,11 @@ export function Title({ title }) {
   );
 }
 export function ViewsAndTimestamp({ viewCount, publishedAt }) {
-  const options = { month: "short", day: "numeric", year: "numeric" };
-  const date = new Date(publishedAt);
-  let dateFormat = new Intl.DateTimeFormat("en-US", options).format(date);
-
   return (
     <div className={styles.viewTimestampContainer}>
       <span className={styles.videoTimestampViews}>{viewCount} views</span>
       <span>•</span>
-      <span>{dateFormat}</span>
+      <span>{getTimestamp(publishedAt)}</span>
     </div>
   );
 }

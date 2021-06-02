@@ -13,6 +13,7 @@ import Spinner from "../Spinner/Spinner";
 import { useLoading } from "../../hooks/useLoading";
 import { ChannelInfo } from "../ChannelInfo/ChannelInfo";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
+import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
 
 const menuWatch = [
   {
@@ -63,7 +64,6 @@ export default function Watch() {
       if (err.message.includes("parameter has disabled comments")) {
         setErrorComment(true);
       }
-      console.log(`err`, err.message);
     }
   };
 

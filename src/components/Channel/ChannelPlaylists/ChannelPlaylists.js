@@ -1,70 +1,18 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { youTubeService } from "../../../services/YouTubeService";
 import { useLoading } from "../../../hooks/useLoading";
 import HorizontalPlaylistCard from "../../HorizontalPlaylistCard/HorizontalPlaylistCard";
 import Spinner from "../../Spinner/Spinner";
-import Icon from "../../Icon/Icon";
 import styles from "./ChannelPlaylist.module.css";
+import Carrousel from "../../UI/Carousel/Carousel";
 
 export const ChannelPlaylists = ({ channelId }) => {
   const refCarrousel = useRef(null);
   const refFirstItem = useRef(null);
   const refLastItem = useRef(null);
 
-  const [showPrev, setShowPrev] = useState(false);
-  const [showNext, setShowNext] = useState(false);
-
   const [channelPlaylist, setChannelPlaylist] = useState([]);
   const loading = useLoading();
-
-  useLayoutEffect(() => {
-    const refFirst = refFirstItem.current;
-    let options = {
-      threshold: 0.9,
-    };
-    let observer = new IntersectionObserver((entries) => {
-      const [entry] = entries;
-      setShowPrev(!entry.isIntersecting);
-    }, options);
-    if (refFirst) {
-      observer.observe(refFirst);
-    }
-    return () => {
-      if (refFirst) {
-        observer.unobserve(refFirst);
-      }
-    };
-  }, [refFirstItem]);
-
-  useLayoutEffect(() => {
-    const refLast = refLastItem.current;
-    let options = {
-      threshold: 0.99,
-    };
-    let observer = new IntersectionObserver((entries) => {
-      const [entry] = entries;
-      setShowNext(!entry.isIntersecting);
-    }, options);
-    if (refLast) {
-      observer.observe(refLast);
-    }
-    return () => {
-      if (refLast) {
-        observer.unobserve(refLast);
-      }
-    };
-  }, [refLastItem]);
-
-  const back = () => {
-    refCarrousel.current.scrollLeft -= 300;
-    if (refCarrousel.current.scrollLeft < 400) {
-      refCarrousel.current.scrollLeft = 0;
-    }
-  };
-
-  const next = () => {
-    refCarrousel.current.scrollLeft += 300;
-  };
 
   const getChannelPlaylists = async () => {
     try {
@@ -106,13 +54,12 @@ export const ChannelPlaylists = ({ channelId }) => {
       {loading.isPending && <Spinner />}
       {loading.isSuccess && (
         <>
-          <strong className={styles.title}>Created playlists</strong>
-          <div className={styles.carrouselContainer}>
-            {showPrev && (
-              <button className={styles.back} onClick={back}>
-                <Icon name="ARROW_LEFT" />
-              </button>
-            )}
+          <h3 className={styles.title}>Created playlists</h3>
+          <Carrousel
+            refCarrousel={refCarrousel}
+            refFirstItem={refFirstItem}
+            refLastItem={refLastItem}
+          >
             <div
               ref={refCarrousel}
               className={styles.horizontalVideoCardsContainer}
@@ -133,12 +80,7 @@ export const ChannelPlaylists = ({ channelId }) => {
                 );
               })}
             </div>
-            {showNext && (
-              <button className={styles.next} onClick={next}>
-                <Icon name="ARROW_RIGHT" />
-              </button>
-            )}
-          </div>
+          </Carrousel>
         </>
       )}
     </div>

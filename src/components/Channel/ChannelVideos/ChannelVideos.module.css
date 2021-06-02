@@ -1,10 +1,8 @@
 .videosContainer {
   display: grid;
   min-height: 100vh;
-  grid-template-columns: repeat(auto-fit, minmax(auto, 215px));
-  gap: 40px 16px;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 210px));
+  gap: 40px 4px;
   margin: 0 auto;
   justify-items: center;
-  padding: 75px;
-  place-content: center;
 }

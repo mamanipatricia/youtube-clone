@@ -10,6 +10,7 @@ import { ChannelChannels } from "./ChannelChannels/ChannelChannels";
 import Avatar from "../Avatar/Avatar";
 import Icon from "../Icon/Icon";
 import styles from "./Channel.module.css";
+import Button from "../UI/Button/Button";
 
 const menuVideoCard = [
   {
@@ -118,7 +119,7 @@ export function Channel() {
               </div>
             </div>
             <div className={styles.channelSubscribeButton}>
-              <button className={styles.subscribeButton}>SUBSCRIBED</button>
+              <Button text="SUBSCRIBED" />
               <Icon name="NOTIFICATION_1" />
             </div>
           </div>
@@ -139,24 +140,29 @@ export function Channel() {
           </div>
         </div>
       </div>
-      <div className={styles.channelSectionsContainer}>
-        <Switch>
-          <Route exact path="/channel/:channelId">
-            <ChannelHome channelId={channelId} menuContent={menuVideoCard} />
-          </Route>
-          <Route path="/channel/:channelId/videos">
-            <ChannelVideos channelId={channelId} menuContent={menuVideoCard} />
-          </Route>
-          <Route path="/channel/:channelId/playlist">
-            <ChannelPlaylists channelId={channelId} />
-          </Route>
-          <Route path="/channel/:channelId/channels">
-            <ChannelChannels channelId={channelId} />
-          </Route>
-          <Route path="/channel/:channelId/about">
-            <ChannelAbout channelId={channelId} />
-          </Route>
-        </Switch>
+      <div className={styles.channelWrapper}>
+        <div className={styles.channelSectionsContainer}>
+          <Switch>
+            <Route exact path="/channel/:channelId">
+              <ChannelHome channelId={channelId} menuContent={menuVideoCard} />
+            </Route>
+            <Route path="/channel/:channelId/videos">
+              <ChannelVideos
+                channelId={channelId}
+                menuContent={menuVideoCard}
+              />
+            </Route>
+            <Route path="/channel/:channelId/playlist">
+              <ChannelPlaylists channelId={channelId} />
+            </Route>
+            <Route path="/channel/:channelId/channels">
+              <ChannelChannels channelId={channelId} />
+            </Route>
+            <Route path="/channel/:channelId/about">
+              <ChannelAbout channelId={channelId} />
+            </Route>
+          </Switch>
+        </div>
       </div>
     </>
   );

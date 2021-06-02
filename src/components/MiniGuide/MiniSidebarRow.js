@@ -1,6 +1,6 @@
+import { Link, useLocation } from "react-router-dom";
 import Icon from "../Icon/Icon";
 import styles from "./MiniSidebarRow.module.css";
-import { Link, useLocation } from "react-router-dom";
 
 export default function MiniSidebarRow() {
   let { pathname } = useLocation();

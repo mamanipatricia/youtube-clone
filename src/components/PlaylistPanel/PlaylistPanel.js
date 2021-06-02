@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { youTubeService } from "../../services/YouTubeService";
 import { useLocation } from "react-router-dom";
+import { youTubeService } from "../../services/YouTubeService";
+import { HorizontalVideoItem } from "../HorizontalVideoItem/HorizontalVideoItem";
 import Icon from "../Icon/Icon";
 import styles from "./PlaylistPanel.module.css";
-import { HorizontalVideoItem } from "../HorizontalVideoItem/HorizontalVideoItem";
 
 export default function PlaylistPanel() {
   const location = useLocation();

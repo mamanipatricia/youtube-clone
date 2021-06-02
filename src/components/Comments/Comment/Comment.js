@@ -2,6 +2,7 @@ import Avatar from "../../Avatar/Avatar";
 import styles from "./Comment.module.css";
 import Icon from "../../Icon/Icon";
 import { Link } from "react-router-dom";
+import Button from "../../UI/Button/Button";
 
 export default function Comment({ comment } = {}) {
   const {
