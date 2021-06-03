@@ -3,6 +3,7 @@ import { getTimestamp } from "../../Utils/Timestamp";
 import Avatar from "../Avatar/Avatar";
 import { Owner } from "../Channel/Channel";
 import styles from "./Detail.module.css";
+import { formatDigit } from "../../Utils/views";
 
 export default function Detail(props) {
   const {
@@ -48,7 +49,9 @@ export function Title({ title }) {
 export function ViewsAndTimestamp({ viewCount, publishedAt }) {
   return (
     <div className={styles.viewTimestampContainer}>
-      <span className={styles.videoTimestampViews}>{viewCount} views</span>
+      <span className={styles.videoTimestampViews}>
+        {formatDigit(+viewCount)} views
+      </span>
       <span>•</span>
       <span>{getTimestamp(publishedAt)}</span>
     </div>

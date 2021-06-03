@@ -29,6 +29,10 @@
 
   --color-placeholders: #a2acb4;
 
+  /*------------------------
+        VARS FOR CAROUSEL
+  ------------------------
+*/
   --item-per-row: 4;
   --item-width: calc(100% / var(--item-per-row) - 16px - 0.01px);
   --item-max-width: 360px;

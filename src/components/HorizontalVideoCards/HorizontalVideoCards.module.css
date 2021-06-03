@@ -4,7 +4,6 @@
   grid-auto-columns: 210px;
   position: relative;
   gap: 40px 4px;
-  margin: 0 auto;
   justify-items: start;
   overflow: hidden;
   scroll-behavior: smooth;

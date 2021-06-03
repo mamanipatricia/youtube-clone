@@ -1,6 +1,6 @@
 .videosContainer {
   display: grid;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   max-width: calc(var(--item-per-row) * var(--item-max-width) + 16px);
   /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
   grid-template-columns: repeat(var(--item-per-row), var(--item-max-width));
@@ -9,7 +9,6 @@
   margin: 0 auto;
   justify-items: center;
   padding: 75px;
-  place-content: center;
   background: var(--background-a);
 }
 .spinner {
