@@ -7,6 +7,8 @@ export default function Carrousel({
   refCarrousel,
   refFirstItem,
   refLastItem,
+  prevBtn = null,
+  nextBtn = null,
 }) {
   const [showPrev, setShowPrev] = useState(false);
   const [showNext, setShowNext] = useState(false);
@@ -14,6 +16,7 @@ export default function Carrousel({
   useEffect(() => {
     const refFirst = refFirstItem.current;
     let options = {
+      root: refCarrousel.current,
       threshold: 0.9,
     };
     let observer = new IntersectionObserver((entries) => {
@@ -34,7 +37,7 @@ export default function Carrousel({
     const refLast = refLastItem.current;
     let options = {
       root: refCarrousel.current,
-      rootMargin: "100px",
+      // rootMargin: "100px",
       threshold: 0.99,
     };
     let observer = new IntersectionObserver((entries) => {
@@ -61,18 +64,37 @@ export default function Carrousel({
     refCarrousel.current.scrollLeft += 300;
   };
 
+  // Default previous arrow
+  let prevButton = (
+    <button className={styles.back}>
+      <Icon name="ARROW_LEFT" />
+    </button>
+  );
+  if (prevBtn) {
+    prevButton = prevBtn;
+  }
+  // Next Next arrow
+  let nextButton = (
+    <button className={styles.next}>
+      <Icon name="ARROW_RIGHT" />
+    </button>
+  );
+  if (nextBtn) {
+    nextButton = nextBtn;
+  }
+
   return (
     <div className={styles.carrouselContainer}>
       {showPrev && (
-        <button className={styles.back} onClick={back}>
-          <Icon name="ARROW_LEFT" />
-        </button>
+        <div className={styles.prevContainer} onClick={back}>
+          {prevButton}
+        </div>
       )}
       {children}
       {showNext && (
-        <button className={styles.next} onClick={next}>
-          <Icon name="ARROW_RIGHT" />
-        </button>
+        <div className={styles.nextContainer} onClick={next}>
+          {nextButton}
+        </div>
       )}
     </div>
   );

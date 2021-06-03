@@ -192,6 +192,9 @@ export default function Watch() {
           </div>
           <div className={styles.secondary}>
             <PlaylistPanel />
+            <FeedFilterBarRenderer />
+            {/* <FeedFilterBarRenderer onChangeFeed={onChangeFeed} /> */}
+
             <RelatedVideos videos={relatedVideosData} />
           </div>
         </>

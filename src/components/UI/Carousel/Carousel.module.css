@@ -1,5 +1,7 @@
 .carrouselContainer {
   position: relative;
+  display: flex;
+  width: 100%;
 }
 .horizontalVideoCardsContainer {
   display: grid;
@@ -18,23 +20,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: relative;
   width: 40px;
   height: 40px;
   background: white;
   box-shadow: 0 4px 4px rgb(0 0 0 / 30%), 0 0 4px rgb(0 0 0 / 20%);
-  top: 30%;
-  z-index: 10;
+  top: 25%;
   border-radius: 50%;
   cursor: pointer;
   outline: none;
   border: none;
+  z-index: 100;
 }
 .back {
-  left: 0;
   transform: translate(-50%, -50%);
 }
 .next {
   right: 0;
   transform: translate(50%, -50%);
+}
+.prevContainer {
+  left: 0;
+  z-index: 10;
+  position: absolute;
+  height: 100%;
+}
+.nextContainer {
+  right: 0;
+  z-index: 10;
+  position: absolute;
+  height: 100%;
 }

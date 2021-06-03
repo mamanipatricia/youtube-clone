@@ -28,6 +28,10 @@
   --underline-color: #909090;
 
   --color-placeholders: #a2acb4;
+
+  --item-per-row: 4;
+  --item-width: calc(100% / var(--item-per-row) - 16px - 0.01px);
+  --item-max-width: 360px;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
@@ -63,4 +67,45 @@ textarea {
 .custom-scroll::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 10px;
+}
+
+/*------------------------
+        BREAKPOINTS
+  ------------------------
+*/
+@media (min-width: 960px) {
+  :root {
+    --item-per-row: 2;
+    --item-max-width: 300px;
+  }
+}
+@media (min-width: 1097px) {
+  :root {
+    --item-per-row: 2;
+    --item-max-width: 320px;
+  }
+}
+@media (min-width: 1300px) {
+  :root {
+    --item-per-row: 4;
+    --item-max-width: 320px;
+  }
+}
+@media (min-width: 1785px) {
+  :root {
+    --item-per-row: 5;
+    --item-max-width: 320px;
+  }
+}
+@media (min-width: 1920px) {
+  :root {
+    --item-per-row: 4;
+    --item-max-width: 360px;
+  }
+}
+@media (min-width: 2500px) {
+  :root {
+    --item-per-row: 6;
+    --item-max-width: 360px;
+  }
 }

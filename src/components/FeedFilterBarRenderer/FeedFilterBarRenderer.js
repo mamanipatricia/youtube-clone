@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import Icon from "../Icon/Icon";
+import Carrousel from "../UI/Carousel/Carousel";
 import styles from "./FeedFilterBarRenderer.module.css";
 
 const feedFilterItems = [
@@ -13,10 +15,39 @@ const feedFilterItems = [
   { id: 9, label: "cryptocurrencies" },
   { id: 10, label: "Electronic Music" },
   { id: 11, label: "Recently uploaded" },
+  { id: 12, label: "React" },
+  { id: 13, label: "Laravel" },
+  { id: 14, label: "Cars" },
+  { id: 15, label: "Vue.js" },
+  { id: 16, label: "Node" },
+  { id: 17, label: "Docker" },
+  { id: 18, label: "CSS" },
+  { id: 19, label: "Food" },
+  { id: 20, label: "Beverages" },
+  { id: 21, label: "Beer" },
 ];
+
+const ArrowRight = () => {
+  return (
+    <span className={styles.arrowRight}>
+      <Icon name="ARROW_RIGHT" className={styles.arrow} />
+    </span>
+  );
+};
+const ArrowLeft = () => {
+  return (
+    <span className={styles.arrowLeft}>
+      <Icon name="ARROW_LEFT" className={styles.arrow} />
+    </span>
+  );
+};
 
 export default function FeedFilterBarRenderer({ onChangeFeed }) {
   const [feed, setFeed] = useState(null);
+
+  const refCarrousel = useRef(null);
+  const refFirstItem = useRef(null);
+  const refLastItem = useRef(null);
 
   const feedDisplayHandle = (newFeed) => {
     setFeed(newFeed);
@@ -25,19 +56,39 @@ export default function FeedFilterBarRenderer({ onChangeFeed }) {
 
   return (
     <div className={styles.feedFilterContainer}>
-      {feedFilterItems.map((feedItem) => {
-        return (
-          <div
-            key={`key-${feedItem.id}`}
-            className={`${styles.feedFilter} ${
-              feedItem.label === feed ? styles.active : ""
-            }`}
-            onClick={() => feedDisplayHandle(feedItem.label)}
-          >
-            {feedItem.label}
-          </div>
-        );
-      })}
+      <Carrousel
+        refCarrousel={refCarrousel}
+        refFirstItem={refFirstItem}
+        refLastItem={refLastItem}
+        prevBtn={<ArrowLeft />}
+        nextBtn={<ArrowRight />}
+      >
+        <div
+          ref={refCarrousel}
+          className={styles.horizontalVideoCardsContainer}
+        >
+          {feedFilterItems.map((feedItem, index, array) => {
+            return (
+              <div
+                ref={
+                  index === array.length - 1
+                    ? refLastItem
+                    : index === 0
+                    ? refFirstItem
+                    : null
+                }
+                key={`key-${feedItem.id}`}
+                className={`${styles.feedFilter} ${
+                  feedItem.label === feed ? styles.active : ""
+                }`}
+                onClick={() => feedDisplayHandle(feedItem.label)}
+              >
+                {feedItem.label}
+              </div>
+            );
+          })}
+        </div>
+      </Carrousel>
     </div>
   );
 }
