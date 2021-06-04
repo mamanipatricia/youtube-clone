@@ -2,7 +2,7 @@
 # build
 # cd youtube-clone
 status=$(git status --porcelain)
-if [[ -z $status && -e .env.production ]];
+if [[ -z $status && -e .env ]];
 then
 yarn build
 cd build/
