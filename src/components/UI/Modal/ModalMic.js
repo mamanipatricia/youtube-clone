@@ -16,7 +16,7 @@ export const ModalMic = ({ isOpen, onAfterOpen, onRequestClose }) => {
           content: {
             maxWidth: "592px",
             maxHeight: "416px",
-            top: "30%",
+            top: "40%",
             left: "50%",
             right: "auto",
             bottom: "auto",
