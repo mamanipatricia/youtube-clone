@@ -12,7 +12,7 @@ export default class Formatter {
   }
 
   /* ------------------------------------------
-      * formatter functions for every service
+      * formatter functions for each service
    --------------------------------------------
   */
 
@@ -232,6 +232,7 @@ export default class Formatter {
       });
     return { data: playlistInfo };
   }
+
   formatPlaylistItems(data) {
     this.handleError(data);
     this.checkIfExistData(data);
@@ -255,5 +256,19 @@ export default class Formatter {
     const field = data.items[0].snippet.playlistId;
     const playlist = [[field], videos];
     return { data: playlist };
+  }
+
+  formatTendingVideos(data) {
+    this.handleError(data);
+    this.checkIfExistData(data);
+    const channelsId = [];
+    const videosId = [];
+    data.items
+      .filter((video) => video.kind === "youtube#video")
+      .forEach((video) => {
+        channelsId.push(video.snippet.channelId);
+        videosId.push(video.id);
+      });
+    return { data: { channelsId, videosId } };
   }
 }

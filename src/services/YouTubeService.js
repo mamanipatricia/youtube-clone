@@ -138,6 +138,16 @@ export default class YouTubeService extends BaseService {
     const response = await this.get(`/search?${params}`);
     return this.formatter.formatRelatedVideos(response);
   }
+
+  async getTrendingVideos() {
+    const params = this.createURLParams({
+      chart: "mostPopular",
+      regionCode: "BO",
+      part: "snippet,contentDetails,statistics",
+    });
+    const response = await this.get(`/videos?${params}`);
+    return this.formatter.formatTendingVideos(response);
+  }
 }
 
 export const youTubeService = new YouTubeService();

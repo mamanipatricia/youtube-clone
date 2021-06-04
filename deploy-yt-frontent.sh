@@ -9,7 +9,7 @@ cd build/
 echo pattty.com > CNAME
 surge
 else
-echo "cambios no guardados"
+echo "Changes not saved"
 git status
 exit 1;
 fi

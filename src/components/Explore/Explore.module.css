@@ -1,0 +1,48 @@
+.destinationsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.boxContainer {
+  display: flex;
+  gap: 12px;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 210px;
+  height: 116px;
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.image {
+  height: 32px;
+  width: 32px;
+  margin: 16px 16px 0 16px;
+}
+.box:hover {
+  background: var(--background-c);
+}
+
+.label {
+  margin: 0px 16px 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.searchResultsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.itemsTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 25px 0;
+  display: inline-block;
+}
