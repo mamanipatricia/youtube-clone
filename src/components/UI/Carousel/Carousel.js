@@ -73,7 +73,7 @@ export default function Carrousel({
   if (prevBtn) {
     prevButton = prevBtn;
   }
-  // Next Next arrow
+  // Default Next arrow
   let nextButton = (
     <button className={styles.next}>
       <Icon name="ARROW_RIGHT" />

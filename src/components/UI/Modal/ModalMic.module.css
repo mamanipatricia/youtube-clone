@@ -1,0 +1,46 @@
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 592px;
+  max-height: 416px;
+}
+.micButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+.micButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--background-c);
+  cursor: pointer;
+}
+.body {
+  min-width: 350px;
+  min-height: 200px;
+}
+.closeButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.closeButton {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+.modalTextContent {
+  display: flex;
+  flex-direction: column;
+  margin: 12px 14px;
+}
+.title {
+  font-size: 24px;
+  margin: 12px 0;
+}
+.text {
+  font-size: 14px;
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { ModalMic } from "../UI/Modal/ModalMic";
 import Icon from "../Icon/Icon";
 import styles from "./Search.module.css";
 
@@ -10,6 +11,8 @@ function Search() {
   const searchQuery = query.get("search_query");
 
   const [keyword, setKeyword] = useState(searchQuery || "");
+
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const searchHandle = (event) => {
     setKeyword(event.target.value);
@@ -23,6 +26,18 @@ function Search() {
       });
     }
   };
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    console.log(`modal closed `);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <div className={styles.formWrapper}>
@@ -38,10 +53,15 @@ function Search() {
         <button className={styles.searchButton}>
           <Icon name="SEARCH" />
         </button>
-        <button type="button" className={styles.buttonMicrophone}>
+        <button onClick={openModal} className={styles.buttonMicrophone}>
           <Icon name="MICROPHONE" />
         </button>
       </form>
+      <ModalMic
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+      />
     </div>
   );
 }
