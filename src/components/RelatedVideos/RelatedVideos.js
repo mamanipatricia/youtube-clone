@@ -35,8 +35,24 @@ export default function RelatedVideos({ videoId }) {
   const [relatedVideosData, setRelatedVideosData] = useState([]);
 
   const getRelatedVideos = async () => {
-    const { data } = await youTubeService.getRelatedVideos(videoId);
-    setRelatedVideosData(data);
+    const { data: relatedVideos } = await youTubeService.getRelatedVideos(
+      videoId
+    );
+    const videoIds = [];
+    relatedVideos.forEach((video) => {
+      videoIds.push(video.videoId);
+    });
+
+    const { data: videos } = await youTubeService.getVideos(videoIds);
+
+    relatedVideos.forEach((relatedVideo) => {
+      videos.forEach((videoItem) => {
+        if (videoItem.videoId === relatedVideo.videoId) {
+          relatedVideo.viewCount = videoItem.viewCount;
+        }
+      });
+    });
+    setRelatedVideosData(relatedVideos);
   };
 
   useEffect(() => {

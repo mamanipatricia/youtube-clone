@@ -175,7 +175,7 @@ export default class Formatter {
             channelName: relatedVideo.snippet.channelTitle,
           },
           thumbnail: relatedVideo.snippet.thumbnails.medium.url,
-          viewCount: 123455,
+          viewCount: "",
           publishedAt: relatedVideo.snippet.publishedAt,
           duration: "",
         };
