@@ -28,7 +28,7 @@ export const ModalMic = ({ isOpen, onAfterOpen, onRequestClose }) => {
           overlay: {
             backgroundColor: "rgba(203,213,224,0.7)",
             backdropFilter: "blur(0.3rem)",
-            zIndex: 10000,
+            zIndex: 20000,
           },
         }}
       >

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { youTubeService } from "../../services/YouTubeService";
 import HorizontalVideoCard from "../HorizontalVideoCards/HorizontalVideoCard./HorizontalVideoCard";
 import styles from "./RelatedVideosContainer.module.css";
 
@@ -29,10 +31,21 @@ const menuRelatedVideos = [
   },
 ];
 
-export default function RelatedVideos({ videos }) {
+export default function RelatedVideos({ videoId }) {
+  const [relatedVideosData, setRelatedVideosData] = useState([]);
+
+  const getRelatedVideos = async () => {
+    const { data } = await youTubeService.getRelatedVideos(videoId);
+    setRelatedVideosData(data);
+  };
+
+  useEffect(() => {
+    getRelatedVideos();
+  }, []);
+
   return (
     <div className={styles.relatedVideosContainer}>
-      {videos.map((video) => {
+      {relatedVideosData.map((video) => {
         return (
           <HorizontalVideoCard
             key={`index-${video.videoId}`}

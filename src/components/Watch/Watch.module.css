@@ -1,9 +1,14 @@
 .watchContainer {
-  /* width: 100%; */
   display: grid;
-  grid-template-columns: 1fr minmax(auto, 520px);
+  grid-template-columns: 1fr;
   column-gap: 15px;
   padding: 25px;
+}
+.comments {
+  display: none;
+}
+.commentsAtTheBottom {
+  display: flex;
 }
 .primary {
   display: flex;
@@ -132,4 +137,20 @@
   font-weight: 500;
   cursor: pointer;
   outline: none;
+}
+
+/* breakpoints */
+@media screen and (min-width: 1013px) {
+  .watchContainer {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 520px);
+    column-gap: 15px;
+    padding: 25px;
+  }
+  .comments {
+    display: flex;
+  }
+  .commentsAtTheBottom {
+    display: none;
+  }
 }
