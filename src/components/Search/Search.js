@@ -19,7 +19,7 @@ function Search() {
   };
   const onSubmit = (event) => {
     event.preventDefault();
-    if (keyword.length > 0) {
+    if (keyword.length > 0 && !modalIsOpen) {
       history.push({
         pathname: `/results`,
         search: `?search_query=${keyword}`,
@@ -32,7 +32,7 @@ function Search() {
   }
 
   function afterOpenModal() {
-    console.log(`modal closed `);
+    return null;
   }
 
   function closeModal() {
