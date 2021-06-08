@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { youTubeService } from "../../services/YouTubeService";
 import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
 import HorizontalVideoCard from "../HorizontalVideoCards/HorizontalVideoCard./HorizontalVideoCard";
@@ -32,7 +33,9 @@ const menuRelatedVideos = [
   },
 ];
 
-export default function RelatedVideos({ videoId }) {
+const RelatedVideos = ({ videoId, playingStatus }) => {
+  const history = useHistory();
+
   const [relatedVideosData, setRelatedVideosData] = useState([]);
   const [searchClone, setSearchClone] = useState([]);
 
@@ -90,6 +93,15 @@ export default function RelatedVideos({ videoId }) {
     getRelatedVideos();
   }, []);
 
+  useEffect(() => {
+    if (playingStatus === "nextVideo") {
+      history.push({
+        pathname: `/watch/${relatedVideosData[0]?.videoId}`,
+        state: { videoStatus: "playingVideo" },
+      });
+    }
+  }, [playingStatus]);
+
   return (
     <div className={styles.relatedVideosContainer}>
       <FeedFilterBarRenderer onChangeFeed={onChangeFeed} />
@@ -105,4 +117,21 @@ export default function RelatedVideos({ videoId }) {
       })}
     </div>
   );
-}
+};
+
+export default RelatedVideos;
+/*export default React.memo(RelatedVideos, (prevProps, nextProps) => {
+  const res =
+    prevProps.playingStatus === nextProps.playingStatus &&
+    prevProps.videoId === nextProps.videoId;
+  console.log(`res:`, res);
+  console.log(
+    `prev:`,
+    prevProps.playingStatus,
+    nextProps.playingStatus,
+    prevProps.videoId,
+    nextProps.videoId
+  );
+  return res;
+});
+*/

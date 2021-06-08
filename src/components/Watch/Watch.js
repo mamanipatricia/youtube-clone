@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import YouTube from "react-youtube";
 import Icon from "../Icon/Icon";
 import { ViewsAndTimestamp } from "../Detail/Detail";
@@ -23,9 +23,22 @@ const menuWatch = [
 
 export default function Watch() {
   let { videoId } = useParams();
+  const location = useLocation();
+
   const [channel, setChannel] = useState("");
   const [video, setVideo] = useState({});
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const [playingStatus, setPlayingStatus] = useState(() => {
+    // `INITIALIZING STATUS`
+    return location.state?.videoStatus;
+  });
+
+  useEffect(() => {
+    if (location.state?.videoStatus !== playingStatus) {
+      setPlayingStatus(location.state?.videoStatus);
+    }
+  }, [location.state?.videoStatus]);
 
   const loading = useLoading();
 
@@ -75,6 +88,13 @@ export default function Watch() {
     setIsExpanded(!isExpanded);
   };
 
+  function playNext(event) {
+    // video is ended when "==0"
+    if (event?.data === 0) {
+      setPlayingStatus("nextVideo");
+    }
+  }
+
   return (
     <div className={styles.watchContainer}>
       {loading.isPending && <Spinner />}
@@ -86,6 +106,7 @@ export default function Watch() {
                 <YouTube
                   containerClassName={styles.youtubePlayer}
                   videoId={video.videoId}
+                  onStateChange={(e) => playNext(e)}
                   opts={opts}
                 />
               </div>
@@ -164,7 +185,7 @@ export default function Watch() {
           <div className={styles.secondary}>
             <PlaylistPanel />
             {/* display 20 elem in responsive and add a button to show more videos */}
-            <RelatedVideos videoId={videoId} />
+            <RelatedVideos videoId={videoId} playingStatus={playingStatus} />
           </div>
           <div className={styles.commentsAtTheBottom}>
             <Comments videoId={videoId} />

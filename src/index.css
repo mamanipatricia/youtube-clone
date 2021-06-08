@@ -114,3 +114,13 @@ textarea {
     --item-max-width: 360px;
   }
 }
+
+/* for debugging */
+.debug {
+  position: "fixed";
+  top: 0;
+  left: 0;
+  z-index: 30000;
+  background: "yellow";
+  height: "50px";
+}
