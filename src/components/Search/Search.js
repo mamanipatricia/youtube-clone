@@ -19,7 +19,7 @@ function Search() {
   };
   const onSubmit = (event) => {
     event.preventDefault();
-    if (keyword.length > 0 && !modalIsOpen) {
+    if (keyword.trim().length > 0 && !modalIsOpen) {
       history.push({
         pathname: `/results`,
         search: `?search_query=${keyword}`,

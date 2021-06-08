@@ -2,6 +2,7 @@
   display: grid;
   max-height: 500px;
   border: 1px solid var(--border-secondary);
+  grid-template-rows: auto 1fr;
 }
 .header {
   display: flex;
