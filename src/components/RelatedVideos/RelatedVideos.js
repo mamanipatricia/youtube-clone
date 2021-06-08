@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { youTubeService } from "../../services/YouTubeService";
+import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
 import HorizontalVideoCard from "../HorizontalVideoCards/HorizontalVideoCard./HorizontalVideoCard";
 import styles from "./RelatedVideosContainer.module.css";
 
@@ -33,6 +34,36 @@ const menuRelatedVideos = [
 
 export default function RelatedVideos({ videoId }) {
   const [relatedVideosData, setRelatedVideosData] = useState([]);
+  const [searchClone, setSearchClone] = useState([]);
+
+  const getSearch = async (keyword) => {
+    const { data } = await youTubeService.getSearch(keyword);
+    return data;
+  };
+
+  const getVideosSearch = async (keyword) => {
+    try {
+      const { videosId } = await getSearch(keyword);
+      const { data: videosData } = await youTubeService.getVideos(videosId);
+      setRelatedVideosData(videosData);
+    } catch (err) {
+      console.log(`err`, err);
+    }
+  };
+
+  useEffect(() => {
+    if (searchClone.length === 0) {
+      setSearchClone(relatedVideosData);
+    }
+  }, [relatedVideosData]);
+
+  const onChangeFeed = (feed) => {
+    if (feed === "All") {
+      setRelatedVideosData(searchClone);
+      return;
+    }
+    getVideosSearch(feed);
+  };
 
   const getRelatedVideos = async () => {
     const { data: relatedVideos } = await youTubeService.getRelatedVideos(
@@ -61,6 +92,7 @@ export default function RelatedVideos({ videoId }) {
 
   return (
     <div className={styles.relatedVideosContainer}>
+      <FeedFilterBarRenderer onChangeFeed={onChangeFeed} />
       {relatedVideosData.map((video) => {
         return (
           <HorizontalVideoCard

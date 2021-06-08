@@ -83,7 +83,7 @@ export default class YouTubeService extends BaseService {
     const params = this.createURLParams({
       videoId: videoId,
       part: "snippet",
-      maxResults: 99,
+      maxResults: 40,
       ...newParams,
     });
     const response = await this.get(`/commentThreads?${params}`);
