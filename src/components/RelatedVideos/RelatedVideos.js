@@ -119,19 +119,9 @@ const RelatedVideos = ({ videoId, playingStatus }) => {
   );
 };
 
-export default RelatedVideos;
-/*export default React.memo(RelatedVideos, (prevProps, nextProps) => {
+export default React.memo(RelatedVideos, (prevProps, nextProps) => {
   const res =
     prevProps.playingStatus === nextProps.playingStatus &&
     prevProps.videoId === nextProps.videoId;
-  console.log(`res:`, res);
-  console.log(
-    `prev:`,
-    prevProps.playingStatus,
-    nextProps.playingStatus,
-    prevProps.videoId,
-    nextProps.videoId
-  );
   return res;
 });
-*/

@@ -61,9 +61,7 @@ export default function Home() {
     };
     let observer = new IntersectionObserver((entries) => {
       const [entry] = entries;
-      console.log(`[entry]`, entry, entries);
       setIsNearScreen(entry.isIntersecting);
-      console.log(`[loadVideo]`, isNearScreen);
     }, options);
     if (near) {
       observer.observe(near);
@@ -87,7 +85,6 @@ export default function Home() {
       setNextPageTokenCopy(pageInfo.nextPageToken);
     }
     setNextPageToken(pageInfo.nextPageToken);
-    console.log(`[data]`, data);
     return data;
   };
 
