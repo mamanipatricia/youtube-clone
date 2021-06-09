@@ -89,9 +89,9 @@ export default function Explore() {
   return (
     <div className={styles.destinationsContainer}>
       <div className={styles.boxContainer}>
-        {destinationsList.map((destination) => {
+        {destinationsList.map((destination, index) => {
           return (
-            <div className={styles.box}>
+            <div key={`dest${index}`} className={styles.box}>
               <img
                 className={styles.image}
                 alt={destination.label}

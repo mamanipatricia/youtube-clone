@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { youTubeService } from "../../../services/YouTubeService";
-import {getTimestamp} from "../../../Utils/Timestamp";
+import { getTimestamp } from "../../../Utils/Timestamp";
 import Button from "../../UI/Button/Button";
 import DropdownMenu from "../../UI/DropdownMenu/DropdownMenu";
 import styles from "./ChannelAbout.module.css";
@@ -75,9 +75,7 @@ export const ChannelAbout = ({ channelId }) => {
       <div className={styles.rightContentContainer}>
         <div className={styles.rightContent}>
           <div>STATS</div>
-          <div>
-            {getTimestamp(channelInfo?.channelPublishedAt)}
-          </div>
+          <div>{getTimestamp(channelInfo?.channelPublishedAt)}</div>
           <div>{channelInfo.channelViewCount} views</div>
         </div>
         <DropdownMenu name="REPORT" menuContent={menuChannel} position="left" />

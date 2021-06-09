@@ -38,7 +38,7 @@ export default function ChannelVideos({ channelId, menuContent }) {
           }
         })
       )
-        .then((values) => {
+        .then((_values) => {
           setVideosID(videosIDResponse);
         })
         .catch((err) => {

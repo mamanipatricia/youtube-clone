@@ -378,7 +378,7 @@ export default function Icon(props) {
       );
     case "PLAY_ALL":
       return (
-        <svg viewBox="0 0 24 24" class={className}>
+        <svg viewBox="0 0 24 24" className={className}>
           <g>
             <path
               fill={color}
@@ -389,7 +389,7 @@ export default function Icon(props) {
       );
     case "QUEUE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" class={className}>
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
           <g>
             <path
               fill={color}
@@ -400,7 +400,7 @@ export default function Icon(props) {
       );
     case "NOT_ALLOWED":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" class={className}>
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
           <g>
             <path d="M0 0h24v24H0z" fill="none" />
             <path
@@ -412,7 +412,7 @@ export default function Icon(props) {
       );
     case "MINUS_CIRCLE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" class={className}>
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
           <g>
             <path
               fill={color}
@@ -423,7 +423,7 @@ export default function Icon(props) {
       );
     case "PLAY_PLAYLIST":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" class={className}>
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
           <path
             fill={color}
             d="M3.67 8.67h14V11h-14V8.67zm0-4.67h14v2.33h-14V4zm0 9.33H13v2.34H3.67v-2.34zm11.66 0v7l5.84-3.5-5.84-3.5z"
@@ -432,7 +432,7 @@ export default function Icon(props) {
       );
     case "MIC":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" class={className}>
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
           <g>
             <path
               fill={color}
@@ -443,7 +443,7 @@ export default function Icon(props) {
       );
     case "CLOSE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" class={className}>
+        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
           <g>
             <path
               fill={color}

@@ -5,7 +5,6 @@ import Search from "../Search/Search";
 import Icon from "../Icon/Icon";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import styles from "./Navbar.module.css";
-import Button from "../UI/Button/Button";
 
 export default function Navbar() {
   const [toggleSidebarRow, setToggleSidebarRow] = useContext(GuideContext);

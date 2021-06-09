@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { youTubeService } from "../../services/YouTubeService";
 import { useLoading } from "../../hooks/useLoading";
 import GuideContext from "../../context/guideContext";
@@ -40,21 +40,66 @@ const menuHome = [
   },
 ];
 
+const INITIAL_KEYWORD = "reactjs";
+
 export default function Home() {
-  const [search, setSearch] = useState([]);
   const loading = useLoading();
-  const [searchClone, setSearchClone] = useState([]);
   const [toggleSidebarRow] = useContext(GuideContext);
 
-  const getSearch = async (keyword) => {
-    const { data } = await youTubeService.getSearch(keyword);
+  const [search, setSearch] = useState([]);
+  const [searchClone, setSearchClone] = useState([]);
+  const [isNearScreen, setIsNearScreen] = useState(false);
+  const [nextPageToken, setNextPageToken] = useState("");
+  const [nextPageTokenCopy, setNextPageTokenCopy] = useState("");
+  const [keyword, setKeyword] = useState(INITIAL_KEYWORD);
+  const nearScreenRef = useRef(null);
+
+  useEffect(() => {
+    const near = nearScreenRef.current;
+    let options = {
+      threshold: 0.5,
+    };
+    let observer = new IntersectionObserver((entries) => {
+      const [entry] = entries;
+      console.log(`[entry]`, entry, entries);
+      setIsNearScreen(entry.isIntersecting);
+      console.log(`[loadVideo]`, isNearScreen);
+    }, options);
+    if (near) {
+      observer.observe(near);
+    }
+    return () => {
+      if (near) {
+        observer.unobserve(near);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isNearScreen) {
+      getVideosSearch();
+    }
+  }, [isNearScreen]);
+
+  const getSearch = async (keyword, params = {}) => {
+    const { data, pageInfo } = await youTubeService.getSearch(keyword, params);
+    if (!nextPageTokenCopy) {
+      setNextPageTokenCopy(pageInfo.nextPageToken);
+    }
+    setNextPageToken(pageInfo.nextPageToken);
+    console.log(`[data]`, data);
     return data;
   };
 
-  const getVideosSearch = async (keyword) => {
+  const getVideosSearch = async () => {
     try {
       loading.pending();
-      const { channelsId, videosId } = await getSearch(keyword);
+
+      const params = {};
+      if (nextPageToken) {
+        params.pageToken = nextPageToken;
+      }
+      const { channelsId, videosId } = await getSearch(keyword, params);
       const { data: channelsData } = await youTubeService.getChannels(
         channelsId
       );
@@ -66,7 +111,8 @@ export default function Home() {
         );
         return { ...video, channel: channelInfo };
       });
-      setSearch(data);
+      setSearch([...search, ...data]);
+      setIsNearScreen(false);
       loading.success();
     } catch (err) {
       console.log(`err`, err);
@@ -75,21 +121,21 @@ export default function Home() {
   };
 
   useEffect(() => {
-    getVideosSearch("reactjs");
-  }, []);
-
-  useEffect(() => {
     if (searchClone.length === 0) {
       setSearchClone(search);
     }
   }, [search]);
 
   const onChangeFeed = (feed) => {
+    setKeyword(feed);
+    setSearch([]);
+    setNextPageToken("");
     if (feed === "All") {
       setSearch(searchClone);
+      setKeyword(INITIAL_KEYWORD);
+      setNextPageToken(nextPageTokenCopy);
       return;
     }
-    getVideosSearch(feed);
   };
 
   return (
@@ -103,22 +149,19 @@ export default function Home() {
       >
         <FeedFilterBarRenderer onChangeFeed={onChangeFeed} />
       </div>
-      {loading.isPending && (
-        <div className={styles.spinner}>
-          <Spinner />
-        </div>
-      )}
       <div className={styles.videosContainer}>
-        {loading.isSuccess &&
-          search.map((video, index) => {
-            return (
-              <VideoCard
-                key={`video-${index}`}
-                video={video}
-                menuContent={menuHome}
-              />
-            );
-          })}
+        {search.map((video, index) => {
+          return (
+            <VideoCard
+              key={`video-${index}`}
+              video={video}
+              menuContent={menuHome}
+            />
+          );
+        })}
+      </div>
+      <div ref={nearScreenRef}>
+        <Spinner />
       </div>
     </div>
   );

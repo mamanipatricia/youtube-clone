@@ -16,11 +16,11 @@
   gap: 12px;
 }
 .videoCardInfoHz {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-self: start;
-    gap: 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-self: start;
+  gap: 12px;
 }
 .menu {
   justify-self: end;

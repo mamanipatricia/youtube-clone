@@ -1,7 +1,3 @@
 export const ChannelChannels = () => {
-    return (
-        <div>
-            ChannelChannels
-        </div>
-    )
-}
+  return <div>ChannelChannels</div>;
+};

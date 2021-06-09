@@ -51,7 +51,7 @@ export default function ChannelHome({ channelId, menuContent }) {
       .forEach((item) => delete playlistData[item[0]]);
 
     await Promise.all(
-      Object.entries(playlistData).map(async ([playlistId, playlist]) => {
+      Object.entries(playlistData).map(async ([playlistId, _playlist]) => {
         const resp = await youTubeService.getPlayListItems(playlistId);
         const videosId = resp.items?.map(
           (video) => video.snippet.resourceId.videoId
@@ -59,7 +59,9 @@ export default function ChannelHome({ channelId, menuContent }) {
         try {
           let { data } = await youTubeService.getVideos(videosId);
           return { [playlistId]: data || [] };
-        } catch (err) {}
+        } catch (err) {
+          console.log(`err`, err);
+        }
         return { [playlistId]: [] };
       })
     ).then((values) => {

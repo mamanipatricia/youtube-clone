@@ -126,7 +126,12 @@ export default class Formatter {
         channelsId.push(video.snippet.channelId);
         videosId.push(video.id.videoId);
       });
-    return { data: { channelsId, videosId } };
+    const pageInfo = {
+      nextPageToken: data.nextPageToken,
+      prevPageToken: data.prevPageToken,
+      ...data.pageInfo,
+    };
+    return { data: { channelsId, videosId }, pageInfo: pageInfo };
   }
 
   formatThreatsComments(data) {
