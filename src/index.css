@@ -93,6 +93,7 @@ body::-webkit-scrollbar-thumb {
         BREAKPOINTS
   ------------------------
 */
+
 @media (min-width: 960px) {
   :root {
     --item-per-row: 2;
@@ -135,7 +136,7 @@ body::-webkit-scrollbar-thumb {
   position: "fixed";
   top: 0;
   left: 0;
-  z-index: 30000;
+  z-index: 1000;
   background: "yellow";
   height: "50px";
 }

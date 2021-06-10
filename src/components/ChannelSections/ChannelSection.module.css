@@ -18,6 +18,12 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 .playButton {
   display: flex;

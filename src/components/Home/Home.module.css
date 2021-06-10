@@ -1,8 +1,8 @@
 .videosContainer {
   display: grid;
   max-width: calc(var(--item-per-row) * var(--item-max-width) + 16px);
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
-  grid-template-columns: repeat(var(--item-per-row), var(--item-max-width));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(var(--item-per-row), var(--item-max-width)); */
   gap: 40px 16px;
   margin: 0 auto;
   justify-items: center;
@@ -18,7 +18,7 @@
   border-bottom: 1px solid var(--border-secondary);
   background: white;
   padding: 10px;
-  z-index: 2050;
+  z-index: 200;
   box-sizing: border-box;
 }
 .toggleToMiniGuide {
@@ -30,6 +30,6 @@
   border-bottom: 1px solid var(--border-secondary);
   background: white;
   padding: 10px;
-  z-index: 2050;
+  z-index: 200;
   box-sizing: border-box;
 }

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import Icon from "../Icon/Icon";
+import { ArrowLeft, ArrowRight } from "../UI/Arrows/Arrows";
 import Carrousel from "../UI/Carousel/Carousel";
 import styles from "./FeedFilterBarRenderer.module.css";
 
@@ -26,21 +26,6 @@ const feedFilterItems = [
   { id: 20, label: "Beverages" },
   { id: 21, label: "Beer" },
 ];
-
-const ArrowRight = () => {
-  return (
-    <span className={styles.arrowRight}>
-      <Icon name="ARROW_RIGHT" className={styles.arrow} />
-    </span>
-  );
-};
-const ArrowLeft = () => {
-  return (
-    <span className={styles.arrowLeft}>
-      <Icon name="ARROW_LEFT" className={styles.arrow} />
-    </span>
-  );
-};
 
 export default function FeedFilterBarRenderer({ onChangeFeed }) {
   const [feed, setFeed] = useState(null);

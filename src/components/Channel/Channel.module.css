@@ -25,6 +25,7 @@
   background: #f9f9f9;
 }
 .channelAvatar {
+  display: flex;
   margin: 0 24px 0 0;
 }
 .channelOwnerText {
@@ -71,7 +72,12 @@
   justify-content: center;
   padding: 15px 15px 0;
   margin: 0 auto;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  scroll-behavior: smooth;
 }
+
 .channelTabbedItem {
   position: relative;
   color: gray;
@@ -93,8 +99,27 @@
   background: var(--background-b);
 }
 .channelSectionsContainer {
+  width: 85%;
   max-width: 1280px;
   margin: 0 auto;
   padding-top: 24px;
   height: 100%;
+}
+@media (max-width: 480px) {
+  .channelAvatar {
+    display: none;
+    margin: 0px;
+  }
+}
+@media (max-width: 480px) {
+  .channelHeaderContainer {
+    display: flex;
+    flex-direction: column !important;
+    margin: 0 auto;
+    padding: 15px 0 0 0;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
+  }
 }

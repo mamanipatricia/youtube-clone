@@ -28,3 +28,14 @@
 .spacer {
   margin-top: 56px;
 }
+@media (max-width: 800px) {
+  .sidebarRow {
+    display: none;
+  }
+  .miniSidebarRow {
+    margin-left: 0;
+  }
+  .bodyWrapper {
+    margin-left: 0;
+  }
+}

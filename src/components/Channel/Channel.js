@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Route, Switch, useParams } from "react-router-dom";
 import { useLocation } from "react-use";
 import { youTubeService } from "../../services/YouTubeService";
@@ -9,8 +9,10 @@ import { ChannelAbout } from "./ChannelAbout/ChannelAbout";
 import { ChannelChannels } from "./ChannelChannels/ChannelChannels";
 import Avatar from "../Avatar/Avatar";
 import Icon from "../Icon/Icon";
-import styles from "./Channel.module.css";
 import Button from "../UI/Button/Button";
+import Carrousel from "../UI/Carousel/Carousel";
+import { ArrowLeft, ArrowRight } from "../UI/Arrows/Arrows";
+import styles from "./Channel.module.css";
 
 const menuVideoCard = [
   {
@@ -64,6 +66,11 @@ export function Channel() {
 
   [channelId] = channelId.split("/");
   const [channel, setChannel] = useState({});
+
+  const refCarrousel = useRef(null);
+  const refFirstItem = useRef(null);
+  const refLastItem = useRef(null);
+
   const channelHeaderOptions = [
     { url: "", label: "START" },
     { url: "videos", label: "VIDEOS" },
@@ -123,20 +130,39 @@ export function Channel() {
               <Icon name="NOTIFICATION_1" />
             </div>
           </div>
-          <div className={styles.channelTabbedHeader}>
-            {channelHeaderOptions.map((option, index) => {
-              return (
-                <Link
-                  key={index}
-                  className={`${styles.channelTabbedItem} ${
-                    option.url === section ? styles.channelTabbedItemActive : ""
-                  }`}
-                  to={`/channel/${channelId}/${option.url}`}
-                >
-                  {option.label}
-                </Link>
-              );
-            })}
+          <div>
+            <Carrousel
+              refCarrousel={refCarrousel}
+              refFirstItem={refFirstItem}
+              refLastItem={refLastItem}
+              prevBtn={<ArrowLeft />}
+              nextBtn={<ArrowRight />}
+            >
+              <div ref={refCarrousel} className={styles.channelTabbedHeader}>
+                {channelHeaderOptions.map((option, index, array) => {
+                  return (
+                    <Link
+                      ref={
+                        index === array.length - 1
+                          ? refLastItem
+                          : index === 0
+                          ? refFirstItem
+                          : null
+                      }
+                      key={index}
+                      className={`${styles.channelTabbedItem} ${
+                        option.url === section
+                          ? styles.channelTabbedItemActive
+                          : ""
+                      }`}
+                      to={`/channel/${channelId}/${option.url}`}
+                    >
+                      {option.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            </Carrousel>
           </div>
         </div>
       </div>
