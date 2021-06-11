@@ -106,20 +106,18 @@
   height: 100%;
 }
 @media (max-width: 480px) {
-  .channelAvatar {
-    display: none;
-    margin: 0px;
-  }
-}
-@media (max-width: 480px) {
   .channelHeaderContainer {
     display: flex;
-    flex-direction: column !important;
+    flex-direction: column;
     margin: 0 auto;
     padding: 15px 0 0 0;
     width: 80%;
     align-items: center;
     justify-content: space-between;
     background: #f9f9f9;
+  }
+  .channelAvatar {
+    display: none;
+    margin: 0px;
   }
 }

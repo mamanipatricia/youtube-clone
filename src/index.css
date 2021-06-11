@@ -72,6 +72,8 @@ body::-webkit-scrollbar {
   width: 16px;
 }
 body::-webkit-scrollbar-thumb {
+  height: 56px;
+
   background: #909090;
   border-radius: 8px;
   background-clip: content-box;
@@ -93,8 +95,8 @@ body::-webkit-scrollbar-thumb {
         BREAKPOINTS
   ------------------------
 */
-
-@media (min-width: 960px) {
+/* 
+@media (min-width: 800) {
   :root {
     --item-per-row: 2;
     --item-max-width: 300px;
@@ -129,7 +131,7 @@ body::-webkit-scrollbar-thumb {
     --item-per-row: 6;
     --item-max-width: 360px;
   }
-}
+} */
 
 /* for debugging */
 .debug {

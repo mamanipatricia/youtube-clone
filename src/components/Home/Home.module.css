@@ -1,13 +1,15 @@
 .videosContainer {
   display: grid;
   max-width: calc(var(--item-per-row) * var(--item-max-width) + 16px);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
   /* grid-template-columns: repeat(var(--item-per-row), var(--item-max-width)); */
   gap: 40px 16px;
   margin: 0 auto;
   justify-items: center;
-  padding: 75px 75px 0;
+  padding: 75px 35px;
   background: var(--background-a);
+  justify-content: center;
 }
 .feedFilterContainer {
   width: calc(100% - 240px);
@@ -32,4 +34,14 @@
   padding: 10px;
   z-index: 200;
   box-sizing: border-box;
+}
+@media (max-width: 800px) {
+  .toggleToMiniGuide {
+    width: 100%;
+  }
+}
+@media (max-width: 800px) {
+  .feedFilterContainer {
+    width: 100%;
+  }
 }
