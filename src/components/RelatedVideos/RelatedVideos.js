@@ -83,6 +83,7 @@ const RelatedVideos = ({ videoId, playingStatus }) => {
       videos.forEach((videoItem) => {
         if (videoItem.videoId === relatedVideo.videoId) {
           relatedVideo.viewCount = videoItem.viewCount;
+          relatedVideo.duration = videoItem.duration;
         }
       });
     });

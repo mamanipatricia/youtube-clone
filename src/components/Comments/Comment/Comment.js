@@ -2,6 +2,7 @@ import Avatar from "../../Avatar/Avatar";
 import styles from "./Comment.module.css";
 import Icon from "../../Icon/Icon";
 import { Link } from "react-router-dom";
+import { getTimestamp } from "../../../Utils/Timestamp";
 
 export default function Comment({ comment } = {}) {
   const {
@@ -31,7 +32,9 @@ export default function Comment({ comment } = {}) {
               <span>{authorName}</span>
             </Link>
           </h3>
-          <span className={styles.publishedTime}>{publishedAt}</span>
+          <span className={styles.publishedTime}>
+            {getTimestamp(publishedAt)}
+          </span>
         </div>
         <div className={styles.expander}>
           <div className={styles.content}>{textOriginal}</div>
