@@ -30,7 +30,7 @@ export default function Watch() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const [playingStatus, setPlayingStatus] = useState(() => {
-    // `INITIALIZING STATUS`
+    // `LAZY INITIALIZATION STATUS`
     return location.state?.videoStatus;
   });
 

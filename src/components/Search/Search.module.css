@@ -1,3 +1,10 @@
+.searchForm {
+  display: flex;
+}
+.search {
+  display: flex;
+  width: 100%;
+}
 .searchContainer {
   align-items: center;
   display: flex;
@@ -12,6 +19,7 @@
   margin-left: 40px;
 }
 .searchInput {
+  width: calc(100%);
   max-width: 100%;
   margin: 0;
   line-height: 24px;
@@ -42,4 +50,19 @@
 }
 .formWrapper {
   flex: 1;
+}
+
+@media (max-width: 657px) {
+  .search {
+    display: none;
+  }
+  .searchVisible {
+    display: flex;
+  }
+  .searchVisible .searchContainer {
+    margin-left: 10px;
+  }
+  .searchForm {
+    justify-content: flex-end;
+  }
 }

@@ -9,11 +9,14 @@
 }
 .startHeader {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+}
+.startHeaderWrapper {
+  display: flex;
   align-items: center;
   gap: 16px;
 }
-.startHeader > span {
+.startHeaderWrapper > span {
   padding: 8px;
 }
 .menuGuide {
@@ -21,6 +24,7 @@
 }
 .centerHeader {
   display: flex;
+  justify-content: center;
   flex-direction: row;
   flex: 0 1 728px;
   align-items: center;
@@ -43,4 +47,30 @@
 .iconLogo {
   width: 80px;
   height: 24px;
+}
+.searchButton {
+  display: none;
+}
+.backButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+@media (max-width: 657px) {
+  .searchButton {
+    display: flex;
+    cursor: pointer;
+  }
+  .searchVisible .endHeader {
+    display: none;
+  }
+  .searchVisible > .startHeader > .startHeaderWrapper {
+    display: none;
+  }
+  .visible {
+    display: flex;
+  }
 }

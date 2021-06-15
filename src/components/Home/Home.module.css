@@ -39,8 +39,6 @@
   .toggleToMiniGuide {
     width: 100%;
   }
-}
-@media (max-width: 800px) {
   .feedFilterContainer {
     width: 100%;
   }

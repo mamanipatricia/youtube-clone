@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
+import { useClickAway } from "react-use";
 import Icon from "../../Icon/Icon";
 import styles from "./DropdownMenu.module.css";
-import { useClickAway } from "react-use";
 
 export default function DropdownMenu({
   menuContent = [],
@@ -36,9 +36,9 @@ export default function DropdownMenu({
           ref={menuRef}
           className={`${styles.itemsContainer} ${styles[position]}`}
         >
-          {menuContent.map((item) => {
+          {menuContent.map((item, index) => {
             return (
-              <div key={item.id} className={styles.items}>
+              <div key={`item-${index}`} className={styles.items}>
                 <Icon name={item.icon} />
                 {item.label}
               </div>
