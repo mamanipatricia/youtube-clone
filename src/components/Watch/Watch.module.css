@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   column-gap: 15px;
-  padding: 25px;
+  padding: 15px;
 }
 .comments {
   display: none;
@@ -17,6 +17,7 @@
 .secondary {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 .playerContainer {
   width: 100%;
@@ -141,6 +142,21 @@
 
 /* breakpoints */
 @media (max-width: 480px) {
+  .hiddenLabel {
+    display: none;
+  }
+}
+@media (max-width: 612px) {
+  .watchInfoButtonsContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .watchInfoButtons {
+    display: flex;
+    /* align-items: center; */
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 @media screen and (min-width: 1013px) {
   .watchContainer {

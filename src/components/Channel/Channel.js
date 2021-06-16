@@ -130,40 +130,38 @@ export function Channel() {
               <Icon name="NOTIFICATION_1" />
             </div>
           </div>
-          <div>
-            <Carrousel
-              refCarrousel={refCarrousel}
-              refFirstItem={refFirstItem}
-              refLastItem={refLastItem}
-              prevBtn={<ArrowLeft />}
-              nextBtn={<ArrowRight />}
-            >
-              <div ref={refCarrousel} className={styles.channelTabbedHeader}>
-                {channelHeaderOptions.map((option, index, array) => {
-                  return (
-                    <Link
-                      ref={
-                        index === array.length - 1
-                          ? refLastItem
-                          : index === 0
-                          ? refFirstItem
-                          : null
-                      }
-                      key={index}
-                      className={`${styles.channelTabbedItem} ${
-                        option.url === section
-                          ? styles.channelTabbedItemActive
-                          : ""
-                      }`}
-                      to={`/channel/${channelId}/${option.url}`}
-                    >
-                      {option.label}
-                    </Link>
-                  );
-                })}
-              </div>
-            </Carrousel>
-          </div>
+          <Carrousel
+            refCarrousel={refCarrousel}
+            refFirstItem={refFirstItem}
+            refLastItem={refLastItem}
+            prevBtn={<ArrowLeft />}
+            nextBtn={<ArrowRight />}
+          >
+            <div ref={refCarrousel} className={styles.channelTabbedHeader}>
+              {channelHeaderOptions.map((option, index, array) => {
+                return (
+                  <Link
+                    ref={
+                      index === array.length - 1
+                        ? refLastItem
+                        : index === 0
+                        ? refFirstItem
+                        : null
+                    }
+                    key={index}
+                    className={`${styles.channelTabbedItem} ${
+                      option.url === section
+                        ? styles.channelTabbedItemActive
+                        : ""
+                    }`}
+                    to={`/channel/${channelId}/${option.url}`}
+                  >
+                    {option.label}
+                  </Link>
+                );
+              })}
+            </div>
+          </Carrousel>
         </div>
       </div>
       <div className={styles.channelWrapper}>

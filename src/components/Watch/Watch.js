@@ -142,13 +142,13 @@ export default function Watch() {
                       <button>
                         <Icon name="SHARE" color="var(--bg-sentiment)" />
                       </button>
-                      <span> SHARE</span>
+                      <span className={styles.hiddenLabel}> SHARE</span>
                     </div>
                     <div>
                       <button>
                         <Icon name="SAVE" color="var(--bg-sentiment)" />
                       </button>
-                      <span> SAVE</span>
+                      <span className={styles.hiddenLabel}> SAVE</span>
                     </div>
                     <DropdownMenu name="MENU" menuContent={menuWatch} />
                   </div>
