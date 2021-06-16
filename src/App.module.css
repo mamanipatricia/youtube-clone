@@ -27,6 +27,55 @@
 .spacer {
   margin-top: 56px;
 }
+.innerSidebar {
+  display: none;
+}
+
+.innerSidebar ~ .bodyWrapper {
+  overflow: hidden;
+}
+.backdropContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--backdrop-background);
+  /* bg-opacity-75 */
+  opacity: 0.75;
+  /* transition: opacity 1s ease-in-out; */
+}
+.sidebarContainer {
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  /* pl-10 */
+  max-width: 100%;
+}
+.sidebar {
+  position: relative;
+  max-width: 240px;
+  width: 100vw;
+  background: white;
+}
+.menuGuide {
+  cursor: pointer;
+}
+.iconLogo {
+  width: 80px;
+  height: 24px;
+}
+.startHeaderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 7px 16px;
+}
+.startHeaderWrapper > span {
+  padding: 8px;
+}
+
 @media (max-width: 800px) {
   .sidebarRow {
     display: none;
@@ -36,5 +85,18 @@
   }
   .bodyWrapper {
     margin-left: 0;
+  }
+  .innerSidebarToggled {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 300;
+  }
+  .bodyWrapperToggled {
+    overflow: hidden;
   }
 }

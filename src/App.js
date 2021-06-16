@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import SidebarRow from "./components/SidebarRow/SidebarRow";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import { Channel } from "./components/Channel/Channel";
 import Explore from "./components/Explore/Explore";
@@ -16,10 +16,17 @@ import Home from "./components/Home/Home";
 import Watch from "./components/Watch/Watch";
 import SearchResults from "./components/SearchResults/SearchResults";
 import { FullPlaylist } from "./components/FullPlaylist/FullPlaylist";
+import Icon from "./components/Icon/Icon";
+import { ReactComponent as Logo } from "./assets/images/logo.svg";
 import styles from "./App.module.css";
 
 function App() {
-  const [toggleSidebarRow] = useContext(GuideContext);
+  const [toggleSidebarRow, setToggleSidebarRow] = useContext(GuideContext);
+
+  const toggleSidebarRowHandle = () => {
+    setToggleSidebarRow(false);
+  };
+
   return (
     <Router>
       <div className={styles.container}>
@@ -32,9 +39,40 @@ function App() {
         </div>
         <div
           className={`${styles.bodyWrapper} ${
-            toggleSidebarRow ? styles.miniSidebarRow : ""
+            toggleSidebarRow
+              ? `${styles.miniSidebarRow} ${styles.bodyWrapperToggled}`
+              : ""
           }`}
         >
+          <div
+            className={`${styles.innerSidebar} ${
+              toggleSidebarRow ? styles.innerSidebarToggled : ""
+            }`}
+          >
+            <div
+              className={styles.backdropContainer}
+              onClick={toggleSidebarRowHandle}
+            ></div>
+            <div className={styles.sidebarContainer}>
+              <div className={styles.sidebar}>
+                <div className={styles.startHeaderWrapper}>
+                  <span
+                    className={styles.menuGuide}
+                    onClick={toggleSidebarRowHandle}
+                  >
+                    <Icon name="MENU_GUIDE" />
+                  </span>
+                  <div className={styles.iconLogo}>
+                    <Link to="/">
+                      <Logo />
+                    </Link>
+                  </div>
+                </div>
+                <SidebarRow />
+              </div>
+            </div>
+          </div>
+
           <Switch>
             <Route
               path="/"
