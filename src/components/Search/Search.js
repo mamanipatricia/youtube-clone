@@ -14,9 +14,10 @@ function Search({ isSearchVisible }) {
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  const searchHandle = (event) => {
-    setKeyword(event.target.value);
+  const searchHandle = (value) => {
+    setKeyword(value);
   };
+
   const onSubmit = (event) => {
     event.preventDefault();
     if (keyword.trim().length > 0 && !modalIsOpen) {
@@ -31,13 +32,17 @@ function Search({ isSearchVisible }) {
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-    return null;
-  }
-
   function closeModal() {
     setIsOpen(false);
   }
+
+  const onChangedText = (text) => {
+    searchHandle(text);
+    history.push({
+      pathname: `/results`,
+      search: `?search_query=${text}`,
+    });
+  };
 
   return (
     <div className={styles.formWrapper}>
@@ -50,7 +55,7 @@ function Search({ isSearchVisible }) {
           <div className={styles.searchContainer}>
             <input
               value={keyword}
-              onChange={(e) => searchHandle(e)}
+              onChange={(e) => searchHandle(e.target.value)}
               className={styles.searchInput}
               placeholder="Search"
             />
@@ -65,8 +70,8 @@ function Search({ isSearchVisible }) {
       </form>
       <ModalMic
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
+        closeModal={closeModal}
+        onChangedText={onChangedText}
       />
     </div>
   );

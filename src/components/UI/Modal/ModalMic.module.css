@@ -18,6 +18,9 @@
   background: var(--background-c);
   cursor: pointer;
 }
+.micButtonActive {
+  background: orange;
+}
 .body {
   min-width: 350px;
   min-height: 200px;
