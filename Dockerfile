@@ -22,5 +22,5 @@ FROM nginx:stable-alpine AS prod
 # COPY path_volumen path_host path_container
 # proxy inverso puedes conectarte desde tu nginx local al container
 
-COPY --from=builder /website/build/ /usr/share/nginx/html/pattty
+COPY --from=builder /website/build/ /usr/share/nginx/html/
 EXPOSE 80
