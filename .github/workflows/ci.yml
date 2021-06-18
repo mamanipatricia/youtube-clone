@@ -1,0 +1,64 @@
+name: CI/CD
+
+on:
+  push:
+    branches: "**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies pat
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Artifact
+          path: build/
+
+  github-package:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: Artifact
+          path: build/
+      - name: Login to Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Docker images
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+        run: |
+          docker build . --rm -t ghcr.io/mamanipatricia/youtube-clone/dev-web:latest
+      - name: Push Docker images to registry
+        run: |
+          docker push ghcr.io/mamanipatricia/youtube-clone/dev-web:latest
