@@ -3,9 +3,6 @@ name: CI/CD
 on:
   push:
     branches: "**"
-env:
-  REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-  REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
 
 jobs:
   build:
@@ -46,6 +43,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: create env file
+        run: |
+          touch .env
+          echo ENGINE_API_KEY =${{ secrets.ENGINE_API_KEY }} >> .env
       - name: Download Artifact
         uses: actions/download-artifact@master
         with:
