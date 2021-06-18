@@ -40,7 +40,7 @@ const menuHome = [
   },
 ];
 
-const INITIAL_KEYWORD = "reactjs";
+const INITIAL_KEYWORD = "javascript";
 
 export default function Home() {
   const loading = useLoading();
