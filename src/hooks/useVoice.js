@@ -39,7 +39,7 @@ const useVoice = () => {
       speech.stop();
     };
 
-    speech.onerror = (event) => {
+    speech.onerror = (_event) => {
       setIsListening(false);
       speech.abort();
     };

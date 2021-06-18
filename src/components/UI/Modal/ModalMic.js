@@ -5,14 +5,8 @@ import Icon from "../../Icon/Icon";
 import styles from "./ModalMic.module.css";
 
 export const ModalMic = ({ isOpen, closeModal, onChangedText }) => {
-  const {
-    text,
-    isListening,
-    abortListen,
-    startListening,
-    endListening,
-    voiceSupported,
-  } = useVoice();
+  const { text, isListening, abortListen, startListening, voiceSupported } =
+    useVoice();
 
   const [message, setMessage] = useState(
     "To search by voice, go to your browser settings and allow access to the microphone."
