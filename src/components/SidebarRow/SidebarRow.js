@@ -6,7 +6,7 @@ import music from "../../assets/images/sidebar/music.jpg";
 import sports from "../../assets/images/sidebar/sports.jpg";
 import videogame from "../../assets/images/sidebar/videogame.jpg";
 import news from "../../assets/images/sidebar/news.jpg";
-import live from "../../assets/images/sidebar/live.jpg";
+// import _live from "../../assets/images/sidebar/live.jpg";
 import learning from "../../assets/images/sidebar/learning.jpg";
 import three60video from "../../assets/images/sidebar/360video.jpg";
 
