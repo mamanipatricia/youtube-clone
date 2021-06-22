@@ -1,5 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import Icon from "../Icon/Icon";
+import SignInButton from "../UI/SignInButton/SignInButton";
+
+import music from "../../assets/images/sidebar/music.jpg";
+import sports from "../../assets/images/sidebar/sports.jpg";
+import videogame from "../../assets/images/sidebar/videogame.jpg";
+import news from "../../assets/images/sidebar/news.jpg";
+import live from "../../assets/images/sidebar/live.jpg";
+import learning from "../../assets/images/sidebar/learning.jpg";
+import three60video from "../../assets/images/sidebar/360video.jpg";
 
 import styles from "./SidebarRow.module.css";
 
@@ -7,7 +16,7 @@ export default function SidebarRow() {
   let { pathname } = useLocation();
   const sidebarSections = [
     {
-      id: "123",
+      id: "section-1",
       title: "",
       items: [
         { pathname: "/", text: "Home", icon: "HOME" },
@@ -20,7 +29,7 @@ export default function SidebarRow() {
       ],
     },
     {
-      id: "1234",
+      id: "section-2",
       title: "",
       items: [
         { pathname: "/feed/library", text: "Library", icon: "LIBRARY" },
@@ -28,6 +37,69 @@ export default function SidebarRow() {
         { pathname: "/feed/my-videos", text: "My Videos", icon: "VIDEO" },
         { pathname: "/feed/watch-later", text: "Watch Later", icon: "CLOCK" },
         { pathname: "/feed/liked-videos", text: "Liked Videos", icon: "LIKE" },
+      ],
+    },
+  ];
+
+  const bestOfYTItems = [
+    {
+      id: "section-3",
+      title: "THE BEST OF YOUTUBE",
+      items: [
+        { pathname: "/feed/music", text: "Music", icon: music },
+        { pathname: "/feed/sports", text: "Sports", icon: sports },
+        {
+          pathname: "/feed/video-game",
+          text: "Video Game",
+          icon: videogame,
+        },
+        { pathname: "/feed/news", text: "News", icon: news },
+        { pathname: "/feed/liked-videos", text: "Learning", icon: learning },
+        { pathname: "/feed/360-video", text: "360° video", icon: three60video },
+      ],
+    },
+  ];
+
+  const moreFromYT = [
+    {
+      id: "section-4",
+      title: "",
+      items: [
+        {
+          pathname: "/feed/browse-channel",
+          text: "Browse channel",
+          icon: "PLUS",
+        },
+      ],
+    },
+    {
+      id: "section-5",
+      title: "MORE FROM YOUTUBE",
+      items: [
+        {
+          pathname: "/feed/youtube-premium",
+          text: "YouTube Premium",
+          icon: "YOUTUBE",
+        },
+        { pathname: "/feed/live", text: "Live", icon: "LIVE" },
+      ],
+    },
+    {
+      id: "section-6",
+      title: "",
+      items: [
+        {
+          pathname: "/feed/setting",
+          text: "Setting",
+          icon: "SETTING",
+        },
+        { pathname: "/feed/report", text: "Report History", icon: "REPORT" },
+        { pathname: "/feed/help", text: "Help", icon: "HELP" },
+        {
+          pathname: "/feed/post-comments",
+          text: "Post Comments",
+          icon: "POST_COMMENTS",
+        },
       ],
     },
   ];
@@ -69,6 +141,92 @@ export default function SidebarRow() {
           </div>
         );
       })}
+      <div className={`${styles.SignInButton} ${styles.section}`}>
+        Access to Like the videos, make comments and subscribe.
+        <SignInButton icon="PROFILE" text="SIGN IN" />
+      </div>
+      <div>
+        {bestOfYTItems.map((section) => {
+          return (
+            <div key={section.id} className={styles.section}>
+              <h3 className={styles.title}>{section.title}</h3>
+              {section.items.map((item) => {
+                return (
+                  <div
+                    title={item.text}
+                    key={item.pathname}
+                    className={`${
+                      pathname === item.pathname ? styles.sidebarBackground : ""
+                    } ${
+                      pathname === item.pathname
+                        ? styles.sidebarBackground
+                        : styles.sidebarBackgroundHover
+                    }`}
+                  >
+                    <Link className={styles.guideEntry} to={item.pathname}>
+                      <span className={styles.sidebarIcon}>
+                        <img
+                          key={section.id}
+                          className={styles.image}
+                          src={item.icon}
+                          alt={item.text}
+                        />
+                      </span>
+                      <span> {item.text} </span>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+
+        {moreFromYT.map((section) => {
+          return (
+            <div key={section.id} className={styles.section}>
+              {section.title ? (
+                <h3 className={styles.title}>{section.title}</h3>
+              ) : null}
+              {section.items.map((item) => {
+                return (
+                  <div
+                    title={item.text}
+                    key={item.pathname}
+                    className={`${
+                      pathname === item.pathname ? styles.sidebarBackground : ""
+                    } ${
+                      pathname === item.pathname
+                        ? styles.sidebarBackground
+                        : styles.sidebarBackgroundHover
+                    }`}
+                  >
+                    <Link className={styles.guideEntry} to={item.pathname}>
+                      <span className={styles.sidebarIcon}>
+                        <Icon
+                          name={item.icon}
+                          color={
+                            pathname === item.pathname
+                              ? "red"
+                              : "var(--icon-secondary)"
+                          }
+                        />
+                      </span>
+                      <span> {item.text} </span>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+      <div className={styles.footer}>
+        <p>
+          Terms Privacy Policies and security. How YouTube works. Try new
+          features
+        </p>
+        <span className={styles.footerCopyright}>© 2021 Google LLC</span>
+      </div>
     </div>
   );
 }

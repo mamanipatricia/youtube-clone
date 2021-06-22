@@ -20,6 +20,7 @@
   "rules": {
     "react/prop-types": 0,
     "react/react-in-jsx-scope": "off",
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "react/no-unescaped-entities": 0
   }
 }

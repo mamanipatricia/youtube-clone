@@ -5,6 +5,7 @@ import Search from "../Search/Search";
 import Icon from "../Icon/Icon";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import styles from "./Navbar.module.css";
+import SignInButton from "../UI/SignInButton/SignInButton";
 
 export default function Navbar() {
   const [toggleSidebarRow, setToggleSidebarRow] = useContext(GuideContext);
@@ -63,9 +64,10 @@ export default function Navbar() {
         <button>
           <Icon name="NOTIFICATION_FILLED" />
         </button>
-        <button>
+        {/* <button>
           <Icon name="PROFILE" className={{ width: "32", height: "32" }} />
-        </button>
+        </button> */}
+        <SignInButton icon="PROFILE" text="SIGN IN" />
       </div>
     </div>
   );
