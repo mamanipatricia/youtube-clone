@@ -1,6 +1,6 @@
 #!/bin/bash
 # build
-# cd youtube-clone
+cd youtube-clone
 status=$(git status --porcelain)
 if [[ -z $status && -e .env ]];
 then
