@@ -11,7 +11,7 @@ const responseGoogle = (response) => {
 
 ReactDOM.render(
   <GoogleLogin
-    clientId="277345146961-i7dnna3jh4a8l0pmqrkolp40luvf0cam.apps.googleusercontent.com"
+    clientId="CLIENT_ID"
     buttonText="Login"
     onSuccess={responseGoogle}
     onFailure={responseGoogle}

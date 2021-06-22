@@ -1,4 +1,5 @@
 import Icon from "../Icon/Icon";
+import SignInButton from "../UI/SignInButton/SignInButton";
 import styles from "./History.module.css";
 
 export default function History() {
@@ -17,14 +18,7 @@ export default function History() {
             <a href="#"> More information</a>
           </span>
         </div>
-        <button className={styles.loginButton}>
-          <Icon
-            name="PROFILE"
-            color="var(--bg-type)"
-            className={{ width: "24", height: "24" }}
-          />
-          <span className={styles.singIn}>SIGN IN</span>
-        </button>
+        <SignInButton icon="PROFILE" text="SIGN IN" />
       </div>
       <div className={styles.watchRightSideContainer}>
         <div className={styles.searchInputContainer}>

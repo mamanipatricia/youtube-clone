@@ -1,0 +1,16 @@
+.singInButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border: 1px solid var(--bg-type) !important;
+  padding: 5px 11px;
+  background: none;
+  border-radius: 2px;
+  font-weight: 500;
+  min-width: 95px;
+}
+.singIn {
+  color: var(--bg-type);
+}
