@@ -64,7 +64,7 @@ export default function Navbar() {
           <Icon name="NOTIFICATION_FILLED" />
         </button>
         <button>
-          <Icon name="PROFILE" />
+          <Icon name="PROFILE" className={{ width: "32", height: "32" }} />
         </button>
       </div>
     </div>

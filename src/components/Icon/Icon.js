@@ -6,7 +6,7 @@ export default function Icon(props) {
         <svg
           width="24"
           height="24"
-          className={className}
+          {...className}
           viewBox="0 0 24 24"
           preserveAspectRatio="xMidYMid meet"
         >
@@ -17,7 +17,7 @@ export default function Icon(props) {
       );
     case "EXPLORE":
       return (
-        <svg width="24" height="24" className={className} viewBox="0 0 24 24">
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -28,7 +28,7 @@ export default function Icon(props) {
       );
     case "SUBSCRIPTION":
       return (
-        <svg width="24" height="24" className={className} viewBox="0 0 24 24">
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -39,7 +39,7 @@ export default function Icon(props) {
       );
     case "LIBRARY":
       return (
-        <svg width="24" height="24" className={className} viewBox="0 0 24 24">
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path fill="none" d="M0 0h24v24H0z" />
             <path
@@ -51,7 +51,7 @@ export default function Icon(props) {
       );
     case "HISTORY":
       return (
-        <svg width="24" height="24" className={className} viewBox="0 0 24 24">
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -62,7 +62,7 @@ export default function Icon(props) {
       );
     case "VIDEO":
       return (
-        <svg width="24" height="24" className={className} viewBox="0 0 24 24">
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -74,7 +74,7 @@ export default function Icon(props) {
       );
     case "CLOCK":
       return (
-        <svg width="24" height="24" className={className} viewBox="0 0 24 24">
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -85,7 +85,7 @@ export default function Icon(props) {
       );
     case "LIKE":
       return (
-        <svg width="24" height="24" className={className} viewBox="0 0 24 24">
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -96,7 +96,7 @@ export default function Icon(props) {
       );
     case "MENU_GUIDE":
       return (
-        <svg width="24" height="24" className={className} viewBox="0 0 24 24">
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -107,7 +107,7 @@ export default function Icon(props) {
       );
     case "SEARCH":
       return (
-        <svg width="20" height="20" viewBox="0 0 24 24" className={className}>
+        <svg width="20" height="20" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -118,7 +118,7 @@ export default function Icon(props) {
       );
     case "MICROPHONE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -129,7 +129,7 @@ export default function Icon(props) {
       );
     case "CREATE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -140,7 +140,7 @@ export default function Icon(props) {
       );
     case "APPS":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -151,7 +151,7 @@ export default function Icon(props) {
       );
     case "NOTIFICATION_FILLED":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -162,7 +162,7 @@ export default function Icon(props) {
       );
     case "NOTIFICATION_1":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path d="M0 0h24v24H0z" fill="none" />
             <path
@@ -174,7 +174,7 @@ export default function Icon(props) {
       );
     case "NOTIFICATION_2":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -185,7 +185,7 @@ export default function Icon(props) {
       );
     case "NOTIFICATION_3":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path d="M0 0h24v24H0z" fill="none" />
             <path
@@ -198,7 +198,7 @@ export default function Icon(props) {
 
     case "PROFILE":
       return (
-        <svg width="32" height="32" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -209,7 +209,7 @@ export default function Icon(props) {
       );
     case "CHECK_CIRCLE_THICK":
       return (
-        <svg viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -220,7 +220,7 @@ export default function Icon(props) {
       );
     case "MENU":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -231,7 +231,7 @@ export default function Icon(props) {
       );
     case "LIKE_VIDEO":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -242,7 +242,7 @@ export default function Icon(props) {
       );
     case "SHARE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -253,7 +253,7 @@ export default function Icon(props) {
       );
     case "SAVE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -264,7 +264,7 @@ export default function Icon(props) {
       );
     case "REPORT":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path fill={color} d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z" />
           </g>
@@ -292,7 +292,7 @@ export default function Icon(props) {
       );
     case "DROPDOWN_MENU":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -304,7 +304,7 @@ export default function Icon(props) {
       );
     case "PLAY":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path fill={color} d="M8 5v14l11-7z" />
           </g>
@@ -312,7 +312,7 @@ export default function Icon(props) {
       );
     case "CHEVRON_UP":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -323,7 +323,7 @@ export default function Icon(props) {
       );
     case "LOOP":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -334,7 +334,7 @@ export default function Icon(props) {
       );
     case "SHUFFLE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -345,7 +345,7 @@ export default function Icon(props) {
       );
     case "SAVE_PLAYLIST":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -356,7 +356,7 @@ export default function Icon(props) {
       );
     case "ARROW_LEFT":
       return (
-        <svg viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -367,7 +367,7 @@ export default function Icon(props) {
       );
     case "ARROW_RIGHT":
       return (
-        <svg viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -378,7 +378,7 @@ export default function Icon(props) {
       );
     case "PLAY_ALL":
       return (
-        <svg viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -389,7 +389,7 @@ export default function Icon(props) {
       );
     case "QUEUE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -400,7 +400,7 @@ export default function Icon(props) {
       );
     case "NOT_ALLOWED":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path d="M0 0h24v24H0z" fill="none" />
             <path
@@ -412,7 +412,7 @@ export default function Icon(props) {
       );
     case "MINUS_CIRCLE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -423,7 +423,7 @@ export default function Icon(props) {
       );
     case "PLAY_PLAYLIST":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <path
             fill={color}
             d="M3.67 8.67h14V11h-14V8.67zm0-4.67h14v2.33h-14V4zm0 9.33H13v2.34H3.67v-2.34zm11.66 0v7l5.84-3.5-5.84-3.5z"
@@ -432,7 +432,7 @@ export default function Icon(props) {
       );
     case "MIC":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -443,7 +443,7 @@ export default function Icon(props) {
       );
     case "CLOSE":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
@@ -454,11 +454,45 @@ export default function Icon(props) {
       );
     case "BACK_ARROW":
       return (
-        <svg width="24" height="24" viewBox="0 0 24 24" className={className}>
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
             <path
               fill={color}
               d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+            />
+          </g>
+        </svg>
+      );
+    case "CLEAR":
+      return (
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
+          <g>
+            <path
+              fill={color}
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+            />
+          </g>
+        </svg>
+      );
+    case "PAUSE":
+      return (
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
+          <g>
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              fill={color}
+              d="M9 16h2V8H9v8zm3-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-4h2V8h-2v8z"
+            />
+          </g>
+        </svg>
+      );
+    case "SETTING":
+      return (
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
+          <g>
+            <path
+              fill={color}
+              d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.1-1.65c.2-.15.25-.42.13-.64l-2-3.46c-.12-.22-.4-.3-.6-.22l-2.5 1c-.52-.4-1.08-.73-1.7-.98l-.37-2.65c-.06-.24-.27-.42-.5-.42h-4c-.27 0-.48.18-.5.42l-.4 2.65c-.6.25-1.17.6-1.7.98l-2.48-1c-.23-.1-.5 0-.6.22l-2 3.46c-.14.22-.08.5.1.64l2.12 1.65c-.04.32-.07.65-.07.98s.02.66.06.98l-2.1 1.65c-.2.15-.25.42-.13.64l2 3.46c.12.22.4.3.6.22l2.5-1c.52.4 1.08.73 1.7.98l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.6-.25 1.17-.6 1.7-.98l2.48 1c.23.1.5 0 .6-.22l2-3.46c.13-.22.08-.5-.1-.64l-2.12-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"
             />
           </g>
         </svg>

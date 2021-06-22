@@ -1,0 +1,31 @@
+.libraryContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 140px;
+  gap: 20px;
+}
+.title {
+  margin: 0;
+  font-weight: 400;
+}
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.loginButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border: 1px solid var(--bg-type);
+  padding: 5px 11px;
+  background: none;
+  border-radius: 2px;
+}
+.singIn {
+  color: var(--bg-type);
+}
