@@ -1,3 +1,6 @@
+.commentsWrapper {
+  width: 100%;
+}
 .commentsHeader {
   display: flex;
   margin: 24px 0 32px 0;

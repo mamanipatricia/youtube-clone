@@ -150,7 +150,11 @@ export default function Watch() {
                       </button>
                       <span className={styles.hiddenLabel}> SAVE</span>
                     </div>
-                    <DropdownMenu name="MENU" menuContent={menuWatch} />
+                    <DropdownMenu
+                      name="MENU"
+                      menuContent={menuWatch}
+                      direction="horizontal"
+                    />
                   </div>
                 </div>
               </div>

@@ -3,6 +3,15 @@ import styles from "./Comment.module.css";
 import Icon from "../../Icon/Icon";
 import { Link } from "react-router-dom";
 import { getTimestamp } from "../../../Utils/Timestamp";
+import DropdownMenu from "../../UI/DropdownMenu/DropdownMenu";
+
+const menuComments = [
+  {
+    id: 1,
+    label: "Report",
+    icon: "REPORT",
+  },
+];
 
 export default function Comment({ comment } = {}) {
   const {
@@ -58,7 +67,7 @@ export default function Comment({ comment } = {}) {
         </div>
       </div>
       <div>
-        <Icon name="MENU" />
+        <DropdownMenu name="MENU" menuContent={menuComments} position="left" />
       </div>
     </div>
   );

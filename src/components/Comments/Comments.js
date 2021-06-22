@@ -30,7 +30,7 @@ export default function Comments({ videoId }) {
   return (
     <>
       {!errorComment ? (
-        <div>
+        <div className={styles.commentsWrapper}>
           <div className={styles.commentsHeader}>
             <span className={styles.commentsCount}>
               {totalResults} Comments
