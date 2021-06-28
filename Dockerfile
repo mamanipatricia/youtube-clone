@@ -13,5 +13,6 @@ RUN yarn build
 
 # Stage 2 - the production environment
 FROM nginx:stable-alpine AS prod
+ADD ./nginx /etc/nginx/conf.d/
 COPY --from=builder /website/build/ /usr/share/nginx/html/
 EXPOSE 80
