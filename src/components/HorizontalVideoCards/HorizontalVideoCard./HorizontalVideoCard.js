@@ -19,6 +19,7 @@ export default function HorizontalVideoCard({
     channel,
     publishedAt,
     duration,
+    liveBroadcast,
   } = video;
 
   return (
@@ -26,7 +27,11 @@ export default function HorizontalVideoCard({
       <div className={`${direction === "row" ? styles.horizontalCard : ""}`}>
         <Link to={`/watch/${videoId}`}>
           <div>
-            <Thumbnail url={thumbnail} duration={duration} />
+            <Thumbnail
+              url={thumbnail}
+              duration={duration}
+              liveBroadcast={liveBroadcast}
+            />
           </div>
         </Link>
         <div className={styles.horizontalVideoCardInfo}>
@@ -36,6 +41,7 @@ export default function HorizontalVideoCard({
             channel={channel}
             publishedAt={publishedAt}
             videoId={videoId}
+            liveBroadcast={liveBroadcast}
           />
           <div className={styles.menu}>
             <DropdownMenu name="MENU" menuContent={menuContent} />

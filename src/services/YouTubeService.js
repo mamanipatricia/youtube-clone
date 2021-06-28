@@ -150,5 +150,3 @@ export default class YouTubeService extends BaseService {
     return this.formatter.formatTendingVideos(response);
   }
 }
-
-export const youTubeService = new YouTubeService();

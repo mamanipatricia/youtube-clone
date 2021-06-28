@@ -4,6 +4,7 @@ import Avatar from "../Avatar/Avatar";
 import { Owner } from "../Channel/Channel";
 import styles from "./Detail.module.css";
 import { formatDigit } from "../../Utils/views";
+import LiveBadge from "../Badges/LiveBadge/LiveBadge";
 
 export default function Detail(props) {
   const {
@@ -14,6 +15,7 @@ export default function Detail(props) {
     direction,
     description,
     videoId,
+    liveBroadcast,
   } = props;
   return (
     <div
@@ -36,6 +38,8 @@ export default function Detail(props) {
       {direction === "horizontal" && (
         <p className={styles.description}> {description} </p>
       )}
+
+      <LiveBadge liveBroadcast={liveBroadcast} />
     </div>
   );
 }

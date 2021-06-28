@@ -8,8 +8,16 @@ import styles from "./HorizontalPlaylistCard.module.css";
 export default function HorizontalPlaylistCard({ video, direction, dataRef }) {
   const history = useHistory();
   if (!video) return "video not found";
-  const { playlistId, title, thumbnail, count, channel, duration, items } =
-    video;
+  const {
+    playlistId,
+    title,
+    thumbnail,
+    count,
+    channel,
+    duration,
+    items,
+    liveBroadcast,
+  } = video;
   const fullPlayListHandle = () => {
     history.push({
       pathname: `/playlist`,
@@ -30,6 +38,7 @@ export default function HorizontalPlaylistCard({ video, direction, dataRef }) {
               className={`${(styles.thumbnailHovered, styles.playlistCovered)}`}
               url={thumbnail}
               duration={duration}
+              liveBroadcast={liveBroadcast}
             />
             <div className={styles.playlistCovered}>
               {count} <Icon name="PLAY_PLAYLIST" color="white" />

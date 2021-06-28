@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { youTubeService } from "../../../services/YouTubeService";
+import { youTubeService } from "../../../services";
 import { useLoading } from "../../../hooks/useLoading";
 import HorizontalPlaylistCard from "../../HorizontalPlaylistCard/HorizontalPlaylistCard";
 import Spinner from "../../Spinner/Spinner";

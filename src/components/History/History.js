@@ -1,5 +1,5 @@
+import Login from "../../GoogleAuth/Login";
 import Icon from "../Icon/Icon";
-import SignInButton from "../UI/SignInButton/SignInButton";
 import styles from "./History.module.css";
 
 export default function History() {
@@ -18,7 +18,7 @@ export default function History() {
             <a href="#"> More information</a>
           </span>
         </div>
-        <SignInButton icon="PROFILE" text="SIGN IN" />
+        <Login />
       </div>
       <div className={styles.watchRightSideContainer}>
         <div className={styles.searchInputContainer}>
@@ -41,7 +41,8 @@ export default function History() {
                 id="watch"
                 name="history"
                 value="watch"
-                checked
+                checked={true}
+                onChange={() => {}}
                 className={styles.buttonInput}
               />
             </div>

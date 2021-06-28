@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { youTubeService } from "../../../services/YouTubeService";
+import { youTubeService } from "../../../services";
 import { useLoading } from "../../../hooks/useLoading";
 import ChannelSections from "../../ChannelSections/ChannelSections";
 import Spinner from "../../Spinner/Spinner";

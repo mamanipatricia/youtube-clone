@@ -9,8 +9,12 @@
   background: none;
   border-radius: 2px;
   font-weight: 500;
-  min-width: 95px;
+  min-width: 175px;
 }
 .singIn {
   color: var(--bg-type);
+}
+.googleIcon {
+  width: 24px;
+  height: 24px;
 }

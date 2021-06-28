@@ -64,6 +64,7 @@
   width: 16px;
   height: 16px;
   display: inline-flex;
+  align-items: center;
 }
 /* tabbed header */
 .channelTabbedHeader {

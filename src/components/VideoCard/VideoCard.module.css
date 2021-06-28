@@ -6,6 +6,7 @@
 .videoCardContainerHorizontal {
   flex-direction: row;
   gap: 8px;
+  align-items: center;
 }
 .videoCardInfo {
   width: 100%;

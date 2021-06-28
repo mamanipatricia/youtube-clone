@@ -5,7 +5,10 @@ import Search from "../Search/Search";
 import Icon from "../Icon/Icon";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import styles from "./Navbar.module.css";
-import SignInButton from "../UI/SignInButton/SignInButton";
+// import SignInButton from "../UI/SignInButton/SignInButton";
+import Login from "../../GoogleAuth/Login";
+import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
+import { MENU_SETTINGS, MENU_APP } from "../Constants/Constants";
 
 export default function Navbar() {
   const [toggleSidebarRow, setToggleSidebarRow] = useContext(GuideContext);
@@ -55,19 +58,31 @@ export default function Navbar() {
         >
           <Icon name="SEARCH" />
         </button>
-        <button>
+        {/* <button>
           <Icon name="CREATE" />
-        </button>
+        </button> */}
         <button>
-          <Icon name="APPS" />
+          <DropdownMenu
+            name="APPS"
+            color="var(--bg-icons)"
+            menuContent={MENU_APP}
+            position="right"
+          />
         </button>
-        <button>
+        <DropdownMenu
+          name="MENU"
+          color="var(--bg-icons)"
+          menuContent={MENU_SETTINGS}
+          position="right"
+        />
+
+        {/* <button>
           <Icon name="NOTIFICATION_FILLED" />
-        </button>
+        </button> */}
         {/* <button>
           <Icon name="PROFILE" className={{ width: "32", height: "32" }} />
         </button> */}
-        <SignInButton icon="PROFILE" text="SIGN IN" />
+        <Login />
       </div>
     </div>
   );

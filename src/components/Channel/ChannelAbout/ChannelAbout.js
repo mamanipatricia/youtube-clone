@@ -1,32 +1,10 @@
 import { useEffect, useState } from "react";
-import { youTubeService } from "../../../services/YouTubeService";
+import { youTubeService } from "../../../services";
 import { getTimestamp } from "../../../Utils/Timestamp";
 import Button from "../../UI/Button/Button";
 import DropdownMenu from "../../UI/DropdownMenu/DropdownMenu";
 import styles from "./ChannelAbout.module.css";
-
-const menuChannel = [
-  {
-    id: 1,
-    label: "Block user",
-    icon: "",
-  },
-  {
-    id: 2,
-    label: "Report channel header",
-    icon: "",
-  },
-  {
-    id: 3,
-    label: "Report profile picture",
-    icon: "",
-  },
-  {
-    id: 4,
-    label: "Report user",
-    icon: "",
-  },
-];
+import { MENU_CHANNEL } from "../../Constants/Constants";
 
 export const ChannelAbout = ({ channelId }) => {
   const [channelInfo, setChannelInfo] = useState([]);
@@ -75,10 +53,14 @@ export const ChannelAbout = ({ channelId }) => {
       <div className={styles.rightContentContainer}>
         <div className={styles.rightContent}>
           <div>STATS</div>
-          <div>{getTimestamp(channelInfo?.channelPublishedAt)}</div>
+          <div>Joined {getTimestamp(channelInfo?.channelPublishedAt)}</div>
           <div>{channelInfo.channelViewCount} views</div>
         </div>
-        <DropdownMenu name="REPORT" menuContent={menuChannel} position="left" />
+        <DropdownMenu
+          name="REPORT"
+          menuContent={MENU_CHANNEL}
+          position="left"
+        />
       </div>
     </div>
   );

@@ -7,30 +7,9 @@ import music from "../../assets/images/music.png";
 import gaming from "../../assets/images/gaming.png";
 import learning from "../../assets/images/learning.png";
 import sports from "../../assets/images/sports.png";
-import { youTubeService } from "../../services/YouTubeService";
+import { youTubeService } from "../../services";
+import { MENU_SEARCH } from "../Constants/Constants";
 
-const menuSearch = [
-  {
-    id: 1,
-    label: "Add to queue",
-    icon: "QUEUE",
-  },
-  {
-    id: 2,
-    label: "Save to watch later",
-    icon: "CLOCK",
-  },
-  {
-    id: 3,
-    label: "Save to playlist",
-    icon: "SAVE_PLAYLIST",
-  },
-  {
-    id: 4,
-    label: "Report",
-    icon: "REPORT",
-  },
-];
 const destinationsList = [
   {
     label: "Music",
@@ -113,7 +92,7 @@ export default function Explore() {
                   key={`index-${index}`}
                   video={video}
                   direction="horizontal"
-                  menuContent={menuSearch}
+                  menuContent={MENU_SEARCH}
                 />
               );
             })}

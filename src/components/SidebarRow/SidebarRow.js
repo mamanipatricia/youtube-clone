@@ -1,7 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import Icon from "../Icon/Icon";
-import SignInButton from "../UI/SignInButton/SignInButton";
-
 import music from "../../assets/images/sidebar/music.jpg";
 import sports from "../../assets/images/sidebar/sports.jpg";
 import videogame from "../../assets/images/sidebar/videogame.jpg";
@@ -11,6 +9,7 @@ import learning from "../../assets/images/sidebar/learning.jpg";
 import three60video from "../../assets/images/sidebar/360video.jpg";
 
 import styles from "./SidebarRow.module.css";
+import Login from "../../GoogleAuth/Login";
 
 export default function SidebarRow() {
   let { pathname } = useLocation();
@@ -54,7 +53,7 @@ export default function SidebarRow() {
           icon: videogame,
         },
         { pathname: "/feed/news", text: "News", icon: news },
-        { pathname: "/feed/liked-videos", text: "Learning", icon: learning },
+        { pathname: "/feed/learning", text: "Learning", icon: learning },
         { pathname: "/feed/360-video", text: "360° video", icon: three60video },
       ],
     },
@@ -143,7 +142,7 @@ export default function SidebarRow() {
       })}
       <div className={`${styles.SignInButton} ${styles.section}`}>
         Access to Like the videos, make comments and subscribe.
-        <SignInButton icon="PROFILE" text="SIGN IN" />
+        <Login />
       </div>
       <div>
         {bestOfYTItems.map((section) => {

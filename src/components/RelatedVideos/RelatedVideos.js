@@ -1,37 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { youTubeService } from "../../services/YouTubeService";
+import { youTubeService } from "../../services";
 import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
 import HorizontalVideoCard from "../HorizontalVideoCards/HorizontalVideoCard./HorizontalVideoCard";
 import styles from "./RelatedVideosContainer.module.css";
-
-const menuRelatedVideos = [
-  {
-    id: 1,
-    label: "Add to queue",
-    icon: "QUEUE",
-  },
-  {
-    id: 2,
-    label: "Save to watch later",
-    icon: "CLOCK",
-  },
-  {
-    id: 3,
-    label: "Save to playlist",
-    icon: "SAVE_PLAYLIST",
-  },
-  {
-    id: 4,
-    label: "Not interested",
-    icon: "SAVE_PLAYLIST",
-  },
-  {
-    id: 5,
-    label: "Report",
-    icon: "REPORT",
-  },
-];
+import { MENU_RELATED_VIDEOS } from "../Constants/Constants";
 
 const RelatedVideos = ({ videoId, playingStatus }) => {
   const history = useHistory();
@@ -72,22 +45,9 @@ const RelatedVideos = ({ videoId, playingStatus }) => {
     const { data: relatedVideos } = await youTubeService.getRelatedVideos(
       videoId
     );
-    const videoIds = [];
-    relatedVideos.forEach((video) => {
-      videoIds.push(video.videoId);
-    });
-
+    const videoIds = relatedVideos.map((video) => video.videoId);
     const { data: videos } = await youTubeService.getVideos(videoIds);
-
-    relatedVideos.forEach((relatedVideo) => {
-      videos.forEach((videoItem) => {
-        if (videoItem.videoId === relatedVideo.videoId) {
-          relatedVideo.viewCount = videoItem.viewCount;
-          relatedVideo.duration = videoItem.duration;
-        }
-      });
-    });
-    setRelatedVideosData(relatedVideos);
+    setRelatedVideosData(videos);
   };
 
   useEffect(() => {
@@ -112,7 +72,7 @@ const RelatedVideos = ({ videoId, playingStatus }) => {
             key={`index-${video.videoId}`}
             video={video}
             direction="row"
-            menuContent={menuRelatedVideos}
+            menuContent={MENU_RELATED_VIDEOS}
           />
         );
       })}

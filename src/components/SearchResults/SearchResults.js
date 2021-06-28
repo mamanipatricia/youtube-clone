@@ -1,33 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { useLoading } from "../../hooks/useLoading";
-import { youTubeService } from "../../services/YouTubeService";
+import { youTubeService } from "../../services";
 import Spinner from "../Spinner/Spinner";
 import VideoCard from "../VideoCard/VideoCard";
 import styles from "./SearchResults.module.css";
-
-const menuSearch = [
-  {
-    id: 1,
-    label: "Add to queue",
-    icon: "QUEUE",
-  },
-  {
-    id: 2,
-    label: "Save to watch later",
-    icon: "CLOCK",
-  },
-  {
-    id: 3,
-    label: "Save to playlist",
-    icon: "SAVE_PLAYLIST",
-  },
-  {
-    id: 4,
-    label: "Report",
-    icon: "REPORT",
-  },
-];
+import { MENU_SEARCH_RESULT } from "../Constants/Constants";
 
 export default function SearchResults() {
   const location = useLocation();
@@ -77,7 +55,7 @@ export default function SearchResults() {
               key={`index-${index}`}
               video={video}
               direction="horizontal"
-              menuContent={menuSearch}
+              menuContent={MENU_SEARCH_RESULT}
             />
           );
         })}
