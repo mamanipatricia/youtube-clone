@@ -1,14 +1,10 @@
-import Icon from "../../Icon/Icon";
 import styles from "./SignInButton.module.css";
+import google from "../../../assets/images/google.svg";
 
-export default function SignInButton({ icon, text }) {
+export default function SignInButton({ text, clicked }) {
   return (
-    <button className={styles.singInButton}>
-      <Icon
-        name={icon}
-        color="var(--bg-type)"
-        className={{ width: "24", height: "24" }}
-      />
+    <button onClick={clicked} className={styles.singInButton}>
+      <img className={styles.googleIcon} src={google} />
       <span className={styles.singIn}>{text}</span>
     </button>
   );

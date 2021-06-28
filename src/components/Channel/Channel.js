@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, Route, Switch, useParams } from "react-router-dom";
 import { useLocation } from "react-use";
-import { youTubeService } from "../../services/YouTubeService";
+import { youTubeService } from "../../services";
 import ChannelHome from "./ChannelHome/ChannelHome";
 import ChannelVideos from "./ChannelVideos/ChannelVideos";
 import { ChannelPlaylists } from "./ChannelPlaylists/ChannelPlaylists";
@@ -13,24 +13,7 @@ import Button from "../UI/Button/Button";
 import Carrousel from "../UI/Carousel/Carousel";
 import { ArrowLeft, ArrowRight } from "../UI/Arrows/Arrows";
 import styles from "./Channel.module.css";
-
-const menuVideoCard = [
-  {
-    id: 1,
-    label: "Add to queue",
-    icon: "QUEUE",
-  },
-  {
-    id: 2,
-    label: "Save to watch later",
-    icon: "CLOCK",
-  },
-  {
-    id: 3,
-    label: "Save to playlist",
-    icon: "SAVE_PLAYLIST",
-  },
-];
+import { MENU_VIDEO_CARD } from "../Constants/Constants";
 
 export function Owner({ channel }) {
   const { channelId, channelName } = channel;
@@ -168,12 +151,15 @@ export function Channel() {
         <div className={styles.channelSectionsContainer}>
           <Switch>
             <Route exact path="/channel/:channelId">
-              <ChannelHome channelId={channelId} menuContent={menuVideoCard} />
+              <ChannelHome
+                channelId={channelId}
+                menuContent={MENU_VIDEO_CARD}
+              />
             </Route>
             <Route path="/channel/:channelId/videos">
               <ChannelVideos
                 channelId={channelId}
-                menuContent={menuVideoCard}
+                menuContent={MENU_VIDEO_CARD}
               />
             </Route>
             <Route path="/channel/:channelId/playlist">

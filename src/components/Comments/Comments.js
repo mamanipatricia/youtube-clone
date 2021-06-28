@@ -3,7 +3,7 @@ import styles from "./Comments.module.css";
 import AuthorComment from "./AuthorComment/AuthorComment";
 import Comment from "./Comment/Comment";
 import { useEffect, useState } from "react";
-import { youTubeService } from "../../services/YouTubeService";
+import { youTubeService, commentService } from "../../services";
 
 export default function Comments({ videoId }) {
   const [commentsThreads, setCommentsThreads] = useState();
@@ -27,6 +27,10 @@ export default function Comments({ videoId }) {
     getThreadsComments();
   }, [videoId]);
 
+  const onSubmit = async (html) => {
+    await commentService.addComment(html, videoId);
+  };
+
   return (
     <>
       {!errorComment ? (
@@ -42,7 +46,7 @@ export default function Comments({ videoId }) {
               <span>SORT BY</span>
             </div>
           </div>
-          <AuthorComment channel={{}} />
+          <AuthorComment onSubmit={onSubmit} />
           {commentsThreads?.map((commentItem, index) => {
             return <Comment key={`comment-${index}`} comment={commentItem} />;
           })}

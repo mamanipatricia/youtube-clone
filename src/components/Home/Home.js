@@ -1,44 +1,12 @@
 import { useState, useEffect, useRef, useContext } from "react";
-import { youTubeService } from "../../services/YouTubeService";
+import { youTubeService } from "../../services";
 import { useLoading } from "../../hooks/useLoading";
 import GuideContext from "../../context/guideContext";
 import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
 import VideoCard from "../VideoCard/VideoCard";
 import Spinner from "../Spinner/Spinner";
 import styles from "./Home.module.css";
-
-const menuHome = [
-  {
-    id: 1,
-    label: "Add to queue",
-    icon: "QUEUE",
-  },
-  {
-    id: 2,
-    label: "Save to watch later",
-    icon: "CLOCK",
-  },
-  {
-    id: 3,
-    label: "Save to playlist",
-    icon: "SAVE_PLAYLIST",
-  },
-  {
-    id: 4,
-    label: "Not interested",
-    icon: "NOT_ALLOWED",
-  },
-  {
-    id: 5,
-    label: "Don't recommended channel",
-    icon: "MINUS_CIRCLE",
-  },
-  {
-    id: 4,
-    label: "Report",
-    icon: "REPORT",
-  },
-];
+import { MENU_HOME } from "../Constants/Constants";
 
 const INITIAL_KEYWORD = "javascript";
 
@@ -152,7 +120,7 @@ export default function Home() {
             <VideoCard
               key={`video-${index}`}
               video={video}
-              menuContent={menuHome}
+              menuContent={MENU_HOME}
             />
           );
         })}

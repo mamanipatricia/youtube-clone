@@ -1,0 +1,9 @@
+.liveBadge {
+  padding: 3px 4px;
+  font-weight: 500;
+  color: var(--border-live);
+  border: 1px solid var(--border-live);
+  border-radius: 2px;
+  width: fit-content;
+  font-size: var(--font-size-12);
+}

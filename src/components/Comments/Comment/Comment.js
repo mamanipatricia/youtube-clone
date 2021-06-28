@@ -4,14 +4,7 @@ import Icon from "../../Icon/Icon";
 import { Link } from "react-router-dom";
 import { getTimestamp } from "../../../Utils/Timestamp";
 import DropdownMenu from "../../UI/DropdownMenu/DropdownMenu";
-
-const menuComments = [
-  {
-    id: 1,
-    label: "Report",
-    icon: "REPORT",
-  },
-];
+import { MENU_COMMENTS } from "../../Constants/Constants";
 
 export default function Comment({ comment } = {}) {
   const {
@@ -56,8 +49,8 @@ export default function Comment({ comment } = {}) {
             <span> {likeCount || ""}</span>
           </div>
           <div className={styles.likeButton}>
-            <span className={styles.dislikeButton}>
-              <Icon name="LIKE" color="var(--text-sentiment)" />
+            <span className={styles.dislike}>
+              <Icon name="DISLIKE" color="var(--text-sentiment)" />
             </span>
             <span> {dislikeCount || ""}</span>
           </div>
@@ -67,7 +60,11 @@ export default function Comment({ comment } = {}) {
         </div>
       </div>
       <div>
-        <DropdownMenu name="MENU" menuContent={menuComments} position="left" />
+        <DropdownMenu
+          name="MENU"
+          menuContent={MENU_COMMENTS}
+          position="right"
+        />
       </div>
     </div>
   );

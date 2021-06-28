@@ -5,7 +5,7 @@ import styles from "./AuthorContent.module.css";
 // For some reason Safari inserts `<br>` after user removes text from input
 const SAFARI_BR = "<br>";
 
-export default function AuthorComment() {
+export default function AuthorComment({ onSubmit }) {
   const [html, setHtml] = useState("");
   const [isVisibleActionButtons, setIsVisibleActionButtons] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
@@ -30,6 +30,11 @@ export default function AuthorComment() {
   useEffect(() => {
     html.length > 0 ? setIsTyping(true) : setIsTyping(false);
   }, [html]);
+
+  const addComment = () => {
+    onSubmit(html);
+    onCancelCreateComment();
+  };
 
   return (
     <div className={styles.commentSimpleBoxContainer}>
@@ -68,6 +73,7 @@ export default function AuthorComment() {
           <div className={styles.footerButtons}>
             <button onClick={onCancelCreateComment}>CANCEL</button>
             <button
+              onClick={addComment}
               className={isTyping ? styles.background : styles.footerButtons}
             >
               COMMENT

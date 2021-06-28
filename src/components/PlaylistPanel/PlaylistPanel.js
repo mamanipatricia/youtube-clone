@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { youTubeService } from "../../services/YouTubeService";
+import { youTubeService } from "../../services";
 import { HorizontalVideoItem } from "../HorizontalVideoItem/HorizontalVideoItem";
 import Icon from "../Icon/Icon";
 import styles from "./PlaylistPanel.module.css";

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import { youTubeService } from "../../services/YouTubeService";
+import { youTubeService } from "../../services";
 import { ChannelInfo } from "../ChannelInfo/ChannelInfo";
 import { HorizontalVideoItem } from "../HorizontalVideoItem/HorizontalVideoItem";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
@@ -10,33 +10,9 @@ import styles from "./FullPlaylist.module.css";
 import { Link } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { useLoading } from "../../hooks/useLoading";
+import { MENU_PLAYLIST_ITEM, MENU_PLAYLIST } from "../Constants/Constants";
 
 const playIcon = "\u25B6 "; // redo
-
-const menuPlaylistItem = [
-  {
-    id: 1,
-    label: "Add to queue",
-    icon: "QUEUE",
-  },
-  {
-    id: 2,
-    label: "Save to watch later",
-    icon: "CLOCK",
-  },
-  {
-    id: 3,
-    label: "Save to playlist",
-    icon: "SAVE_PLAYLIST",
-  },
-];
-const menuPlaylist = [
-  {
-    id: 1,
-    label: "Report Playlist",
-    icon: "REPORT",
-  },
-];
 
 export const FullPlaylist = () => {
   const location = useLocation();
@@ -101,7 +77,7 @@ export const FullPlaylist = () => {
               <Icon name="SHARE" color="var(--text-sentiment)" />
               <DropdownMenu
                 name="MENU"
-                menuContent={menuPlaylist}
+                menuContent={MENU_PLAYLIST}
                 direction="horizontal"
                 position="left"
               />
@@ -130,7 +106,7 @@ export const FullPlaylist = () => {
                     <div className={styles.moreActions}>
                       <DropdownMenu
                         name="MENU"
-                        menuContent={menuPlaylistItem}
+                        menuContent={MENU_PLAYLIST_ITEM}
                       />
                     </div>
                   </div>

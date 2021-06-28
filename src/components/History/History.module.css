@@ -1,6 +1,6 @@
 .historyContainer {
   display: grid;
-  grid-template-columns: 1fr 441px;
+  grid-template-columns: 1fr 400px;
 }
 .searchInputContainer {
   display: flex;

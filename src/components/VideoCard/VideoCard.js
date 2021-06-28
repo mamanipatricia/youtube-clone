@@ -15,6 +15,7 @@ function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
     publishedAt,
     duration,
     description,
+    liveBroadcast,
   } = video;
 
   return (
@@ -25,7 +26,11 @@ function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
     >
       <Link to={`/watch/${videoId}`}>
         <div>
-          <Thumbnail url={thumbnail} duration={duration} />
+          <Thumbnail
+            url={thumbnail}
+            duration={duration}
+            liveBroadcast={liveBroadcast}
+          />
         </div>
       </Link>
 
@@ -48,6 +53,7 @@ function VideoCard({ video, direction, hiddenContent = [], menuContent }) {
           direction={direction}
           hiddenContent={hiddenContent}
           videoId={videoId}
+          liveBroadcast={liveBroadcast}
         />
         <div className={styles.menu}>
           <DropdownMenu name="MENU" menuContent={menuContent} />

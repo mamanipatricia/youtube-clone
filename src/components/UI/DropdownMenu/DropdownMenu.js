@@ -8,6 +8,7 @@ export default function DropdownMenu({
   direction,
   position = "right",
   name,
+  color,
 }) {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
   const menuRef = useRef(null);
@@ -39,7 +40,7 @@ export default function DropdownMenu({
           {menuContent.map((item, index) => {
             return (
               <div key={`item-${index}`} className={styles.items}>
-                <Icon name={item.icon} />
+                <Icon name={item.icon} color={color} />
                 {item.label}
               </div>
             );

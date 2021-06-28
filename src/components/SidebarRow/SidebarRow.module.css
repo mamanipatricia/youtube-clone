@@ -39,7 +39,7 @@
 .SignInButton {
   display: flex;
   flex-direction: column;
-  padding: 16px 32px;
+  padding: 16px 25px;
   line-height: var(--line-height-20);
   gap: 12px;
 }

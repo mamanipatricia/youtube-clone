@@ -3,7 +3,7 @@ import { useParams, useLocation } from "react-router-dom";
 import YouTube from "react-youtube";
 import Icon from "../Icon/Icon";
 import { ViewsAndTimestamp } from "../Detail/Detail";
-import { youTubeService } from "../../services/YouTubeService";
+import { youTubeService } from "../../services";
 import Comments from "../Comments/Comments";
 import PlaylistPanel from "../PlaylistPanel/PlaylistPanel";
 import RelatedVideos from "../RelatedVideos/RelatedVideos";
@@ -12,14 +12,7 @@ import { useLoading } from "../../hooks/useLoading";
 import { ChannelInfo } from "../ChannelInfo/ChannelInfo";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
 import styles from "./Watch.module.css";
-
-const menuWatch = [
-  {
-    id: 1,
-    label: "Report",
-    icon: "REPORT",
-  },
-];
+import { MENU_WATCH } from "../Constants/Constants";
 
 export default function Watch() {
   let { videoId } = useParams();
@@ -124,17 +117,17 @@ export default function Watch() {
                   <div className={styles.watchInfoButtons}>
                     <div>
                       <button>
-                        <Icon name="LIKE_VIDEO" color="var(--bg-sentiment)" />
+                        <Icon
+                          name="LIKE"
+                          color="var(--bg-sentiment)"
+                          className={{ width: "34px", height: "34px" }}
+                        />
                       </button>
                       <span>{video.likeCount}</span>
                     </div>
-                    <div className={styles.watchInfoLikeContainer}>
-                      <button className={styles.watchInfoLikeButton}>
-                        <Icon
-                          className={styles.watchInfoLike}
-                          name="LIKE_VIDEO"
-                          color="var(--bg-sentiment)"
-                        />
+                    <div>
+                      <button>
+                        <Icon name="DISLIKE" color="var(--bg-sentiment)" />
                       </button>
                       <span>{video.dislikeCount}</span>
                     </div>
@@ -152,7 +145,7 @@ export default function Watch() {
                     </div>
                     <DropdownMenu
                       name="MENU"
-                      menuContent={menuWatch}
+                      menuContent={MENU_WATCH}
                       direction="horizontal"
                     />
                   </div>

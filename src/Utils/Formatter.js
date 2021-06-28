@@ -30,6 +30,7 @@ export default class Formatter {
       likeCount: data.statistics.likeCount,
       dislikeCount: data.statistics.dislikeCount,
       duration: data.contentDetails.duration,
+      liveBroadcast: data.snippet.liveBroadcastContent,
       channel: {
         channelId: data.snippet.channelId,
         channelName: data.snippet.channelTitle,
@@ -47,14 +48,15 @@ export default class Formatter {
         videoId: video.id,
         title: video.snippet.title,
         description: video.snippet.description,
-        channel: {
-          channelId: video.snippet.channelId,
-          channelName: video.snippet.channelTitle,
-        },
         thumbnail: video.snippet.thumbnails.medium.url,
         viewCount: video.statistics.viewCount,
         publishedAt: video.snippet.publishedAt,
         duration: video.contentDetails.duration,
+        liveBroadcast: video.snippet.liveBroadcastContent,
+        channel: {
+          channelId: video.snippet.channelId,
+          channelName: video.snippet.channelTitle,
+        },
       };
     });
     return { data: videos };
@@ -183,6 +185,7 @@ export default class Formatter {
           viewCount: "",
           publishedAt: relatedVideo.snippet.publishedAt,
           duration: "",
+          // liveBroadcast: video.snippet.liveBroadcastContent,
         };
       });
     return { data: relatedData };
