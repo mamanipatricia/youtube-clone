@@ -1,4 +1,5 @@
 import Login from "../../GoogleAuth/Login";
+import Logout from "../../GoogleAuth/Logout";
 import Icon from "../Icon/Icon";
 import styles from "./Library.module.css";
 
@@ -15,6 +16,7 @@ export default function Library() {
         <span>Sign in to access videos that you’ve liked or saved</span>
       </div>
       <Login />
+      <Logout />
     </div>
   );
 }

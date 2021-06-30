@@ -9,6 +9,7 @@ export default function DropdownMenu({
   position = "right",
   name,
   color,
+  children,
 }) {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
   const menuRef = useRef(null);
@@ -24,13 +25,17 @@ export default function DropdownMenu({
   return (
     <div className={styles.moreActionMenu}>
       <button onClick={toggleMenu} className={styles.menuButton}>
-        <span
-          className={`${styles.iconContainer} ${
-            direction === "horizontal" ? styles.iconContainerHorizontal : ""
-          }`}
-        >
-          <Icon name={name} color="var(--bg-sentiment)" />
-        </span>
+        {name ? (
+          <span
+            className={`${styles.iconContainer} ${
+              direction === "horizontal" ? styles.iconContainerHorizontal : ""
+            }`}
+          >
+            <Icon name={name} color="var(--bg-sentiment)" />
+          </span>
+        ) : (
+          children
+        )}
       </button>
       {isVisibleMenu && (
         <div
@@ -39,7 +44,11 @@ export default function DropdownMenu({
         >
           {menuContent.map((item, index) => {
             return (
-              <div key={`item-${index}`} className={styles.items}>
+              <div
+                onClick={item.action}
+                key={`item-${index}`}
+                className={styles.items}
+              >
                 <Icon name={item.icon} color={color} />
                 {item.label}
               </div>
