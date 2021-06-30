@@ -22,7 +22,6 @@ import styles from "./App.module.css";
 
 function App() {
   const [toggleSidebarRow, setToggleSidebarRow] = useContext(GuideContext);
-
   const toggleSidebarRowHandle = () => {
     setToggleSidebarRow(false);
   };

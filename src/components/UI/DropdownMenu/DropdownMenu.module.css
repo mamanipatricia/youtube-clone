@@ -18,6 +18,9 @@
   background: none;
   cursor: pointer;
 }
+.itemsOuterWrapper {
+  position: relative;
+}
 .itemsContainer {
   display: flex;
   flex-direction: column;
@@ -25,7 +28,8 @@
   width: max-content;
   padding: 8px 0;
   right: 0;
-  z-index: 80;
+  z-index: 300;
+  overflow: auto;
   background: white;
   border-radius: 3px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),

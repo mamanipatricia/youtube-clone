@@ -1,5 +1,5 @@
-import CommentService from "./CommentService";
 import YouTubeService from "./YouTubeService";
+import CommentService from "./CommentService";
 
 export const youTubeService = new YouTubeService();
 

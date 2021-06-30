@@ -207,7 +207,7 @@ export const MENU_SETTINGS = [
   {
     id: 4,
     label: "Settings",
-    icon: "SETTINGS",
+    icon: "SETTING",
   },
   {
     id: 5,

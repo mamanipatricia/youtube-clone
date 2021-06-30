@@ -10,9 +10,11 @@ import three60video from "../../assets/images/sidebar/360video.jpg";
 
 import styles from "./SidebarRow.module.css";
 import Login from "../../GoogleAuth/Login";
+import { useAuth } from "../../context/authContext";
 
 export default function SidebarRow() {
   let { pathname } = useLocation();
+  const { loggedIn } = useAuth();
   const sidebarSections = [
     {
       id: "section-1",
@@ -33,9 +35,24 @@ export default function SidebarRow() {
       items: [
         { pathname: "/feed/library", text: "Library", icon: "LIBRARY" },
         { pathname: "/feed/history", text: "History", icon: "HISTORY" },
-        { pathname: "/feed/my-videos", text: "My Videos", icon: "VIDEO" },
-        { pathname: "/feed/watch-later", text: "Watch Later", icon: "CLOCK" },
-        { pathname: "/feed/liked-videos", text: "Liked Videos", icon: "LIKE" },
+        {
+          pathname: "/feed/my-videos",
+          text: "My Videos",
+          icon: "VIDEO",
+          requiredLogin: true,
+        },
+        {
+          pathname: "/feed/watch-later",
+          text: "Watch Later",
+          icon: "CLOCK",
+          requiredLogin: true,
+        },
+        {
+          pathname: "/feed/liked-videos",
+          text: "Liked Videos",
+          icon: "LIKE",
+          requiredLogin: true,
+        },
       ],
     },
   ];
@@ -108,42 +125,46 @@ export default function SidebarRow() {
       {sidebarSections.map((section) => {
         return (
           <div key={section.id} className={styles.section}>
-            {section.items.map((item) => {
-              return (
-                <div
-                  title={item.text}
-                  key={item.pathname}
-                  className={`${
-                    pathname === item.pathname ? styles.sidebarBackground : ""
-                  } ${
-                    pathname === item.pathname
-                      ? styles.sidebarBackground
-                      : styles.sidebarBackgroundHover
-                  }`}
-                >
-                  <Link className={styles.guideEntry} to={item.pathname}>
-                    <span className={styles.sidebarIcon}>
-                      <Icon
-                        name={item.icon}
-                        color={
-                          pathname === item.pathname
-                            ? "red"
-                            : "var(--icon-secondary)"
-                        }
-                      />
-                    </span>
-                    <span> {item.text} </span>
-                  </Link>
-                </div>
-              );
-            })}
+            {section.items
+              .filter((item) => (item.requiredLogin ? loggedIn : true))
+              .map((item) => {
+                return (
+                  <div
+                    title={item.text}
+                    key={item.pathname}
+                    className={`${
+                      pathname === item.pathname ? styles.sidebarBackground : ""
+                    } ${
+                      pathname === item.pathname
+                        ? styles.sidebarBackground
+                        : styles.sidebarBackgroundHover
+                    }`}
+                  >
+                    <Link className={styles.guideEntry} to={item.pathname}>
+                      <span className={styles.sidebarIcon}>
+                        <Icon
+                          name={item.icon}
+                          color={
+                            pathname === item.pathname
+                              ? "red"
+                              : "var(--icon-secondary)"
+                          }
+                        />
+                      </span>
+                      <span> {item.text} </span>
+                    </Link>
+                  </div>
+                );
+              })}
           </div>
         );
       })}
-      <div className={`${styles.SignInButton} ${styles.section}`}>
-        Access to Like the videos, make comments and subscribe.
-        <Login />
-      </div>
+      {!loggedIn && (
+        <div className={`${styles.SignInButton} ${styles.section}`}>
+          Access to Like the videos, make comments and subscribe.
+          <Login />
+        </div>
+      )}
       <div>
         {bestOfYTItems.map((section) => {
           return (

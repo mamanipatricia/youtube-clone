@@ -9,9 +9,11 @@ import styles from "./Navbar.module.css";
 import Login from "../../GoogleAuth/Login";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
 import { MENU_SETTINGS, MENU_APP } from "../Constants/Constants";
+import { useAuth } from "../../context/authContext";
 
 export default function Navbar() {
   const [toggleSidebarRow, setToggleSidebarRow] = useContext(GuideContext);
+  const { loggedIn, user, signOut } = useAuth();
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const toggleSidebarRowHandle = () => {
@@ -21,6 +23,30 @@ export default function Navbar() {
   const showSearchComponentHandle = () => {
     setIsSearchVisible(true);
   };
+
+  const MENU_PROFILE = [
+    {
+      id: 1,
+      label: "Appearance",
+      icon: "APPEARANCE",
+    },
+    {
+      id: 2,
+      label: "Appearance",
+      icon: "APPEARANCE",
+    },
+    {
+      id: 3,
+      label: "Appearance",
+      icon: "APPEARANCE",
+    },
+    {
+      id: 4,
+      label: "Sign out",
+      icon: "SIGN_OUT",
+      action: signOut,
+    },
+  ];
 
   return (
     <div
@@ -58,31 +84,41 @@ export default function Navbar() {
         >
           <Icon name="SEARCH" />
         </button>
-        {/* <button>
-          <Icon name="CREATE" />
-        </button> */}
-        <button>
+        {loggedIn && (
+          <button>
+            <Icon name="CREATE" />
+          </button>
+        )}
+        <div>
           <DropdownMenu
             name="APPS"
             color="var(--bg-icons)"
             menuContent={MENU_APP}
             position="right"
           />
-        </button>
-        <DropdownMenu
-          name="MENU"
-          color="var(--bg-icons)"
-          menuContent={MENU_SETTINGS}
-          position="right"
-        />
-
-        {/* <button>
-          <Icon name="NOTIFICATION_FILLED" />
-        </button> */}
-        {/* <button>
-          <Icon name="PROFILE" className={{ width: "32", height: "32" }} />
-        </button> */}
-        <Login />
+        </div>
+        {!loggedIn && (
+          <DropdownMenu
+            name="MENU"
+            color="var(--bg-icons)"
+            menuContent={MENU_SETTINGS}
+            position="right"
+          />
+        )}
+        {loggedIn ? (
+          <>
+            <button>
+              <Icon name="NOTIFICATION_FILLED" />
+            </button>
+            <div>
+              <DropdownMenu menuContent={MENU_PROFILE} position="right">
+                <img className={styles.profileImage} src={user.imageUrl} />
+              </DropdownMenu>
+            </div>
+          </>
+        ) : (
+          <Login />
+        )}
       </div>
     </div>
   );
