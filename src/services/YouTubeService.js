@@ -11,7 +11,7 @@ export default class YouTubeService extends BaseService {
   createURLParams(newParams = {}) {
     const params = {
       part: "snippet,contentDetails",
-      maxResults: 50,
+      maxResults: 8,
       key: this.API_KEY,
       ...newParams,
     };
@@ -73,7 +73,7 @@ export default class YouTubeService extends BaseService {
     const params = this.createURLParams({
       part: "snippet",
       q: keyword,
-      maxResults: 22,
+      maxResults: 5,
       ...newParams,
     });
     const response = await this.get(`/search?${params}`);
@@ -84,7 +84,7 @@ export default class YouTubeService extends BaseService {
     const params = this.createURLParams({
       videoId: videoId,
       part: "snippet",
-      maxResults: 40,
+      maxResults: 4,
       ...newParams,
     });
     const response = await this.get(`/commentThreads?${params}`);
