@@ -8,7 +8,7 @@ import styles from "./Navbar.module.css";
 // import SignInButton from "../UI/SignInButton/SignInButton";
 import Login from "../../GoogleAuth/Login";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
-import { MENU_SETTINGS, MENU_APP } from "../Constants/Constants";
+import { MENU_SETTINGS, MENU_APP, MENU_CREATE } from "../Constants/Constants";
 import { useAuth } from "../../context/authContext";
 
 export default function Navbar() {
@@ -26,26 +26,32 @@ export default function Navbar() {
 
   const MENU_PROFILE = [
     {
-      id: 1,
-      label: "Appearance",
-      icon: "APPEARANCE",
+      id: "1p",
+      label: "Your channel",
+      icon: "PROFILE_SQUARE",
     },
     {
-      id: 2,
-      label: "Appearance",
-      icon: "APPEARANCE",
+      id: "2p",
+      label: "Purchases and membership",
+      icon: "DOLLAR",
     },
     {
-      id: 3,
-      label: "Appearance",
-      icon: "APPEARANCE",
+      id: "3p",
+      label: "YouTube Studio",
+      icon: "YT_STUDIO",
     },
     {
-      id: 4,
+      id: "4p",
+      label: "Switch account",
+      icon: "SWITCH_ACCOUNT",
+    },
+    {
+      id: "5p",
       label: "Sign out",
       icon: "SIGN_OUT",
       action: signOut,
     },
+    ...MENU_SETTINGS,
   ];
 
   return (
@@ -85,9 +91,14 @@ export default function Navbar() {
           <Icon name="SEARCH" />
         </button>
         {loggedIn && (
-          <button>
-            <Icon name="CREATE" />
-          </button>
+          <div>
+            <DropdownMenu
+              name="CREATE"
+              color="var(--bg-red)"
+              menuContent={MENU_CREATE}
+              position="left"
+            />
+          </div>
         )}
         <div>
           <DropdownMenu
@@ -111,7 +122,11 @@ export default function Navbar() {
               <Icon name="NOTIFICATION_FILLED" />
             </button>
             <div>
-              <DropdownMenu menuContent={MENU_PROFILE} position="right">
+              <DropdownMenu
+                menuContent={MENU_PROFILE}
+                color="var(--bg-sentiment)"
+                position="right"
+              >
                 <img className={styles.profileImage} src={user.imageUrl} />
               </DropdownMenu>
             </div>

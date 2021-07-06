@@ -4,7 +4,13 @@
   width: 240px;
   font-size: var(--font-size);
   height: calc(100vh - 56px);
+  opacity: 0.75;
+  transition: all 0.4s ease-in-out;
+  overflow-y: hidden;
+}
+.sidebarContainer:hover {
   overflow-y: auto;
+  opacity: 0.75;
 }
 .guideEntry {
   text-decoration: none;

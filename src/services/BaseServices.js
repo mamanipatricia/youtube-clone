@@ -3,6 +3,7 @@ export default class BaseService {
   constructor(url) {
     this.baseURL = url;
   }
+
   async get(endpoint, options = {}) {
     return await fetch(`${this.baseURL}${endpoint}`, {
       ...options,

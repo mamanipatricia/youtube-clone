@@ -75,6 +75,11 @@ export default function Watch() {
     width: "100%",
     playerVars: {
       autoplay: 1,
+      controls: 1,
+      enablejsapi: 1,
+      host: "https://www.youtube.com",
+      origin: "http://localhost:3000",
+      // origin: "https://www.pattty.com",
     },
   };
   const expandedHandle = () => {

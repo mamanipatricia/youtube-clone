@@ -182,7 +182,7 @@ export const MENU_HOME = [
     icon: "MINUS_CIRCLE",
   },
   {
-    id: 4,
+    id: 6,
     label: "Report",
     icon: "REPORT",
   },
@@ -256,5 +256,18 @@ export const MENU_APP = [
     id: 5,
     label: "YouTube for Artist",
     icon: "YT",
+  },
+];
+
+export const MENU_CREATE = [
+  {
+    id: 1,
+    label: "Upload video",
+    icon: "UPLOAD_VIDEO",
+  },
+  {
+    id: 2,
+    label: "Go live",
+    icon: "LIVE_RED",
   },
 ];
