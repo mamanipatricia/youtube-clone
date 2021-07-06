@@ -31,7 +31,7 @@ export default function DropdownMenu({
               direction === "horizontal" ? styles.iconContainerHorizontal : ""
             }`}
           >
-            <Icon name={name} color="var(--bg-sentiment)" />
+            <Icon name={name} color={"var(--bg-sentiment)"} />
           </span>
         ) : (
           children
@@ -42,11 +42,11 @@ export default function DropdownMenu({
           ref={menuRef}
           className={`${styles.itemsContainer} ${styles[position]}`}
         >
-          {menuContent.map((item, index) => {
+          {menuContent.map((item) => {
             return (
               <div
                 onClick={item.action}
-                key={`item-${index}`}
+                key={`item-${item.id}`}
                 className={styles.items}
               >
                 <Icon name={item.icon} color={color} />
