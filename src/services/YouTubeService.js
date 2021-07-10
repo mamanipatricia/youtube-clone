@@ -73,7 +73,7 @@ export default class YouTubeService extends BaseService {
     const params = this.createURLParams({
       part: "snippet",
       q: keyword,
-      maxResults: 5,
+      maxResults: 15,
       ...newParams,
     });
     const response = await this.get(`/search?${params}`);

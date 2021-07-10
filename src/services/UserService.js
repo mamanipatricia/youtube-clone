@@ -1,6 +1,6 @@
 import BaseService from "./BaseServices";
 
-export default class CommentService extends BaseService {
+export default class UserService extends BaseService {
   constructor() {
     super(process.env.REACT_APP_API_URL);
     this.API_KEY = process.env.REACT_APP_API_KEY;
@@ -8,7 +8,8 @@ export default class CommentService extends BaseService {
 
   createURLParams(newParams = {}) {
     const params = {
-      part: "snippet",
+      part: "snippet,contentDetails,statistics",
+      mine: true,
       key: this.API_KEY,
       ...newParams,
     };
@@ -16,7 +17,7 @@ export default class CommentService extends BaseService {
     return searchParams.toString();
   }
 
-  async addComment(comment, videoId) {
+  async getUser() {
     const params = this.createURLParams({});
     const options = {
       headers: {
@@ -24,17 +25,7 @@ export default class CommentService extends BaseService {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     };
-    const body = {
-      snippet: {
-        videoId: videoId,
-        topLevelComment: {
-          snippet: {
-            textOriginal: comment,
-          },
-        },
-      },
-    };
 
-    await this.post(`/commentThreads?${params}`, body, options);
+    return await this.get(`/channels?${params}`, options);
   }
 }

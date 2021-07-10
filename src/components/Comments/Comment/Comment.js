@@ -1,10 +1,10 @@
-import Avatar from "../../Avatar/Avatar";
-import styles from "./Comment.module.css";
-import Icon from "../../Icon/Icon";
 import { Link } from "react-router-dom";
-import { getTimestamp } from "../../../Utils/Timestamp";
 import DropdownMenu from "../../UI/DropdownMenu/DropdownMenu";
+import { getTimestamp } from "../../../Utils/Timestamp";
+import Avatar from "../../Avatar/Avatar";
+import Icon from "../../Icon/Icon";
 import { MENU_COMMENTS } from "../../Constants/Constants";
+import styles from "./Comment.module.css";
 
 export default function Comment({ comment } = {}) {
   const {
