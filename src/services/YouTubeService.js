@@ -1,11 +1,12 @@
 import BaseService from "./BaseServices";
 //* this service has to prepare data to send to BaseServices
 import Formatter from "../Utils/Formatter";
+import { apiKey, apiUrl } from "../config";
 
 export default class YouTubeService extends BaseService {
   constructor() {
-    super(process.env.REACT_APP_API_URL);
-    this.API_KEY = process.env.REACT_APP_API_KEY;
+    super(apiUrl);
+    this.API_KEY = apiKey;
     this.formatter = new Formatter();
   }
   createURLParams(newParams = {}) {

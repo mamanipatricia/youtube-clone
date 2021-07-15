@@ -195,7 +195,6 @@ export default function Icon(props) {
           </g>
         </svg>
       );
-
     case "PROFILE":
       return (
         <svg width="24" height="24" {...className} viewBox="0 0 24 24">

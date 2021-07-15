@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, Route, Switch, useParams } from "react-router-dom";
+import { Link, Route, Switch, useHistory, useParams } from "react-router-dom";
 import { useLocation } from "react-use";
 import { youTubeService } from "../../services";
 import ChannelHome from "./ChannelHome/ChannelHome";
@@ -17,18 +17,24 @@ import { MENU_VIDEO_CARD } from "../Constants/Constants";
 
 export function Owner({ channel }) {
   const { channelId, channelName } = channel;
+  const history = useHistory();
+
+  const goToChannel = (event) => {
+    history.push(`/channel/${channelId}`);
+    event.stopPropagation();
+  };
 
   return (
-    <Link
+    <div
+      onClick={goToChannel}
       className={styles.ownerChannelName}
-      to={`/channel/${channelId}`}
       title={channelName}
     >
       {channelName}
       <span className={styles.iconContainer}>
         <Icon name="CHECK_CIRCLE_THICK" />
       </span>
-    </Link>
+    </div>
   );
 }
 

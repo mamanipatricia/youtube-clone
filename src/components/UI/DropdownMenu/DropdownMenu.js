@@ -18,8 +18,9 @@ export default function DropdownMenu({
     setIsVisibleMenu(!isVisibleMenu);
   });
 
-  const toggleMenu = () => {
+  const toggleMenu = (event) => {
     setIsVisibleMenu(!isVisibleMenu);
+    event.stopPropagation();
   };
 
   return (

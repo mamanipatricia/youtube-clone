@@ -2,13 +2,17 @@ import { useReducer, createContext, useContext } from "react";
 
 const VideoContext = createContext();
 
+const actionTypes = {
+  NEXT_VIDEO: "NEXT_VIDEO",
+};
+
 export default function VideoContextProvider({ children }) {
   const videoReducer = (state, action) => {
     switch (action.type) {
-      case "NEXT_VIDEO":
+      case actionTypes.NEXT_VIDEO:
         return { ...state, nextVideoId: action.nextVideoId };
       default:
-        throw new Error(`Unsupported action type: ${action.type}`);
+        throw new Error(`Unhandled action type: ${action.type}`);
     }
   };
   const [state, dispatch] = useReducer(videoReducer, { nextVideoId: "" });
