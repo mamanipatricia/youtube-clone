@@ -1,9 +1,10 @@
+import { apiKey, apiUrl } from "../config";
 import BaseService from "./BaseServices";
 
 export default class CommentService extends BaseService {
   constructor() {
-    super(process.env.REACT_APP_API_URL);
-    this.API_KEY = process.env.REACT_APP_API_KEY;
+    super(apiUrl);
+    this.API_KEY = apiKey;
   }
 
   createURLParams(newParams = {}) {

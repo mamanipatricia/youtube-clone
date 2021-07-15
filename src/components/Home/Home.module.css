@@ -20,20 +20,11 @@
   border-bottom: 1px solid var(--border-secondary);
   background: white;
   padding: 10px;
-  z-index: 200;
+  z-index: 99;
   box-sizing: border-box;
 }
 .toggleToMiniGuide {
   width: calc(100% - 72px);
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  border-top: 1px solid var(--border-secondary);
-  border-bottom: 1px solid var(--border-secondary);
-  background: white;
-  padding: 10px;
-  z-index: 200;
-  box-sizing: border-box;
 }
 @media (max-width: 800px) {
   .toggleToMiniGuide {

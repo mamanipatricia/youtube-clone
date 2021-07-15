@@ -22,6 +22,8 @@ export default function Home() {
   const [keyword, setKeyword] = useState(INITIAL_KEYWORD);
   const nearScreenRef = useRef(null);
 
+  const [loadVideo, setLoadVideo] = useState(false);
+
   useEffect(() => {
     const near = nearScreenRef.current;
     let options = {
@@ -42,10 +44,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (isNearScreen) {
+    if (isNearScreen && loadVideo) {
       getVideosSearch();
     }
-  }, [isNearScreen]);
+  }, [isNearScreen, loadVideo]);
 
   const getSearch = async (keyword, params = {}) => {
     const { data, pageInfo } = await youTubeService.getSearch(keyword, params);
@@ -103,30 +105,41 @@ export default function Home() {
     }
   };
 
+  const loadVideoHandle = () => {
+    setLoadVideo(true);
+  };
+
   return (
     <div className={styles.homeContainer}>
       <div
-        className={`${
-          toggleSidebarRow
-            ? styles.toggleToMiniGuide
-            : styles.feedFilterContainer
+        className={`${styles.feedFilterContainer} ${
+          toggleSidebarRow ? styles.toggleToMiniGuide : null
         }`}
       >
         <FeedFilterBarRenderer onChangeFeed={onChangeFeed} />
       </div>
-      <div className={styles.videosContainer}>
-        {search.map((video, index) => {
-          return (
-            <VideoCard
-              key={`video-${index}`}
-              video={video}
-              menuContent={MENU_HOME}
-            />
-          );
-        })}
-      </div>
+
+      {loadVideo ? (
+        <>
+          <div className={styles.videosContainer}>
+            {search.map((video, index) => {
+              return (
+                <VideoCard
+                  key={`video-${index}`}
+                  video={video}
+                  menuContent={MENU_HOME}
+                />
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <button style={{ marginTop: "100px" }} onClick={loadVideoHandle}>
+          CLICK TO LOAD VIDEOS
+        </button>
+      )}
       <div ref={nearScreenRef}>
-        <Spinner />
+        <Spinner visible={loadVideo} />
       </div>
     </div>
   );

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import YouTube from "react-youtube";
-import Icon from "../Icon/Icon";
-import { ViewsAndTimestamp } from "../Detail/Detail";
+import { useVideo } from "../../context/videoContext";
+import { useLoading } from "../../hooks/useLoading";
 import { youTubeService } from "../../services";
+import { ViewsAndTimestamp } from "../Detail/Detail";
 import PlaylistPanel from "../PlaylistPanel/PlaylistPanel";
 import RelatedVideos from "../RelatedVideos/RelatedVideos";
-import Spinner from "../Spinner/Spinner";
-import { useLoading } from "../../hooks/useLoading";
 import { ChannelInfo } from "../ChannelInfo/ChannelInfo";
+import Comments from "../Comments/Comments";
+import Spinner from "../Spinner/Spinner";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
-import styles from "./Watch.module.css";
 import { MENU_WATCH } from "../Constants/Constants";
-import { useVideo } from "../../context/videoContext";
+import Icon from "../Icon/Icon";
+import styles from "./Watch.module.css";
 
 export default function Watch() {
   const loading = useLoading();
@@ -172,7 +173,7 @@ export default function Watch() {
               </div>
             </div>
             <div className={styles.comments}>
-              {/* <Comments videoId={videoId} /> */}
+              <Comments videoId={videoId} />
             </div>
           </div>
           <div className={styles.secondary}>
@@ -181,7 +182,7 @@ export default function Watch() {
             <RelatedVideos videoId={videoId} />
           </div>
           <div className={styles.commentsAtTheBottom}>
-            {/* <Comments videoId={videoId} /> */}
+            <Comments videoId={videoId} />
           </div>
         </>
       )}

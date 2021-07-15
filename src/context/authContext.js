@@ -1,11 +1,11 @@
 import { createContext, useState, useContext } from "react";
 import { useGoogleLogin, useGoogleLogout } from "react-google-login";
+import { clientId } from "../config";
 import { refreshTokenSetup } from "../Utils/refreshToken";
 
 const AuthContext = createContext();
 export default AuthContext;
 
-const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 const SCOPES =
   "https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.channel-memberships.creator https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtubepartner https://www.googleapis.com/auth/youtubepartner-channel-audit";
 
