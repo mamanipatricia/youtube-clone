@@ -791,7 +791,7 @@ export default function Icon(props) {
       );
     case "NO_RESULTS_FOUND":
       return (
-        <svg width="400" height="300" viewBox="0 0 230 130"  {...className}>
+        <svg width="400" height="300" viewBox="0 0 230 130" {...className}>
           <g>
             <path
               fill="#ffc100"

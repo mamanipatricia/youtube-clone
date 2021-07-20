@@ -55,3 +55,32 @@
 .right {
   right: 0;
 }
+.profileImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+.menuOwnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 32px 16px 16px;
+  border-bottom: 1px solid var(--border-primary);
+}
+.menuOwner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px;
+}
+.description {
+  color: var(--bg-type);
+  cursor: pointer;
+}
+.name {
+  font-size: var(--font-size-16);
+  font-weight: 500;
+}
