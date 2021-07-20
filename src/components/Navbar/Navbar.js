@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import GuideContext from "../../context/guideContext";
+import { useGuide } from "../../context/guideContext";
 import Search from "../Search/Search";
 import Icon from "../Icon/Icon";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
@@ -12,7 +12,7 @@ import { MENU_SETTINGS, MENU_APP, MENU_CREATE } from "../Constants/Constants";
 import { useAuth } from "../../context/authContext";
 
 export default function Navbar() {
-  const [toggleSidebarRow, setToggleSidebarRow] = useContext(GuideContext);
+  const [toggleSidebarRow, setToggleSidebarRow] = useGuide();
   const { loggedIn, user, signOut } = useAuth();
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 

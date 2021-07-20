@@ -1,19 +1,18 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef } from "react";
 import { youTubeService } from "../../services";
 import { useLoading } from "../../hooks/useLoading";
-import GuideContext from "../../context/guideContext";
+import { useGuide } from "../../context/guideContext";
 import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
 import VideoCard from "../VideoCard/VideoCard";
 import Spinner from "../Spinner/Spinner";
 import styles from "./Home.module.css";
 import { MENU_HOME } from "../Constants/Constants";
 
-const INITIAL_KEYWORD = "javascript";
+const INITIAL_KEYWORD = "ReactJS";
 
 export default function Home() {
   const loading = useLoading();
-  const [toggleSidebarRow] = useContext(GuideContext);
-
+  const [toggleSidebarRow] = useGuide();
   const [search, setSearch] = useState([]);
   const [searchClone, setSearchClone] = useState([]);
   const [isNearScreen, setIsNearScreen] = useState(false);
