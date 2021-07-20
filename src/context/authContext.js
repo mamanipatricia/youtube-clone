@@ -23,7 +23,7 @@ export function AuthContextProvider({ children }) {
   };
 
   const onFailure = (_res) => {
-    alert(`Failed to login. 😢`);
+    console.log(`Failed to login. 😢`);
   };
 
   const { signOut } = useGoogleLogout({
