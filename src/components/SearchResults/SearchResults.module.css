@@ -6,4 +6,34 @@
   max-width: 1070px;
   margin: 0 auto;
   padding: 20px;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+.title {
+  font-size: var(--font-size-24);
+  color: var(--color-primary);
+  line-height: var(--line-height-32);
+}
+.noResultsFoundContainer {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.keyword {
+  margin: 24px 0;
+  width: 70%;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  color: var(--text-primary);
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+.description {
+  color: var(--color-primary);
+  font-size: var(--font-size-14);
+  margin-top: 8px;
 }
