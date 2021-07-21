@@ -80,7 +80,7 @@ export function Channel() {
 
   useEffect(() => {
     getChannel(channelId);
-  }, []);
+  }, [channelId]);
 
   if (!channel.channelId) {
     const div = <div>Channel not found</div>;

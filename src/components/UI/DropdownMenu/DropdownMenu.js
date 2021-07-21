@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useClickAway } from "react-use";
+import { useAuth } from "../../../context/authContext";
 import Icon from "../../Icon/Icon";
 import styles from "./DropdownMenu.module.css";
 
@@ -13,6 +14,7 @@ export default function DropdownMenu({
 }) {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
   const menuRef = useRef(null);
+  const { loggedIn, user } = useAuth();
 
   useClickAway(menuRef, () => {
     setIsVisibleMenu(!isVisibleMenu);
@@ -43,6 +45,17 @@ export default function DropdownMenu({
           ref={menuRef}
           className={`${styles.itemsContainer} ${styles[position]}`}
         >
+          {loggedIn && children && (
+            <div className={styles.menuOwnerContainer}>
+              <img className={styles.profileImage} src={user.imageUrl} />
+              <div className={styles.menuOwner}>
+                <span className={styles.name}>{user.name}</span>
+                <span className={styles.description}>
+                  Manage your Google account
+                </span>
+              </div>
+            </div>
+          )}
           {menuContent.map((item) => {
             return (
               <div

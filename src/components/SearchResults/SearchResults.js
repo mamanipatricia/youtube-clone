@@ -65,7 +65,9 @@ export default function SearchResults() {
           <Icon name="NO_RESULTS_FOUND" />
           <span className={styles.title}>No results found with</span>
           <span className={styles.keyword}>{searchQuery}</span>
-          <span className={styles.description}>Try different keywords or remove search filters</span>
+          <span className={styles.description}>
+            Try different keywords or remove search filters
+          </span>
         </div>
       )}
     </div>

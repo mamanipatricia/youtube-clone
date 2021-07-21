@@ -81,7 +81,7 @@
 }
 .channelTabbedItem {
   position: relative;
-  color: gray;
+  color: var(--text-secondary);
   font-size: var(--font-size);
   font-weight: bold;
   padding: 8px 40px;

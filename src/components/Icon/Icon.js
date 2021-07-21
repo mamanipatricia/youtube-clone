@@ -791,7 +791,7 @@ export default function Icon(props) {
       );
     case "NO_RESULTS_FOUND":
       return (
-        <svg width="400" height="300" viewBox="0 0 230 130"  {...className}>
+        <svg width="400" height="300" viewBox="0 0 230 130" {...className}>
           <g>
             <path
               fill="#ffc100"
@@ -1070,6 +1070,22 @@ export default function Icon(props) {
               fill="#4620ae"
               d="M45.63 90.19h5.17s.2-1.47-.57-1.48-.7.54-1.07.59-.32-.58-1-.59-.49.59-.86.59-.55-.58-1-.59c-.61-.01-.82 1-.67 1.48z"
             />
+          </g>
+        </svg>
+      );
+    case "CHEVRON_DOWN":
+      return (
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
+          <g>
+            <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+          </g>
+        </svg>
+      );
+    case "CHEVRON_UDP":
+      return (
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
+          <g>
+            <path d="m12 8-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" />
           </g>
         </svg>
       );
