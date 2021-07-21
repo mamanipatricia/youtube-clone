@@ -1,4 +1,4 @@
-name: React CI
+name: Upload Youtube Clone Website
 
 on:
   push:
@@ -36,12 +36,6 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Uploading artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: Artifact
-          path: build/
 
       - uses: jakejarvis/s3-sync-action@master
         with:
