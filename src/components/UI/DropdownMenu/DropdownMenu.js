@@ -45,7 +45,7 @@ export default function DropdownMenu({
           ref={menuRef}
           className={`${styles.itemsContainer} ${styles[position]}`}
         >
-          {loggedIn && (
+          {loggedIn && children && (
             <div className={styles.menuOwnerContainer}>
               <img className={styles.profileImage} src={user.imageUrl} />
               <div className={styles.menuOwner}>

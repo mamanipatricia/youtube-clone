@@ -29,4 +29,20 @@ export default class UserService extends BaseService {
 
     return await this.get(`/channels?${params}`, options);
   }
+
+  async getUserChannel(newParams = {}) {
+    const params = this.createURLParams({
+      maxResults: 5,
+      part: "snippet,subscriberSnippet,contentDetails,id",
+      ...newParams,
+    });
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    };
+
+    return await this.get(`/subscriptions?${params}`, options);
+  }
 }

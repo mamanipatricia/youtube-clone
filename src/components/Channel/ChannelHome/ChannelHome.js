@@ -100,7 +100,7 @@ export default function ChannelHome({ channelId, menuContent }) {
       setChannelSections(channelSections);
       loading.success();
     })();
-  }, []);
+  }, [channelId]);
 
   return (
     <>
