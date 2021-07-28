@@ -8,7 +8,7 @@ import Spinner from "../Spinner/Spinner";
 import styles from "./Home.module.css";
 import { MENU_HOME } from "../Constants/Constants";
 
-const INITIAL_KEYWORD = "ReactJS";
+const INITIAL_KEYWORD = "Docker";
 
 export default function Home() {
   const loading = useLoading();
