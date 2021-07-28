@@ -1,3 +1,4 @@
+# the name of the workflow
 name: Upload Website to s3
 
 on:
@@ -33,6 +34,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Run lint and prettier
+        run: npm run validate
 
       - name: Build
         run: npm run build
