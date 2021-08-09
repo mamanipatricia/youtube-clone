@@ -1,10 +1,12 @@
 import { apiKey, apiUrl } from "../config";
 import BaseService from "./BaseServices";
+import RecordService from "./RecordService";
 
 export default class UserService extends BaseService {
   constructor() {
     super(apiUrl);
     this.API_KEY = apiKey;
+    this.recordService = new RecordService();
   }
 
   createURLParams(newParams = {}) {
@@ -26,8 +28,10 @@ export default class UserService extends BaseService {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     };
-
-    return await this.get(`/channels?${params}`, options);
+    const url = `/channels?${params}`;
+    const response = await this.get(url, options);
+    await this.recordService.createRecord({ requestTo: url });
+    return response;
   }
 
   async getUserChannel(newParams = {}) {
@@ -42,7 +46,9 @@ export default class UserService extends BaseService {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     };
-
-    return await this.get(`/subscriptions?${params}`, options);
+    const url = `/subscriptions?${params}`;
+    const response = await this.get(url, options);
+    await this.recordService.createRecord({ requestTo: url });
+    return response;
   }
 }

@@ -1,6 +1,7 @@
 import { createContext, useState, useContext } from "react";
 import { useGoogleLogin, useGoogleLogout } from "react-google-login";
 import { clientId } from "../config";
+import RecordService from "../services/RecordService";
 import { refreshTokenSetup } from "../Utils/refreshToken";
 
 const AuthContext = createContext();
@@ -15,7 +16,13 @@ export function AuthContextProvider({ children }) {
         onLogoutSuccess
   --------------------------
   */
-  const onLogoutSuccess = (_res) => {
+  const onLogoutSuccess = async (_res) => {
+    const recordService = new RecordService();
+    await recordService.createRecord({
+      action: "logout",
+    });
+    localStorage.removeItem("userId");
+
     location.assign("/");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
@@ -36,6 +43,19 @@ export function AuthContextProvider({ children }) {
   --------------------------
   */
   const onSuccess = async (res) => {
+    const recordService = new RecordService();
+
+    const responseRecord = await recordService.createUser({
+      name: res.profileObj.name,
+      email: res.profileObj.email,
+    });
+    if (responseRecord) {
+      localStorage.setItem("userId", responseRecord.data._id);
+      await recordService.createRecord({
+        action: "login",
+      });
+    }
+
     localStorageHandle(res);
     refreshTokenSetup(res);
   };

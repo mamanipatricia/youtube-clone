@@ -4,7 +4,9 @@ name: Upload Website to s3
 on:
   push:
     branches:
-      - "master"
+      - [master]
+  pull_request:
+    branches: [master]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,6 +22,8 @@ jobs:
           echo REACT_APP_API_URL =${{ secrets.REACT_APP_API_URL }} >> .env
           echo REACT_APP_API_KEY =${{ secrets.REACT_APP_API_KEY }} >> .env
           echo REACT_APP_GOOGLE_CLIENT_ID =${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }} >> .env
+          echo REACT_APP_WITH_RECORDS =${{ secrets.REACT_APP_WITH_RECORDS }} >> .env
+          echo REACT_APP_RECORD_URL =${{ secrets.REACT_APP_RECORD_URL }} >> .env
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -47,6 +51,8 @@ jobs:
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+          REACT_APP_WITH_RECORDS: ${{ secrets.REACT_APP_WITH_RECORDS }}
+          REACT_APP_RECORD_URL: ${{ secrets.REACT_APP_RECORD_URL }}
           REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

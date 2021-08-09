@@ -2,12 +2,14 @@ import BaseService from "./BaseServices";
 //* this service has to prepare data to send to BaseServices
 import Formatter from "../Utils/Formatter";
 import { apiKey, apiUrl } from "../config";
+import RecordService from "./RecordService";
 
 export default class YouTubeService extends BaseService {
   constructor() {
     super(apiUrl);
     this.API_KEY = apiKey;
     this.formatter = new Formatter();
+    this.recordService = new RecordService();
   }
   createURLParams(newParams = {}) {
     const params = {
@@ -27,7 +29,9 @@ export default class YouTubeService extends BaseService {
       maxResults: 1,
       ...newParams,
     });
-    const response = await this.get(`/videos?${params}`);
+    const url = `/videos?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatVideo(response);
   }
 
@@ -37,7 +41,9 @@ export default class YouTubeService extends BaseService {
       part: "snippet,contentDetails,statistics,status",
       ...newParams,
     });
-    const response = await this.get(`/videos?${params}`);
+    const url = `/videos?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatVideos(response);
   }
 
@@ -47,7 +53,9 @@ export default class YouTubeService extends BaseService {
       part: "snippet,statistics,brandingSettings,contentDetails,contentOwnerDetails,status,topicDetails",
       ...newParams,
     });
-    const response = await this.get(`/channels?${params}`);
+    const url = `/channels?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatChannel(response);
   }
 
@@ -56,7 +64,9 @@ export default class YouTubeService extends BaseService {
       channelId: channelId,
       ...newParams,
     });
-    const response = await this.get(`/channelSections?${params}`);
+    const url = `/channelSections?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatChannelSections(response);
   }
 
@@ -66,7 +76,9 @@ export default class YouTubeService extends BaseService {
       part: "snippet,brandingSettings,contentDetails,statistics",
       ...newParams,
     });
-    const response = await this.get(`/channels?${params}`);
+    const url = `/channels?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatChannels(response);
   }
 
@@ -77,7 +89,9 @@ export default class YouTubeService extends BaseService {
       maxResults: 15,
       ...newParams,
     });
-    const response = await this.get(`/search?${params}`);
+    const url = `/search?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatSearch(response);
   }
 
@@ -88,7 +102,9 @@ export default class YouTubeService extends BaseService {
       maxResults: 4,
       ...newParams,
     });
-    const response = await this.get(`/commentThreads?${params}`);
+    const url = `/commentThreads?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatThreatsComments(response);
   }
 
@@ -97,7 +113,9 @@ export default class YouTubeService extends BaseService {
       id: playListIds,
       ...newParams,
     });
-    const response = await this.get(`/playlists?${params}`);
+    const url = `/playlists?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatPlaylists(response);
   }
 
@@ -106,7 +124,9 @@ export default class YouTubeService extends BaseService {
       channelId: channelId,
       ...newParams,
     });
-    const response = await this.get(`/playlists?${params}`);
+    const url = `/playlists?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatChannelPlaylists(response);
   }
 
@@ -116,7 +136,9 @@ export default class YouTubeService extends BaseService {
       playlistId: playListId,
       ...newParams,
     });
-    const response = await this.get(`/playlistItems?${params}`);
+    const url = `/playlistItems?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return response;
   }
 
@@ -126,7 +148,9 @@ export default class YouTubeService extends BaseService {
       playlistId: playListId,
       ...newParams,
     });
-    const response = await this.get(`/playlistItems?${params}`);
+    const url = `/playlistItems?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatPlaylistItems(response);
   }
 
@@ -137,7 +161,9 @@ export default class YouTubeService extends BaseService {
       part: "snippet",
       ...newParams,
     });
-    const response = await this.get(`/search?${params}`);
+    const url = `/search?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatRelatedVideos(response);
   }
 
@@ -147,7 +173,9 @@ export default class YouTubeService extends BaseService {
       regionCode: "BO",
       part: "snippet,contentDetails,statistics",
     });
-    const response = await this.get(`/videos?${params}`);
+    const url = `/videos?${params}`;
+    const response = await this.get(url);
+    await this.recordService.createRecord({ requestTo: url });
     return this.formatter.formatTendingVideos(response);
   }
 }
