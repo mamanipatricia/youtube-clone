@@ -15,6 +15,10 @@ export default class BaseService {
     return await fetch(`${this.baseURL}${endpoint}`, {
       ...options,
       method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(body),
     }).then((res) => res.json());
   }
