@@ -2,14 +2,14 @@ import BaseService from "./BaseServices";
 //* this service has to prepare data to send to BaseServices
 import Formatter from "../Utils/Formatter";
 import { apiKey, apiUrl } from "../config";
-import RecordService from "./RecordService";
+import { recordService } from ".";
 
 export default class YouTubeService extends BaseService {
   constructor() {
     super(apiUrl);
     this.API_KEY = apiKey;
     this.formatter = new Formatter();
-    this.recordService = new RecordService();
+    // recordService recordService;
   }
   createURLParams(newParams = {}) {
     const params = {
@@ -31,7 +31,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/videos?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatVideo(response);
   }
 
@@ -43,7 +43,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/videos?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatVideos(response);
   }
 
@@ -55,7 +55,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/channels?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatChannel(response);
   }
 
@@ -66,7 +66,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/channelSections?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatChannelSections(response);
   }
 
@@ -78,7 +78,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/channels?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatChannels(response);
   }
 
@@ -91,7 +91,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/search?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatSearch(response);
   }
 

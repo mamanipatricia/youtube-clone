@@ -1,12 +1,10 @@
+import { recordService } from ".";
 import { apiKey, apiUrl } from "../config";
 import BaseService from "./BaseServices";
-import RecordService from "./RecordService";
-
 export default class UserService extends BaseService {
   constructor() {
     super(apiUrl);
     this.API_KEY = apiKey;
-    this.recordService = new RecordService();
   }
 
   createURLParams(newParams = {}) {
@@ -30,7 +28,7 @@ export default class UserService extends BaseService {
     };
     const url = `/channels?${params}`;
     const response = await this.get(url, options);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return response;
   }
 
@@ -48,7 +46,7 @@ export default class UserService extends BaseService {
     };
     const url = `/subscriptions?${params}`;
     const response = await this.get(url, options);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return response;
   }
 }
