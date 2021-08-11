@@ -119,7 +119,7 @@ const moreFromYT = [
 
 export default function SidebarRow() {
   let { pathname } = useLocation();
-  const { loggedIn } = useAuth();
+  const { loggedIn, started } = useAuth();
 
   return (
     <div className={`${styles.sidebarContainer} custom-scroll`}>
@@ -168,7 +168,7 @@ export default function SidebarRow() {
       )}
       <div>
         {/* User Channels Items*/}
-        {loggedIn && <SidebarSubscription />}
+        {loggedIn && started && <SidebarSubscription />}
         {/* Best of YouTube items */}
         {!loggedIn &&
           bestOfYTItems.map((section) => {

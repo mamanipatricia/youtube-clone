@@ -2,9 +2,15 @@
 export default class BaseService {
   constructor(url) {
     this.baseURL = url;
+    this.started = false;
+  }
+
+  setStarted(isStarted) {
+    this.started = isStarted;
   }
 
   async get(endpoint, options = {}) {
+    if (!this.started) return {};
     return await fetch(`${this.baseURL}${endpoint}`, {
       ...options,
       method: "GET",
@@ -12,6 +18,7 @@ export default class BaseService {
   }
 
   async post(endpoint, body, options = {}) {
+    if (!this.started) return {};
     return await fetch(`${this.baseURL}${endpoint}`, {
       ...options,
       method: "POST",
@@ -24,6 +31,7 @@ export default class BaseService {
   }
 
   async put(endpoint, body, options = {}) {
+    if (!this.started) return {};
     return await fetch(`${this.baseURL}${endpoint}`, {
       ...options,
       body: JSON.stringify(body),
@@ -32,6 +40,7 @@ export default class BaseService {
   }
 
   async delete(endpoint, options = {}) {
+    if (!this.started) return {};
     return await fetch(`${this.baseURL}${endpoint}`, {
       ...options,
       method: "DELETE",

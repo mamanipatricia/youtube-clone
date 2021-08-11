@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { youTubeService } from "../../services";
+import { commentService, userService, youTubeService } from "../../services";
 import { useLoading } from "../../hooks/useLoading";
 import { useGuide } from "../../context/guideContext";
 import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
@@ -7,11 +7,13 @@ import VideoCard from "../VideoCard/VideoCard";
 import Spinner from "../Spinner/Spinner";
 import styles from "./Home.module.css";
 import { MENU_HOME } from "../Constants/Constants";
+import { useAuth } from "../../context/authContext";
 
 const INITIAL_KEYWORD = "Docker";
 
 export default function Home() {
   const loading = useLoading();
+  const { setStarted } = useAuth();
   const [toggleSidebarRow] = useGuide();
   const [search, setSearch] = useState([]);
   const [searchClone, setSearchClone] = useState([]);
@@ -106,6 +108,10 @@ export default function Home() {
 
   const loadVideoHandle = () => {
     setLoadVideo(true);
+    youTubeService.setStarted(true);
+    commentService.setStarted(true);
+    userService.setStarted(true);
+    setStarted(true);
   };
 
   return (
