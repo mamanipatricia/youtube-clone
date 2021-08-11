@@ -96,8 +96,12 @@ export function AuthContextProvider({ children }) {
     setLoggedIn(true);
   };
 
+  const [started, setStarted] = useState(false);
+
   return (
-    <AuthContext.Provider value={{ loggedIn, user, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ loggedIn, user, signIn, signOut, started, setStarted }}
+    >
       {children}
     </AuthContext.Provider>
   );
