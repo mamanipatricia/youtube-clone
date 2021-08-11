@@ -1,8 +1,8 @@
 //! each service has to have a baseURL
 export default class BaseService {
-  constructor(url) {
+  constructor(url, started = false) {
     this.baseURL = url;
-    this.started = false;
+    this.started = started;
   }
 
   setStarted(isStarted) {

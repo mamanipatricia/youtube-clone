@@ -2,8 +2,8 @@ import BaseService from "./BaseServices";
 import { recordUrl, withRecords } from "../config";
 
 export default class RecordService extends BaseService {
-  constructor() {
-    super(recordUrl);
+  constructor(isStarted) {
+    super(recordUrl, isStarted);
   }
 
   async createRecord(payload = {}) {

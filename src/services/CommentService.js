@@ -1,12 +1,11 @@
+import { recordService } from ".";
 import { apiKey, apiUrl } from "../config";
 import BaseService from "./BaseServices";
-import RecordService from "./RecordService";
 
 export default class CommentService extends BaseService {
   constructor() {
     super(apiUrl);
     this.API_KEY = apiKey;
-    this.recordService = new RecordService();
   }
 
   createURLParams(newParams = {}) {
@@ -39,6 +38,6 @@ export default class CommentService extends BaseService {
     };
     const url = `/commentThreads?${params}`;
     await this.post(url, body, options);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
   }
 }
