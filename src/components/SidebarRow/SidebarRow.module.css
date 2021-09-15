@@ -6,7 +6,7 @@
   height: calc(100vh - 56px);
   opacity: 0.75;
   transition: all 0.4s ease-in-out;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 .sidebarContainer:hover {
   overflow-y: auto;
