@@ -42,6 +42,12 @@ export default function Comments({ videoId }) {
   useEffect(() => {
     getThreadsComments();
     getUser();
+    // clean up the state when the component unmounts
+    return () => {
+      setCommentsThreads(null);
+      setTotalResults(0);
+      setUserInfo({});
+    };
   }, [videoId]);
 
   const onSubmit = async (html) => {

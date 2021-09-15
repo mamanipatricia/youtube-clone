@@ -3,6 +3,7 @@ import BaseService from "./BaseServices";
 import Formatter from "../Utils/Formatter";
 import { apiKey, apiUrl } from "../config";
 import { recordService } from ".";
+// import { recordService } from "./RecordService";
 
 export default class YouTubeService extends BaseService {
   constructor() {
@@ -104,7 +105,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/commentThreads?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatThreatsComments(response);
   }
 
@@ -115,7 +116,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/playlists?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatPlaylists(response);
   }
 
@@ -126,7 +127,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/playlists?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatChannelPlaylists(response);
   }
 
@@ -138,7 +139,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/playlistItems?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return response;
   }
 
@@ -150,7 +151,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/playlistItems?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatPlaylistItems(response);
   }
 
@@ -163,7 +164,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/search?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatRelatedVideos(response);
   }
 
@@ -175,7 +176,7 @@ export default class YouTubeService extends BaseService {
     });
     const url = `/videos?${params}`;
     const response = await this.get(url);
-    await this.recordService.createRecord({ requestTo: url });
+    await recordService.createRecord({ requestTo: url });
     return this.formatter.formatTendingVideos(response);
   }
 }
