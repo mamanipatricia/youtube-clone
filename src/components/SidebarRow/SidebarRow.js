@@ -71,6 +71,9 @@ const bestOfYTItems = [
       { pathname: "/feed/360-video", text: "360° video", icon: three60video },
     ],
   },
+];
+
+const moreFromYT = [
   {
     id: "section-4",
     title: "",
@@ -82,9 +85,6 @@ const bestOfYTItems = [
       },
     ],
   },
-];
-
-const moreFromYT = [
   {
     id: "section-5",
     title: "MORE FROM YOUTUBE",
@@ -161,9 +161,11 @@ export default function SidebarRow() {
         );
       })}
       {!loggedIn && (
-        <div className={`${styles.SignInButton} ${styles.section}`}>
-          Access to Like the videos, make comments and subscribe.
-          <Login />
+        <div className={styles.section}>
+          <div className={`${styles.SignInButton}`}>
+            Access to Like the videos, make comments and subscribe.
+            <Login />
+          </div>
         </div>
       )}
       <div>
