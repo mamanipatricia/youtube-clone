@@ -65,10 +65,10 @@ export const ModalMic = ({ isOpen, closeModal, onChangedText }) => {
   if (!voiceSupported) {
     return (
       <div>
-        <h1>
+        <span>
           Voice recognition is not supported by your browser, please retry with
           a supported browser e.g. Chrome
-        </h1>
+        </span>
       </div>
     );
   }
