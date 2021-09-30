@@ -6,6 +6,7 @@ import Spinner from "../Spinner/Spinner";
 import VideoCard from "../VideoCard/VideoCard";
 import styles from "./SearchResults.module.css";
 import { MENU_SEARCH_RESULT } from "../Constants/Constants";
+import Icon from "../Icon/Icon";
 
 export default function SearchResults() {
   const location = useLocation();
@@ -59,6 +60,16 @@ export default function SearchResults() {
             />
           );
         })}
+      {loading.isError && (
+        <div className={styles.noResultsFoundContainer}>
+          <Icon name="NO_RESULTS_FOUND" />
+          <span className={styles.title}>No results found with</span>
+          <span className={styles.keyword}>{searchQuery}</span>
+          <span className={styles.description}>
+            Try different keywords or remove search filters
+          </span>
+        </div>
+      )}
     </div>
   );
 }

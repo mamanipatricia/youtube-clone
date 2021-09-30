@@ -1,19 +1,20 @@
-import { useState, useEffect, useRef, useContext } from "react";
-import { youTubeService } from "../../services";
+import { useState, useEffect, useRef } from "react";
+import { commentService, userService, youTubeService } from "../../services";
 import { useLoading } from "../../hooks/useLoading";
-import GuideContext from "../../context/guideContext";
+import { useGuide } from "../../context/guideContext";
 import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
 import VideoCard from "../VideoCard/VideoCard";
 import Spinner from "../Spinner/Spinner";
 import styles from "./Home.module.css";
 import { MENU_HOME } from "../Constants/Constants";
+import { useAuth } from "../../context/authContext";
 
-const INITIAL_KEYWORD = "javascript";
+const INITIAL_KEYWORD = "AWS";
 
 export default function Home() {
   const loading = useLoading();
-  const [toggleSidebarRow] = useContext(GuideContext);
-
+  const { setStarted } = useAuth();
+  const [toggleSidebarRow] = useGuide();
   const [search, setSearch] = useState([]);
   const [searchClone, setSearchClone] = useState([]);
   const [isNearScreen, setIsNearScreen] = useState(false);
@@ -21,6 +22,8 @@ export default function Home() {
   const [nextPageTokenCopy, setNextPageTokenCopy] = useState("");
   const [keyword, setKeyword] = useState(INITIAL_KEYWORD);
   const nearScreenRef = useRef(null);
+
+  const [loadVideo, setLoadVideo] = useState(false);
 
   useEffect(() => {
     const near = nearScreenRef.current;
@@ -42,10 +45,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (isNearScreen) {
+    if (isNearScreen && loadVideo) {
       getVideosSearch();
     }
-  }, [isNearScreen]);
+  }, [isNearScreen, loadVideo]);
 
   const getSearch = async (keyword, params = {}) => {
     const { data, pageInfo } = await youTubeService.getSearch(keyword, params);
@@ -103,30 +106,45 @@ export default function Home() {
     }
   };
 
+  const loadVideoHandle = () => {
+    setLoadVideo(true);
+    youTubeService.setStarted(true);
+    commentService.setStarted(true);
+    userService.setStarted(true);
+    setStarted(true);
+  };
+
   return (
     <div className={styles.homeContainer}>
       <div
-        className={`${
-          toggleSidebarRow
-            ? styles.toggleToMiniGuide
-            : styles.feedFilterContainer
+        className={`${styles.feedFilterContainer} ${
+          toggleSidebarRow ? styles.toggleToMiniGuide : null
         }`}
       >
         <FeedFilterBarRenderer onChangeFeed={onChangeFeed} />
       </div>
-      <div className={styles.videosContainer}>
-        {search.map((video, index) => {
-          return (
-            <VideoCard
-              key={`video-${index}`}
-              video={video}
-              menuContent={MENU_HOME}
-            />
-          );
-        })}
-      </div>
+
+      {loadVideo ? (
+        <>
+          <div className={styles.videosContainer}>
+            {search.map((video, index) => {
+              return (
+                <VideoCard
+                  key={`video-${index}`}
+                  video={video}
+                  menuContent={MENU_HOME}
+                />
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <button style={{ marginTop: "100px" }} onClick={loadVideoHandle}>
+          CLICK TO LOAD VIDEOS
+        </button>
+      )}
       <div ref={nearScreenRef}>
-        <Spinner />
+        <Spinner visible={loadVideo} />
       </div>
     </div>
   );

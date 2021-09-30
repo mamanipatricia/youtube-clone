@@ -1,39 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import YouTube from "react-youtube";
-import Icon from "../Icon/Icon";
-import { ViewsAndTimestamp } from "../Detail/Detail";
+import { useVideo } from "../../context/videoContext";
+import { useLoading } from "../../hooks/useLoading";
 import { youTubeService } from "../../services";
-import Comments from "../Comments/Comments";
+import { ViewsAndTimestamp } from "../Detail/Detail";
 import PlaylistPanel from "../PlaylistPanel/PlaylistPanel";
 import RelatedVideos from "../RelatedVideos/RelatedVideos";
-import Spinner from "../Spinner/Spinner";
-import { useLoading } from "../../hooks/useLoading";
 import { ChannelInfo } from "../ChannelInfo/ChannelInfo";
+import Comments from "../Comments/Comments";
+import Spinner from "../Spinner/Spinner";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
-import styles from "./Watch.module.css";
 import { MENU_WATCH } from "../Constants/Constants";
+import Icon from "../Icon/Icon";
+import styles from "./Watch.module.css";
 
 export default function Watch() {
-  let { videoId } = useParams();
-  const location = useLocation();
+  const loading = useLoading();
+  const { state } = useVideo();
+  const history = useHistory();
+  const { videoId } = useParams();
 
   const [channel, setChannel] = useState("");
   const [video, setVideo] = useState({});
   const [isExpanded, setIsExpanded] = useState(false);
-
-  const [playingStatus, setPlayingStatus] = useState(() => {
-    // `LAZY INITIALIZATION STATUS`
-    return location.state?.videoStatus;
-  });
-
-  useEffect(() => {
-    if (location.state?.videoStatus !== playingStatus) {
-      setPlayingStatus(location.state?.videoStatus);
-    }
-  }, [location.state?.videoStatus]);
-
-  const loading = useLoading();
 
   useEffect(() => {
     (async () => {
@@ -89,7 +79,9 @@ export default function Watch() {
   function playNext(event) {
     // video is ended when "==0"
     if (event?.data === 0) {
-      setPlayingStatus("nextVideo");
+      history.push({
+        pathname: `/watch/${state.nextVideoId}`,
+      });
     }
   }
 
@@ -187,7 +179,7 @@ export default function Watch() {
           <div className={styles.secondary}>
             <PlaylistPanel />
             {/* display 20 elem in responsive and add a button to show more videos */}
-            <RelatedVideos videoId={videoId} playingStatus={playingStatus} />
+            <RelatedVideos videoId={videoId} />
           </div>
           <div className={styles.commentsAtTheBottom}>
             <Comments videoId={videoId} />

@@ -18,7 +18,7 @@ export default function ChannelSections({ videos = [], menuContent }) {
                       <Icon name="PLAY" color="var(--text-secondary)" />
                       <Link
                         className={styles.playAll}
-                        to={`/watch/${item?.items[idx]?.videoId}`}
+                        to={`/watch/${item?.items[idx]?.videoId}?list=${item?.section.playlistId}`}
                       >
                         <span> PLAY ALL</span>
                       </Link>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styles from "./Avatar.module.css";
 
 const SIZES = {
@@ -9,18 +9,24 @@ const SIZES = {
 };
 
 export default function Avatar({ channel, size = "medium" }) {
+  const history = useHistory();
   const { channelId, channelName, avatar } = channel;
+
+  const goToChannel = (event) => {
+    history.push(`/channel/${channelId}`);
+    event.stopPropagation();
+  };
+
   return (
     <div>
-      <Link to={`/channel/${channelId}`}>
-        <img
-          className={styles.avatar}
-          style={{ width: SIZES[size] }}
-          src={avatar}
-          alt={channelName}
-          title={channelName}
-        />
-      </Link>
+      <img
+        onClick={goToChannel}
+        className={styles.avatar}
+        style={{ width: SIZES[size] }}
+        src={avatar}
+        alt={channelName}
+        title={channelName}
+      />
     </div>
   );
 }

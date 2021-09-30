@@ -1,0 +1,43 @@
+.title {
+  padding: 8px 24px;
+  margin: 0;
+  font-weight: 500;
+  color: var(--text-title);
+}
+.channelItem {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 40px;
+  color: var(--text-primary);
+}
+.channelItem:hover {
+  background: var(--background-c);
+  cursor: pointer;
+}
+.channelThumbnail {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 24px;
+}
+.showMoreButton {
+  width: 100%;
+  text-decoration: none;
+  padding: 10px 24px;
+  color: black;
+  display: flex;
+  font-size: var(--font-size);
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.showMoreButton:hover {
+  background: var(--background-c);
+}
+.sidebarIcon {
+  margin-right: 24px;
+}

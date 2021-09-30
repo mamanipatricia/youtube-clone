@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import SidebarRow from "./components/SidebarRow/SidebarRow";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
@@ -11,7 +10,7 @@ import MyVideos from "./components/MyVideos/MyVideos";
 import WatchLater from "./components/WatchLater/WatchLater";
 import LikedVideos from "./components/LikedVideos/LikedVideos";
 import MiniSidebarRow from "./components/MiniGuide/MiniSidebarRow";
-import GuideContext from "./context/guideContext";
+import { useGuide } from "./context/guideContext";
 import Home from "./components/Home/Home";
 import Watch from "./components/Watch/Watch";
 import SearchResults from "./components/SearchResults/SearchResults";
@@ -21,7 +20,7 @@ import { ReactComponent as Logo } from "./assets/images/logo.svg";
 import styles from "./App.module.css";
 
 function App() {
-  const [toggleSidebarRow, setToggleSidebarRow] = useContext(GuideContext);
+  const [toggleSidebarRow, setToggleSidebarRow] = useGuide();
   const toggleSidebarRowHandle = () => {
     setToggleSidebarRow(false);
   };

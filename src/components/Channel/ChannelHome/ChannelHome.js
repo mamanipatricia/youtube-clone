@@ -43,6 +43,7 @@ export default function ChannelHome({ channelId, menuContent }) {
       if (playlist.section.type === "singleplaylist") {
         playlist.section.description = playlist.details?.description;
         playlist.section.title = playlist.details?.title;
+        playlist.section.playlistId = playlist.details?.playlistId;
       }
     });
     // filtering "undefined details property" from playlistData
@@ -99,7 +100,7 @@ export default function ChannelHome({ channelId, menuContent }) {
       setChannelSections(channelSections);
       loading.success();
     })();
-  }, []);
+  }, [channelId]);
 
   return (
     <>

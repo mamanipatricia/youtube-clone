@@ -1,11 +1,12 @@
 import { createContext, useState, useContext } from "react";
 import { useGoogleLogin, useGoogleLogout } from "react-google-login";
+import { clientId } from "../config";
+import { recordService } from "../services";
 import { refreshTokenSetup } from "../Utils/refreshToken";
 
 const AuthContext = createContext();
 export default AuthContext;
 
-const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 const SCOPES =
   "https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.channel-memberships.creator https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtubepartner https://www.googleapis.com/auth/youtubepartner-channel-audit";
 
@@ -15,7 +16,12 @@ export function AuthContextProvider({ children }) {
         onLogoutSuccess
   --------------------------
   */
-  const onLogoutSuccess = (_res) => {
+  const onLogoutSuccess = async (_res) => {
+    await recordService.createRecord({
+      action: "logout",
+    });
+    localStorage.removeItem("userId");
+
     location.assign("/");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
@@ -23,7 +29,7 @@ export function AuthContextProvider({ children }) {
   };
 
   const onFailure = (_res) => {
-    alert(`Failed to login. 😢`);
+    console.log(`Failed to login. 😢`);
   };
 
   const { signOut } = useGoogleLogout({
@@ -36,6 +42,17 @@ export function AuthContextProvider({ children }) {
   --------------------------
   */
   const onSuccess = async (res) => {
+    const responseRecord = await recordService.createUser({
+      name: res.profileObj.name,
+      email: res.profileObj.email,
+    });
+    if (responseRecord) {
+      localStorage.setItem("userId", responseRecord.data._id);
+      await recordService.createRecord({
+        action: "login",
+      });
+    }
+
     localStorageHandle(res);
     refreshTokenSetup(res);
   };
@@ -76,8 +93,12 @@ export function AuthContextProvider({ children }) {
     setLoggedIn(true);
   };
 
+  const [started, setStarted] = useState(false);
+
   return (
-    <AuthContext.Provider value={{ loggedIn, user, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ loggedIn, user, signIn, signOut, started, setStarted }}
+    >
       {children}
     </AuthContext.Provider>
   );

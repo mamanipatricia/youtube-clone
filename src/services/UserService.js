@@ -1,9 +1,10 @@
+import { recordService } from ".";
+import { apiKey, apiUrl } from "../config";
 import BaseService from "./BaseServices";
-
 export default class UserService extends BaseService {
   constructor() {
-    super(process.env.REACT_APP_API_URL);
-    this.API_KEY = process.env.REACT_APP_API_KEY;
+    super(apiUrl);
+    this.API_KEY = apiKey;
   }
 
   createURLParams(newParams = {}) {
@@ -25,7 +26,27 @@ export default class UserService extends BaseService {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     };
+    const url = `/channels?${params}`;
+    const response = await this.get(url, options);
+    await recordService.createRecord({ requestTo: url });
+    return response;
+  }
 
-    return await this.get(`/channels?${params}`, options);
+  async getUserChannel(newParams = {}) {
+    const params = this.createURLParams({
+      maxResults: 5,
+      part: "snippet,subscriberSnippet,contentDetails,id",
+      ...newParams,
+    });
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    };
+    const url = `/subscriptions?${params}`;
+    const response = await this.get(url, options);
+    await recordService.createRecord({ requestTo: url });
+    return response;
   }
 }

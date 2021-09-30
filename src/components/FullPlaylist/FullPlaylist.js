@@ -12,8 +12,6 @@ import Spinner from "../Spinner/Spinner";
 import { useLoading } from "../../hooks/useLoading";
 import { MENU_PLAYLIST_ITEM, MENU_PLAYLIST } from "../Constants/Constants";
 
-const playIcon = "\u25B6 "; // redo
-
 export const FullPlaylist = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -62,7 +60,8 @@ export const FullPlaylist = () => {
               <div className={styles.thumbnailContainer}>
                 <Thumbnail url={playlist.thumbnail} />
                 <div className={styles.playlistCovered}>
-                  {playIcon} PLAY ALL
+                  <Icon name="PLAY" color="white" />
+                  PLAY ALL
                 </div>
               </div>
             </Link>
