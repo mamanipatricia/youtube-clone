@@ -6,7 +6,11 @@ export default class Formatter {
   }
 
   checkIfExistData(data) {
-    if (data.pageInfo?.totalResults === 0 || data.items?.length === 0) {
+    if (
+      !data.items ||
+      data.pageInfo?.totalResults === 0 ||
+      data.items?.length === 0
+    ) {
       throw new Error("Data not found");
     }
   }
@@ -278,5 +282,35 @@ export default class Formatter {
         videosId.push(video.id);
       });
     return { data: { channelsId, videosId } };
+  }
+
+  formatMyLikedVideos(data) {
+    this.handleError(data);
+    this.checkIfExistData(data);
+    const videos = data.items.map((video) => ({
+      videoId: video.id,
+      title: video.snippet.title,
+      description: video.snippet.description,
+      thumbnail: video.snippet.thumbnails.medium.url,
+      viewCount: video.statistics.viewCount,
+      publishedAt: video.snippet.publishedAt,
+      likeCount: video.statistics.likeCount,
+      dislikeCount: video.statistics.dislikeCount,
+      duration: video.contentDetails.duration,
+      liveBroadcast: video.snippet.liveBroadcastContent,
+      channel: {
+        channelId: video.snippet.channelId,
+        channelName: video.snippet.channelTitle,
+      },
+    }));
+    const pageInfo = {
+      nextPageToken: data.nextPageToken,
+      prevPageToken: data.prevPageToken,
+      ...data.pageInfo,
+    };
+    return {
+      data: videos || [],
+      pageInfo: pageInfo,
+    };
   }
 }

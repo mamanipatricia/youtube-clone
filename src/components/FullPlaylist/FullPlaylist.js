@@ -41,6 +41,7 @@ export const FullPlaylist = () => {
       setChannel(channelData);
       loading.success();
     } catch (err) {
+      console.log(`err`, err);
       loading.error();
     }
   };

@@ -1089,6 +1089,22 @@ export default function Icon(props) {
           </g>
         </svg>
       );
+    case "PLAY_LIST":
+      return (
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
+          <g>
+            <path d="M21 16h-7v-1h7v1zm0-5H9v1h12v-1zm0-4H3v1h18V7zm-11 8-7-4v8l7-4z" />
+          </g>
+        </svg>
+      );
+    case "TRASH":
+      return (
+        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
+          <g>
+            <path d="M11 17H9V8h2v9zm4-9h-2v9h2V8zm4-4v1h-1v16H6V5H5V4h4V3h6v1h4zm-2 1H7v15h10V5z" />
+          </g>
+        </svg>
+      );
     default:
       return <div />;
   }

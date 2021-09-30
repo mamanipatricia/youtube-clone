@@ -1,0 +1,117 @@
+.playlistContainer {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  height: 100%;
+}
+.playlistSidebarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  overflow: auto;
+}
+.thumbnailContainer {
+  position: relative;
+}
+.playlistCovered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  align-content: stretch;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  transition: all 0.3s;
+  height: 20%;
+}
+.title {
+  font-size: 24px;
+  margin: 0;
+}
+.count {
+  margin: 0;
+  color: var(--text-secondary);
+}
+.iconsContainer {
+  display: flex;
+  gap: 15px;
+}
+.description {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-primary);
+  margin: 0;
+  color: var(--text-secondary);
+}
+.playlistItemsContainer {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  margin: 8px 8px;
+  background: var(--background-b);
+  position: relative;
+}
+.playlistBrowserResult {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 8px 0;
+  width: 900px;
+}
+.playlistBrowserResult > div {
+  padding: 16px 0;
+  position: relative;
+}
+.playlistBrowserResult > div:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  width: 92%;
+  border-bottom: 1px solid #ccc;
+  transform: translateX(3%);
+}
+.playlistItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.playlistItemContainer:hover {
+  background: var(--badge-background);
+  cursor: pointer;
+}
+.playlistItem {
+  display: flex;
+  align-items: center;
+}
+.indexPlaylistItem {
+  padding: 8px;
+}
+.ownerContainer {
+  display: flex;
+}
+.playlistOwnerInfo {
+  display: flex;
+}
+.playlistSubscribeContainer {
+  display: flex;
+  align-items: center;
+}
+.playlistSubscribe {
+  padding: 10px 16px;
+  margin: 4px;
+  border: none;
+  background: var(--bg-button-subs);
+}
+.moreActions {
+  padding: 8px;
+}
+.channelInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  font-weight: 500;
+}

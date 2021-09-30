@@ -36,6 +36,7 @@ export default function SearchResults() {
       setVideos(data);
       loading.success();
     } catch (err) {
+      console.log(`err`, err);
       loading.error();
     }
   };
