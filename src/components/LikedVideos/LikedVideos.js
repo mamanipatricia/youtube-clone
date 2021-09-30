@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
-import { userService, youTubeService } from "../../services";
-import { ChannelInfo } from "../ChannelInfo/ChannelInfo";
+import { userService } from "../../services";
 import { HorizontalVideoItem } from "../HorizontalVideoItem/HorizontalVideoItem";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
 import Icon from "../Icon/Icon";
