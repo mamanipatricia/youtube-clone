@@ -271,3 +271,39 @@ export const MENU_CREATE = [
     icon: "LIVE_RED",
   },
 ];
+
+export const MENU_LIKED_VIDEOS = [
+  {
+    id: 1,
+    label: "Hide unavailable videos",
+    icon: "UPLOAD_VIDEO",
+  },
+  {
+    id: 2,
+    label: "Show unavailable videos",
+    icon: "LIVE_RED",
+  },
+];
+
+export const MENU_LIKED_VIDEO_ITEM = [
+  {
+    id: 1,
+    label: "Add to queue",
+    icon: "PLAY_LIST",
+  },
+  {
+    id: 2,
+    label: "Save to watch later",
+    icon: "CLOCK",
+  },
+  {
+    id: 3,
+    label: "Save to playlist",
+    icon: "SAVE_PLAYLIST",
+  },
+  {
+    id: 4,
+    label: "Remove from liked videos",
+    icon: "TRASH",
+  },
+];
