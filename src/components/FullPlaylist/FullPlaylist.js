@@ -47,7 +47,7 @@ export const FullPlaylist = () => {
   };
   useEffect(() => {
     if (listId) {
-      getPlayListItems(listId);
+      getPlayListItems();
     }
   }, [listId]);
 

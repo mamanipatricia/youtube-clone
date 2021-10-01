@@ -251,6 +251,7 @@ export default function Icon(props) {
         </svg>
       );
     case "SAVE":
+    case "SAVE_PLAYLIST":
       return (
         <svg width="24" height="24" {...className} viewBox="0 0 24 24">
           <g>
@@ -342,17 +343,6 @@ export default function Icon(props) {
           </g>
         </svg>
       );
-    case "SAVE_PLAYLIST":
-      return (
-        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
-          <g>
-            <path
-              fill={color}
-              d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"
-            />
-          </g>
-        </svg>
-      );
     case "ARROW_LEFT":
       return (
         <svg width="24" height="24" {...className} viewBox="0 0 24 24">
@@ -429,17 +419,7 @@ export default function Icon(props) {
           />
         </svg>
       );
-    case "MIC":
-      return (
-        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
-          <g>
-            <path
-              fill={color}
-              d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"
-            />
-          </g>
-        </svg>
-      );
+
     case "CLOSE":
       return (
         <svg width="24" height="24" {...className} viewBox="0 0 24 24">
@@ -537,18 +517,6 @@ export default function Icon(props) {
             <path
               fill={color}
               d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
-            />
-          </g>
-        </svg>
-      );
-    case "POST_COMMENTS":
-      return (
-        <svg width="24" height="24" {...className} viewBox="0 0 24 24">
-          <g>
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path
-              fill={color}
-              d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"
             />
           </g>
         </svg>

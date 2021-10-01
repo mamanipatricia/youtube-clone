@@ -8,7 +8,7 @@
   color: var(--text-primary);
   margin-bottom: 24px;
 }
-.carrouselContainer {
+.carouselContainer {
   display: flex;
   position: relative;
   width: 100%;

@@ -19,10 +19,7 @@
   color: var(--text-sentiment);
   font-weight: 500;
 }
-.sortComments {
-}
 .simpleBoxPlaceholder:active {
-  border: 0;
   border: 0;
   margin: 0;
   /* height: 0; */

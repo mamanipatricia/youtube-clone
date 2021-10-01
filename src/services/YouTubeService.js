@@ -1,4 +1,4 @@
-import BaseService from "./BaseServices";
+import BaseService from "./BaseService";
 //* this service has to prepare data to send to BaseServices
 import Formatter from "../Utils/Formatter";
 import { apiKey, apiUrl } from "../config";

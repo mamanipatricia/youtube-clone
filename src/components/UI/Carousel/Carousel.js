@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import Icon from "../../Icon/Icon";
 import styles from "./Carousel.module.css";
 
-export default function Carrousel({
+export default function Carousel({
   children,
-  refCarrousel,
+  refCarousel,
   refFirstItem,
   refLastItem,
   prevBtn = null,
@@ -16,7 +16,7 @@ export default function Carrousel({
   useEffect(() => {
     const refFirst = refFirstItem.current;
     let options = {
-      root: refCarrousel.current,
+      root: refCarousel.current,
       threshold: 0.9,
     };
     let observer = new IntersectionObserver((entries) => {
@@ -36,7 +36,7 @@ export default function Carrousel({
   useEffect(() => {
     const refLast = refLastItem.current;
     let options = {
-      root: refCarrousel.current,
+      root: refCarousel.current,
       // rootMargin: "100px",
       threshold: 0.99,
     };
@@ -55,13 +55,13 @@ export default function Carrousel({
   }, [refLastItem]);
 
   const back = () => {
-    refCarrousel.current.scrollLeft -= 300;
-    if (refCarrousel.current.scrollLeft < 400) {
-      refCarrousel.current.scrollLeft = 0;
+    refCarousel.current.scrollLeft -= 300;
+    if (refCarousel.current.scrollLeft < 400) {
+      refCarousel.current.scrollLeft = 0;
     }
   };
   const next = () => {
-    refCarrousel.current.scrollLeft += 300;
+    refCarousel.current.scrollLeft += 300;
   };
 
   // Default previous arrow
@@ -84,7 +84,7 @@ export default function Carrousel({
   }
 
   return (
-    <div className={styles.carrouselContainer}>
+    <div className={styles.carouselContainer}>
       {showPrev && (
         <div className={styles.prevContainer} onClick={back}>
           {prevButton}

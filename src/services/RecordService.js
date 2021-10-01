@@ -1,4 +1,4 @@
-import BaseService from "./BaseServices";
+import BaseService from "./BaseService";
 import { recordUrl, withRecords } from "../config";
 
 export default class RecordService extends BaseService {
