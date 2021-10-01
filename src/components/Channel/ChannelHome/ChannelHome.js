@@ -96,8 +96,8 @@ export default function ChannelHome({ channelId, menuContent }) {
   useEffect(() => {
     (async () => {
       loading.pending();
-      const channelSections = await getChannelSections();
-      setChannelSections(channelSections);
+      const channelSectionsData = await getChannelSections();
+      setChannelSections(channelSectionsData);
       loading.success();
     })();
   }, [channelId]);

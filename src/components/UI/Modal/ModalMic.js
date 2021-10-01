@@ -124,7 +124,7 @@ export const ModalMic = ({ isOpen, closeModal, onChangedText }) => {
                   isListening ? styles.micButtonActive : ""
                 }`}
               >
-                <Icon name="MIC" />
+                <Icon name="MICROPHONE" />
               </div>
             </div>
           </div>

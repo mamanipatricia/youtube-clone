@@ -50,8 +50,11 @@ export default function Home() {
     }
   }, [isNearScreen, loadVideo]);
 
-  const getSearch = async (keyword, params = {}) => {
-    const { data, pageInfo } = await youTubeService.getSearch(keyword, params);
+  const getSearch = async (keywordText, params = {}) => {
+    const { data, pageInfo } = await youTubeService.getSearch(
+      keywordText,
+      params
+    );
     if (!nextPageTokenCopy) {
       setNextPageTokenCopy(pageInfo.nextPageToken);
     }

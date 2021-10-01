@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "../UI/Arrows/Arrows";
-import Carrousel from "../UI/Carousel/Carousel";
+import Carousel from "../UI/Carousel/Carousel";
 import styles from "./FeedFilterBarRenderer.module.css";
 
 const feedFilterItems = [
@@ -30,7 +30,7 @@ const feedFilterItems = [
 export default function FeedFilterBarRenderer({ onChangeFeed }) {
   const [feed, setFeed] = useState(null);
 
-  const refCarrousel = useRef(null);
+  const refCarousel = useRef(null);
   const refFirstItem = useRef(null);
   const refLastItem = useRef(null);
 
@@ -41,17 +41,14 @@ export default function FeedFilterBarRenderer({ onChangeFeed }) {
 
   return (
     <div className={styles.feedFilterContainer}>
-      <Carrousel
-        refCarrousel={refCarrousel}
+      <Carousel
+        refCarousel={refCarousel}
         refFirstItem={refFirstItem}
         refLastItem={refLastItem}
         prevBtn={<ArrowLeft />}
         nextBtn={<ArrowRight />}
       >
-        <div
-          ref={refCarrousel}
-          className={styles.horizontalVideoCardsContainer}
-        >
+        <div ref={refCarousel} className={styles.horizontalVideoCardsContainer}>
           {feedFilterItems.map((feedItem, index, array) => {
             return (
               <div
@@ -73,7 +70,7 @@ export default function FeedFilterBarRenderer({ onChangeFeed }) {
             );
           })}
         </div>
-      </Carrousel>
+      </Carousel>
     </div>
   );
 }

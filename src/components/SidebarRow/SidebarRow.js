@@ -111,7 +111,7 @@ const moreFromYT = [
       {
         pathname: "/feed/post-comments",
         text: "Post Comments",
-        icon: "POST_COMMENTS",
+        icon: "FEEDBACK",
       },
     ],
   },

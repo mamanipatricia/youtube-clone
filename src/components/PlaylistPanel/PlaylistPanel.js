@@ -26,8 +26,8 @@ export default function PlaylistPanel() {
       };
     });
     const { data } = await youTubeService.getVideos(videosId);
-    const videosInfo = playlistData.map((playlist) => {
-      return data.find((video) => video.videoId === playlist.videoId);
+    const videosInfo = playlistData.map(({ videoId }) => {
+      return data.find((video) => video.videoId === videoId);
     });
     const { data: playlistInfo } = await youTubeService.getPlaylists(listId);
     setPlaylist(playlistInfo[0]);
@@ -40,7 +40,7 @@ export default function PlaylistPanel() {
     }
   }, [index]);
 
-  if (!listId) return null;
+  if (!listId) return <span> List not found </span>;
 
   return (
     <div className={styles.playlistContainer}>

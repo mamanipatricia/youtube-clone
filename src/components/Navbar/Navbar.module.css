@@ -34,13 +34,11 @@
   justify-content: center;
   align-items: center;
 }
-.endHeader > button {
-  margin-right: 10px;
-}
 .endHeader > button:last-child {
   margin: 0 10px;
 }
 .endHeader > button {
+  margin-right: 10px;
   background: none;
   border: none;
 }

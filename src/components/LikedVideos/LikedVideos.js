@@ -73,8 +73,8 @@ export default function LikedVideos() {
             <p className={styles.title}>My liked videos</p>
             <p className={styles.count}>
               {pageInfoLikedVideos.totalResults} vídeos
-              <p>0 views</p>
             </p>
+            <p>0 views</p>
             <div className={styles.iconsContainer}>
               <Icon name="SHUFFLE" color="var(--text-sentiment)" />
               <DropdownMenu
