@@ -7,7 +7,7 @@ import styles from "./ChannelPlaylist.module.css";
 import Carrousel from "../../UI/Carousel/Carousel";
 
 export const ChannelPlaylists = ({ channelId }) => {
-  const refCarrousel = useRef(null);
+  const refCarousel = useRef(null);
   const refFirstItem = useRef(null);
   const refLastItem = useRef(null);
 
@@ -58,12 +58,12 @@ export const ChannelPlaylists = ({ channelId }) => {
         <>
           <h3 className={styles.title}>Created playlists</h3>
           <Carrousel
-            refCarrousel={refCarrousel}
+            refCarousel={refCarousel}
             refFirstItem={refFirstItem}
             refLastItem={refLastItem}
           >
             <div
-              ref={refCarrousel}
+              ref={refCarousel}
               className={styles.horizontalVideoCardsContainer}
             >
               {Object.values(channelPlaylist).map((video, index, array) => {
