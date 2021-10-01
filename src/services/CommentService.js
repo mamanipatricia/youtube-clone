@@ -1,6 +1,6 @@
 import { recordService } from ".";
 import { apiKey, apiUrl } from "../config";
-import BaseService from "./BaseServices";
+import BaseService from "./BaseService";
 
 export default class CommentService extends BaseService {
   constructor() {

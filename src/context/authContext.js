@@ -82,13 +82,13 @@ export function AuthContextProvider({ children }) {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const localStorageHandle = (res) => {
-    const user = {
+    const userObj = {
       name: res.profileObj.name,
       email: res.profileObj.email,
       imageUrl: res.profileObj.imageUrl,
     };
     localStorage.setItem("accessToken", res.accessToken);
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(userObj));
 
     setLoggedIn(true);
   };

@@ -2,20 +2,20 @@ import { useRef } from "react";
 import HorizontalPlaylistCard from "../HorizontalPlaylistCard/HorizontalPlaylistCard";
 import HorizontalVideoCard from "./HorizontalVideoCard./HorizontalVideoCard";
 import styles from "./HorizontalVideoCards.module.css";
-import Carrousel from "../UI/Carousel/Carousel";
+import Carousel from "../UI/Carousel/Carousel";
 
 export default function HorizontalVideoCards({ videos, menuContent }) {
-  const refCarrousel = useRef(null);
+  const refCarousel = useRef(null);
   const refFirstItem = useRef(null);
   const refLastItem = useRef(null);
 
   return (
-    <Carrousel
-      refCarrousel={refCarrousel}
+    <Carousel
+      refCarousel={refCarousel}
       refFirstItem={refFirstItem}
       refLastItem={refLastItem}
     >
-      <div ref={refCarrousel} className={styles.horizontalVideoCardsContainer}>
+      <div ref={refCarousel} className={styles.horizontalVideoCardsContainer}>
         {videos.items?.map((video, index, array) => {
           if (video.playlistId) {
             return (
@@ -49,6 +49,6 @@ export default function HorizontalVideoCards({ videos, menuContent }) {
           }
         })}
       </div>
-    </Carrousel>
+    </Carousel>
   );
 }

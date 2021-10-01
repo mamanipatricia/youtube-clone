@@ -34,9 +34,6 @@
 .expandIcon {
   margin-right: 4px;
 }
-.headerTopRow {
-  display: flex;
-}
 .playlistActions {
   display: flex;
   justify-content: space-between;

@@ -17,9 +17,11 @@ export const ChannelPlaylists = ({ channelId }) => {
   const getChannelPlaylists = async () => {
     try {
       loading.pending();
-      const { data } = await youTubeService.getChannelPlaylists(channelId);
+      const { data: playlistsData } = await youTubeService.getChannelPlaylists(
+        channelId
+      );
       const channelPlaylistInfo = {};
-      data
+      playlistsData
         .filter((pl) => pl.count > 0)
         .forEach((playlist) => {
           channelPlaylistInfo[playlist.playlistId] = playlist;

@@ -14,9 +14,10 @@ export default function Comments({ videoId }) {
   const getThreadsComments = async () => {
     try {
       const { data } = await youTubeService.getThreadsComments(videoId);
-      const { commentThreadsData, totalResults } = data;
+      const { commentThreadsData, totalResults: totalResultsThreadsComments } =
+        data;
       setCommentsThreads(commentThreadsData);
-      setTotalResults(totalResults);
+      setTotalResults(totalResultsThreadsComments);
     } catch (err) {
       if (err.message.includes("parameter has disabled comments")) {
         setErrorComment(true);
@@ -63,7 +64,7 @@ export default function Comments({ videoId }) {
               {totalResults} Comments
             </span>
             <div className={styles.dropdownMenu}>
-              <div className={styles.sortComments} type="button">
+              <div type="button">
                 <Icon name="DROPDOWN_MENU" color="var(--bg-sentiment)" />
               </div>
               <span>SORT BY</span>

@@ -1,6 +1,6 @@
 import { recordService } from ".";
 import { apiKey, apiUrl } from "../config";
-import BaseService from "./BaseServices";
+import BaseService from "./BaseService";
 import Formatter from "../Utils/Formatter";
 export default class UserService extends BaseService {
   constructor() {

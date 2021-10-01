@@ -10,7 +10,7 @@ import { ChannelChannels } from "./ChannelChannels/ChannelChannels";
 import Avatar from "../Avatar/Avatar";
 import Icon from "../Icon/Icon";
 import Button from "../UI/Button/Button";
-import Carrousel from "../UI/Carousel/Carousel";
+import Carousel from "../UI/Carousel/Carousel";
 import { ArrowLeft, ArrowRight } from "../UI/Arrows/Arrows";
 import styles from "./Channel.module.css";
 import { MENU_VIDEO_CARD } from "../Constants/Constants";
@@ -56,7 +56,7 @@ export function Channel() {
   [channelId] = channelId.split("/");
   const [channel, setChannel] = useState({});
 
-  const refCarrousel = useRef(null);
+  const refCarousel = useRef(null);
   const refFirstItem = useRef(null);
   const refLastItem = useRef(null);
 
@@ -79,7 +79,7 @@ export function Channel() {
   };
 
   useEffect(() => {
-    getChannel(channelId);
+    getChannel();
   }, [channelId]);
 
   if (!channel.channelId) {
@@ -119,14 +119,14 @@ export function Channel() {
               <Icon name="NOTIFICATION_1" />
             </div>
           </div>
-          <Carrousel
-            refCarrousel={refCarrousel}
+          <Carousel
+            refCarousel={refCarousel}
             refFirstItem={refFirstItem}
             refLastItem={refLastItem}
             prevBtn={<ArrowLeft />}
             nextBtn={<ArrowRight />}
           >
-            <div ref={refCarrousel} className={styles.channelTabbedHeader}>
+            <div ref={refCarousel} className={styles.channelTabbedHeader}>
               {channelHeaderOptions.map((option, index, array) => {
                 return (
                   <Link
@@ -150,7 +150,7 @@ export function Channel() {
                 );
               })}
             </div>
-          </Carrousel>
+          </Carousel>
         </div>
       </div>
       <div className={styles.channelWrapper}>
