@@ -9,7 +9,7 @@ import styles from "./Home.module.css";
 import { MENU_HOME } from "../Constants/Constants";
 import { useAuth } from "../../context/authContext";
 
-const INITIAL_KEYWORD = "Terraform";
+const INITIAL_KEYWORD = "React";
 
 export default function Home() {
   const loading = useLoading();
