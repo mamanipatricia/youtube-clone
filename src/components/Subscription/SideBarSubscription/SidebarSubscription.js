@@ -6,11 +6,13 @@ import styles from "./SidebarSubscription.module.css";
 
 export const SidebarSubscription = () => {
   const [channelData, setChannelData] = useState([]);
+  const [numberOfSubscriptions, setNumberOfSubscriptions] = useState();
   const [nextPageToken, setNextPageToken] = useState("");
 
   const getUserChannel = async (params = {}) => {
     const response = await userService.getUserChannel(params);
     setNextPageToken(response.nextPageToken);
+    setNumberOfSubscriptions(response.pageInfo.totalResults);
     const channelFormatted = (response.items || []).map((channel) => {
       return {
         id: channel.id,
@@ -37,7 +39,9 @@ export const SidebarSubscription = () => {
 
   return (
     <div>
-      <h3 className={styles.title}>SUBSCRIPTIONS</h3>
+      <h3 className={styles.title}>
+        SUBSCRIPTIONS - <strong>{numberOfSubscriptions}</strong>
+      </h3>
       {channelData?.map((channel) => {
         return (
           <Link
