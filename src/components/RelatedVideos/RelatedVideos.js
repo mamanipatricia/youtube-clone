@@ -31,6 +31,10 @@ const RelatedVideos = ({ videoId }) => {
     if (searchClone.length === 0) {
       setSearchClone(relatedVideosData);
     }
+    // useEffect cleanup function
+    return () => {
+      setSearchClone([]);
+    };
   }, [relatedVideosData]);
 
   const onChangeFeed = (feed) => {
@@ -61,6 +65,7 @@ const RelatedVideos = ({ videoId }) => {
       {relatedVideosData.map((video) => {
         return (
           <HorizontalVideoCard
+            ownerCustomStyles={{ color: "var(--text-secondary)" }}
             key={`index-${video.videoId}`}
             video={video}
             direction="row"

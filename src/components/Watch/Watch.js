@@ -109,6 +109,7 @@ export default function Watch() {
                     <ViewsAndTimestamp
                       viewCount={video.viewCount}
                       publishedAt={video.publishedAt}
+                      customStyles={{ fontSize: "14px" }}
                     />
                   </span>
                   <div className={styles.watchInfoButtons}>
@@ -150,7 +151,11 @@ export default function Watch() {
               </div>
               <div className={styles.metaContainer}>
                 <div className={styles.channelInfo}>
-                  <ChannelInfo channel={channel} displaySubs={true} />
+                  <ChannelInfo
+                    channel={channel}
+                    displaySubs={true}
+                    ownerCustomStyles={{ fontSize: "14px" }}
+                  />
                 </div>
                 <div className={styles.watchInfo}>
                   <div

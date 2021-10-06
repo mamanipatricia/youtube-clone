@@ -27,13 +27,13 @@
 }
 
 .titleContainer {
-  line-height: 1.5rem;
+  line-height: var(--line-height-20);
   overflow: hidden;
 }
 .title {
   margin: 0 0 5px 0;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   overflow: hidden;
   -webkit-line-clamp: 2;
   display: -webkit-box;
@@ -45,7 +45,7 @@
 .viewTimestampContainer {
   display: flex;
   gap: 5px;
-  font-size: var(--font-size);
+  font-size: var(--font-size-12);
   color: var(--text-secondary);
   padding-top: 4px;
 }

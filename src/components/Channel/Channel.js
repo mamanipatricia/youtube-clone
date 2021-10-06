@@ -15,7 +15,7 @@ import { ArrowLeft, ArrowRight } from "../UI/Arrows/Arrows";
 import styles from "./Channel.module.css";
 import { MENU_VIDEO_CARD } from "../Constants/Constants";
 
-export function Owner({ channel }) {
+export function Owner({ channel, customStyles = {} }) {
   const { channelId, channelName } = channel;
   const history = useHistory();
 
@@ -26,6 +26,7 @@ export function Owner({ channel }) {
 
   return (
     <div
+      style={customStyles}
       onClick={goToChannel}
       className={styles.ownerChannelName}
       title={channelName}
