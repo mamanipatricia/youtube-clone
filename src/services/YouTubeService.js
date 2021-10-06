@@ -1,7 +1,7 @@
 import BaseService from "./BaseService";
 //* this service has to prepare data to send to BaseServices
 import Formatter from "../Utils/Formatter";
-import { apiKey, apiUrl } from "../config";
+import { apiKey, apiUrl, env } from "../config";
 import { recordService } from ".";
 // import { recordService } from "./RecordService";
 
@@ -15,7 +15,7 @@ export default class YouTubeService extends BaseService {
   createURLParams(newParams = {}) {
     const params = {
       part: "snippet,contentDetails",
-      maxResults: 8,
+      maxResults: env === "production" ? 15 : 8,
       key: this.API_KEY,
       ...newParams,
     };

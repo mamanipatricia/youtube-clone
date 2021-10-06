@@ -5,4 +5,5 @@ export const {
   REACT_APP_CLIENT_SECRET: clientSecret,
   REACT_APP_RECORD_URL: recordUrl,
   REACT_APP_WITH_RECORDS: withRecords,
+  NODE_ENV: env,
 } = process.env;
