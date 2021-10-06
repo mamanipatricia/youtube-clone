@@ -16,6 +16,7 @@ export default function Detail(props) {
     description,
     videoId,
     liveBroadcast,
+    ownerCustomStyles = {},
   } = props;
   return (
     <div
@@ -32,7 +33,7 @@ export default function Detail(props) {
         {direction === "horizontal" && (
           <Avatar size="extraSmall" channel={channel} />
         )}
-        <Owner channel={channel} />
+        <Owner channel={channel} customStyles={ownerCustomStyles} />
       </div>
       <ViewsAndTimestamp viewCount={viewCount} publishedAt={publishedAt} />
       {direction === "horizontal" && (
@@ -50,12 +51,10 @@ export function Title({ title }) {
     </div>
   );
 }
-export function ViewsAndTimestamp({ viewCount, publishedAt }) {
+export function ViewsAndTimestamp({ viewCount, publishedAt, customStyles }) {
   return (
-    <div className={styles.viewTimestampContainer}>
-      <span className={styles.videoTimestampViews}>
-        {formatDigit(+viewCount)} views
-      </span>
+    <div style={customStyles} className={styles.viewTimestampContainer}>
+      <span>{formatDigit(+viewCount)} views</span>
       <span>•</span>
       <span>{getTimestamp(publishedAt)}</span>
     </div>

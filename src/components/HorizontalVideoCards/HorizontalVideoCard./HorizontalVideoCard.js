@@ -9,6 +9,7 @@ export default function HorizontalVideoCard({
   direction,
   dataRef,
   menuContent = [],
+  ownerCustomStyles = {},
 }) {
   if (!video) return "video not found";
   const {
@@ -36,6 +37,7 @@ export default function HorizontalVideoCard({
         </Link>
         <div className={styles.horizontalVideoCardInfo}>
           <Detail
+            ownerCustomStyles={ownerCustomStyles}
             title={title}
             viewCount={viewCount}
             channel={channel}

@@ -57,6 +57,7 @@
   gap: 4px;
   align-items: center;
   cursor: pointer;
+  font-size: 12px;
 }
 .ownerChannelName:hover {
   color: var(--text-primary);

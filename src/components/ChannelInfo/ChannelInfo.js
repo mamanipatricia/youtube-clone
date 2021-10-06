@@ -4,13 +4,17 @@ import Icon from "../Icon/Icon";
 import Button from "../UI/Button/Button";
 import styles from "./ChannelInfo.module.css";
 
-export const ChannelInfo = ({ channel, displaySubs = false }) => {
+export const ChannelInfo = ({
+  channel,
+  displaySubs = false,
+  ownerCustomStyles = {},
+}) => {
   return (
     <div className={styles.watchMetaContainer}>
       <Avatar size="medium" channel={channel} />
       <div className={styles.watchOwnerContainer}>
         <span className={styles.watchOwnerText}>
-          <Owner channel={channel} />
+          <Owner channel={channel} customStyles={ownerCustomStyles} />
         </span>
         {displaySubs && (
           <span className={styles.watchOwnerSubscribers}>

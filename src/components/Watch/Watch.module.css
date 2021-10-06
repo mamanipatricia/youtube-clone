@@ -23,7 +23,7 @@
   width: 100%;
 }
 .youtubePlayer {
-  height: 600px;
+  aspect-ratio: 16/9;
 }
 .watchInfoMenuContainer {
   display: flex;
@@ -148,7 +148,7 @@
 @media screen and (min-width: 1013px) {
   .watchContainer {
     display: grid;
-    grid-template-columns: 1fr minmax(auto, 520px);
+    grid-template-columns: 1fr minmax(auto, 402px);
     column-gap: 15px;
     padding: 25px;
   }
