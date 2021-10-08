@@ -1,6 +1,6 @@
 # YouTube Clone
 
-A YouTube clone developed using React [DEMO](http://pattty.com)
+A YouTube clone developed using React [DEMO](https://pattty.com)
 
 ## Repositories
 <div style="display: flex; gap: 16px; margin-bottom: 30px">
@@ -73,4 +73,4 @@ Then open the browser to http://localhost:3000/
 <br>
 
 # Now it's time to get started with the Backend!
-Go to backend repository and follow the steps.
+Go to [backend repository](https://github.com/mamanipatricia/backend-youtube-clone-record) and follow the steps.
