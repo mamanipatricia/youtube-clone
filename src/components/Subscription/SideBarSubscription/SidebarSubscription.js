@@ -12,7 +12,7 @@ export const SidebarSubscription = () => {
   const getUserChannel = async (params = {}) => {
     const response = await userService.getUserChannel(params);
     setNextPageToken(response.nextPageToken);
-    setNumberOfSubscriptions(response.pageInfo.totalResults);
+    setNumberOfSubscriptions(response.pageInfo?.totalResults);
     const channelFormatted = (response.items || []).map((channel) => {
       return {
         id: channel.id,
