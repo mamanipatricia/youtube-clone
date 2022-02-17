@@ -31,7 +31,7 @@ There is a slide to explain the AWS architecture here: [AWS Architecture](https:
 <br>
 <br>
 
-# Now it's time to get started with the Frontend!
+# Now it's time to get started with Frontend!
 ⭐ The project follows a `Nodejs folder structure`.
 
 ## Requirements
