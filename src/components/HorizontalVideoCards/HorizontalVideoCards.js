@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import HorizontalPlaylistCard from "../HorizontalPlaylistCard/HorizontalPlaylistCard";
-import HorizontalVideoCard from "./HorizontalVideoCard./HorizontalVideoCard";
+import HorizontalVideoCard from "./HorizontalVideoCard/HorizontalVideoCard";
 import styles from "./HorizontalVideoCards.module.css";
 import Carousel from "../UI/Carousel/Carousel";
 
