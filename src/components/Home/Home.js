@@ -9,7 +9,7 @@ import styles from "./Home.module.css";
 import { MENU_HOME } from "../Constants/Constants";
 import { useAuth } from "../../context/authContext";
 
-const INITIAL_KEYWORD = "Reactjs";
+const INITIAL_KEYWORD = "aws";
 
 export default function Home() {
   const loading = useLoading();
