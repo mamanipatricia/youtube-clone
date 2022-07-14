@@ -25,9 +25,7 @@
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|jsx|json|css|html|ts|tsx)\"",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
-    "validate": "npm run lint && npm run format",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "validate": "npm run lint && npm run format"
   },
   "browserslist": {
     "production": [
@@ -42,27 +40,9 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.3.12",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/addon-links": "^6.3.12",
-    "@storybook/node-logger": "^6.3.12",
-    "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.12",
     "eslint": "^7.28.0",
     "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-react": "^7.24.0",
     "prettier": "^2.3.1"
-  },
-  "eslintConfig": {
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
   }
 }
