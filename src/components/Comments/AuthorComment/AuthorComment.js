@@ -56,7 +56,6 @@ export default function AuthorComment({ onSubmit, channel }) {
           <div className={styles.formControl}>
             <div
               contentEditable
-              aria-label="add a public comment"
               className={`${styles.simpleBoxPlaceholder} ${
                 html.length > 0 ? styles.touched : ""
               }`}
