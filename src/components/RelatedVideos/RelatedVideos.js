@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { youTubeService } from "../../services";
 import { useVideo } from "../../context/videoContext";
 import FeedFilterBarRenderer from "../FeedFilterBarRenderer/FeedFilterBarRenderer";
-import HorizontalVideoCard from "../HorizontalVideoCards/HorizontalVideoCard./HorizontalVideoCard";
+import HorizontalVideoCard from "../HorizontalVideoCards/HorizontalVideoCard/HorizontalVideoCard";
 import styles from "./RelatedVideosContainer.module.css";
 import { MENU_RELATED_VIDEOS } from "../Constants/Constants";
 
