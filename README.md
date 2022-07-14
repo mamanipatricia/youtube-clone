@@ -1,6 +1,7 @@
 # YouTube Clone
 
-A YouTube clone developed using React [DEMO](https://pattty.com)
+<!-- A YouTube clone developed using React [DEMO](https://pattty.com) -->
+A YouTube clone developed using React [DEMO](https://youtube-clone-pattty.surge.sh/)
 
 ## Repositories
 <div style="display: flex; gap: 16px; margin-bottom: 30px">
