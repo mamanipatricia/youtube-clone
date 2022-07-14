@@ -26,6 +26,7 @@ export default function Avatar({ channel, size = "medium" }) {
         src={avatar}
         alt={channelName}
         title={channelName}
+        aria-label="avatar image para test de audio eye"
       />
     </div>
   );

@@ -58,13 +58,14 @@ function Search({ isSearchVisible }) {
               onChange={(e) => searchHandle(e.target.value)}
               className={styles.searchInput}
               placeholder="Search"
+              aria-label="search input para test de audio eye"
             />
           </div>
-          <button className={styles.searchButton}>
+          <button aria-label="search button para test de audio eye" className={styles.searchButton}>
             <Icon name="SEARCH" />
           </button>
         </div>
-        <button onClick={openModal} className={styles.buttonMicrophone}>
+        <button aria-label="microphone button para test de audio eye" onClick={openModal} className={styles.buttonMicrophone}>
           <Icon name="MICROPHONE" />
         </button>
       </form>
