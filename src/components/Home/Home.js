@@ -8,6 +8,12 @@ import Spinner from "../Spinner/Spinner";
 import styles from "./Home.module.css";
 import { MENU_HOME } from "../Constants/Constants";
 import { useAuth } from "../../context/authContext";
+// ckeditor
+import CKEditor from "@ckeditor/ckeditor5-react";
+import Editor from "ckeditor5-custom-build/build/ckeditor";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import ReactHtmlParser from 'react-html-parser';
+
 
 const INITIAL_KEYWORD = "aws";
 
@@ -22,6 +28,9 @@ export default function Home() {
   const [nextPageTokenCopy, setNextPageTokenCopy] = useState("");
   const [keyword, setKeyword] = useState(INITIAL_KEYWORD);
   const nearScreenRef = useRef(null);
+  // ckeditor
+  const [addData, setVal] = useState("");
+  const [addedData, setShowData] = useState(0);
 
   const [loadVideo, setLoadVideo] = useState(false);
 
@@ -117,6 +126,12 @@ export default function Home() {
     setStarted(true);
   };
 
+  const handleChange = (e, editor) => {
+    console.log("e, editor>>", e, editor);
+    const data = editor.getData();
+    setVal(data);
+  };
+
   return (
     <div className={styles.homeContainer}>
       <div
@@ -143,13 +158,45 @@ export default function Home() {
         </>
       ) : (
         <div>
-          <button aria-label="button to load videos para test de audio eye" style={{ marginTop: "100px" }} onClick={loadVideoHandle}>
+          <button
+            aria-label="button to load videos para test de audio eye"
+            style={{ marginTop: "100px" }}
+            onClick={loadVideoHandle}
+          >
             CLICK TO LOAD VIDEOS
           </button>
           <h1>What is Lorem Ipsum?</h1>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum.
+          </p>
         </div>
       )}
+      {/* start CKEDITOR */}
+      <h2>Using CKEditor 5 build in React</h2>
+      <button onClick={() => !addedData}>
+        {addedData ? "Hide Data" : "Show data"}
+      </button>
+      <CKEditor
+        editor={Editor}
+        data={addData}
+        onChange={handleChange}
+        onInit={(editor) => {
+          // You can store the "editor" and use when it is needed.
+          console.log("Editor is ready to use!", editor);
+        }}
+      />
+      <div>{addedData ? addData : ""}</div>
+      <div>{addedData ? ReactHtmlParser(addData) : ""}</div>
+      {/* end CKEDITOR */}
+
       <div ref={nearScreenRef}>
         <Spinner visible={loadVideo} />
       </div>
